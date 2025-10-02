@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import InfoBlock from "@/components/ui/InfoBlock";
 
 export default function Hero() {
   return (
@@ -24,16 +25,11 @@ export default function Hero() {
           </Button>
         </div>
 
-        <div className="bg-gray-50 rounded-2xl p-8 max-w-2xl mx-auto">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
-            ¿Qué es programar?
-          </h3>
-          <p className="text-gray-600 text-lg leading-relaxed">
-            Programar es como darle instrucciones a una computadora para que
-            haga lo que tú quieras. Es como escribir una receta, pero para que
-            la computadora la siga.
-          </p>
-        </div>
+        <InfoBlock
+          emoji="💻"
+          title="¿Qué es programar?"
+          description="Programar es como darle instrucciones a una computadora para que haga lo que tú quieras. Es como escribir una receta, pero para que la computadora la siga."
+        />
       </div>
     </section>
   );

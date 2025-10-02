@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import InfoBlock from "@/components/ui/InfoBlock";
 
 export default function CTA() {
   return (
@@ -18,16 +19,11 @@ export default function CTA() {
           </Button>
         </div>
 
-        <div className="bg-gray-50 rounded-2xl p-8 max-w-2xl mx-auto">
-          <div className="text-4xl mb-4">💻</div>
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
-            ¿Qué necesitas?
-          </h3>
-          <p className="text-gray-600 text-lg">
-            Solo una computadora y ganas de aprender. Nosotros te enseñamos todo
-            lo demás.
-          </p>
-        </div>
+        <InfoBlock
+          emoji="🤔"
+          title="¿Qué necesitas?"
+          description="Solo una computadora y ganas de aprender. Nosotros te enseñamos todo lo demás."
+        />
       </div>
     </section>
   );
