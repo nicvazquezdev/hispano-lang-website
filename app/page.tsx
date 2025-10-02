@@ -1,6 +1,6 @@
 import Hero from "@/components/sections/Hero";
 import Features from "@/components/sections/Features";
-import CodeExample from "@/components/sections/CodeExample";
+import Playground from "@/components/sections/Playground";
 import CTA from "@/components/sections/CTA";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
@@ -12,7 +12,7 @@ export default function Home() {
       <main>
         <Hero />
         <Features />
-        <CodeExample />
+        <Playground />
         <CTA />
       </main>
       <Footer />

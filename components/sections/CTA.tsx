@@ -1,68 +1,29 @@
 export default function CTA() {
   return (
-    <section
-      id="descargar"
-      className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+    <section className="py-16 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
           ¿Listo para empezar?
         </h2>
-        <p className="text-xl text-blue-100 mb-12 max-w-3xl mx-auto">
-          Descarga HispanoLang hoy y únete a la revolución de la programación en
-          español. Es gratis, open source, y está listo para usar.
+        <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          Es gratis, es fácil, y está listo para usar. No necesitas saber nada
+          de programación.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <button className="bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg flex items-center">
-            <svg
-              className="w-5 h-5 mr-2"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Descargar HispanoLang
-          </button>
-          <button className="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
-            Ver en GitHub
+        <div className="mb-12">
+          <button className="bg-white text-blue-600 px-12 py-4 rounded-full text-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+            Descargar Gratis
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-            <div className="text-3xl mb-4">⚡</div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Instalación Rápida
-            </h3>
-            <p className="text-blue-100 text-sm">
-              Una sola línea de comando y estás listo para programar.
-            </p>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-            <div className="text-3xl mb-4">📚</div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Documentación Completa
-            </h3>
-            <p className="text-blue-100 text-sm">
-              Guías paso a paso y ejemplos para cada característica.
-            </p>
-          </div>
-
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6">
-            <div className="text-3xl mb-4">👥</div>
-            <h3 className="text-xl font-semibold text-white mb-2">
-              Comunidad Activa
-            </h3>
-            <p className="text-blue-100 text-sm">
-              Obtén ayuda y comparte tu código con otros desarrolladores.
-            </p>
-          </div>
+        <div className="bg-white/20 rounded-2xl p-8 max-w-2xl mx-auto">
+          <h3 className="text-lg font-semibold text-white mb-4">
+            ¿Qué necesitas?
+          </h3>
+          <p className="text-blue-100 text-lg">
+            Solo una computadora y ganas de aprender. Nosotros te enseñamos todo
+            lo demás.
+          </p>
         </div>
       </div>
     </section>
