@@ -13,24 +13,16 @@ export default function Navigation() {
             </span>
           </div>
 
-          <div className="flex items-center space-x-6">
-            <a
-              href="#caracteristicas"
-              className="text-gray-600 hover:text-blue-600 transition-colors text-lg"
-            >
-              ¿Por qué?
-            </a>
-            <Button
-              onClick={() =>
-                document
-                  .getElementById("descargar")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="rounded-full text-lg"
-            >
-              Empezar
-            </Button>
-          </div>
+          <Button
+            onClick={() =>
+              document
+                .getElementById("descargar")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="rounded-full text-lg"
+          >
+            Empezar
+          </Button>
         </div>
       </div>
     </nav>
