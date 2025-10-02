@@ -1,3 +1,5 @@
+import Button from "@/components/ui/Button";
+
 export default function Hero() {
   return (
     <section className="bg-white py-16 lg:py-24">
@@ -17,9 +19,9 @@ export default function Hero() {
         </p>
 
         <div className="mb-12">
-          <button className="bg-blue-500 text-white px-12 py-4 rounded-full text-xl font-semibold hover:bg-blue-600 transition-colors shadow-lg">
+          <Button size="lg" className="rounded-full shadow-lg">
             Empezar Gratis
-          </button>
+          </Button>
         </div>
 
         <div className="bg-gray-50 rounded-2xl p-8 max-w-2xl mx-auto">

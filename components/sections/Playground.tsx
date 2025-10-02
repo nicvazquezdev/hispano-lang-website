@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Button from "@/components/ui/Button";
 
 export default function Playground() {
   const [code, setCode] = useState(`escribir "¡Hola mundo!"
@@ -37,12 +38,9 @@ escribir "Mi nombre es: " + mi_nombre`);
               </div>
               <div className="flex items-center space-x-3">
                 <span className="text-gray-300 text-sm">editor.hispano</span>
-                <button
-                  onClick={runCode}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-600 transition-colors"
-                >
+                <Button onClick={runCode} size="sm">
                   ▶ Ejecutar
-                </button>
+                </Button>
               </div>
             </div>
 

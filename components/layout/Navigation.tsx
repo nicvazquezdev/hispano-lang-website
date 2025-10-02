@@ -1,3 +1,7 @@
+"use client";
+
+import Button from "@/components/ui/Button";
+
 export default function Navigation() {
   return (
     <nav className="bg-white border-b border-gray-200">
@@ -16,12 +20,16 @@ export default function Navigation() {
             >
               ¿Por qué?
             </a>
-            <a
-              href="#descargar"
-              className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-colors text-lg font-semibold"
+            <Button
+              onClick={() =>
+                document
+                  .getElementById("descargar")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+              className="rounded-full text-lg"
             >
               Empezar
-            </a>
+            </Button>
           </div>
         </div>
       </div>

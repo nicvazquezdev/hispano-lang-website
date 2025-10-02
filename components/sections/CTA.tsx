@@ -1,3 +1,5 @@
+import Button from "@/components/ui/Button";
+
 export default function CTA() {
   return (
     <section className="py-16 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600">
@@ -11,9 +13,13 @@ export default function CTA() {
         </p>
 
         <div className="mb-12">
-          <button className="bg-white text-blue-600 px-12 py-4 rounded-full text-xl font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+          <Button
+            variant="secondary"
+            size="lg"
+            className="rounded-full shadow-lg bg-white text-blue-600 hover:bg-gray-100"
+          >
             Descargar Gratis
-          </button>
+          </Button>
         </div>
 
         <div className="bg-white/20 rounded-2xl p-8 max-w-2xl mx-auto">
