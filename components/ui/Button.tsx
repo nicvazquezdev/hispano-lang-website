@@ -18,11 +18,12 @@ export default function Button({
     "font-semibold transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2";
 
   const variantClasses = {
-    primary: "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-500",
+    primary:
+      "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold px-8 py-4 rounded-xl shadow-2xl transform transition-all duration-300",
     secondary:
       "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-500",
     outline:
-      "border-2 border-gray-300 text-gray-700 hover:bg-gray-50 focus:ring-gray-500",
+      "border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 rounded-xl font-semibold",
   };
 
   const sizeClasses = {
