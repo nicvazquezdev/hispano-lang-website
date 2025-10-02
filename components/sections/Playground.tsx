@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
 
 export default function Playground() {
   const [code, setCode] = useState(`escribir "¡Hola mundo!"
@@ -76,45 +77,51 @@ escribir "Mi nombre es: " + mi_nombre`);
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button
+            <Card
+              variant="outlined"
+              padding="sm"
+              className="cursor-pointer hover:bg-gray-50 transition-colors"
               onClick={() =>
                 setCode(`escribir "¡Hola mundo!"
 escribir "Bienvenido a Hispano Lang"`)
               }
-              className="bg-white border border-gray-200 rounded-lg p-4 text-left hover:bg-gray-50 transition-colors"
             >
               <div className="text-2xl mb-2">👋</div>
               <div className="font-semibold text-gray-800">Hola Mundo</div>
               <div className="text-gray-600 text-sm">Tu primer programa</div>
-            </button>
+            </Card>
 
-            <button
+            <Card
+              variant="outlined"
+              padding="sm"
+              className="cursor-pointer hover:bg-gray-50 transition-colors"
               onClick={() =>
                 setCode(`variable numero1 = 10
 variable numero2 = 5
 variable resultado = numero1 + numero2
 escribir "El resultado es: " + resultado`)
               }
-              className="bg-white border border-gray-200 rounded-lg p-4 text-left hover:bg-gray-50 transition-colors"
             >
               <div className="text-2xl mb-2">🧮</div>
               <div className="font-semibold text-gray-800">Calculadora</div>
               <div className="text-gray-600 text-sm">Suma dos números</div>
-            </button>
+            </Card>
 
-            <button
+            <Card
+              variant="outlined"
+              padding="sm"
+              className="cursor-pointer hover:bg-gray-50 transition-colors"
               onClick={() =>
                 setCode(`variable nombre = "María"
 variable edad = 25
 escribir "Hola, me llamo " + nombre
 escribir "Tengo " + edad + " años"`)
               }
-              className="bg-white border border-gray-200 rounded-lg p-4 text-left hover:bg-gray-50 transition-colors"
             >
               <div className="text-2xl mb-2">👤</div>
               <div className="font-semibold text-gray-800">Variables</div>
               <div className="text-gray-600 text-sm">Almacena información</div>
-            </button>
+            </Card>
           </div>
         </div>
       </div>

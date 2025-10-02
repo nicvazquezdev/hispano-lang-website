@@ -1,3 +1,5 @@
+import Card from "@/components/ui/Card";
+
 export default function Features() {
   const features = [
     {
@@ -40,7 +42,7 @@ export default function Features() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-8 rounded-2xl text-center">
+            <Card key={index} className="text-center">
               <div className="text-5xl mb-4">{feature.icon}</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-4">
                 {feature.title}
@@ -48,7 +50,7 @@ export default function Features() {
               <p className="text-gray-600 text-lg leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </Card>
           ))}
         </div>
       </div>
