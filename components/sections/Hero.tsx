@@ -1,5 +1,4 @@
 import Button from "@/components/ui/Button";
-import InfoBlock from "@/components/ui/InfoBlock";
 
 export default function Hero() {
   return (
