@@ -23,7 +23,7 @@ export default function Button({
     secondary:
       "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-500",
     outline:
-      "border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm rounded-xl font-semibold",
+      "border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-xl font-semibold",
   };
 
   const sizeClasses = {
