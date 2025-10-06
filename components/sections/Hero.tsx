@@ -46,35 +46,54 @@ export default function Hero() {
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-500 rounded-full"></div>
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
                   </div>
-                  <span className="text-slate-600 text-xs sm:text-sm ml-3 sm:ml-4">
-                    mi_programa.hispano
-                  </span>
                 </div>
 
                 <div className="font-mono text-xs sm:text-sm space-y-2 sm:space-y-3 overflow-x-auto">
                   <div className="text-green-600">
-                    {"// Mi primer programa"}
+                    {"// Saludo personalizado"}
                   </div>
-                  <div className="text-blue-600">escribir</div>
-                  <div className="text-slate-800 ml-2 sm:ml-4">
-                    {"¡Hola mundo!"}
+                  <div className="flex gap-2">
+                    <div className="text-purple-600">variable</div>
+                    <div className="text-orange-600">nombre</div>
+                    <div className="text-slate-800">=</div>
+                    <div className="text-green-600">{"Ana"}</div>
                   </div>
-                  <div className="text-slate-500 mt-2 sm:mt-4">
-                    {"// Crear una variable"}
+
+                  <div className="flex gap-2">
+                    <div className="text-purple-600">mostrar</div>
+                    <div className="text-orange-600">&quot;¡Hola &quot;</div>
+                    <div className="text-orange-600">+ nombre +</div>
+                    <div className="text-orange-600">&quot;!&quot;</div>
                   </div>
-                  <div className="text-purple-600">variable</div>
-                  <div className="text-orange-600">mi_nombre</div>
-                  <div className="text-slate-800">=</div>
-                  <div className="text-green-600">{"Ana"}</div>
-                  <div className="text-slate-500 mt-2 sm:mt-4">
-                    {"// Mostrar resultado"}
+
+                  <div className="text-green-600">
+                    {"// Calculadora simple"}
                   </div>
-                  <div className="text-blue-600">escribir</div>
-                  <div className="text-slate-800 ml-2 sm:ml-4">
-                    {"Mi nombre es: "}
+                  <div className="flex gap-2">
+                    <div className="text-purple-600">variable</div>
+                    <div className="text-orange-600">a</div>
+                    <div className="text-slate-800">=</div>
+                    <div className="text-green-600">10</div>
                   </div>
-                  <div className="text-slate-800">+</div>
-                  <div className="text-orange-600">mi_nombre</div>
+                  <div className="flex gap-2">
+                    <div className="text-purple-600">variable</div>
+                    <div className="text-orange-600">b</div>
+                    <div className="text-slate-800">=</div>
+                    <div className="text-green-600">5</div>
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="text-purple-600">variable</div>
+                    <div className="text-orange-600">suma</div>
+                    <div className="text-slate-800">=</div>
+                    <div className="text-green-600">a + b</div>
+                  </div>
+                  <div className="flex gap-2">
+                    <div className="text-purple-600">mostrar</div>
+                    <div className="text-orange-600">
+                      &quot;La suma es: &quot;
+                    </div>
+                    <div className="text-orange-600">+ suma</div>
+                  </div>
                 </div>
               </div>
             </div>

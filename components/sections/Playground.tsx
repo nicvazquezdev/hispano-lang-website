@@ -6,15 +6,45 @@ import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
 
 export default function Playground() {
-  const [code, setCode] = useState(`escribir "¡Hola mundo!"
+  const [code, setCode] = useState(`mostrar "¡Hola mundo!"
 variable mi_nombre = "Ana"
-escribir "Mi nombre es: " + mi_nombre`);
+mostrar "Mi nombre es: " + mi_nombre`);
 
   const [output, setOutput] = useState("");
+  const [isRunning, setIsRunning] = useState(false);
 
-  const runCode = () => {
-    // Simulación de ejecución (no funcional aún)
-    setOutput("¡Hola mundo!\nMi nombre es: Ana");
+  const runCode = async () => {
+    setIsRunning(true);
+    setOutput("Ejecutando...");
+
+    try {
+      const response = await fetch("/api/execute", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        // Si la ejecución fue exitosa, mostrar el output
+        const output = result.output.join("\n");
+        setOutput(output || "Código ejecutado exitosamente");
+      } else {
+        // Si hubo un error, mostrar el mensaje de error
+        setOutput(`Error: ${result.error}`);
+      }
+    } catch (error) {
+      setOutput(
+        `Error: ${
+          error instanceof Error ? error.message : "Error desconocido"
+        }`,
+      );
+    } finally {
+      setIsRunning(false);
+    }
   };
 
   return (
@@ -37,8 +67,8 @@ escribir "Mi nombre es: " + mi_nombre`);
               <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-500 rounded-full"></div>
               <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
             </div>
-            <Button onClick={runCode} size="sm">
-              ▶ Ejecutar
+            <Button onClick={runCode} size="sm" disabled={isRunning}>
+              {isRunning ? "⏳ Ejecutando..." : "▶ Ejecutar"}
             </Button>
           </div>
 
@@ -84,8 +114,22 @@ escribir "Mi nombre es: " + mi_nombre`);
             padding="sm"
             className="cursor-pointer text-center p-4 sm:p-6"
             onClick={() =>
-              setCode(`escribir "¡Hola mundo!"
-escribir "Bienvenido a Hispano Lang"`)
+              setCode(`// Saludo personalizado
+variable nombre = "María"
+mostrar "¡Hola " + nombre + "!"
+
+// Calculadora simple
+variable a = 10
+variable b = 5
+variable suma = a + b
+mostrar "La suma es: " + suma
+
+// Condicional
+si suma > 10 {
+  mostrar "¡Es un número grande!"
+} sino {
+  mostrar "Es un número pequeño"
+}`)
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">👋</div>
@@ -105,7 +149,7 @@ escribir "Bienvenido a Hispano Lang"`)
               setCode(`variable numero1 = 10
 variable numero2 = 5
 variable resultado = numero1 + numero2
-escribir "El resultado es: " + resultado`)
+mostrar "El resultado es: " + resultado`)
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🧮</div>
@@ -124,8 +168,8 @@ escribir "El resultado es: " + resultado`)
             onClick={() =>
               setCode(`variable nombre = "María"
 variable edad = 25
-escribir "Hola, me llamo " + nombre
-escribir "Tengo " + edad + " años"`)
+mostrar "Hola, me llamo " + nombre
+mostrar "Tengo " + edad + " años"`)
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">👤</div>
