@@ -97,8 +97,7 @@ mostrar mi_variable`,
   };
 
   // Calcular progreso: paso actual / total de pasos
-  const progress =
-    currentStep === 0 ? 1 : ((currentStep + 1) / steps.length) * 100;
+  const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
@@ -115,8 +114,8 @@ mostrar mi_variable`,
         <Section
           background="light"
           badge={{ emoji: "📦", text: "Lección 1" }}
-          title="Variables en"
-          titleGradient=" Hispano Lang"
+          title=" "
+          titleGradient="Variables"
           description="Aprende a almacenar y manipular datos paso a paso"
         >
           <div className="">
