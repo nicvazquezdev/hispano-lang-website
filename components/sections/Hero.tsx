@@ -2,7 +2,7 @@ import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
-    <section className="relative h-screen overflow-visible">
+    <section className="relative min-h-screen overflow-visible">
       {/* Fondo animado con partículas */}
       <div className="absolute inset-0 z-0" style={{ height: "120vh" }}>
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
@@ -21,7 +21,7 @@ export default function Hero() {
         ></div>
       </div>
 
-      <div className="relative z-20 h-screen flex items-center">
+      <div className="relative z-20 min-h-screen flex items-center pt-16 sm:pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Contenido principal */}
