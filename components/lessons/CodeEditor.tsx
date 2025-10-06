@@ -51,14 +51,10 @@ export default function CodeEditor({
         onRun(); // Llamar onRun cuando se ejecute exitosamente
         onComplete(); // Marcar como completado cuando se ejecute exitosamente
       } else {
-        setOutput(`Error: ${result.error}`);
+        setOutput(result.error);
       }
     } catch (error) {
-      setOutput(
-        `Error: ${
-          error instanceof Error ? error.message : "Error desconocido"
-        }`,
-      );
+      setOutput(error instanceof Error ? error.message : "Error desconocido");
     } finally {
       setIsRunning(false);
     }

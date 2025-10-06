@@ -37,11 +37,7 @@ mostrar "Mi nombre es: " + mi_nombre`);
         setOutput(`Error: ${result.error}`);
       }
     } catch (error) {
-      setOutput(
-        `Error: ${
-          error instanceof Error ? error.message : "Error desconocido"
-        }`,
-      );
+      setOutput(error instanceof Error ? error.message : "Error desconocido");
     } finally {
       setIsRunning(false);
     }

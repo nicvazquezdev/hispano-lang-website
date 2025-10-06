@@ -22,6 +22,8 @@ export default function VariablesLesson() {
 mostrar mi_nombre`,
       explanation:
         "Aquí creamos una variable llamada `mi_nombre` y le asignamos el valor 'Ana'. Luego la mostramos en pantalla.",
+      challenge:
+        "🧩 Desafío rápido: Crea una variable llamada `mi_edad` con tu edad y muéstrala en pantalla.",
     },
     {
       title: "Diferentes tipos de variables",
@@ -35,12 +37,14 @@ mostrar "Nombre: " + nombre
 mostrar "Edad: " + edad
 mostrar "Es estudiante: " + es_estudiante`,
       explanation:
-        "Creamos tres variables de diferentes tipos y las mostramos. Observa cómo concatenamos texto con variables usando el operador +.",
+        "Creamos tres variables de diferentes tipos y las mostramos. Observa cómo concatenamos texto con variables usando el operador +",
+      challenge:
+        "🧩 Desafío rápido: Crea variables para tu color favorito, tu número de la suerte y si te gusta programar (verdadero/falso).",
     },
     {
       title: "Cambiar el valor de una variable",
       content:
-        "Podemos cambiar el valor de una variable en cualquier momento usando el operador de asignación =.",
+        "Podemos cambiar el valor de una variable en cualquier momento usando el operador de asignación =",
       code: `variable contador = 0
 mostrar "Contador inicial: " + contador
 
@@ -51,6 +55,8 @@ contador = contador + 3
 mostrar "Contador final: " + contador`,
       explanation:
         "Primero asignamos 0, luego cambiamos a 5, y finalmente sumamos 3 más. Las variables pueden cambiar su valor durante la ejecución del programa.",
+      challenge:
+        "🧩 Desafío rápido: Crea una variable `puntos` que empiece en 10, luego cámbiala a 25, y finalmente súmale 5 más.",
     },
     {
       title: "Variables con operaciones matemáticas",
@@ -65,6 +71,8 @@ mostrar "Descuento: " + descuento
 mostrar "Precio final: " + precio_final`,
       explanation:
         "Calculamos el precio final restando el descuento del precio original. Las variables nos permiten hacer cálculos dinámicos.",
+      challenge:
+        "🧩 Desafío rápido: Calcula el área de un rectángulo (base × altura) y muestra el resultado.",
     },
     {
       title: "¡Práctica libre!",
@@ -75,6 +83,10 @@ variable mi_variable = "¡Hola mundo!"
 mostrar mi_variable`,
       explanation:
         "Experimenta creando variables con diferentes nombres y valores. ¡No hay límites para tu creatividad!",
+      challenge:
+        "🧩 Desafío rápido: Crea una variable `pais` y muestra un mensaje que diga 'Vivo en [tu país]'.",
+      summary:
+        "🧠 Recuerda:\n\n• Usa `variable` para crear una nueva caja.\n• Puedes cambiar su contenido en cualquier momento.\n• Las variables pueden guardar texto, números o valores verdadero/falso.",
     },
   ];
 
@@ -146,6 +158,34 @@ mostrar mi_variable`,
                       {steps[currentStep].explanation}
                     </p>
                   </div>
+
+                  {/* Mini Challenge */}
+                  {steps[currentStep].challenge && (
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                      <h4 className="font-semibold text-blue-800 mb-2">
+                        {steps[currentStep].challenge}
+                      </h4>
+                    </div>
+                  )}
+
+                  {/* Summary for last step */}
+                  {steps[currentStep].summary && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                      <h4 className="font-semibold text-green-800 mb-2">
+                        {steps[currentStep].summary.split("\n")[0]}
+                      </h4>
+                      <div className="text-green-700 text-sm">
+                        {steps[currentStep].summary
+                          .split("\n")
+                          .slice(1)
+                          .map((line, index) => (
+                            <p key={index} className="mb-1">
+                              {line}
+                            </p>
+                          ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Navigation */}
                   <div className="flex justify-between">
