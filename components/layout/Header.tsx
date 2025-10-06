@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,11 +23,14 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex justify-between items-center h-12 sm:h-16">
             <div className="flex items-center">
-              <span className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <Link
+                href="/"
+                className="text-lg sm:text-xl lg:text-2xl font-bold text-white"
+              >
+                <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
                   Hispano Lang
                 </span>
-              </span>
+              </Link>
             </div>
 
             <div></div>
