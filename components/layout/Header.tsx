@@ -33,7 +33,20 @@ export default function Header() {
               </Link>
             </div>
 
-            <div></div>
+            <div className="flex items-center space-x-6">
+              <Link
+                href="/"
+                className="text-slate-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                Inicio
+              </Link>
+              <Link
+                href="/lecciones"
+                className="text-slate-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                Lecciones
+              </Link>
+            </div>
           </div>
         </div>
       </nav>
