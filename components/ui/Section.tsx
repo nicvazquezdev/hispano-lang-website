@@ -23,7 +23,7 @@ export default function Section({
   description,
 }: SectionProps) {
   const backgroundClasses = {
-    light: "bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50",
+    light: "",
     dark: "bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900",
   };
 

@@ -37,16 +37,16 @@ export default function Features() {
       titleGradient=" diferente?"
       description="Otros lenguajes son complicados. Este está hecho para ti."
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
         {features.map((feature, index) => (
-          <Card key={index} variant="interactive" className="text-center">
-            <div className="text-6xl mb-6 group-hover:scale-110 transition-transform duration-300">
+          <Card key={index} variant="interactive" className="text-center p-4 sm:p-6">
+            <div className="text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
               {feature.icon}
             </div>
-            <h3 className="text-xl font-bold text-slate-800 mb-4">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 sm:mb-4">
               {feature.title}
             </h3>
-            <p className="text-slate-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
               {feature.description}
             </p>
           </Card>
