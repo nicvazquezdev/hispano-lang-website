@@ -2,38 +2,13 @@ import Button from "@/components/ui/Button";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-visible">
-      {/* Fondo animado con partículas */}
-      <div className="absolute inset-0 z-0" style={{ height: "120vh" }}>
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-80 h-80 bg-gradient-to-r from-pink-400/30 to-orange-400/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-r from-cyan-400/30 to-blue-400/30 rounded-full blur-3xl animate-pulse delay-2000"></div>
-      </div>
-
-      {/* Grid de fondo */}
-      <div className="absolute inset-0 opacity-20">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(99, 102, 241, 0.2) 1px, transparent 0)`,
-            backgroundSize: "20px 20px",
-          }}
-        ></div>
-      </div>
-
+    <section className="relative min-h-screen overflow-hidden">
       <div className="relative z-20 min-h-screen flex items-center pt-16 sm:pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Contenido principal */}
             <div className="text-center lg:text-left">
-              <div className="inline-flex items-center px-3 py-2 rounded-full bg-white/80 backdrop-blur-sm border border-blue-200/50 mb-6 sm:mb-8">
-                <span className="text-xl sm:text-2xl mr-2">🚀</span>
-                <span className="text-slate-700 font-medium text-sm sm:text-base">
-                  Nuevo Lenguaje de Programación
-                </span>
-              </div>
-
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-slate-800 mb-4 sm:mb-6 leading-tight">
+              <h1 className="text-3xl text-4xl md:text-5xl lg:text-7xl font-bold text-slate-800 mb-4 sm:mb-6 leading-tight">
                 Programa en
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -64,7 +39,7 @@ export default function Hero() {
 
             {/* Código de ejemplo */}
             <div className="relative mt-8 lg:mt-0">
-              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-slate-200/50 shadow-2xl">
+              <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 sm:p-6 lg:p-8 border border-slate-200/50 shadow-lg md:shadow-2xl">
                 <div className="flex items-center mb-4 sm:mb-6">
                   <div className="flex space-x-2">
                     <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-500 rounded-full"></div>
