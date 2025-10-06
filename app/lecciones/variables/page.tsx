@@ -21,7 +21,7 @@ export default function VariablesLesson() {
       code: `variable mi_nombre = "Ana"
 mostrar mi_nombre`,
       explanation:
-        "Aquí creamos una variable llamada `mi_nombre` y le asignamos el valor 'Ana'. Luego la mostramos en pantalla.",
+        "Aquí creamos una variable llamada `mi_nombre` y le asignamos el valor 'Ana'. Nota que el texto debe ir entre comillas dobles. Luego usamos `mostrar` para imprimir el valor de la variable en pantalla.",
       challenge:
         "🧩 Desafío rápido: Crea una variable llamada `mi_edad` con tu edad y muéstrala en pantalla.",
     },
@@ -37,7 +37,7 @@ mostrar "Nombre: " + nombre
 mostrar "Edad: " + edad
 mostrar "Es estudiante: " + es_estudiante`,
       explanation:
-        "Creamos tres variables de diferentes tipos y las mostramos. Observa cómo concatenamos texto con variables usando el operador +",
+        "Creamos tres variables de diferentes tipos: texto (entre comillas), números (sin comillas) y valores booleanos (verdadero/falso). Observa cómo concatenamos texto con variables usando el operador + para crear mensajes dinámicos.",
       challenge:
         "🧩 Desafío rápido: Crea variables para tu color favorito, tu número de la suerte y si te gusta programar (verdadero/falso).",
     },
@@ -54,7 +54,7 @@ mostrar "Contador después: " + contador
 contador = contador + 3
 mostrar "Contador final: " + contador`,
       explanation:
-        "Primero asignamos 0, luego cambiamos a 5, y finalmente sumamos 3 más. Las variables pueden cambiar su valor durante la ejecución del programa.",
+        "Primero asignamos 0, luego cambiamos a 5, y finalmente sumamos 3 más. Las variables pueden cambiar su valor durante la ejecución del programa. Usamos el operador = para reasignar valores y + para sumar.",
       challenge:
         "🧩 Desafío rápido: Crea una variable `puntos` que empiece en 10, luego cámbiala a 25, y finalmente súmale 5 más.",
     },
@@ -70,7 +70,7 @@ mostrar "Precio original: " + precio
 mostrar "Descuento: " + descuento
 mostrar "Precio final: " + precio_final`,
       explanation:
-        "Calculamos el precio final restando el descuento del precio original. Las variables nos permiten hacer cálculos dinámicos.",
+        "Calculamos el precio final restando el descuento del precio original. Las variables nos permiten hacer cálculos dinámicos usando operadores matemáticos como +, -, *, / para crear fórmulas reutilizables.",
       challenge:
         "🧩 Desafío rápido: Calcula el área de un rectángulo (base × altura) y muestra el resultado.",
     },
@@ -140,71 +140,81 @@ mostrar mi_variable`,
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
               {/* Lesson Content */}
-              <Card variant="glass" className="bg-white/80 backdrop-blur-sm">
-                <div>
-                  <h3 className="text-2xl font-bold text-slate-800 mb-4">
-                    {steps[currentStep].title}
-                  </h3>
+              <div>
+                <Card variant="glass" className="bg-white/80 backdrop-blur-sm">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800 mb-4">
+                      {steps[currentStep].title}
+                    </h3>
 
-                  <p className="text-slate-600 mb-6 leading-relaxed">
-                    {steps[currentStep].content}
-                  </p>
-
-                  <div className="bg-slate-50 rounded-lg p-4 mb-6">
-                    <h4 className="font-semibold text-slate-700 mb-2">
-                      💡 Explicación:
-                    </h4>
-                    <p className="text-slate-600 text-sm">
-                      {steps[currentStep].explanation}
+                    <p className="text-slate-600 mb-6 leading-relaxed">
+                      {steps[currentStep].content}
                     </p>
-                  </div>
 
-                  {/* Mini Challenge */}
-                  {steps[currentStep].challenge && (
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                      <h4 className="font-semibold text-blue-800 mb-2">
-                        {steps[currentStep].challenge}
-                      </h4>
-                    </div>
-                  )}
-
-                  {/* Summary for last step */}
-                  {steps[currentStep].summary && (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                      <h4 className="font-semibold text-green-800 mb-2">
-                        {steps[currentStep].summary.split("\n")[0]}
-                      </h4>
-                      <div className="text-green-700 text-sm">
-                        {steps[currentStep].summary
-                          .split("\n")
-                          .slice(1)
-                          .map((line, index) => (
-                            <p key={index} className="mb-1">
-                              {line}
-                            </p>
-                          ))}
+                    {/* Mini Challenge */}
+                    {steps[currentStep].challenge && (
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                        <h4 className="font-semibold text-blue-800 mb-2">
+                          {steps[currentStep].challenge}
+                        </h4>
                       </div>
+                    )}
+
+                    {/* Summary for last step */}
+                    {steps[currentStep].summary && (
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+                        <h4 className="font-semibold text-green-800 mb-2">
+                          {steps[currentStep].summary.split("\n")[0]}
+                        </h4>
+                        <div className="text-green-700 text-sm">
+                          {steps[currentStep].summary
+                            .split("\n")
+                            .slice(1)
+                            .map((line, index) => (
+                              <p key={index} className="mb-1">
+                                {line}
+                              </p>
+                            ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Navigation */}
+                    <div className="flex justify-between">
+                      {currentStep > 0 && (
+                        <Button variant="outline" onClick={prevStep}>
+                          ← Anterior
+                        </Button>
+                      )}
+
+                      {currentStep === 0 && <div></div>}
+
+                      {currentStep < steps.length - 1 && (
+                        <Button variant="primary" onClick={nextStep}>
+                          Siguiente →
+                        </Button>
+                      )}
                     </div>
-                  )}
-
-                  {/* Navigation */}
-                  <div className="flex justify-between">
-                    {currentStep > 0 && (
-                      <Button variant="outline" onClick={prevStep}>
-                        ← Anterior
-                      </Button>
-                    )}
-
-                    {currentStep === 0 && <div></div>}
-
-                    {currentStep < steps.length - 1 && (
-                      <Button variant="primary" onClick={nextStep}>
-                        Siguiente →
-                      </Button>
-                    )}
                   </div>
+                </Card>
+
+                {/* Explanation Block */}
+                <div className="mt-6">
+                  <Card
+                    variant="glass"
+                    className="bg-white/80 backdrop-blur-sm"
+                  >
+                    <div className="p-4">
+                      <h4 className="font-semibold text-slate-700 mb-2">
+                        💡 Explicación:
+                      </h4>
+                      <p className="text-slate-600">
+                        {steps[currentStep].explanation}
+                      </p>
+                    </div>
+                  </Card>
                 </div>
-              </Card>
+              </div>
 
               {/* Code Editor */}
               <CodeEditor
@@ -213,7 +223,6 @@ mostrar mi_variable`,
                 onCodeChange={() => {}}
                 onRun={() => {}}
                 onComplete={() => handleStepComplete(currentStep)}
-                isCompleted={completedSteps.includes(currentStep)}
               />
             </div>
           </div>

@@ -9,7 +9,6 @@ interface CodeEditorProps {
   onCodeChange: (code: string) => void;
   onRun: () => void;
   onComplete: () => void;
-  isCompleted: boolean;
 }
 
 export default function CodeEditor({
@@ -17,7 +16,6 @@ export default function CodeEditor({
   onCodeChange,
   onRun,
   onComplete,
-  isCompleted,
 }: CodeEditorProps) {
   const [code, setCode] = useState(initialCode);
   const [output, setOutput] = useState("");
@@ -109,18 +107,6 @@ export default function CodeEditor({
           </pre>
         </div>
       </Card>
-
-      {/* Completion Status */}
-      {isCompleted && (
-        <Card variant="glass" className="bg-green-50 border-green-200">
-          <div className="p-4 text-center">
-            <div className="text-2xl mb-2">🎉</div>
-            <p className="text-green-800 font-semibold">
-              ¡Excelente! Has completado este paso.
-            </p>
-          </div>
-        </Card>
-      )}
     </div>
   );
 }
