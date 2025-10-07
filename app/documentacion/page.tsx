@@ -11,7 +11,10 @@ import { docsData } from "@/lib/data";
 export default function DocumentacionPage() {
   const [activeSection, setActiveSection] = useState("variables");
 
-  const sections = [{ id: "variables", title: "Variables" }];
+  const sections = [
+    { id: "variables", title: "Variables" },
+    { id: "tiposDatos", title: "Tipos de Datos" },
+  ];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden pt-10">
