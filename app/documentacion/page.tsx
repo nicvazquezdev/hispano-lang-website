@@ -15,6 +15,15 @@ export default function DocumentacionPage() {
     { id: "variables", title: "Variables" },
     { id: "comentarios", title: "Comentarios" },
     { id: "tiposDatos", title: "Tipos de Datos" },
+    { id: "entradaSalida", title: "Entrada y Salida" },
+    { id: "operadores", title: "Operadores" },
+    { id: "condicionales", title: "Condicionales" },
+    { id: "bucles", title: "Bucles" },
+    { id: "funciones", title: "Funciones" },
+    { id: "listas", title: "Listas" },
+    { id: "objetos", title: "Objetos" },
+    { id: "funcionesMatematicas", title: "Funciones Matemáticas" },
+    { id: "manejoErrores", title: "Manejo de Errores" },
   ];
 
   return (
