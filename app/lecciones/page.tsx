@@ -23,7 +23,7 @@ export default function LeccionesPage() {
       duration: "15 min",
       completed: false,
     },
-    {
+    /*{
       id: "entrada-salida",
       title: "Entrada y Salida",
       description: "Interactúa con el usuario",
@@ -31,7 +31,7 @@ export default function LeccionesPage() {
       difficulty: "Principiante",
       duration: "12 min",
       completed: false,
-    },
+    },*/
     {
       id: "operadores",
       title: "Operadores",
