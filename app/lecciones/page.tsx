@@ -131,6 +131,15 @@ export default function LeccionesPage() {
       duration: "25 min",
       completed: false,
     },
+    {
+      id: "ejemplos-avanzados",
+      title: "Ejemplos Avanzados",
+      description: "Proyectos integrando todo",
+      emoji: "🎓",
+      difficulty: "Avanzado",
+      duration: "40 min",
+      completed: false,
+    },
   ];
 
   return (
