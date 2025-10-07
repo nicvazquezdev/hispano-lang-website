@@ -68,6 +68,15 @@ export default function LeccionesPage() {
       duration: "35 min",
       completed: false,
     },
+    {
+      id: "listas",
+      title: "Listas",
+      description: "Trabaja con colecciones de datos",
+      emoji: "📋",
+      difficulty: "Intermedio",
+      duration: "30 min",
+      completed: false,
+    },
   ];
 
   return (
