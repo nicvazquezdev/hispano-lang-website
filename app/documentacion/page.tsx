@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Section from "@/components/ui/Section";
@@ -9,7 +10,23 @@ import DocSection from "@/components/docs/DocSection";
 import { docsData } from "@/lib/data";
 
 export default function DocumentacionPage() {
-  const [activeSection, setActiveSection] = useState("variables");
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [activeSection, setActiveSection] = useState(
+    searchParams.get("seccion") || "variables",
+  );
+
+  useEffect(() => {
+    const seccion = searchParams.get("seccion");
+    if (seccion && docsData[seccion as keyof typeof docsData]) {
+      setActiveSection(seccion);
+    }
+  }, [searchParams]);
+
+  const handleSectionChange = (sectionId: string) => {
+    setActiveSection(sectionId);
+    router.push(`/documentacion?seccion=${sectionId}`, { scroll: false });
+  };
 
   const sections = [
     { id: "variables", title: "Variables" },
@@ -53,7 +70,7 @@ export default function DocumentacionPage() {
                 <DocNav
                   sections={sections}
                   activeSection={activeSection}
-                  onSectionChange={setActiveSection}
+                  onSectionChange={handleSectionChange}
                 />
               </nav>
             </aside>
