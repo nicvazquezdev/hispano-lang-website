@@ -1,17 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
 
 export default function Playground() {
-  const [code, setCode] = useState(`mostrar "¡Hola mundo!"
-variable mi_nombre = "Ana"
-mostrar "Mi nombre es: " + mi_nombre`);
+  const [code, setCode] = useState(`// Mi primer hola mundo
+variable lenguaje = "Hispano Lang"
+mostrar "Hola " + lenguaje + "! 👋"`);
 
   const [output, setOutput] = useState("");
   const [isRunning, setIsRunning] = useState(false);
+  const playgroundRef = useRef<HTMLDivElement>(null);
+
+  const handleExampleClick = (exampleCode: string) => {
+    setCode(exampleCode);
+    setOutput("");
+    // Scroll hacia el inicio de la sección solo en mobile
+    if (window.innerWidth < 1024) {
+      playgroundRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   const runCode = async () => {
     setIsRunning(true);
@@ -51,7 +64,10 @@ mostrar "Mi nombre es: " + mi_nombre`);
       titleGradient=" Hispano Lang"
       description="Escribe código en español y ejecútalo aquí mismo"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+      <div
+        ref={playgroundRef}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
+      >
         {/* Editor */}
         <Card
           variant="glass"
@@ -110,22 +126,9 @@ mostrar "Mi nombre es: " + mi_nombre`);
             padding="sm"
             className="cursor-pointer text-center p-4 sm:p-6"
             onClick={() =>
-              setCode(`// Saludo personalizado
-variable nombre = "María"
-mostrar "¡Hola " + nombre + "!"
-
-// Calculadora simple
-variable a = 10
-variable b = 5
-variable suma = a + b
-mostrar "La suma es: " + suma
-
-// Condicional
-si suma > 10 {
-  mostrar "¡Es un número grande!"
-} sino {
-  mostrar "Es un número pequeño"
-}`)
+              handleExampleClick(`// Mi primer programa en Hispano Lang
+mostrar "¡Hola Mundo!"
+mostrar "Este es mi primer programa"`)
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">👋</div>
@@ -142,10 +145,16 @@ si suma > 10 {
             padding="sm"
             className="cursor-pointer text-center p-4 sm:p-6"
             onClick={() =>
-              setCode(`variable numero1 = 10
-variable numero2 = 5
-variable resultado = numero1 + numero2
-mostrar "El resultado es: " + resultado`)
+              handleExampleClick(`// Calculadora con múltiples operaciones
+variable a = 15
+variable b = 5
+
+mostrar "Número 1: " + a
+mostrar "Número 2: " + b
+mostrar "Suma: " + (a + b)
+mostrar "Resta: " + (a - b)
+mostrar "Multiplicación: " + (a * b)
+mostrar "División: " + (a / b)`)
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🧮</div>
@@ -153,7 +162,7 @@ mostrar "El resultado es: " + resultado`)
               Calculadora
             </div>
             <div className="text-slate-600 text-xs sm:text-sm">
-              Suma dos números
+              Operaciones matemáticas
             </div>
           </Card>
 
@@ -162,18 +171,28 @@ mostrar "El resultado es: " + resultado`)
             padding="sm"
             className="cursor-pointer text-center p-4 sm:p-6"
             onClick={() =>
-              setCode(`variable nombre = "María"
-variable edad = 25
-mostrar "Hola, me llamo " + nombre
-mostrar "Tengo " + edad + " años"`)
+              handleExampleClick(`// Condicionales: mayor de edad
+variable nombre = "Carlos"
+variable edad = 20
+
+mostrar "Nombre: " + nombre
+mostrar "Edad: " + edad
+
+si edad >= 18 {
+    mostrar nombre + " es mayor de edad"
+    mostrar "Puede votar"
+} sino {
+    mostrar nombre + " es menor de edad"
+    mostrar "No puede votar todavía"
+}`)
             }
           >
-            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">👤</div>
+            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🤔</div>
             <div className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">
-              Variables
+              Condicionales
             </div>
             <div className="text-slate-600 text-xs sm:text-sm">
-              Almacena información
+              Toma decisiones
             </div>
           </Card>
         </div>
