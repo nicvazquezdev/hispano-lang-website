@@ -130,6 +130,8 @@ mostrar "La suma de 1 a 10 es: " + suma`,
       steps={steps}
       prevLessonUrl="/lecciones/condicionales"
       prevLessonTitle="Condicionales"
+      nextLessonUrl="/lecciones/funciones"
+      nextLessonTitle="Funciones"
     />
   );
 }

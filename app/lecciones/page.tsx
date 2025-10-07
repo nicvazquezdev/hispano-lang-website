@@ -59,6 +59,15 @@ export default function LeccionesPage() {
       duration: "30 min",
       completed: false,
     },
+    {
+      id: "funciones",
+      title: "Funciones",
+      description: "Crea código reutilizable",
+      emoji: "⚡",
+      difficulty: "Intermedio",
+      duration: "35 min",
+      completed: false,
+    },
   ];
 
   return (
