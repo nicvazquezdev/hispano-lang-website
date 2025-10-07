@@ -9,7 +9,7 @@ export default function Hero() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Contenido principal */}
             <div className="text-center lg:text-left">
-              <h1 className="text-3xl text-4xl md:text-5xl lg:text-7xl font-bold text-slate-800 mb-4 sm:mb-6 leading-tight">
+              <h1 className="text-5xl lg:text-7xl font-bold text-slate-800 mb-4 sm:mb-6 leading-tight">
                 Programa en
                 <br />
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
@@ -17,7 +17,7 @@ export default function Hero() {
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              <p className="text-xl xl:text-2xl text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                 <strong>Hispano Lang</strong> es el primer lenguaje de
                 programación diseñado específicamente para hispanohablantes.
                 Sintaxis natural, aprendizaje intuitivo, resultados
