@@ -78,6 +78,15 @@ export default function LeccionesPage() {
       completed: false,
     },
     {
+      id: "funciones-matematicas",
+      title: "Funciones Matemáticas",
+      description: "Cálculos avanzados integrados",
+      emoji: "🧮",
+      difficulty: "Intermedio",
+      duration: "25 min",
+      completed: false,
+    },
+    {
       id: "listas",
       title: "Listas",
       description: "Trabaja con colecciones de datos",

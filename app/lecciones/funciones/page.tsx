@@ -166,8 +166,8 @@ mostrar "¿Es saludable?: " + esIMCSaludable(miIMC)`,
       steps={steps}
       prevLessonUrl="/lecciones/bucles"
       prevLessonTitle="Bucles"
-      nextLessonUrl="/lecciones/listas"
-      nextLessonTitle="Listas"
+      nextLessonUrl="/lecciones/funciones-matematicas"
+      nextLessonTitle="Funciones Matemáticas"
     />
   );
 }
