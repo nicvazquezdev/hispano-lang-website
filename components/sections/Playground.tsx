@@ -126,17 +126,30 @@ mostrar "Hola " + lenguaje + "! 👋"`);
             padding="sm"
             className="cursor-pointer text-center p-4 sm:p-6"
             onClick={() =>
-              handleExampleClick(`// Mi primer programa en Hispano Lang
-mostrar "¡Hola Mundo!"
-mostrar "Este es mi primer programa"`)
+              handleExampleClick(`// Información personal
+variable nombre = "Ana García"
+variable edad = 25
+variable ciudad = "Madrid"
+variable profesion = "Desarrolladora"
+
+mostrar "=== Mi Tarjeta Personal ==="
+mostrar "Nombre: " + nombre
+mostrar "Edad: " + edad + " años"
+mostrar "Ciudad: " + ciudad
+mostrar "Profesión: " + profesion
+
+// Calcular año de nacimiento
+variable anioActual = 2025
+variable anioNacimiento = anioActual - edad
+mostrar "Año de nacimiento: " + anioNacimiento`)
             }
           >
-            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">👋</div>
+            <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">👤</div>
             <div className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">
-              Hola Mundo
+              Perfil Personal
             </div>
             <div className="text-slate-600 text-xs sm:text-sm">
-              Tu primer programa
+              Variables y cálculos
             </div>
           </Card>
 
