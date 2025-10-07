@@ -4,6 +4,7 @@ import Link from "next/link";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,7 +34,8 @@ export default function Header() {
               </Link>
             </div>
 
-            <div className="flex items-center space-x-6">
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-6">
               <Link
                 href="/"
                 className="text-slate-700 hover:text-blue-600 font-medium transition-colors"
@@ -53,9 +55,64 @@ export default function Header() {
                 Documentación
               </Link>
             </div>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-slate-700 p-1 relative w-6 h-6"
+              aria-label="Toggle menu"
+            >
+              <span className="sr-only">Abrir menú</span>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                <span
+                  className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
+                    isMenuOpen ? "rotate-45 translate-y-0" : "-translate-y-1"
+                  }`}
+                ></span>
+                <span
+                  className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
+                    isMenuOpen ? "opacity-0" : "opacity-100"
+                  }`}
+                ></span>
+                <span
+                  className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
+                    isMenuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
+                  }`}
+                ></span>
+              </div>
+            </button>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-white/95 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl overflow-hidden">
+          <nav className="flex flex-col">
+            <Link
+              href="/"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors border-b border-slate-100"
+            >
+              Inicio
+            </Link>
+            <Link
+              href="/lecciones"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors border-b border-slate-100"
+            >
+              Lecciones
+            </Link>
+            <Link
+              href="/documentacion"
+              onClick={() => setIsMenuOpen(false)}
+              className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors"
+            >
+              Documentación
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
