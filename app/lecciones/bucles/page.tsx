@@ -128,6 +128,8 @@ mostrar "La suma de 1 a 10 es: " + suma`,
       titleGradient=" Hispano Lang"
       description="Aprende a automatizar tareas repetitivas con bucles mientras y para"
       steps={steps}
+      prevLessonUrl="/lecciones/condicionales"
+      prevLessonTitle="Condicionales"
     />
   );
 }

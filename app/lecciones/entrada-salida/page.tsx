@@ -105,6 +105,8 @@ mostrar "Tienes " + edad + " años"`,
       titleGradient=" Hispano Lang"
       description="Aprende a interactuar con el usuario mediante entrada y salida"
       steps={steps}
+      prevLessonUrl="/lecciones/tipos-datos"
+      prevLessonTitle="Tipos de Datos"
       nextLessonUrl="/lecciones/operadores"
       nextLessonTitle="Operadores"
     />

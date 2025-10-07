@@ -136,6 +136,8 @@ mostrar "¿Es mayor que 20?: " + es_grande`,
       titleGradient=" Hispano Lang"
       description="Aprende a usar operadores aritméticos, de comparación, lógicos y de asignación"
       steps={steps}
+      prevLessonUrl="/lecciones/entrada-salida"
+      prevLessonTitle="Entrada y Salida"
       nextLessonUrl="/lecciones/condicionales"
       nextLessonTitle="Condicionales"
     />

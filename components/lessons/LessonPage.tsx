@@ -27,6 +27,8 @@ interface LessonPageProps {
   steps: LessonStep[];
   nextLessonUrl?: string;
   nextLessonTitle?: string;
+  prevLessonUrl?: string;
+  prevLessonTitle?: string;
 }
 
 export default function LessonPage({
@@ -37,6 +39,8 @@ export default function LessonPage({
   steps,
   nextLessonUrl,
   nextLessonTitle,
+  prevLessonUrl,
+  prevLessonTitle,
 }: LessonPageProps) {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
@@ -179,6 +183,65 @@ export default function LessonPage({
                 onComplete={() => handleStepComplete(currentStep)}
               />
             </div>
+
+            {/* Lesson Navigation - Always visible */}
+            {(prevLessonUrl || nextLessonUrl) && (
+              <div className="mt-16 pt-8 border-t border-slate-200">
+                <div className="flex justify-between items-center">
+                  {prevLessonUrl ? (
+                    <Button
+                      variant="outline"
+                      onClick={() => router.push(prevLessonUrl)}
+                      className="flex items-center gap-2"
+                    >
+                      <span>←</span>
+                      <div className="text-left">
+                        <div className="text-xs text-slate-500">
+                          Lección anterior
+                        </div>
+                        <div className="font-semibold">
+                          {prevLessonTitle || "Anterior"}
+                        </div>
+                      </div>
+                    </Button>
+                  ) : (
+                    <div></div>
+                  )}
+
+                  {nextLessonUrl ? (
+                    <Button
+                      variant="primary"
+                      onClick={() => router.push(nextLessonUrl)}
+                      className="flex items-center gap-2"
+                    >
+                      <div className="text-right">
+                        <div className="text-xs text-white/80">
+                          Siguiente lección
+                        </div>
+                        <div className="font-semibold">
+                          {nextLessonTitle || "Siguiente"}
+                        </div>
+                      </div>
+                      <span>→</span>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      onClick={() => router.push("/lecciones")}
+                      className="flex items-center gap-2"
+                    >
+                      <div className="text-right">
+                        <div className="text-xs text-slate-500">
+                          Completaste todas las lecciones
+                        </div>
+                        <div className="font-semibold">Volver al inicio</div>
+                      </div>
+                      <span>✓</span>
+                    </Button>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </Section>
       </main>
