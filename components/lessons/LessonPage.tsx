@@ -140,7 +140,7 @@ export default function LessonPage({
                     {steps[currentStep].challenge && (
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-10">
                         <h4 className="font-semibold text-blue-800 mb-2">
-                          {steps[currentStep].challenge}
+                          <b>🧩 Desafío</b>: {steps[currentStep].challenge}
                         </h4>
                       </div>
                     )}

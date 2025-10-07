@@ -14,7 +14,7 @@ mostrar "Tiene métodos especiales"`,
       explanation:
         "En HispanoLang, cada cadena de texto (string) tiene métodos incorporados que podemos llamar usando la notación de punto. Los métodos son como funciones que pertenecen al texto y nos permiten hacer operaciones comunes sin tener que escribir código complejo. Por ejemplo, en lugar de crear una función manual para contar caracteres, simplemente usamos el método `.longitud()`. Estos métodos hacen que trabajar con texto sea mucho más fácil y el código más expresivo. Son especialmente útiles para validar entrada de usuarios, formatear mensajes, o procesar datos textuales.",
       challenge:
-        "🧩 Desafío rápido: Crea una variable con tu frase favorita y muéstrala. Luego exploraremos los métodos disponibles en los siguientes pasos.",
+        "Crea una variable con tu frase favorita y muéstrala. Luego exploraremos los métodos disponibles en los siguientes pasos.",
     },
     {
       title: "Método longitud()",
@@ -37,7 +37,7 @@ si nombre.longitud() < 3 {
       explanation:
         "El método `.longitud()` cuenta todos los caracteres del string, incluyendo letras, números, espacios, y símbolos de puntuación. 'Hola' tiene 4 caracteres, 'Hola mundo' tiene 10 (incluyendo el espacio). Este método es fundamental para:\n\n• Validar longitud de contraseñas o campos de formulario\n• Limitar la cantidad de caracteres en un mensaje\n• Verificar que el usuario ingresó información\n• Calcular cuánto espacio ocupará el texto\n\nEs importante notar que los espacios cuentan como caracteres. El método siempre retorna un número, que podemos usar en comparaciones, cálculos, o mostrar directamente.",
       challenge:
-        "🧩 Desafío rápido: Pide al usuario su nombre completo. Verifica que tenga al menos 5 caracteres. Si es muy corto, muestra un mensaje de error; si no, muestra cuántos caracteres tiene.",
+        "Pide al usuario su nombre completo. Verifica que tenga al menos 5 caracteres. Si es muy corto, muestra un mensaje de error; si no, muestra cuántos caracteres tiene.",
     },
     {
       title: "Método mayusculas()",
@@ -57,7 +57,7 @@ mostrar titulo.mayusculas()`,
       explanation:
         "El método `.mayusculas()` retorna una nueva cadena con todas las letras convertidas a mayúsculas. El string original no cambia (los strings son inmutables). En el ejemplo, `texto` sigue siendo 'hola mundo' después de llamar al método, pero `textoMayusculas` contiene 'HOLA MUNDO'. Esto es útil para:\n\n• Formatear títulos o encabezados\n• Normalizar texto antes de comparar (para que 'ANA' y 'ana' se consideren iguales)\n• Crear énfasis visual en mensajes importantes\n• Procesar entrada de usuario de forma consistente\n\nPodemos usar el resultado directamente en un `mostrar` o guardarlo en una variable para usarlo después.",
       challenge:
-        "🧩 Desafío rápido: Crea tres variables con nombres de ciudades en minúsculas. Muestra cada una convertida a mayúsculas, formateando el mensaje como 'CIUDAD: [nombre en mayúsculas]'.",
+        "Crea tres variables con nombres de ciudades en minúsculas. Muestra cada una convertida a mayúsculas, formateando el mensaje como 'CIUDAD: [nombre en mayúsculas]'.",
     },
     {
       title: "Método minusculas()",
@@ -80,7 +80,7 @@ si respuesta.minusculas() == "si" {
       explanation:
         "El método `.minusculas()` funciona igual que `.mayusculas()` pero en dirección opuesta: convierte todas las letras a minúsculas. El string original permanece sin cambios. Este método es especialmente útil para:\n\n• Normalizar emails (usuario@email.com)\n• Comparaciones case-insensitive (ignorar mayúsculas/minúsculas)\n• Crear URLs amigables (mi-pagina-web)\n• Procesar comandos de usuario\n\nEn el ejemplo del final, normalizamos la respuesta a minúsculas antes de compararla, así 'SI', 'Si', 'sI' y 'si' son todas válidas. Este patrón es muy común en programación real: normalizar antes de comparar evita bugs relacionados con diferencias de capitalización.",
       challenge:
-        "🧩 Desafío rápido: Crea un programa que pida al usuario un comando ('AYUDA', 'SALIR', 'CONTINUAR'). Normaliza el comando a minúsculas y usa condicionales para responder apropiadamente a cada comando.",
+        "Crea un programa que pida al usuario un comando ('AYUDA', 'SALIR', 'CONTINUAR'). Normaliza el comando a minúsculas y usa condicionales para responder apropiadamente a cada comando.",
     },
     {
       title: "Combinando Métodos de Strings",
@@ -105,7 +105,7 @@ si password.longitud() >= 8 {
       explanation:
         "Podemos combinar métodos de strings de múltiples formas:\n\n• **Guardar en variables**: Para usar el resultado después\n• **Usar en expresiones**: Directamente en concatenaciones o comparaciones\n• **Combinar con condicionales**: Para validaciones\n• **Encadenar métodos**: Aunque en este ejemplo usamos uno a la vez\n\nLos métodos de strings son no-destructivos: el string original nunca cambia. Cada método retorna un nuevo string transformado. Esto hace que sea seguro experimentar con transformaciones sin preocuparte por perder los datos originales. En aplicaciones reales, estos métodos son fundamentales para limpiar y normalizar entrada de usuarios, formatear salida, y procesar datos textuales de forma robusta.",
       challenge:
-        "🧩 Desafío rápido: Pide al usuario su nombre y apellido. Convierte el nombre a mayúsculas y el apellido a minúsculas. Muestra ambos y la longitud total de caracteres (nombre + apellido).",
+        "Pide al usuario su nombre y apellido. Convierte el nombre a mayúsculas y el apellido a minúsculas. Muestra ambos y la longitud total de caracteres (nombre + apellido).",
     },
     {
       title: "¡Práctica libre!",
@@ -123,7 +123,7 @@ mostrar "¿Es largo?: " + esLargo`,
       explanation:
         "En esta práctica libre, experimenta con diferentes métodos de strings. Intenta crear validadores de formularios, normalizadores de datos, formateadores de texto, o cualquier programa que procese información textual. Combina métodos con condicionales para crear validaciones, con bucles para procesar múltiples textos, y con funciones para encapsular operaciones de procesamiento. Los métodos de strings son la base para crear interfaces de usuario robustas que manejen entrada de usuarios de forma segura y consistente. Piensa en casos de uso reales: validar emails, normalizar nombres, verificar longitudes, o formatear mensajes.",
       challenge:
-        "🧩 Desafío rápido: Crea un validador de usuario: pide nombre de usuario y contraseña. El usuario debe tener al menos 4 caracteres, la contraseña al menos 8. Convierte el usuario a minúsculas antes de validar. Muestra si la validación pasó o falló.",
+        "Crea un validador de usuario: pide nombre de usuario y contraseña. El usuario debe tener al menos 4 caracteres, la contraseña al menos 8. Convierte el usuario a minúsculas antes de validar. Muestra si la validación pasó o falló.",
       summary:
         "🧠 Recuerda:\n\n• `.longitud()` retorna cuántos caracteres tiene el string.\n• `.mayusculas()` convierte todo a MAYÚSCULAS.\n• `.minusculas()` convierte todo a minúsculas.\n• Los métodos no modifican el string original, retornan uno nuevo.\n• Combina métodos con condicionales para validaciones.\n• Normaliza texto antes de comparar para evitar bugs.\n• ¡Los métodos de strings son esenciales para procesar texto!",
     },

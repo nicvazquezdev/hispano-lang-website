@@ -20,7 +20,7 @@ mostrar "Continuamos sin problemas"`,
       explanation:
         "En este ejemplo, mostramos un caso que podría causar error (división entre cero) pero lo dejamos comentado. Los errores detienen la ejecución normal del programa. Si intentáramos dividir entre cero sin manejar el error, el programa se detendría y no veríamos el último mensaje. Los errores más comunes son:\n\n• División entre cero\n• Acceder a índices fuera de rango en listas\n• Usar variables no definidas\n• Llamar métodos en valores nulos\n• Pasar parámetros incorrectos a funciones\n\nEs importante entender que los errores son normales en programación: lo que nos diferencia es cómo los manejamos.",
       challenge:
-        "🧩 Desafío rápido: Crea un programa que intente acceder a una lista en un índice que no existe (ejemplo: lista con 3 elementos, acceder al índice 10). Observa qué pasa.",
+        "Crea un programa que intente acceder a una lista en un índice que no existe (ejemplo: lista con 3 elementos, acceder al índice 10). Observa qué pasa.",
     },
     {
       title: "Estructura Intentar-Capturar",
@@ -37,7 +37,7 @@ mostrar "El programa continúa normalmente"`,
       explanation:
         "La estructura tiene dos bloques:\n\n• **intentar {}**: Contiene el código que podría generar un error. Si todo va bien, se ejecuta normalmente.\n• **capturar (error) {}**: Solo se ejecuta si ocurre un error en el bloque `intentar`. Recibe el error como parámetro.\n\nEn este ejemplo, cuando intentamos dividir 10 / 0, se genera un error. En lugar de detener el programa, saltamos al bloque `capturar`, mostramos el mensaje de error, y luego continuamos con el resto del programa. El mensaje 'Esto no se ejecuta' nunca se muestra porque el error ocurre antes. Esta estructura es esencial para crear programas robustos que manejen situaciones inesperadas con gracia.",
       challenge:
-        "🧩 Desafío rápido: Crea un bloque `intentar-capturar` que intente acceder al índice 100 de una lista pequeña. Captura el error y muestra un mensaje amigable.",
+        "Crea un bloque `intentar-capturar` que intente acceder al índice 100 de una lista pequeña. Captura el error y muestra un mensaje amigable.",
     },
     {
       title: "Manejo de Errores en Operaciones",
@@ -58,7 +58,7 @@ mostrar "Lista tiene " + numeros.longitud() + " elementos"`,
       explanation:
         "En este ejemplo, primero accedemos al índice 0 que existe (funciona bien), pero luego intentamos acceder al índice 5 que no existe en una lista de 3 elementos. Esto genera un error y saltamos inmediatamente al bloque `capturar`. El tercer `mostrar` nunca se ejecuta porque el error ocurre antes. El bloque `capturar` nos permite:\n\n• Mostrar mensajes de error amigables al usuario\n• Registrar información sobre el error\n• Intentar una operación alternativa\n• Limpiar recursos o resetear estado\n• Continuar la ejecución del programa\n\nEsto es mucho mejor que dejar que el programa falle sin explicación.",
       challenge:
-        "🧩 Desafío rápido: Crea un objeto persona con nombre y edad. Usa `intentar-capturar` para acceder a una propiedad que no existe (como persona.telefono). Muestra un mensaje apropiado si falla.",
+        "Crea un objeto persona con nombre y edad. Usa `intentar-capturar` para acceder a una propiedad que no existe (como persona.telefono). Muestra un mensaje apropiado si falla.",
     },
     {
       title: "Múltiples Bloques Intentar-Capturar",
@@ -85,7 +85,7 @@ mostrar "Programa completado exitosamente"`,
       explanation:
         "Cada bloque `intentar-capturar` es independiente. Si el primer bloque tiene un error, se captura y el programa continúa con el siguiente bloque. Esto nos permite:\n\n• Manejar diferentes tipos de errores de forma específica\n• Aislar secciones de código riesgosas\n• Proporcionar mensajes de error específicos para cada situación\n• Continuar la ejecución incluso si múltiples operaciones fallan\n\nEs una buena práctica envolver solo el código que realmente podría fallar, no todo el programa. Así los errores son más fáciles de identificar y manejar apropiadamente. Cada bloque captura solo los errores que ocurren dentro de su bloque `intentar`.",
       challenge:
-        "🧩 Desafío rápido: Crea tres bloques `intentar-capturar` separados: uno para división entre cero, uno para acceso a lista fuera de rango, y uno para acceder a una propiedad inexistente. Maneja cada error con un mensaje específico.",
+        "Crea tres bloques `intentar-capturar` separados: uno para división entre cero, uno para acceso a lista fuera de rango, y uno para acceder a una propiedad inexistente. Maneja cada error con un mensaje específico.",
     },
     {
       title: "Validación con Manejo de Errores",
@@ -121,7 +121,7 @@ intentar {
       explanation:
         "Hay dos estrategias para manejar errores:\n\n**1. Validación preventiva**: Verificar condiciones antes de ejecutar código riesgoso (como verificar si el divisor es cero antes de dividir).\n\n**2. Captura reactiva**: Usar `intentar-capturar` para manejar errores que no pudimos prevenir.\n\nLa mejor práctica es combinar ambas: validar lo que puedas anticipar y usar `intentar-capturar` como red de seguridad para errores inesperados. En el ejemplo de `dividirSeguro`, validamos primero el divisor y retornamos `nulo` si es cero. En el segundo ejemplo, validamos el índice pero también envolvemos en `intentar-capturar` por si acaso. Esta defensa en profundidad crea programas más robustos.",
       challenge:
-        "🧩 Desafío rápido: Crea una función `obtenerElementoSeguro(lista, indice)` que valide si el índice existe antes de acceder. Si no existe, retorna nulo. Pruébala con casos válidos e inválidos.",
+        "Crea una función `obtenerElementoSeguro(lista, indice)` que valide si el índice existe antes de acceder. Si no existe, retorna nulo. Pruébala con casos válidos e inválidos.",
     },
     {
       title: "¡Práctica libre!",
@@ -147,7 +147,7 @@ procesarDatos(-4)`,
       explanation:
         "En esta práctica libre, combina validación, manejo de errores, y funciones para crear código robusto. Piensa en qué puede salir mal en tus programas:\n\n• ¿Qué pasa si el usuario ingresa datos inválidos?\n• ¿Qué pasa si una lista está vacía?\n• ¿Qué pasa si se divide entre cero?\n• ¿Qué pasa si accedes a una propiedad que no existe?\n\nUsa condicionales para validar lo predecible y `intentar-capturar` para lo impredecible. Siempre proporciona mensajes de error claros que ayuden a entender qué salió mal. El manejo de errores no es opcional: es una parte esencial de escribir código profesional y confiable.",
       challenge:
-        "🧩 Desafío rápido: Crea una calculadora de promedio que acepte una lista de números. Valida que la lista no esté vacía antes de calcular. Usa `intentar-capturar` para manejar cualquier error inesperado. Muestra mensajes apropiados en cada caso.",
+        "Crea una calculadora de promedio que acepte una lista de números. Valida que la lista no esté vacía antes de calcular. Usa `intentar-capturar` para manejar cualquier error inesperado. Muestra mensajes apropiados en cada caso.",
       summary:
         "🧠 Recuerda:\n\n• Los errores son situaciones inesperadas que pueden detener el programa.\n• `intentar {}` contiene código que podría fallar.\n• `capturar (error) {}` maneja el error si ocurre.\n• Combina validación preventiva con captura reactiva.\n• Proporciona mensajes de error claros y útiles.\n• El manejo de errores hace programas más robustos.\n• ¡Un buen programa anticipa problemas y los maneja con gracia!",
     },

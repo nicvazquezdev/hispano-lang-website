@@ -11,7 +11,7 @@ mostrar mi_nombre`,
       explanation:
         "Aquí creamos una variable llamada `mi_nombre` y le asignamos el valor 'Ana'. El texto va entre comillas dobles para indicar que es una cadena de caracteres (string). Luego usamos `mostrar` para imprimir el valor en pantalla. Esto significa que el programa tomará el contenido de la caja llamada `mi_nombre` y lo mostrará. Las variables te permiten reutilizar valores sin tener que escribirlos varias veces, y también modificarlos cuando sea necesario.",
       challenge:
-        "🧩 Desafío rápido: Crea una variable llamada `mi_edad` con tu edad y muéstrala en pantalla. Observa cómo HispanoLang te permite combinar texto y números fácilmente.",
+        "Crea una variable llamada `mi_edad` con tu edad y muéstrala en pantalla. Observa cómo HispanoLang te permite combinar texto y números fácilmente.",
     },
     {
       title: "Diferentes tipos de variables",
@@ -27,7 +27,7 @@ mostrar "Es estudiante: " + es_estudiante`,
       explanation:
         "Creamos tres variables: una con texto (`nombre`), otra con un número (`edad`) y una booleana (`es_estudiante`). Los textos van entre comillas dobles, los números no. Los valores `verdadero` y `falso` representan respuestas lógicas. También usamos el operador `+` para unir texto con valores, lo que se conoce como concatenación. Este tipo de operaciones son muy comunes al crear mensajes dinámicos, por ejemplo al mostrar información personalizada para cada usuario.",
       challenge:
-        "🧩 Desafío rápido: Crea variables para tu color favorito, tu número de la suerte y si te gusta programar (verdadero/falso). Luego muestra todo en una frase usando `mostrar` y el operador `+`.",
+        "Crea variables para tu color favorito, tu número de la suerte y si te gusta programar (verdadero/falso). Luego muestra todo en una frase usando `mostrar` y el operador `+`.",
     },
     {
       title: "Cambiar el valor de una variable",
@@ -44,7 +44,7 @@ mostrar "Contador final: " + contador`,
       explanation:
         "Primero creamos una variable `contador` y le damos el valor 0. Luego cambiamos su valor a 5, y después sumamos 3 más. Cada vez que usamos `=` estamos reasignando el contenido de la caja. En la línea `contador = contador + 3`, HispanoLang toma el valor actual del contador (5), le suma 3, y guarda el nuevo resultado (8). Este concepto es esencial: las variables pueden cambiar mientras el programa se ejecuta, permitiéndonos llevar el control de estados, cálculos o repeticiones.",
       challenge:
-        "🧩 Desafío rápido: Crea una variable `puntos` que empiece en 10, luego cámbiala a 25, y finalmente súmale 5 más. Muestra el resultado en cada paso.",
+        "Crea una variable `puntos` que empiece en 10, luego cámbiala a 25, y finalmente súmale 5 más. Muestra el resultado en cada paso.",
     },
     {
       title: "Variables con operaciones matemáticas",
@@ -60,7 +60,7 @@ mostrar "Precio final: " + precio_final`,
       explanation:
         "En este ejemplo usamos dos variables (`precio` y `descuento`) y calculamos una nueva (`precio_final`). Usamos el operador `-` para restar y almacenamos el resultado en otra variable. Los operadores básicos en HispanoLang son:\n\n• `+` para sumar o concatenar texto\n• `-` para restar\n• `*` para multiplicar\n• `/` para dividir\n\nEstas operaciones permiten que los programas realicen cálculos automáticos y trabajen con resultados dinámicos. Por ejemplo, podrías calcular precios con impuestos, notas promedio, o distancias sin hacerlo manualmente.",
       challenge:
-        "🧩 Desafío rápido: Crea dos variables `base` y `altura`, calcula el área de un rectángulo (base × altura) y muestra el resultado con `mostrar`.",
+        "Crea dos variables `base` y `altura`, calcula el área de un rectángulo (base × altura) y muestra el resultado con `mostrar`.",
     },
     {
       title: "¡Práctica libre!",
@@ -71,7 +71,7 @@ mostrar mi_variable`,
       explanation:
         "En esta práctica libre puedes escribir tu propio código y ver cómo responde el intérprete. Intenta combinar texto con operaciones, cambiar valores, o crear mensajes personalizados. Recuerda que la práctica es la mejor forma de aprender: cuanto más escribas código, más natural te resultará entender cómo funcionan las variables y su relación con los datos.",
       challenge:
-        "🧩 Desafío rápido: Crea una variable `pais` y muestra un mensaje que diga 'Vivo en [tu país]'. Luego, agrega otra variable `ciudad` y combina ambas en un solo mensaje.",
+        "Crea una variable `pais` y muestra un mensaje que diga 'Vivo en [tu país]'. Luego, agrega otra variable `ciudad` y combina ambas en un solo mensaje.",
       summary:
         "🧠 Recuerda:\n\n• Usa `variable` para crear una nueva caja.\n• Puedes cambiar su contenido en cualquier momento.\n• Las variables pueden guardar texto, números o valores verdadero/falso.\n• Usa `mostrar` para ver el contenido de las variables en pantalla.\n• Y lo más importante: ¡experimenta y diviértete aprendiendo!",
     },

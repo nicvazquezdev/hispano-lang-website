@@ -17,7 +17,7 @@ mostrar "Bucle completado normalmente"`,
       explanation:
         "Este es un bucle normal que se ejecuta de principio a fin. Muestra los números del 1 al 5 y termina cuando i llega a 6. En este caso, el bucle completa todas sus iteraciones según la condición. Sin embargo, a veces necesitamos:\n\n• Terminar el bucle antes si encontramos lo que buscamos\n• Saltar ciertas iteraciones que no necesitamos procesar\n• Manejar casos especiales sin complicar la lógica\n\nPara estos casos, HispanoLang nos proporciona dos palabras clave especiales: `romper` y `continuar`. Estas herramientas hacen nuestros bucles más flexibles y eficientes.",
       challenge:
-        "🧩 Desafío rápido: Crea un bucle `mientras` que cuente del 1 al 10 y muestre cada número. Observa cómo funciona normalmente antes de aprender a modificar su flujo.",
+        "Crea un bucle `mientras` que cuente del 1 al 10 y muestre cada número. Observa cómo funciona normalmente antes de aprender a modificar su flujo.",
     },
     {
       title: "Romper: Salir del Bucle",
@@ -39,7 +39,7 @@ mostrar "Contador final: " + contador`,
       explanation:
         "La palabra `romper` termina el bucle inmediatamente. En este ejemplo:\n\n1. contador = 0, mostramos 0, incrementamos a 1\n2. contador = 1, mostramos 1, incrementamos a 2\n3. contador = 2, mostramos 2, incrementamos a 3\n4. contador = 3, la condición del `si` es verdadera, ejecutamos `romper`\n5. El bucle termina inmediatamente\n\nObserva que aunque la condición del `mientras` dice `< 10`, el bucle termina cuando contador = 3. El código después de `romper` dentro del bucle no se ejecuta. `romper` es útil para:\n\n• Búsquedas: Terminar cuando encuentras el elemento\n• Validaciones: Salir si detectas un problema\n• Optimización: No procesar más de lo necesario",
       challenge:
-        "🧩 Desafío rápido: Crea un bucle que busque el número 7 en una secuencia del 1 al 20. Usa `romper` para terminar el bucle cuando lo encuentres y muestra un mensaje de éxito.",
+        "Crea un bucle que busque el número 7 en una secuencia del 1 al 20. Usa `romper` para terminar el bucle cuando lo encuentres y muestra un mensaje de éxito.",
     },
     {
       title: "Continuar: Saltar a la Siguiente Iteración",
@@ -61,7 +61,7 @@ mostrar "Bucle terminado"`,
       explanation:
         "La palabra `continuar` salta al inicio de la siguiente iteración. En este ejemplo:\n\n1. i = 1, no es 3, mostramos 1\n2. i = 2, no es 3, mostramos 2\n3. i = 3, es 3, ejecutamos `continuar` y saltamos el `mostrar`\n4. i = 4, no es 3, mostramos 4\n5. i = 5, no es 3, mostramos 5\n\nResultado: se muestran 1, 2, 4, 5 (falta el 3). El código después de `continuar` en esa iteración no se ejecuta, pero el bucle continúa con la siguiente iteración. `continuar` es útil para:\n\n• Filtrar elementos que no cumplen condiciones\n• Saltar casos especiales\n• Procesar solo elementos que nos interesan\n• Evitar código anidado complejo",
       challenge:
-        "🧩 Desafío rápido: Usa un bucle del 1 al 10. Usa `continuar` para saltar los números pares (usa el operador % para detectarlos). Muestra solo los números impares.",
+        "Usa un bucle del 1 al 10. Usa `continuar` para saltar los números pares (usa el operador % para detectarlos). Muestra solo los números impares.",
     },
     {
       title: "Romper vs Continuar: Diferencias Clave",
@@ -89,7 +89,7 @@ para (variable j = 1; j <= 5; j = j + 1) {
       explanation:
         "Comparemos los resultados:\n\n**Con `romper`**: Muestra 1, 2 y termina (cuando i=3, sale del bucle)\n**Con `continuar`**: Muestra 1, 2, 4, 5 (cuando j=3, salta esa iteración pero continúa)\n\nCuándo usar cada uno:\n\n• **romper**: Cuando encontraste lo que buscabas o se cumplió una condición para terminar\n• **continuar**: Cuando quieres ignorar ciertos elementos pero seguir procesando el resto\n\nUn error común es confundirlos: si usas `romper` cuando querías `continuar`, terminarás el bucle prematuramente. Si usas `continuar` cuando querías `romper`, el bucle seguirá ejecutándose cuando no debería. Entender esta diferencia es crucial para controlar bucles efectivamente.",
       challenge:
-        "🧩 Desafío rápido: Crea dos bucles del 1 al 10. En el primero, usa `romper` cuando llegues a 6. En el segundo, usa `continuar` para saltar el 6. Compara los resultados y entiende la diferencia.",
+        "Crea dos bucles del 1 al 10. En el primero, usa `romper` cuando llegues a 6. En el segundo, usa `continuar` para saltar el 6. Compara los resultados y entiende la diferencia.",
     },
     {
       title: "Casos de Uso Prácticos",
@@ -127,7 +127,7 @@ para (variable i = 0; i < numeros.longitud(); i = i + 1) {
       explanation:
         "Estos son casos de uso reales:\n\n**Búsqueda con `romper`**: Una vez que encontramos a 'María', no tiene sentido seguir buscando. Usamos `romper` para terminar el bucle inmediatamente, ahorrando iteraciones innecesarias.\n\n**Filtrado con `continuar`**: Solo queremos procesar números positivos. Cuando encontramos un número negativo, usamos `continuar` para saltarlo sin procesarlo, pero seguimos con el resto de la lista.\n\nEstos patrones son muy comunes:\n• Búsqueda en bases de datos (romper al encontrar)\n• Validación de listas (romper si hay error)\n• Filtrado de datos (continuar si no cumple criterios)\n• Procesamiento selectivo (continuar para casos especiales)",
       challenge:
-        "🧩 Desafío rápido: Crea una lista de edades. Usa un bucle con `continuar` para mostrar solo las edades >= 18 (mayores de edad). Luego crea otro bucle que busque si hay alguien mayor de 65 y use `romper` al encontrarlo.",
+        "Crea una lista de edades. Usa un bucle con `continuar` para mostrar solo las edades >= 18 (mayores de edad). Luego crea otro bucle que busque si hay alguien mayor de 65 y use `romper` al encontrarlo.",
     },
     {
       title: "¡Práctica libre!",
@@ -148,7 +148,7 @@ para (variable i = 0; i < numeros.longitud(); i = i + 1) {
       explanation:
         "En esta práctica libre, combina `romper` y `continuar` para crear bucles sofisticados. El ejemplo muestra un patrón poderoso: usar `continuar` para filtrar elementos que no nos interesan y `romper` para terminar cuando encontramos lo que buscamos. Esto es más eficiente que procesar toda la lista. Intenta crear:\n\n• Buscadores que terminen al encontrar\n• Filtros que procesen solo elementos válidos\n• Validadores que salgan al primer error\n• Procesadores que manejen casos especiales\n\nRecuerda: `romper` y `continuar` hacen tu código más eficiente, pero úsalos con claridad. El código debe seguir siendo fácil de entender. A veces un bucle simple es mejor que uno lleno de `romper` y `continuar`.",
       challenge:
-        "🧩 Desafío rápido: Crea una lista de 15 números. Busca el primer número que sea múltiplo de 3 Y mayor que 10. Usa `continuar` para saltar los que no cumplen y `romper` cuando lo encuentres. Muestra cuántas iteraciones hiciste.",
+        "Crea una lista de 15 números. Busca el primer número que sea múltiplo de 3 Y mayor que 10. Usa `continuar` para saltar los que no cumplen y `romper` cuando lo encuentres. Muestra cuántas iteraciones hiciste.",
       summary:
         "🧠 Recuerda:\n\n• `romper` termina el bucle completamente.\n• `continuar` salta a la siguiente iteración.\n• `romper` se usa para salir temprano cuando encontramos lo que buscamos.\n• `continuar` se usa para saltar elementos que no nos interesan.\n• Ambos hacen bucles más eficientes y expresivos.\n• Úsalos con claridad para mantener el código legible.\n• ¡El control de flujo avanzado optimiza tus programas!",
     },

@@ -12,7 +12,7 @@ mostrar "Los programas pueden mostrar texto en pantalla"`,
       explanation:
         "El comando `mostrar` es nuestra forma básica de salida. Nos permite imprimir mensajes, resultados de cálculos, o valores de variables en la pantalla. Todo lo que ponemos después de `mostrar` se mostrará al usuario. Podemos mostrar texto (entre comillas), números, variables, o combinar múltiples valores usando el operador +. La salida es esencial porque sin ella, no podríamos ver qué hace nuestro programa.",
       challenge:
-        "🧩 Desafío rápido: Usa `mostrar` para crear tres mensajes: uno de bienvenida, uno que diga tu lenguaje de programación favorito, y uno de despedida.",
+        "Usa `mostrar` para crear tres mensajes: uno de bienvenida, uno que diga tu lenguaje de programación favorito, y uno de despedida.",
     },
     {
       title: "Mostrando Variables",
@@ -30,7 +30,7 @@ mostrar "Vivo en " + ciudad`,
       explanation:
         "Podemos mostrar variables de dos formas: directamente (solo la variable) o combinándolas con texto usando el operador +. Cuando combinamos texto con variables, HispanoLang convierte automáticamente los números a texto para poder unirlos. Esta concatenación nos permite crear mensajes personalizados y dinámicos. Es la base para crear interfaces de usuario que se adapten a diferentes datos y situaciones.",
       challenge:
-        "🧩 Desafío rápido: Crea variables para tu comida favorita, tu color favorito y tu año de nacimiento. Luego crea un mensaje completo que combine las tres usando `mostrar`.",
+        "Crea variables para tu comida favorita, tu color favorito y tu año de nacimiento. Luego crea un mensaje completo que combine las tres usando `mostrar`.",
     },
     {
       title: "Entrada Básica: Comando leer",
@@ -44,7 +44,7 @@ mostrar "Tienes " + edad + " años"`,
       explanation:
         "El comando `leer` es fundamental para crear programas interactivos. Cuando el programa llega a una línea con `leer`, se pausa y espera que el usuario escriba algo y presione Enter. Lo que el usuario escriba se guarda automáticamente en la variable que especificamos. Esto nos permite crear programas que se adapten a cada usuario, recopilando información como nombres, edades, preferencias, o cualquier otro dato que necesitemos. Es importante entender que `leer` siempre espera input del usuario antes de continuar.",
       challenge:
-        "🧩 Desafío rápido: Usa `leer` para pedir el nombre del usuario y su comida favorita. Luego muestra un mensaje personalizado como 'Hola [nombre], a ti también te gusta [comida]'.",
+        "Usa `leer` para pedir el nombre del usuario y su comida favorita. Luego muestra un mensaje personalizado como 'Hola [nombre], a ti también te gusta [comida]'.",
     },
     {
       title: "Entrada con Mensaje",
@@ -61,7 +61,7 @@ mostrar "Qué bonito es " + ciudad`,
       explanation:
         "Agregar mensajes descriptivos a `leer` mejora enormemente la experiencia del usuario. En lugar de que el programa simplemente se detenga sin explicación, el usuario ve un mensaje claro que le indica qué debe ingresar. Esto hace que nuestros programas sean más profesionales y fáciles de usar. La sintaxis es: `leer variable 'mensaje'`. El mensaje debe ir entre comillas y aparecerá antes de que el usuario escriba. Esta práctica es fundamental en programación: siempre debemos comunicar claramente qué esperamos del usuario.",
       challenge:
-        "🧩 Desafío rápido: Crea un programa que pida el nombre del usuario, su edad, y su ciudad natal (cada uno con un mensaje claro). Luego muestra toda la información en un mensaje completo.",
+        "Crea un programa que pida el nombre del usuario, su edad, y su ciudad natal (cada uno con un mensaje claro). Luego muestra toda la información en un mensaje completo.",
     },
     {
       title: "Combinando Entrada y Salida",
@@ -78,7 +78,7 @@ mostrar "En 10 años tendrás " + edad_en_10_anos + " años"`,
       explanation:
         "Este ejemplo muestra el ciclo completo de interacción: pedimos información (entrada), la procesamos (cálculos), y mostramos resultados (salida). Primero usamos `leer` para obtener el nombre y edad del usuario. Luego hacemos un cálculo simple (sumar 10 años) y finalmente usamos `mostrar` varias veces para presentar la información de forma clara y ordenada. Este patrón (entrada → procesamiento → salida) es la base de casi todos los programas. Nos permite crear aplicaciones que resuelvan problemas reales y se adapten a las necesidades específicas de cada usuario.",
       challenge:
-        "🧩 Desafío rápido: Pide al usuario dos números, súmalos, réstalos y multiplícalos. Muestra los tres resultados con mensajes descriptivos.",
+        "Pide al usuario dos números, súmalos, réstalos y multiplícalos. Muestra los tres resultados con mensajes descriptivos.",
     },
     {
       title: "¡Práctica libre!",
@@ -92,7 +92,7 @@ mostrar "Tienes " + edad + " años"`,
       explanation:
         "En esta práctica libre puedes experimentar creando programas que interactúen con el usuario de formas creativas. Intenta crear conversaciones, cuestionarios, calculadoras interactivas, o cualquier programa que necesite información del usuario. La clave está en pensar en qué información necesitas, cómo pedirla de forma clara, y cómo presentar los resultados de manera útil. Recuerda que un buen programa siempre comunica claramente qué espera del usuario y muestra resultados comprensibles.",
       challenge:
-        "🧩 Desafío rápido: Crea un programa que pida el nombre, edad y hobby del usuario. Luego calcula en qué año nació (aproximadamente) y muestra un perfil completo con toda la información.",
+        "Crea un programa que pida el nombre, edad y hobby del usuario. Luego calcula en qué año nació (aproximadamente) y muestra un perfil completo con toda la información.",
       summary:
         "🧠 Recuerda:\n\n• Usa `mostrar` para presentar información al usuario.\n• Usa `leer` para obtener información del usuario.\n• Agrega mensajes descriptivos a `leer` para claridad.\n• Combina entrada y salida para crear programas interactivos.\n• El patrón entrada → procesamiento → salida es fundamental.\n• ¡La comunicación clara con el usuario es esencial!",
     },

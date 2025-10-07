@@ -12,7 +12,7 @@ mostrar x`,
       explanation:
         "Los comentarios empiezan con dos barras `//`. Todo lo que escribas después de `//` en esa línea es ignorado por el programa. En este ejemplo, solo se ejecutan las líneas 2 y 3. La primera línea es solo una nota para ti. Los comentarios son útiles para recordar qué hace tu código o para explicarlo a otras personas.",
       challenge:
-        "🧩 Desafío rápido: Crea una variable con tu nombre y muéstrala. Agrega un comentario antes explicando qué hace tu código.",
+        "Crea una variable con tu nombre y muéstrala. Agrega un comentario antes explicando qué hace tu código.",
     },
     {
       title: "Comentarios en Diferentes Lugares",
@@ -31,7 +31,7 @@ mostrar nombre`,
       explanation:
         "Hay dos formas de escribir comentarios:\n\n• **En su propia línea**: Para explicaciones más largas\n• **Al final de una línea**: Para notas breves sobre esa línea específica\n\nAmbas formas son útiles. Usa comentarios en su propia línea cuando necesites explicar algo en detalle, y comentarios al final de la línea para notas rápidas sobre qué representa una variable.",
       challenge:
-        "🧩 Desafío rápido: Crea tres variables (tu nombre, edad y ciudad). Agrega un comentario en su propia línea al inicio y un comentario al final de cada variable explicando qué representa.",
+        "Crea tres variables (tu nombre, edad y ciudad). Agrega un comentario en su propia línea al inicio y un comentario al final de cada variable explicando qué representa.",
     },
     {
       title: "Comentarios para Desactivar Código",
@@ -48,7 +48,7 @@ mostrar "El doble es: " + doble`,
       explanation:
         "Cuando pones `//` antes de una línea de código, esa línea se convierte en comentario y no se ejecuta. En este ejemplo, la línea `mostrar 'Esta línea no se ejecuta'` no se ejecuta porque está comentada. Esto es muy útil cuando estás probando tu código: puedes desactivar partes temporalmente sin borrarlas. Si luego quieres activarlas, solo quitas el `//`.",
       challenge:
-        "🧩 Desafío rápido: Escribe un programa que muestre 4 mensajes diferentes. Comenta 2 de esos mensajes y ejecuta el código. Observa que solo se muestran los mensajes no comentados.",
+        "Escribe un programa que muestre 4 mensajes diferentes. Comenta 2 de esos mensajes y ejecuta el código. Observa que solo se muestran los mensajes no comentados.",
     },
     {
       title: "¡Práctica libre!",
@@ -64,7 +64,7 @@ mostrar "Tengo " + mi_edad + " años"`,
       explanation:
         "En esta práctica libre, usa comentarios para hacer tu código más claro. Escribe notas que te ayuden a entender qué hace cada parte. No te preocupes por escribir comentarios perfectos: lo importante es practicar. Con el tiempo aprenderás qué comentarios son más útiles y cuáles son innecesarios.",
       challenge:
-        "🧩 Desafío rápido: Crea un programa que calcule la suma de dos números. Agrega comentarios explicando qué hace el programa y qué representa cada variable.",
+        "Crea un programa que calcule la suma de dos números. Agrega comentarios explicando qué hace el programa y qué representa cada variable.",
       summary:
         "🧠 Recuerda:\n\n• Los comentarios empiezan con `//`.\n• El programa ignora completamente los comentarios.\n• Usa comentarios para explicar tu código.\n• Puedes poner comentarios en su propia línea o al final de una línea.\n• Puedes comentar código para desactivarlo sin borrarlo.\n• ¡Los comentarios te ayudan a entender tu propio código!",
     },

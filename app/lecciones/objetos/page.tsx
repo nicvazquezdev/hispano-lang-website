@@ -18,7 +18,7 @@ mostrar persona.ciudad`,
       explanation:
         "Los objetos se crean usando llaves {} y definiendo pares clave:valor separados por comas. Cada propiedad tiene un nombre (clave) y un valor. Para acceder a las propiedades usamos la notación de punto: `objeto.propiedad`. Esto es mucho más legible que usar índices: en lugar de recordar que el nombre está en la posición 0, simplemente accedemos a `persona.nombre`. Los objetos son fundamentales para organizar datos complejos de forma estructurada y significativa. Son la base para modelar entidades como usuarios, productos, configuraciones, o cualquier cosa que tenga múltiples atributos relacionados.",
       challenge:
-        "🧩 Desafío rápido: Crea un objeto `libro` con propiedades para título, autor y año de publicación. Luego muestra cada propiedad con un mensaje descriptivo.",
+        "Crea un objeto `libro` con propiedades para título, autor y año de publicación. Luego muestra cada propiedad con un mensaje descriptivo.",
     },
     {
       title: "Acceder y Modificar Propiedades",
@@ -43,7 +43,7 @@ mostrar "Promedio: " + estudiante.promedio`,
       explanation:
         "Podemos modificar propiedades existentes usando asignación: `objeto.propiedad = nuevoValor`. También podemos agregar nuevas propiedades que no existían cuando creamos el objeto: simplemente asignamos un valor a una propiedad nueva y HispanoLang la crea automáticamente. Esto hace que los objetos sean muy flexibles y dinámicos. En el ejemplo, agregamos la propiedad `promedio` que no existía originalmente. Esta capacidad es útil para extender objetos según las necesidades del programa, como agregar campos opcionales o calcular valores derivados que queremos almacenar junto con los datos originales.",
       challenge:
-        "🧩 Desafío rápido: Crea un objeto `coche` con marca y modelo. Luego agrega las propiedades año, color y precio. Muestra todas las propiedades al final.",
+        "Crea un objeto `coche` con marca y modelo. Luego agrega las propiedades año, color y precio. Muestra todas las propiedades al final.",
     },
     {
       title: "Objetos con Diferentes Tipos de Valores",
@@ -66,7 +66,7 @@ mostrar "Cantidad disponible: " + producto.cantidad`,
       explanation:
         "En este ejemplo, el objeto `producto` combina diferentes tipos de datos:\n\n• Texto (nombre)\n• Número decimal (precio)\n• Booleano (en_stock)\n• Lista (categorias)\n• Número entero (cantidad)\n\nPodemos mezclar cualquier tipo de dato en las propiedades de un objeto. Cuando una propiedad es una lista, podemos acceder a sus elementos usando índices después del nombre de la propiedad: `producto.categorias[0]`. Esta capacidad de combinar tipos hace que los objetos sean extremadamente versátiles para modelar entidades complejas con múltiples características de diferentes naturalezas.",
       challenge:
-        "🧩 Desafío rápido: Crea un objeto `estudiante` con nombre (texto), edad (número), materias (lista de 3 materias), y es_becado (booleano). Muestra toda la información de forma organizada.",
+        "Crea un objeto `estudiante` con nombre (texto), edad (número), materias (lista de 3 materias), y es_becado (booleano). Muestra toda la información de forma organizada.",
     },
     {
       title: "Objetos Anidados",
@@ -90,7 +90,7 @@ mostrar "CP: " + empresa.direccion.codigo_postal`,
       explanation:
         "Los objetos anidados se acceden usando múltiples puntos: `objeto.subObjeto.propiedad`. En este ejemplo, `direccion` es un objeto completo dentro del objeto `empresa`. Para acceder a la ciudad, usamos `empresa.direccion.ciudad` - primero accedemos a `direccion` y luego a su propiedad `ciudad`. Esta estructura nos permite organizar datos relacionados de forma lógica: toda la información de dirección está agrupada en su propio objeto. Podemos tener múltiples niveles de anidamiento, creando estructuras tan complejas como necesitemos para modelar nuestros datos.",
       challenge:
-        "🧩 Desafío rápido: Crea un objeto `persona` con nombre, edad y un objeto anidado `contacto` que tenga email y teléfono. Muestra toda la información accediendo a cada propiedad.",
+        "Crea un objeto `persona` con nombre, edad y un objeto anidado `contacto` que tenga email y teléfono. Muestra toda la información accediendo a cada propiedad.",
     },
     {
       title: "Objetos en Listas y Listas en Objetos",
@@ -111,7 +111,7 @@ estudiantes.recorrer(funcion(estudiante, indice) {
       explanation:
         "Una lista de objetos es extremadamente útil para representar colecciones de entidades similares: estudiantes, productos, usuarios, etc. Cada elemento de la lista es un objeto completo con sus propiedades. Para acceder a propiedades específicas, combinamos índices y notación de punto: `estudiantes[0].nombre` primero accede al estudiante en la posición 0, luego a su propiedad nombre. Podemos recorrer la lista de objetos con `.recorrer()` y procesar cada objeto individualmente. Esta combinación de listas y objetos es fundamental en programación real: casi todas las aplicaciones trabajan con listas de objetos (usuarios, productos, mensajes, etc.).",
       challenge:
-        "🧩 Desafío rápido: Crea una lista de 3 productos, cada uno con nombre, precio y stock. Recorre la lista y muestra qué productos tienen stock > 0. Calcula el valor total del inventario.",
+        "Crea una lista de 3 productos, cada uno con nombre, precio y stock. Recorre la lista y muestra qué productos tienen stock > 0. Calcula el valor total del inventario.",
     },
     {
       title: "¡Práctica libre!",
@@ -134,7 +134,7 @@ biblioteca.libros.recorrer(funcion(libro) {
       explanation:
         "En esta práctica libre, combina todo lo que has aprendido sobre objetos y listas. Crea estructuras de datos que representen sistemas del mundo real: bibliotecas, tiendas, escuelas, redes sociales, etc. Usa objetos para entidades con múltiples características, listas para colecciones, objetos anidados para relaciones jerárquicas, y funciones para procesar estos datos. La clave está en pensar claramente cómo organizar tu información: qué debe ser un objeto, qué debe ser una lista, y cómo relacionarlos. Los buenos diseños de datos hacen que el código sea más claro, mantenible y fácil de extender.",
       challenge:
-        "🧩 Desafío rápido: Crea un objeto `restaurante` con nombre, dirección (objeto anidado con calle y ciudad), y menú (lista de objetos con nombre de plato y precio). Muestra el menú completo con precios.",
+        "Crea un objeto `restaurante` con nombre, dirección (objeto anidado con calle y ciudad), y menú (lista de objetos con nombre de plato y precio). Muestra el menú completo con precios.",
       summary:
         "🧠 Recuerda:\n\n• Los objetos usan claves con nombres en lugar de índices numéricos.\n• Accede a propiedades con la notación de punto: `objeto.propiedad`.\n• Puedes modificar y agregar propiedades dinámicamente.\n• Las propiedades pueden ser de cualquier tipo: números, texto, listas, objetos.\n• Los objetos anidados crean estructuras jerárquicas.\n• Las listas de objetos son perfectas para colecciones de entidades.\n• ¡Los objetos son fundamentales para organizar datos complejos!",
     },
