@@ -154,6 +154,8 @@ estudiantes.recorrer(funcion(nombre, indice) {
       steps={steps}
       prevLessonUrl="/lecciones/funciones"
       prevLessonTitle="Funciones"
+      nextLessonUrl="/lecciones/objetos"
+      nextLessonTitle="Objetos"
     />
   );
 }

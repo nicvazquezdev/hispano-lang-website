@@ -77,6 +77,15 @@ export default function LeccionesPage() {
       duration: "30 min",
       completed: false,
     },
+    {
+      id: "objetos",
+      title: "Objetos",
+      description: "Organiza datos con propiedades",
+      emoji: "🗂️",
+      difficulty: "Intermedio",
+      duration: "30 min",
+      completed: false,
+    },
   ];
 
   return (
