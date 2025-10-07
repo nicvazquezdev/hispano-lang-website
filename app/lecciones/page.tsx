@@ -104,6 +104,15 @@ export default function LeccionesPage() {
       duration: "30 min",
       completed: false,
     },
+    {
+      id: "manejo-errores",
+      title: "Manejo de Errores",
+      description: "Crea programas robustos",
+      emoji: "🛡️",
+      difficulty: "Avanzado",
+      duration: "25 min",
+      completed: false,
+    },
   ];
 
   return (

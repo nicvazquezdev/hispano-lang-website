@@ -149,6 +149,8 @@ biblioteca.libros.recorrer(funcion(libro) {
       steps={steps}
       prevLessonUrl="/lecciones/listas"
       prevLessonTitle="Listas"
+      nextLessonUrl="/lecciones/manejo-errores"
+      nextLessonTitle="Manejo de Errores"
     />
   );
 }
