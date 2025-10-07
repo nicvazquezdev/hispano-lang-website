@@ -159,13 +159,13 @@ mostrar "¿Es saludable?: " + esIMCSaludable(miIMC)`,
 
   return (
     <LessonPage
-      badge={{ emoji: "⚡", text: "Lección 7" }}
+      badge={{ emoji: "⚡", text: "Lección 8" }}
       title="Funciones en"
       titleGradient=" Hispano Lang"
       description="Aprende a crear código reutilizable con funciones"
       steps={steps}
-      prevLessonUrl="/lecciones/bucles"
-      prevLessonTitle="Bucles"
+      prevLessonUrl="/lecciones/control-flujo-bucles"
+      prevLessonTitle="Control de Flujo en Bucles"
       nextLessonUrl="/lecciones/funciones-matematicas"
       nextLessonTitle="Funciones Matemáticas"
     />

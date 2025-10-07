@@ -69,6 +69,15 @@ export default function LeccionesPage() {
       completed: false,
     },
     {
+      id: "control-flujo-bucles",
+      title: "Control de Flujo en Bucles",
+      description: "Romper y continuar en bucles",
+      emoji: "🔀",
+      difficulty: "Intermedio",
+      duration: "20 min",
+      completed: false,
+    },
+    {
       id: "funciones",
       title: "Funciones",
       description: "Crea código reutilizable",

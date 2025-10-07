@@ -147,7 +147,7 @@ estudiantes.recorrer(funcion(nombre, indice) {
 
   return (
     <LessonPage
-      badge={{ emoji: "📋", text: "Lección 9" }}
+      badge={{ emoji: "📋", text: "Lección 10" }}
       title="Listas en"
       titleGradient=" Hispano Lang"
       description="Aprende a trabajar con colecciones de datos usando listas"
