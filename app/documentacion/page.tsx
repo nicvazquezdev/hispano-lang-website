@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -9,7 +9,7 @@ import DocNav from "@/components/docs/DocNav";
 import DocSection from "@/components/docs/DocSection";
 import { docsData } from "@/lib/data";
 
-export default function DocumentacionPage() {
+function DocumentacionContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [activeSection, setActiveSection] = useState(
@@ -44,6 +44,47 @@ export default function DocumentacionPage() {
   ];
 
   return (
+    <Section
+      background="light"
+      badge={{ emoji: "📚", text: "Referencia Completa" }}
+      title="Documentación de"
+      titleGradient=" Hispano Lang"
+      description="Referencia completa de sintaxis, comandos y características del lenguaje"
+      className="overflow-visible"
+    >
+      <div className="flex flex-col lg:flex-row gap-8">
+        {/* Sidebar Navigation */}
+        <aside className="lg:w-1/4 w-full">
+          <nav className="sticky top-24">
+            <DocNav
+              sections={sections}
+              activeSection={activeSection}
+              onSectionChange={handleSectionChange}
+            />
+          </nav>
+        </aside>
+
+        {/* Main Content */}
+        <article className="lg:w-3/4 w-full min-h-screen">
+          {activeSection && (
+            <DocSection
+              title={docsData[activeSection as keyof typeof docsData].title}
+              description={
+                docsData[activeSection as keyof typeof docsData].description
+              }
+              subsections={
+                docsData[activeSection as keyof typeof docsData].subsections
+              }
+            />
+          )}
+        </article>
+      </div>
+    </Section>
+  );
+}
+
+export default function DocumentacionPage() {
+  return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative pt-10">
       {/* Fondo animado */}
       <div className="absolute inset-0 z-0">
@@ -55,42 +96,15 @@ export default function DocumentacionPage() {
       <Header />
 
       <main className="relative z-10">
-        <Section
-          background="light"
-          badge={{ emoji: "📚", text: "Referencia Completa" }}
-          title="Documentación de"
-          titleGradient=" Hispano Lang"
-          description="Referencia completa de sintaxis, comandos y características del lenguaje"
-          className="overflow-visible"
+        <Suspense
+          fallback={
+            <div className="flex justify-center items-center min-h-screen">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+            </div>
+          }
         >
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Sidebar Navigation */}
-            <aside className="lg:w-1/4 w-full">
-              <nav className="sticky top-24">
-                <DocNav
-                  sections={sections}
-                  activeSection={activeSection}
-                  onSectionChange={handleSectionChange}
-                />
-              </nav>
-            </aside>
-
-            {/* Main Content */}
-            <article className="lg:w-3/4 w-full min-h-screen">
-              {activeSection && (
-                <DocSection
-                  title={docsData[activeSection as keyof typeof docsData].title}
-                  description={
-                    docsData[activeSection as keyof typeof docsData].description
-                  }
-                  subsections={
-                    docsData[activeSection as keyof typeof docsData].subsections
-                  }
-                />
-              )}
-            </article>
-          </div>
-        </Section>
+          <DocumentacionContent />
+        </Suspense>
       </main>
 
       <Footer />
