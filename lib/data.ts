@@ -60,6 +60,49 @@ mostrar global  // Funciona: variable global
       },
     ],
   },
+  comentarios: {
+    title: "💭 Comentarios",
+    description:
+      "Los comentarios son líneas de texto que el intérprete ignora completamente. Sirven para documentar tu código, escribir notas, o desactivar líneas temporalmente.",
+    subsections: [
+      {
+        title: "Sintaxis de Comentarios",
+        description:
+          "Los comentarios en HispanoLang empiezan con dos barras diagonales (//) y continúan hasta el final de la línea.",
+        syntax: "// Este es un comentario",
+        code: `// Este es un comentario
+variable x = 10
+mostrar x  // Comentario al final de la línea`,
+        notes: [
+          "Los comentarios empiezan con //",
+          "Todo después de // en esa línea es ignorado",
+          "Puedes poner comentarios en su propia línea o al final de código",
+          "Los comentarios no afectan la ejecución del programa",
+        ],
+      },
+      {
+        title: "Usos de Comentarios",
+        description:
+          "Los comentarios tienen múltiples propósitos: explicar código, documentar decisiones, dejar recordatorios, o desactivar código temporalmente.",
+        code: `// Programa: Calculadora de descuento
+// Autor: Tu nombre
+
+variable precio = 100
+// Aplicamos 20% de descuento
+variable descuento = precio * 0.20
+variable precioFinal = precio - descuento
+
+// mostrar "Debug: precio = " + precio  // Código comentado
+mostrar "Precio final: " + precioFinal`,
+        notes: [
+          "Usa comentarios para explicar el 'por qué', no solo el 'qué'",
+          "Comenta código para desactivarlo sin borrarlo",
+          "Documenta decisiones importantes o algoritmos complejos",
+          "Evita comentarios obvios que repiten lo que el código ya dice",
+        ],
+      },
+    ],
+  },
   tiposDatos: {
     title: "🔢 Tipos de Datos",
     description:

@@ -13,6 +13,7 @@ export default function DocumentacionPage() {
 
   const sections = [
     { id: "variables", title: "Variables" },
+    { id: "comentarios", title: "Comentarios" },
     { id: "tiposDatos", title: "Tipos de Datos" },
   ];
 
