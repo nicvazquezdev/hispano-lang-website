@@ -42,13 +42,13 @@ mostrar "Suma total: " + suma`,
       title: "Bucle Para (For)",
       content:
         "El bucle `para` es ideal cuando sabemos exactamente cuántas veces queremos repetir algo. Combina en una sola línea la inicialización, la condición y el incremento. Es más compacto y claro para iteraciones con contador. Es como decir 'para cada número del 1 al 10, haz esto'.",
-      code: `para variable i = 1; i <= 5; i = i + 1 {
+      code: `para (variable i = 1; i <= 5; i = i + 1) {
     mostrar "Iteración número: " + i
 }
 
 mostrar "---"
 
-para variable j = 0; j < 3; j = j + 1 {
+para (variable j = 0; j < 3; j = j + 1) {
     mostrar "Valor de j: " + j
 }`,
       explanation:
@@ -61,7 +61,7 @@ para variable j = 0; j < 3; j = j + 1 {
       content:
         "A veces necesitamos más control sobre nuestros bucles. `continuar` salta a la siguiente iteración sin ejecutar el resto del código, y `romper` termina el bucle inmediatamente. Son como atajos que nos permiten manejar casos especiales sin complicar la lógica.",
       code: `// Ejemplo con continuar
-para variable i = 1; i <= 10; i = i + 1 {
+para (variable i = 1; i <= 10; i = i + 1) {
     si i == 5 {
         continuar
     }
@@ -88,10 +88,10 @@ mientras contador < 10 {
       title: "Bucles Anidados",
       content:
         "Podemos poner bucles dentro de otros bucles para crear patrones más complejos. Es como tener un bucle que se repite, y dentro de cada repetición, otro bucle que también se repite. Esto es útil para trabajar con tablas, matrices, o crear patrones bidimensionales.",
-      code: `para variable i = 1; i <= 3; i = i + 1 {
+      code: `para (variable i = 1; i <= 3; i = i + 1) {
     mostrar "--- Fila " + i + " ---"
     
-    para variable j = 1; j <= 4; j = j + 1 {
+    para (variable j = 1; j <= 4; j = j + 1) {
         mostrar "  i=" + i + ", j=" + j
     }
 }`,
@@ -107,7 +107,7 @@ mientras contador < 10 {
       code: `// Suma de números del 1 al 10
 variable suma = 0
 
-para variable i = 1; i <= 10; i = i + 1 {
+para (variable i = 1; i <= 10; i = i + 1) {
     suma = suma + i
 }
 
