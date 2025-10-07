@@ -159,7 +159,7 @@ mostrar "¿Es saludable?: " + esIMCSaludable(miIMC)`,
 
   return (
     <LessonPage
-      badge={{ emoji: "⚡", text: "Lección 8" }}
+      badge={{ emoji: "⚡", text: "Lección 9" }}
       title="Funciones en"
       titleGradient=" Hispano Lang"
       description="Aprende a crear código reutilizable con funciones"

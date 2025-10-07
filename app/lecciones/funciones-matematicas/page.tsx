@@ -161,7 +161,7 @@ mostrar "Distancia: " + distancia`,
 
   return (
     <LessonPage
-      badge={{ emoji: "🧮", text: "Lección 9" }}
+      badge={{ emoji: "🧮", text: "Lección 10" }}
       title="Funciones Matemáticas en"
       titleGradient=" Hispano Lang"
       description="Aprende a usar funciones matemáticas integradas para cálculos avanzados"

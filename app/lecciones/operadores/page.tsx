@@ -131,7 +131,7 @@ mostrar "¿Es mayor que 20?: " + es_grande`,
 
   return (
     <LessonPage
-      badge={{ emoji: "➕", text: "Lección 4" }}
+      badge={{ emoji: "➕", text: "Lección 5" }}
       title="Operadores en"
       titleGradient=" Hispano Lang"
       description="Aprende a usar operadores aritméticos, de comparación, lógicos y de asignación"

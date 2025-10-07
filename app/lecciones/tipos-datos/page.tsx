@@ -119,13 +119,13 @@ mostrar "¿Soy programador? " + es_programador`,
 
   return (
     <LessonPage
-      badge={{ emoji: "🔢", text: "Lección 2" }}
+      badge={{ emoji: "🔢", text: "Lección 3" }}
       title="Tipos de Datos en"
       titleGradient=" Hispano Lang"
       description="Aprende sobre números, texto, booleanos y valores especiales"
       steps={steps}
-      prevLessonUrl="/lecciones/variables"
-      prevLessonTitle="Variables"
+      prevLessonUrl="/lecciones/comentarios"
+      prevLessonTitle="Comentarios"
       nextLessonUrl="/lecciones/metodos-strings"
       nextLessonTitle="Métodos de Strings"
     />

@@ -138,7 +138,7 @@ si temperatura > 30 {
 
   return (
     <LessonPage
-      badge={{ emoji: "🤔", text: "Lección 5" }}
+      badge={{ emoji: "🤔", text: "Lección 6" }}
       title="Condicionales en"
       titleGradient=" Hispano Lang"
       description="Aprende a tomar decisiones en tus programas con estructuras condicionales"

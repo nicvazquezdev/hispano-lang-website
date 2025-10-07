@@ -15,6 +15,15 @@ export default function LeccionesPage() {
       completed: false,
     },
     {
+      id: "comentarios",
+      title: "Comentarios",
+      description: "Documenta tu código",
+      emoji: "💭",
+      difficulty: "Principiante",
+      duration: "10 min",
+      completed: false,
+    },
+    {
       id: "tipos-datos",
       title: "Tipos de Datos",
       description: "Números, texto, booleanos y más",
