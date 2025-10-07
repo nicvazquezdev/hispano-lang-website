@@ -22,7 +22,7 @@ export default function DocSection({
 }: DocSectionProps) {
   return (
     <Card variant="glass" className="bg-white/80 backdrop-blur-sm">
-      <div className="p-6">
+      <div className="md:p-6">
         <h2 className="text-3xl font-bold text-slate-800 mb-4">{title}</h2>
 
         {description && (

@@ -21,7 +21,7 @@ export default function DocNav({
       variant="glass"
       className="bg-white/80 backdrop-blur-sm sticky top-24"
     >
-      <div className="p-4">
+      <div className="py-4">
         <h3 className="text-lg font-bold text-slate-800 mb-4">Contenido</h3>
         <nav className="space-y-2">
           {sections.map((section) => (
