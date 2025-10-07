@@ -1,4 +1,6 @@
+import Link from "next/link";
 import Card from "@/components/ui/Card";
+import Button from "@/components/ui/Button";
 import Section from "@/components/ui/Section";
 
 export default function Features() {
@@ -37,7 +39,7 @@ export default function Features() {
       titleGradient=" diferente?"
       description="Otros lenguajes son complicados. Este está hecho para ti."
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-14">
         {features.map((feature, index) => (
           <Card
             key={index}
@@ -55,6 +57,14 @@ export default function Features() {
             </p>
           </Card>
         ))}
+      </div>
+
+      <div className="text-center">
+        <Link href="/lecciones">
+          <Button size="lg" className="rounded-full shadow-lg">
+            Empieza Ahora
+          </Button>
+        </Link>
       </div>
     </Section>
   );
