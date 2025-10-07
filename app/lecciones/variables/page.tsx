@@ -78,8 +78,7 @@ mostrar "Precio final: " + precio_final`,
       title: "¡Práctica libre!",
       content:
         "Ahora es tu turno. Crea tus propias variables y experimenta con diferentes tipos de datos, nombres y valores. No hay una sola respuesta correcta: lo importante es practicar y entender cómo se comportan las variables.",
-      code: `// ¡Escribe tu código aquí!
-variable mi_variable = "¡Hola mundo!"
+      code: `variable mi_variable = "¡Hola mundo!"
 mostrar mi_variable`,
       explanation:
         "En esta práctica libre puedes escribir tu propio código y ver cómo responde el intérprete. Intenta combinar texto con operaciones, cambiar valores, o crear mensajes personalizados. Recuerda que la práctica es la mejor forma de aprender: cuanto más escribas código, más natural te resultará entender cómo funcionan las variables y su relación con los datos.",

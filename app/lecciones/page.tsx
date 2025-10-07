@@ -62,7 +62,7 @@ export default function LeccionesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden pt-10">
       {/* Fondo animado */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-1/2 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
@@ -76,8 +76,8 @@ export default function LeccionesPage() {
         <Section
           background="light"
           badge={{ emoji: "🎓", text: "Aprende Programando" }}
-          title="Lecciones Interactivas"
-          titleGradient=" de Hispano Lang"
+          title="Lecciones Interactivas de"
+          titleGradient=" Hispano Lang"
           description="Tutoriales paso a paso con ejemplos en vivo. Desde básico hasta avanzado."
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
