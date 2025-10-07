@@ -46,6 +46,12 @@ export default function Header() {
               >
                 Lecciones
               </Link>
+              <Link
+                href="/documentacion"
+                className="text-slate-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                Documentación
+              </Link>
             </div>
           </div>
         </div>
