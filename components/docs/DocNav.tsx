@@ -17,10 +17,7 @@ export default function DocNav({
   onSectionChange,
 }: DocNavProps) {
   return (
-    <Card
-      variant="glass"
-      className="bg-white/80 backdrop-blur-sm sticky top-24"
-    >
+    <Card variant="glass" className="bg-white/80 backdrop-blur-sm">
       <div className="py-4">
         <h3 className="text-lg font-bold text-slate-800 mb-4">Contenido</h3>
         <nav className="space-y-2">

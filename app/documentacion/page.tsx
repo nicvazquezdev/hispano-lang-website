@@ -27,7 +27,7 @@ export default function DocumentacionPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden pt-10">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative pt-10">
       {/* Fondo animado */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-1/2 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
@@ -44,19 +44,22 @@ export default function DocumentacionPage() {
           title="Documentación de"
           titleGradient=" Hispano Lang"
           description="Referencia completa de sintaxis, comandos y características del lenguaje"
+          className="overflow-visible"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar Navigation */}
-            <div className="lg:col-span-1">
-              <DocNav
-                sections={sections}
-                activeSection={activeSection}
-                onSectionChange={setActiveSection}
-              />
-            </div>
+            <aside className="lg:w-1/4 w-full">
+              <nav className="sticky top-24">
+                <DocNav
+                  sections={sections}
+                  activeSection={activeSection}
+                  onSectionChange={setActiveSection}
+                />
+              </nav>
+            </aside>
 
-            {/* Content */}
-            <div className="lg:col-span-3">
+            {/* Main Content */}
+            <article className="lg:w-3/4 w-full min-h-screen">
               {activeSection && (
                 <DocSection
                   title={docsData[activeSection as keyof typeof docsData].title}
@@ -68,7 +71,7 @@ export default function DocumentacionPage() {
                   }
                 />
               )}
-            </div>
+            </article>
           </div>
         </Section>
       </main>
