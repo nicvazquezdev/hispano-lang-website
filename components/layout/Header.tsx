@@ -86,33 +86,37 @@ export default function Header() {
       </nav>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-white/95 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl overflow-hidden">
-          <nav className="flex flex-col">
-            <Link
-              href="/"
-              onClick={() => setIsMenuOpen(false)}
-              className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors border-b border-slate-100"
-            >
-              Inicio
-            </Link>
-            <Link
-              href="/lecciones"
-              onClick={() => setIsMenuOpen(false)}
-              className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors border-b border-slate-100"
-            >
-              Lecciones
-            </Link>
-            <Link
-              href="/documentacion"
-              onClick={() => setIsMenuOpen(false)}
-              className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors"
-            >
-              Documentación
-            </Link>
-          </nav>
-        </div>
-      )}
+      <div
+        className={`md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-white/95 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl overflow-hidden transition-all duration-300 origin-top ${
+          isMenuOpen
+            ? "opacity-100 scale-y-100 max-h-96"
+            : "opacity-0 scale-y-95 max-h-0 border-transparent"
+        }`}
+      >
+        <nav className="flex flex-col">
+          <Link
+            href="/"
+            onClick={() => setIsMenuOpen(false)}
+            className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors border-b border-slate-100"
+          >
+            Inicio
+          </Link>
+          <Link
+            href="/lecciones"
+            onClick={() => setIsMenuOpen(false)}
+            className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors border-b border-slate-100"
+          >
+            Lecciones
+          </Link>
+          <Link
+            href="/documentacion"
+            onClick={() => setIsMenuOpen(false)}
+            className="px-6 py-4 text-slate-700 hover:bg-blue-50 hover:text-blue-600 font-medium transition-colors"
+          >
+            Documentación
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }
