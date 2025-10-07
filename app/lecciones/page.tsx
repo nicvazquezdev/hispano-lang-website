@@ -23,6 +23,15 @@ export default function LeccionesPage() {
       duration: "15 min",
       completed: false,
     },
+    {
+      id: "metodos-strings",
+      title: "Métodos de Strings",
+      description: "Manipula y transforma texto",
+      emoji: "🔤",
+      difficulty: "Principiante",
+      duration: "20 min",
+      completed: false,
+    },
     /*{
       id: "entrada-salida",
       title: "Entrada y Salida",

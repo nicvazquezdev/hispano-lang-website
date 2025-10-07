@@ -126,8 +126,8 @@ mostrar "¿Soy programador? " + es_programador`,
       steps={steps}
       prevLessonUrl="/lecciones/variables"
       prevLessonTitle="Variables"
-      nextLessonUrl="/lecciones/entrada-salida"
-      nextLessonTitle="Entrada y Salida"
+      nextLessonUrl="/lecciones/metodos-strings"
+      nextLessonTitle="Métodos de Strings"
     />
   );
 }
