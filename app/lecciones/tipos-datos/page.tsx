@@ -124,6 +124,8 @@ mostrar "¿Soy programador? " + es_programador`,
       titleGradient=" Hispano Lang"
       description="Aprende sobre números, texto, booleanos y valores especiales"
       steps={steps}
+      nextLessonUrl="/lecciones/entrada-salida"
+      nextLessonTitle="Entrada y Salida"
     />
   );
 }

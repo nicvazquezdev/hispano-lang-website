@@ -84,6 +84,8 @@ mostrar mi_variable`,
       titleGradient=" Hispano Lang"
       description="Aprende a almacenar y manipular datos paso a paso"
       steps={steps}
+      nextLessonUrl="/lecciones/tipos-datos"
+      nextLessonTitle="Tipos de Datos"
     />
   );
 }

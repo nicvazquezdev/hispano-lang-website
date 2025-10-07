@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Section from "@/components/ui/Section";
@@ -24,6 +25,8 @@ interface LessonPageProps {
   titleGradient: string;
   description: string;
   steps: LessonStep[];
+  nextLessonUrl?: string;
+  nextLessonTitle?: string;
 }
 
 export default function LessonPage({
@@ -32,7 +35,10 @@ export default function LessonPage({
   titleGradient,
   description,
   steps,
+  nextLessonUrl,
+  nextLessonTitle,
 }: LessonPageProps) {
+  const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
 
@@ -148,6 +154,15 @@ export default function LessonPage({
                       {currentStep < steps.length - 1 && (
                         <Button variant="primary" onClick={nextStep}>
                           Siguiente →
+                        </Button>
+                      )}
+
+                      {currentStep === steps.length - 1 && nextLessonUrl && (
+                        <Button
+                          variant="primary"
+                          onClick={() => router.push(nextLessonUrl)}
+                        >
+                          {nextLessonTitle || "Siguiente Lección"} →
                         </Button>
                       )}
                     </div>

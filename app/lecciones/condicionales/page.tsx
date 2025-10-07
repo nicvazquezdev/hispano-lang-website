@@ -143,6 +143,8 @@ si temperatura > 30 {
       titleGradient=" Hispano Lang"
       description="Aprende a tomar decisiones en tus programas con estructuras condicionales"
       steps={steps}
+      nextLessonUrl="/lecciones/bucles"
+      nextLessonTitle="Bucles"
     />
   );
 }
