@@ -74,7 +74,7 @@ numeros.recorrer(funcion(elemento) {
 mostrar "Números pares: " + pares
 mostrar "Números impares: " + impares`,
       explanation:
-        "Este ejemplo combina:\n\n• **Listas**: Almacenar colecciones de números\n• **Método `.recorrer()`**: Procesar cada elemento\n• **Funciones anónimas**: La función que se ejecuta por cada elemento\n• **Operador módulo (%)**: Detectar pares (elemento % 2 == 0)\n• **Condicionales**: Decidir a qué lista agregar\n• **Método `.agregar()`**: Construir las listas resultantes\n\nEste patrón de 'filtrar y clasificar' es extremadamente común en programación real: separar datos válidos de inválidos, categorizar productos, agrupar usuarios por edad, etc. Comenzamos con listas vacías y las vamos llenando según criterios específicos mientras recorremos la lista original.",
+        "Este ejemplo combina:\n\n• **Listas**: Almacenar colecciones de números\n• **Método** `.recorrer()`: Procesar cada elemento\n• **Funciones anónimas**: La función que se ejecuta por cada elemento\n• **Operador módulo (%)**: Detectar pares (elemento % 2 == 0)\n• **Condicionales**: Decidir a qué lista agregar\n• **Método** `.agregar()`: Construir las listas resultantes\n\nEste patrón de 'filtrar y clasificar' es extremadamente común en programación real: separar datos válidos de inválidos, categorizar productos, agrupar usuarios por edad, etc. Comenzamos con listas vacías y las vamos llenando según criterios específicos mientras recorremos la lista original.",
       challenge:
         "Crea una lista de números del 1 al 20. Sepáralos en tres listas: múltiplos de 3, múltiplos de 5, y otros. Muestra las tres listas resultantes.",
     },
