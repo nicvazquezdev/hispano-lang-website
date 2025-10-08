@@ -1,0 +1,115 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { FiTrash2 } from "react-icons/fi";
+
+interface EnhancedCodeEditorProps {
+  code: string;
+  onChange: (code: string) => void;
+  onRun: () => void;
+  isRunning: boolean;
+}
+
+export default function EnhancedCodeEditor({
+  code,
+  onChange,
+  onRun,
+  isRunning,
+}: EnhancedCodeEditorProps) {
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const [lineNumbers, setLineNumbers] = useState<number[]>([1]);
+
+  useEffect(() => {
+    const lines = code.split("\n").length;
+    setLineNumbers(Array.from({ length: lines }, (_, i) => i + 1));
+  }, [code]);
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    // Ctrl/Cmd + Enter to run
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault();
+      onRun();
+    }
+
+    // Tab key
+    if (e.key === "Tab") {
+      e.preventDefault();
+      const target = e.target as HTMLTextAreaElement;
+      const start = target.selectionStart;
+      const end = target.selectionEnd;
+      const newCode = code.substring(0, start) + "    " + code.substring(end);
+      onChange(newCode);
+
+      // Move cursor
+      setTimeout(() => {
+        target.selectionStart = target.selectionEnd = start + 4;
+      }, 0);
+    }
+  };
+
+  const handleClear = () => {
+    onChange("");
+  };
+
+  return (
+    <div className="bg-white border border-slate-200 rounded-lg overflow-hidden h-full flex flex-col">
+      {/* Header */}
+      <div className="bg-slate-50 px-4 py-2.5 flex items-center justify-between border-b border-slate-200">
+        <div className="flex items-center space-x-2">
+          <span className="text-slate-900 font-semibold text-sm">Editor</span>
+          <span className="text-xs text-slate-400">
+            {code.split("\n").length} líneas
+          </span>
+        </div>
+        <div className="flex items-center space-x-2">
+          <button
+            onClick={handleClear}
+            className="flex items-center space-x-1 px-2 py-1 text-xs text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded transition-colors"
+            title="Limpiar editor"
+          >
+            <FiTrash2 className="w-3 h-3" />
+            <span>Limpiar</span>
+          </button>
+          <button
+            onClick={onRun}
+            disabled={isRunning}
+            className="px-3 py-1 text-xs font-medium bg-purple-600 hover:bg-purple-700 disabled:bg-slate-300 text-white rounded transition-colors"
+          >
+            {isRunning ? "Ejecutando..." : "▶ Ejecutar"}
+          </button>
+        </div>
+      </div>
+
+      {/* Editor */}
+      <div className="flex-1 flex overflow-hidden">
+        {/* Line numbers */}
+        <div className="bg-slate-50/50 px-3 py-3 text-right text-slate-400 font-mono text-xs select-none border-r border-slate-200 overflow-y-auto">
+          {lineNumbers.map((num) => (
+            <div key={num} className="leading-6">
+              {num}
+            </div>
+          ))}
+        </div>
+
+        {/* Code area */}
+        <div className="flex-1 p-3 overflow-y-auto">
+          <textarea
+            ref={textareaRef}
+            value={code}
+            onChange={(e) => onChange(e.target.value)}
+            onKeyDown={handleKeyDown}
+            className="w-full h-full bg-transparent text-slate-900 font-mono text-sm resize-none outline-none placeholder-slate-400 leading-6"
+            placeholder="Escribe tu código aquí..."
+            spellCheck={false}
+          />
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="bg-slate-50 px-4 py-2 border-t border-slate-200 text-xs text-slate-500 flex items-center justify-between">
+        <span>Cmd/Ctrl + Enter para ejecutar</span>
+        <span className="text-slate-400">{code.length} caracteres</span>
+      </div>
+    </div>
+  );
+}
