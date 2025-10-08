@@ -50,6 +50,16 @@ export default function Header() {
                 Inicio
               </Link>
               <Link
+                href="/playground"
+                className={`font-medium transition-colors ${
+                  pathname?.startsWith("/playground")
+                    ? "text-purple-600"
+                    : "text-slate-700 hover:text-purple-600"
+                }`}
+              >
+                Playground
+              </Link>
+              <Link
                 href="/lecciones"
                 className={`font-medium transition-colors ${
                   pathname?.startsWith("/lecciones")

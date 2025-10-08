@@ -107,7 +107,7 @@ export default function EnhancedCodeEditor({
 
       {/* Footer */}
       <div className="bg-slate-50 px-4 py-2 border-t border-slate-200 text-xs text-slate-500 flex items-center justify-between">
-        <span>Cmd/Ctrl + Enter para ejecutar</span>
+        <span className="hidden md:block">Cmd/Ctrl + Enter para ejecutar</span>
         <span className="text-slate-400">{code.length} caracteres</span>
       </div>
     </div>
