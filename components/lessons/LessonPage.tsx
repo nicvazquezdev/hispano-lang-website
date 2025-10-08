@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
+import FormattedText from "@/components/ui/FormattedText";
 import CodeEditor from "@/components/lessons/CodeEditor";
 import LessonProgress from "@/components/lessons/LessonProgress";
 
@@ -104,17 +105,19 @@ export default function LessonPage({
                       {steps[currentStep].title}
                     </h3>
 
-                    <p className="text-slate-600 mb-6 leading-relaxed">
-                      {steps[currentStep].content}
-                    </p>
+                    <FormattedText
+                      text={steps[currentStep].content}
+                      className="text-slate-600 mb-6 leading-relaxed"
+                    />
 
                     <div className="mb-10">
                       <h4 className="font-semibold text-slate-700 mb-2">
                         💡 Explicación:
                       </h4>
-                      <p className="text-slate-600">
-                        {steps[currentStep].explanation}
-                      </p>
+                      <FormattedText
+                        text={steps[currentStep].explanation}
+                        className="text-slate-600"
+                      />
                     </div>
 
                     {/* Summary for last step */}
