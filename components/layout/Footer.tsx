@@ -17,7 +17,7 @@ export default function Footer() {
               href="https://github.com/nicvazquezdev/hispano-lang"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-blue-600 transition-colors text-base sm:text-lg font-medium flex items-center gap-2"
+              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium flex items-center gap-2"
             >
               <GitHubIcon />
               GitHub
@@ -26,7 +26,7 @@ export default function Footer() {
               href="https://github.com/nicvazquezdev/hispano-lang/blob/main/CONTRIBUTING.md"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-blue-600 transition-colors text-base sm:text-lg font-medium"
+              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium"
             >
               Contribuir
             </a>
@@ -34,7 +34,7 @@ export default function Footer() {
               href="https://github.com/nicvazquezdev/hispano-lang/issues"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-blue-600 transition-colors text-base sm:text-lg font-medium"
+              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium"
             >
               Reportar Issue
             </a>
@@ -42,7 +42,7 @@ export default function Footer() {
               href="https://www.npmjs.com/package/hispano-lang"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-blue-600 transition-colors text-base sm:text-lg font-medium"
+              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium"
             >
               NPM
             </a>
@@ -55,7 +55,7 @@ export default function Footer() {
                 href="https://github.com/nicvazquezdev/hispano-lang/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-blue-600 transition-colors text-sm"
+                className="text-slate-500 hover:text-purple-600 transition-colors text-sm"
               >
                 Licencia MIT
               </a>
@@ -64,7 +64,7 @@ export default function Footer() {
                 href="https://github.com/nicvazquezdev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-blue-600 transition-colors text-sm"
+                className="text-slate-500 hover:text-purple-600 transition-colors text-sm"
               >
                 Por @nicvazquezdev
               </a>

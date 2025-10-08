@@ -33,7 +33,7 @@ export default function DocNav({
                 onClick={() => onSectionChange(section.id)}
                 className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
                   activeSection === section.id
-                    ? "bg-blue-500 text-white"
+                    ? "bg-purple-400 text-white"
                     : "text-slate-700 hover:bg-slate-100"
                 }`}
               >

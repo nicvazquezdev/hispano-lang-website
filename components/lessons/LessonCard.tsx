@@ -30,7 +30,7 @@ export default function LessonCard({ lesson }: LessonCardProps) {
           {lesson.completed && <div className="text-green-500 text-xl">✓</div>}
         </div>
 
-        <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors">
+        <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">
           {lesson.title}
         </h3>
 

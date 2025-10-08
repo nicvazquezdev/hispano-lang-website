@@ -48,8 +48,8 @@ export default function DocSection({
               )}
 
               {subsection.syntax && (
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                  <code className="text-blue-800 font-mono">
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
+                  <code className="text-purple-800 font-mono">
                     {subsection.syntax}
                   </code>
                 </div>
@@ -82,13 +82,13 @@ export default function DocSection({
                   <Link href={`/documentacion?seccion=${previousSection.id}`}>
                     <Button
                       variant="outline"
-                      className="w-full justify-start group"
+                      className="w-full justify-start group cursor-pointer"
                     >
                       <div className="text-left">
                         <div className="text-xs text-slate-500 mb-1">
                           ← Anterior
                         </div>
-                        <div className="font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">
+                        <div className="font-semibold text-slate-800 group-hover:text-purple-600 transition-colors">
                           {previousSection.title}
                         </div>
                       </div>
@@ -105,13 +105,13 @@ export default function DocSection({
                   <Link href={`/documentacion?seccion=${nextSection.id}`}>
                     <Button
                       variant="outline"
-                      className="w-full justify-end group"
+                      className="w-full justify-end group cursor-pointer"
                     >
                       <div className="text-right">
                         <div className="text-xs text-slate-500 mb-1">
                           Siguiente →
                         </div>
-                        <div className="font-semibold text-slate-800 group-hover:text-blue-600 transition-colors">
+                        <div className="font-semibold text-slate-800 group-hover:text-purple-600 transition-colors">
                           {nextSection.title}
                         </div>
                       </div>
