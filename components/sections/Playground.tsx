@@ -18,10 +18,13 @@ mostrar "Hola " + lenguaje + "! 👋"`);
     setCode(exampleCode);
     setOutput("");
     // Scroll hacia el inicio de la sección solo en mobile
-    if (window.innerWidth < 1024) {
-      playgroundRef.current?.scrollIntoView({
+    if (window.innerWidth < 1024 && playgroundRef.current) {
+      const elementPosition = playgroundRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - 80; // 100px más arriba
+
+      window.scrollTo({
+        top: offsetPosition,
         behavior: "smooth",
-        block: "start",
       });
     }
   };
