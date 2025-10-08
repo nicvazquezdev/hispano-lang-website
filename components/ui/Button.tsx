@@ -40,7 +40,7 @@ export default function Button({
 
   const labelColor = variant === "outline" ? "text-slate-500" : "text-white/80";
 
-  const alignment = prev ? "items-start" : "items-end";
+  const alignment = prev ? "items-start" : next ? "items-end" : "items-center";
 
   const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 
