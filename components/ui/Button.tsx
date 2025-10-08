@@ -36,18 +36,18 @@ export default function Button({
     lg: "px-8 py-4 text-lg",
   };
 
+  const label = prev ? "← Anterior" : next ? "Siguiente →" : "";
+
+  const labelColor = variant === "outline" ? "text-slate-500" : "text-white/80";
+
+  const alignment = prev ? "items-start" : "items-end";
+
   const combinedClasses = `${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`;
 
   return (
     <button className={combinedClasses} {...props}>
-      <div className={`flex flex-col ${prev ? "items-start" : "items-end"}`}>
-        <div
-          className={`text-xs ${
-            variant === "outline" ? "text-slate-500" : "text-white/80"
-          }`}
-        >
-          {prev ? "← Anterior" : next ? "Siguiente →" : ""}
-        </div>
+      <div className={`flex flex-col ${alignment}`}>
+        {label && <div className={`text-xs ${labelColor}`}>{label}</div>}
         {children}
       </div>
     </button>
