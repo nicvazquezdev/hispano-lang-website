@@ -187,7 +187,7 @@ export default function LessonPage({
             {/* Lesson Navigation - Always visible */}
             {(prevLessonUrl || nextLessonUrl) && (
               <div className="mt-16 pt-8 border-t border-slate-200">
-                <div className="flex justify-between items-center">
+                <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
                   {prevLessonUrl ? (
                     <Button
                       variant="outline"
@@ -212,7 +212,7 @@ export default function LessonPage({
                     <Button
                       variant="primary"
                       onClick={() => router.push(nextLessonUrl)}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 justify-end"
                     >
                       <div className="text-right">
                         <div className="text-xs text-white/80">
