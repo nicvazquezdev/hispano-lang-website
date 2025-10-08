@@ -82,16 +82,10 @@ export default function DocSection({
                   <Link href={`/documentacion?seccion=${previousSection.id}`}>
                     <Button
                       variant="outline"
-                      className="w-full justify-start group cursor-pointer"
+                      className="w-full justify-start"
+                      prev
                     >
-                      <div className="text-left">
-                        <div className="text-xs text-slate-500 mb-1">
-                          ← Anterior
-                        </div>
-                        <div className="font-semibold text-slate-800 group-hover:text-purple-600 transition-colors">
-                          {previousSection.title}
-                        </div>
-                      </div>
+                      {previousSection.title}
                     </Button>
                   </Link>
                 ) : (
@@ -105,16 +99,10 @@ export default function DocSection({
                   <Link href={`/documentacion?seccion=${nextSection.id}`}>
                     <Button
                       variant="outline"
-                      className="w-full justify-end group cursor-pointer"
+                      className="w-full justify-end"
+                      next
                     >
-                      <div className="text-right">
-                        <div className="text-xs text-slate-500 mb-1">
-                          Siguiente →
-                        </div>
-                        <div className="font-semibold text-slate-800 group-hover:text-purple-600 transition-colors">
-                          {nextSection.title}
-                        </div>
-                      </div>
+                      {nextSection.title}
                     </Button>
                   </Link>
                 ) : (

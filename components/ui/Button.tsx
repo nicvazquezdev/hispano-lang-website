@@ -5,6 +5,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg";
   className?: string;
+  prev?: boolean;
+  next?: boolean;
 }
 
 export default function Button({
@@ -12,10 +14,12 @@ export default function Button({
   variant = "primary",
   size = "md",
   className = "",
+  prev = false,
+  next = false,
   ...props
 }: ButtonProps) {
   const baseClasses =
-    "font-semibold transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "font-semibold transition-colors rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer";
 
   const variantClasses = {
     primary:
@@ -23,7 +27,7 @@ export default function Button({
     secondary:
       "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-500",
     outline:
-      "border-2 border-slate-300 text-slate-700 hover:bg-slate-50 rounded-xl font-semibold",
+      "border-2 border-slate-300 text-slate-700 bg-white hover:bg-slate-50 rounded-xl font-semibold",
   };
 
   const sizeClasses = {
@@ -36,7 +40,20 @@ export default function Button({
 
   return (
     <button className={combinedClasses} {...props}>
-      {children}
+      <div
+        className={`flex flex-col ${
+          prev ? "items-start" : next ? "items-end" : "items-center"
+        }`}
+      >
+        <div
+          className={`text-xs ${
+            variant === "outline" ? "text-slate-500" : "text-white/80"
+          }`}
+        >
+          {prev ? "← Anterior" : next ? "Siguiente →" : ""}
+        </div>
+        {children}
+      </div>
     </button>
   );
 }

@@ -192,17 +192,9 @@ export default function LessonPage({
                     <Button
                       variant="outline"
                       onClick={() => router.push(prevLessonUrl)}
-                      className="flex items-center gap-2"
+                      prev
                     >
-                      <span>←</span>
-                      <div className="text-left">
-                        <div className="text-xs text-slate-500">
-                          Lección anterior
-                        </div>
-                        <div className="font-semibold">
-                          {prevLessonTitle || "Anterior"}
-                        </div>
-                      </div>
+                      {prevLessonTitle || "Anterior"}
                     </Button>
                   ) : (
                     <div></div>
@@ -212,31 +204,22 @@ export default function LessonPage({
                     <Button
                       variant="primary"
                       onClick={() => router.push(nextLessonUrl)}
-                      className="flex items-center gap-2 justify-end"
+                      next
                     >
-                      <div className="text-right">
-                        <div className="text-xs text-white/80">
-                          Siguiente lección
-                        </div>
-                        <div className="font-semibold">
-                          {nextLessonTitle || "Siguiente"}
-                        </div>
-                      </div>
-                      <span>→</span>
+                      {nextLessonTitle || "Siguiente"}
                     </Button>
                   ) : (
                     <Button
-                      variant="outline"
+                      variant="primary"
                       onClick={() => router.push("/lecciones")}
                       className="flex items-center gap-2"
                     >
                       <div className="text-right">
-                        <div className="text-xs text-slate-500">
+                        <div className="text-xs text-white/80">
                           Completaste todas las lecciones
                         </div>
-                        <div className="font-semibold">Volver al inicio</div>
+                        <div className="font-semibold">Volver al inicio ✓</div>
                       </div>
-                      <span>✓</span>
                     </Button>
                   )}
                 </div>
