@@ -20,6 +20,10 @@ function DocumentacionContent() {
     const seccion = searchParams.get("seccion");
     if (seccion && docsData[seccion as keyof typeof docsData]) {
       setActiveSection(seccion);
+      // Scroll hacia arriba en mobile cuando cambia la sección
+      if (typeof window !== "undefined" && window.innerWidth < 1024) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
   }, [searchParams]);
 
@@ -42,6 +46,22 @@ function DocumentacionContent() {
     { id: "funcionesMatematicas", title: "Funciones Matemáticas" },
     { id: "manejoErrores", title: "Manejo de Errores" },
   ];
+
+  // Obtener índice de la sección actual
+  const currentIndex = sections.findIndex(
+    (section) => section.id === activeSection,
+  );
+
+  // Calcular sección anterior y siguiente (circular)
+  const previousSection =
+    currentIndex > 0
+      ? sections[currentIndex - 1]
+      : sections[sections.length - 1];
+
+  const nextSection =
+    currentIndex < sections.length - 1
+      ? sections[currentIndex + 1]
+      : sections[0];
 
   return (
     <Section
@@ -75,6 +95,9 @@ function DocumentacionContent() {
               subsections={
                 docsData[activeSection as keyof typeof docsData].subsections
               }
+              currentSection={activeSection}
+              previousSection={previousSection}
+              nextSection={nextSection}
             />
           )}
         </article>
