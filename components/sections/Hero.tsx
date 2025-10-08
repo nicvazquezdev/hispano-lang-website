@@ -21,17 +21,16 @@ export default function Hero() {
                 </span>
               </h1>
 
-              <p className="text-lg md:text-xl xl:text-2xl text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                <strong>HispanoLang</strong> es el primer lenguaje de
-                programación diseñado específicamente para hispanohablantes.
-                Sintaxis natural, aprendizaje intuitivo, resultados
-                profesionales.
+              <p className="text-lg xl:text-xl text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <b>HispanoLang</b> fue creado para que aprender a programar sea
+                tan natural como hablar en español. <br /> Un paso, una idea,
+                una línea de código.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
                 <Link href="/lecciones" className="w-full sm:w-auto">
                   <Button size="lg" className="w-full sm:w-auto">
-                    Empezar Ahora
+                    Empezar ahora
                   </Button>
                 </Link>
                 <Link href="/documentacion" className="w-full sm:w-auto">
@@ -40,7 +39,7 @@ export default function Hero() {
                     size="lg"
                     className="w-full sm:w-auto"
                   >
-                    Ver Documentación
+                    Ver documentación
                   </Button>
                 </Link>
               </div>

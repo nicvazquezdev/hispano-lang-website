@@ -37,7 +37,7 @@ export default function Features() {
       badge={{ emoji: "✨", text: "Características Únicas" }}
       title="¿Por qué es"
       titleGradient=" diferente?"
-      description="Otros lenguajes son complicados. Este está hecho para ti."
+      description="Cualquier persona, sin importar su idioma, debería poder aprender a programar desde cero y disfrutar el proceso"
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-14">
         {features.map((feature, index) => (
@@ -62,7 +62,7 @@ export default function Features() {
       <div className="text-center">
         <Link href="/lecciones">
           <Button size="lg" className="rounded-full shadow-lg">
-            Empieza Ahora
+            Empieza a aprender ahora
           </Button>
         </Link>
       </div>

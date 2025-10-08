@@ -16,7 +16,7 @@ export default function CTA() {
         <div className="mb-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/lecciones">
             <Button size="lg" className="rounded-full shadow-lg">
-              Empieza Ahora
+              Empieza ahora
             </Button>
           </Link>
           <Link href="/documentacion">
@@ -25,7 +25,7 @@ export default function CTA() {
               variant="outline"
               className="rounded-full shadow-lg"
             >
-              Ver Documentación
+              Ver documentación
             </Button>
           </Link>
         </div>
