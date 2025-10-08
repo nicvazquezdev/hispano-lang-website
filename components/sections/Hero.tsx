@@ -59,16 +59,18 @@ export default function Hero() {
                   </div>
                   <div className="flex gap-2">
                     <div className="text-purple-600">variable</div>
-                    <div className="text-orange-600">nombre</div>
+                    <div className="text-orange-600">lenguaje</div>
                     <div className="text-slate-800">=</div>
-                    <div className="text-green-600">{"Ana"}</div>
+                    <div className="text-green-600">
+                      &quot;HispanoLang&quot;
+                    </div>
                   </div>
 
                   <div className="flex gap-2">
                     <div className="text-purple-600">mostrar</div>
-                    <div className="text-orange-600">&quot;¡Hola &quot;</div>
-                    <div className="text-orange-600">+ nombre +</div>
-                    <div className="text-orange-600">&quot;!&quot;</div>
+                    <div className="text-green-600">&quot;¡Hola &quot;</div>
+                    <div className="text-orange-600">+ lenguaje +</div>
+                    <div className="text-green-600">&quot;! 👋&quot;</div>
                   </div>
 
                   <div className="text-green-600">
@@ -94,7 +96,7 @@ export default function Hero() {
                   </div>
                   <div className="flex gap-2">
                     <div className="text-purple-600">mostrar</div>
-                    <div className="text-orange-600">
+                    <div className="text-green-600">
                       &quot;La suma es: &quot;
                     </div>
                     <div className="text-orange-600">+ suma</div>
