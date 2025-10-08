@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Button from "@/components/ui/Button";
-import GitHubIcon from "@/components/ui/GitHubIcon";
+import OpenSourceBadge from "@/components/ui/OpenSourceBadge";
 
 export default function Hero() {
   return (
@@ -11,30 +11,7 @@ export default function Hero() {
             {/* Contenido principal */}
             <div className="text-center lg:text-left">
               {/* Badge Open Source */}
-              <a
-                href="https://github.com/nicvazquezdev/hispano-lang"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm border border-slate-200 rounded-full mb-4 hover:border-blue-400 hover:shadow-md transition-all duration-300 group"
-              >
-                <GitHubIcon className="w-4 h-4 text-slate-700 group-hover:text-blue-600 transition-colors" />
-                <span className="text-sm font-medium text-slate-700 group-hover:text-blue-600 transition-colors">
-                  Open Source en GitHub
-                </span>
-                <svg
-                  className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </a>
+              <OpenSourceBadge className="mb-4" />
 
               <h1 className="text-5xl lg:text-7xl font-bold text-slate-800 mb-4 sm:mb-6 leading-tight">
                 Programa en
