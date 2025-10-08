@@ -17,8 +17,8 @@ export default function Hero() {
                 </span>
               </h1>
 
-              <p className="text-xl xl:text-2xl text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                <strong>Hispano Lang</strong> es el primer lenguaje de
+              <p className="text-lg md:text-xl xl:text-2xl text-slate-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                <strong>HispanoLang</strong> es el primer lenguaje de
                 programación diseñado específicamente para hispanohablantes.
                 Sintaxis natural, aprendizaje intuitivo, resultados
                 profesionales.

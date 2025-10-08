@@ -102,7 +102,7 @@ mostrar "Tienes " + edad + " años"`,
     <LessonPage
       badge={{ emoji: "💬", text: "Lección 3" }}
       title="Entrada y Salida en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a interactuar con el usuario mediante entrada y salida"
       steps={steps}
       prevLessonUrl="/lecciones/tipos-datos"

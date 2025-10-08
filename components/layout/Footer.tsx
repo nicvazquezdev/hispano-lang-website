@@ -33,7 +33,7 @@ export default function Footer() {
 
           <div className="border-t border-slate-200 pt-8">
             <p className="text-slate-500">
-              © 2025 Hispano Lang. Hecho con ❤️ para principiantes.
+              © 2025 HispanoLang. Hecho con ❤️ para principiantes.
             </p>
           </div>
         </div>

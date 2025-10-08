@@ -125,7 +125,7 @@ mostrar "La suma de 1 a 10 es: " + suma`,
     <LessonPage
       badge={{ emoji: "🔄", text: "Lección 7" }}
       title="Bucles en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a automatizar tareas repetitivas con bucles mientras y para"
       steps={steps}
       prevLessonUrl="/lecciones/condicionales"

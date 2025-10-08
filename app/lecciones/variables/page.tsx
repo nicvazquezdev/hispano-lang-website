@@ -81,7 +81,7 @@ mostrar mi_variable`,
     <LessonPage
       badge={{ emoji: "📦", text: "Lección 1" }}
       title="Variables en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a almacenar y manipular datos paso a paso"
       steps={steps}
       nextLessonUrl="/lecciones/comentarios"

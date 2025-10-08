@@ -158,7 +158,7 @@ para (variable i = 0; i < numeros.longitud(); i = i + 1) {
     <LessonPage
       badge={{ emoji: "🔀", text: "Lección 8" }}
       title="Control de Flujo en Bucles en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a usar romper y continuar para controlar bucles avanzadamente"
       steps={steps}
       prevLessonUrl="/lecciones/bucles"

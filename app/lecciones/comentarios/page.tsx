@@ -74,7 +74,7 @@ mostrar "Tengo " + mi_edad + " años"`,
     <LessonPage
       badge={{ emoji: "💭", text: "Lección 2" }}
       title="Comentarios en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a documentar tu código con comentarios útiles"
       steps={steps}
       prevLessonUrl="/lecciones/variables"

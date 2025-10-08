@@ -133,7 +133,7 @@ mostrar "¿Es mayor que 20?: " + es_grande`,
     <LessonPage
       badge={{ emoji: "➕", text: "Lección 5" }}
       title="Operadores en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a usar operadores aritméticos, de comparación, lógicos y de asignación"
       steps={steps}
       prevLessonUrl="/lecciones/metodos-strings"

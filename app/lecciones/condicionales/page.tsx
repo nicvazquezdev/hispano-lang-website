@@ -140,7 +140,7 @@ si temperatura > 30 {
     <LessonPage
       badge={{ emoji: "🤔", text: "Lección 6" }}
       title="Condicionales en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a tomar decisiones en tus programas con estructuras condicionales"
       steps={steps}
       prevLessonUrl="/lecciones/operadores"

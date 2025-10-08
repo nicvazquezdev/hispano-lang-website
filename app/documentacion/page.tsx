@@ -68,7 +68,7 @@ function DocumentacionContent() {
       background="light"
       badge={{ emoji: "📚", text: "Referencia Completa" }}
       title="Documentación de"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Referencia completa de sintaxis, comandos y características del lenguaje"
       className="overflow-visible"
     >

@@ -157,7 +157,7 @@ procesarDatos(-4)`,
     <LessonPage
       badge={{ emoji: "🛡️", text: "Lección 13" }}
       title="Manejo de Errores en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a crear programas robustos que manejen errores apropiadamente"
       steps={steps}
       prevLessonUrl="/lecciones/objetos"

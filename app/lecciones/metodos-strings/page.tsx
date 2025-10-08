@@ -133,7 +133,7 @@ mostrar "¿Es largo?: " + esLargo`,
     <LessonPage
       badge={{ emoji: "🔤", text: "Lección 4" }}
       title="Métodos de Strings en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a manipular y transformar texto con métodos de strings"
       steps={steps}
       prevLessonUrl="/lecciones/tipos-datos"

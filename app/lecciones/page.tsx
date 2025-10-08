@@ -158,7 +158,7 @@ export default function LeccionesPage() {
           background="light"
           badge={{ emoji: "🎓", text: "Aprende Programando" }}
           title="Lecciones Interactivas de"
-          titleGradient=" Hispano Lang"
+          titleGradient=" HispanoLang"
           description="Tutoriales paso a paso con ejemplos en vivo. Desde básico hasta avanzado."
         >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

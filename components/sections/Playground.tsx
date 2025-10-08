@@ -7,7 +7,7 @@ import Section from "@/components/ui/Section";
 
 export default function Playground() {
   const [code, setCode] = useState(`// Mi primer hola mundo
-variable lenguaje = "Hispano Lang"
+variable lenguaje = "HispanoLang"
 mostrar "Hola " + lenguaje + "! 👋"`);
 
   const [output, setOutput] = useState("");
@@ -61,7 +61,7 @@ mostrar "Hola " + lenguaje + "! 👋"`);
       background="light"
       badge={{ emoji: "⚡", text: "Prueba en Vivo" }}
       title="Playground de"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Escribe código en español y ejecútalo aquí mismo"
     >
       <div

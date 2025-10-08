@@ -163,7 +163,7 @@ mostrar "Distancia: " + distancia`,
     <LessonPage
       badge={{ emoji: "🧮", text: "Lección 10" }}
       title="Funciones Matemáticas en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a usar funciones matemáticas integradas para cálculos avanzados"
       steps={steps}
       prevLessonUrl="/lecciones/funciones"

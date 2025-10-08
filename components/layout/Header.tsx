@@ -29,7 +29,7 @@ export default function Header() {
                 className="text-lg sm:text-xl lg:text-2xl font-bold text-white"
               >
                 <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                  Hispano Lang
+                  HispanoLang
                 </span>
               </Link>
             </div>

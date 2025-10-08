@@ -164,7 +164,7 @@ mostrar mensaje`,
     <LessonPage
       badge={{ emoji: "🎓", text: "Lección 14" }}
       title="Ejemplos Avanzados en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Integra todos los conceptos aprendidos en proyectos completos"
       steps={steps}
       prevLessonUrl="/lecciones/manejo-errores"

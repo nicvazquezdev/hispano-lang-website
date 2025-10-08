@@ -144,7 +144,7 @@ biblioteca.libros.recorrer(funcion(libro) {
     <LessonPage
       badge={{ emoji: "🗂️", text: "Lección 11" }}
       title="Objetos en"
-      titleGradient=" Hispano Lang"
+      titleGradient=" HispanoLang"
       description="Aprende a organizar datos complejos con objetos"
       steps={steps}
       prevLessonUrl="/lecciones/listas"
