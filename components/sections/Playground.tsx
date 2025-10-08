@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
@@ -211,6 +212,16 @@ si edad >= 18 {
               Toma decisiones
             </div>
           </Card>
+        </div>
+
+        {/* CTA to full playground */}
+        <div className="mt-8 sm:mt-12 text-center">
+          <Link href="/playground">
+            <Button size="lg">Ir al Playground Completo</Button>
+          </Link>
+          <p className="mt-4 text-sm text-slate-600">
+            Editor avanzado con más ejemplos y funcionalidades
+          </p>
         </div>
       </div>
     </Section>

@@ -16,7 +16,7 @@ export default function DesktopSnippetsSidebar({
       {/* Sidebar */}
       <div
         className={`hidden lg:block flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden ${
-          isCollapsed ? "w-0" : "w-80"
+          isCollapsed ? "w-0" : "w-80 mr-4"
         }`}
       >
         <div className="h-[calc(100vh-280px)] min-h-[500px] w-80">
