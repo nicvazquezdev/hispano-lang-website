@@ -40,11 +40,7 @@ export default function Button({
 
   return (
     <button className={combinedClasses} {...props}>
-      <div
-        className={`flex flex-col ${
-          prev ? "items-start" : next ? "items-end" : "items-center"
-        }`}
-      >
+      <div className={`flex flex-col ${prev ? "items-start" : "items-end"}`}>
         <div
           className={`text-xs ${
             variant === "outline" ? "text-slate-500" : "text-white/80"

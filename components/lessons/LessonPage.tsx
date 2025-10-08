@@ -212,14 +212,12 @@ export default function LessonPage({
                     <Button
                       variant="primary"
                       onClick={() => router.push("/lecciones")}
-                      className="flex items-center gap-2"
+                      className="flex items-center gap-2 justify-end"
                     >
-                      <div className="text-right">
-                        <div className="text-xs text-white/80">
-                          Completaste todas las lecciones
-                        </div>
-                        <div className="font-semibold">Volver al inicio ✓</div>
+                      <div className="text-xs text-white/80">
+                        Completaste todas las lecciones
                       </div>
+                      <div className="font-semibold">Volver al inicio ✓</div>
                     </Button>
                   )}
                 </div>
