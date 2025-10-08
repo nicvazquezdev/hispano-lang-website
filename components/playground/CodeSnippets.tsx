@@ -27,6 +27,8 @@ interface Snippet {
 
 interface CodeSnippetsProps {
   onSnippetSelect: (code: string) => void;
+  onCollapse?: () => void;
+  showCollapseButton?: boolean;
 }
 
 const snippets: Snippet[] = [
@@ -237,7 +239,11 @@ si esPrimo(num) {
 
 const categories = Array.from(new Set(snippets.map((s) => s.category)));
 
-export default function CodeSnippets({ onSnippetSelect }: CodeSnippetsProps) {
+export default function CodeSnippets({
+  onSnippetSelect,
+  onCollapse,
+  showCollapseButton = false,
+}: CodeSnippetsProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>("Básico");
 
   const filteredSnippets = snippets.filter(
@@ -246,6 +252,32 @@ export default function CodeSnippets({ onSnippetSelect }: CodeSnippetsProps) {
 
   return (
     <div className="bg-white border border-slate-200 rounded-lg h-full flex flex-col overflow-hidden">
+      {/* Header */}
+      <div className="bg-slate-50 px-4 py-2.5 border-b border-slate-200 hidden md:flex items-center justify-between">
+        <h3 className="text-slate-900 font-semibold text-sm">Ejemplos</h3>
+        {showCollapseButton && onCollapse && (
+          <button
+            onClick={onCollapse}
+            className="hidden lg:flex items-center justify-center w-6 h-6 hover:bg-slate-200 rounded transition-colors"
+            title="Ocultar panel"
+          >
+            <svg
+              className="w-3.5 h-3.5 text-slate-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+        )}
+      </div>
+
       {/* Categories */}
       <div className="px-4 py-3 border-b border-slate-200">
         <div className="flex flex-wrap gap-1.5">

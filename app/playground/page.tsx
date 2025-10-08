@@ -1,323 +1,62 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import {
-  FiShare2,
-  FiDownload,
-  FiMenu,
-  FiCommand,
-  FiBookOpen,
-  FiLayers,
-  FiX,
-} from "react-icons/fi";
+import { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import EnhancedCodeEditor from "@/components/playground/EnhancedCodeEditor";
-import OutputConsole from "@/components/playground/OutputConsole";
-import CodeSnippets from "@/components/playground/CodeSnippets";
-
-const DEFAULT_CODE = `// Bienvenido al Playground de HispanoLang
-// Escribe tu código en español y ejecútalo aquí
-
-variable mensaje = "¡Hola desde HispanoLang!"
-mostrar mensaje
-
-// Prueba estos ejemplos o carga uno de la biblioteca →`;
+import PlaygroundHeader from "@/components/playground/PlaygroundHeader";
+import MobileSnippetsOverlay from "@/components/playground/MobileSnippetsOverlay";
+import DesktopSnippetsSidebar from "@/components/playground/DesktopSnippetsSidebar";
+import PlaygroundLayout from "@/components/playground/PlaygroundLayout";
+import { usePlaygroundCode } from "@/hooks/usePlaygroundCode";
 
 export default function PlaygroundPage() {
-  const [code, setCode] = useState(DEFAULT_CODE);
-  const [output, setOutput] = useState("");
-  const [isRunning, setIsRunning] = useState(false);
   const [showSnippets, setShowSnippets] = useState(false);
   const [isSnippetsCollapsed, setIsSnippetsCollapsed] = useState(false);
 
-  const runCode = async () => {
-    setIsRunning(true);
-    setOutput("Ejecutando...");
-
-    try {
-      const response = await fetch("/api/execute", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ code }),
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        const output = result.output.join("\n");
-        setOutput(output || "✓ Código ejecutado exitosamente");
-      } else {
-        setOutput(`❌ Error: ${result.error}`);
-      }
-    } catch (error) {
-      setOutput(
-        `❌ Error: ${
-          error instanceof Error ? error.message : "Error desconocido"
-        }`,
-      );
-    } finally {
-      setIsRunning(false);
-    }
-  };
-
-  const handleSnippetSelect = (snippetCode: string) => {
-    setCode(snippetCode);
-    setOutput("");
-  };
-
-  const handleShareCode = () => {
-    const encoded = btoa(encodeURIComponent(code));
-    const url = `${window.location.origin}/playground?code=${encoded}`;
-    navigator.clipboard.writeText(url);
-    alert("¡Enlace copiado al portapapeles!");
-  };
-
-  const handleDownloadCode = () => {
-    const blob = new Blob([code], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "codigo.txt";
-    a.click();
-    URL.revokeObjectURL(url);
-  };
-
-  // Load code from URL on mount
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const encoded = params.get("code");
-    if (encoded) {
-      try {
-        const decoded = decodeURIComponent(atob(encoded));
-        setCode(decoded);
-      } catch (e) {
-        console.error("Error decoding shared code:", e);
-      }
-    }
-  }, []);
+  const {
+    code,
+    output,
+    isRunning,
+    setCode,
+    runCode,
+    handleSnippetSelect,
+    handleShareCode,
+    handleDownloadCode,
+  } = usePlaygroundCode();
 
   return (
     <div className="min-h-screen bg-slate-50">
       <Header />
 
       <main className="max-w-[1800px] mx-auto px-4 sm:px-6 py-6 pt-20 sm:pt-24">
-        {/* Page header */}
-        <div className="mb-6">
-          <div className="flex items-center justify-end mb-4">
-            <div className="flex items-center space-x-2">
-              <button
-                onClick={handleShareCode}
-                className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 text-sm text-slate-700 hover:text-slate-900 hover:bg-white border border-slate-200 rounded-lg transition-colors"
-              >
-                <FiShare2 className="w-3.5 h-3.5" />
-                <span>Compartir</span>
-              </button>
-              <button
-                onClick={handleDownloadCode}
-                className="hidden sm:flex items-center space-x-1.5 px-3 py-1.5 text-sm text-slate-700 hover:text-slate-900 hover:bg-white border border-slate-200 rounded-lg transition-colors"
-              >
-                <FiDownload className="w-3.5 h-3.5" />
-                <span>Descargar</span>
-              </button>
-            </div>
-          </div>
+        <PlaygroundHeader
+          onShare={handleShareCode}
+          onDownload={handleDownloadCode}
+          onOpenSnippets={() => setShowSnippets(true)}
+        />
 
-          {/* Mobile action buttons */}
-          <div className="flex sm:hidden space-x-2 justify-end">
-            <button
-              onClick={() => setShowSnippets(true)}
-              className="flex items-center justify-center p-2 text-sm bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors flex items-center gap-2"
-            >
-              <FiMenu className="w-4 h-4 text-slate-700" />
-              <span>Ejemplos</span>
-            </button>
-            <button
-              onClick={handleShareCode}
-              className="flex items-center justify-center w-9 h-9 text-sm bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
-            >
-              <FiShare2 className="w-4 h-4 text-slate-700" />
-            </button>
-            <button
-              onClick={handleDownloadCode}
-              className="flex items-center justify-center w-9 h-9 text-sm bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
-            >
-              <FiDownload className="w-4 h-4 text-slate-700" />
-            </button>
-          </div>
-        </div>
+        <MobileSnippetsOverlay
+          isOpen={showSnippets}
+          onClose={() => setShowSnippets(false)}
+          onSnippetSelect={handleSnippetSelect}
+        />
 
-        {/* Mobile snippets overlay */}
-        <div
-          className={`lg:hidden fixed inset-0 z-50 transition-opacity duration-300 ${
-            showSnippets ? "opacity-100" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowSnippets(false)}
-          ></div>
-          <div
-            className={`absolute right-0 top-0 bottom-0 w-[85%] max-w-sm bg-slate-50 shadow-xl transition-transform duration-300 ease-out ${
-              showSnippets ? "translate-x-0" : "translate-x-full"
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="h-full flex flex-col">
-              <div className="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between">
-                <h3 className="font-semibold text-slate-900">
-                  Ejemplos de Código
-                </h3>
-                <button
-                  onClick={() => setShowSnippets(false)}
-                  className="w-8 h-8 flex items-center justify-center text-slate-600 hover:bg-slate-100 rounded transition-colors"
-                >
-                  <FiX className="w-5 h-5" />
-                </button>
-              </div>
-              <div className="flex-1 overflow-hidden">
-                <CodeSnippets
-                  onSnippetSelect={(code) => {
-                    handleSnippetSelect(code);
-                    setShowSnippets(false);
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Main layout */}
         <div className="flex mb-6">
-          {/* Left sidebar - Code snippets (Desktop only) */}
-          <div
-            className={`hidden lg:block flex-shrink-0 transition-all duration-300 ease-in-out overflow-hidden ${
-              isSnippetsCollapsed ? "w-0" : "w-80"
-            }`}
-          >
-            <div className="h-[calc(100vh-280px)] min-h-[500px] w-80">
-              <CodeSnippets onSnippetSelect={handleSnippetSelect} />
-            </div>
-          </div>
+          <DesktopSnippetsSidebar
+            isCollapsed={isSnippetsCollapsed}
+            onToggleCollapse={() =>
+              setIsSnippetsCollapsed(!isSnippetsCollapsed)
+            }
+            onSnippetSelect={handleSnippetSelect}
+          />
 
-          {/* Expand button when collapsed */}
-          {isSnippetsCollapsed && (
-            <button
-              onClick={() => setIsSnippetsCollapsed(false)}
-              className="hidden lg:flex items-center justify-center w-10 h-20 bg-white border border-slate-200 rounded-lg hover:bg-purple-50 hover:border-purple-300 transition-all shadow-sm mr-4 animate-fade-in"
-              title="Mostrar ejemplos"
-            >
-              <svg
-                className="w-4 h-4 text-slate-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2.5}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          )}
-
-          {/* Main area - Editor and console */}
-          <div className="flex-1 space-y-4">
-            {/* Editor and output in two columns on desktop */}
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
-              {/* Code editor */}
-              <div className="h-[calc(100vh-280px)] min-h-[500px]">
-                <EnhancedCodeEditor
-                  code={code}
-                  onChange={setCode}
-                  onRun={runCode}
-                  isRunning={isRunning}
-                />
-              </div>
-
-              {/* Output console */}
-              <div className="h-[calc(100vh-280px)] min-h-[500px]">
-                <OutputConsole output={output} isRunning={isRunning} />
-              </div>
-            </div>
-
-            {/* Tips and shortcuts */}
-            <div className="bg-white border border-slate-200 rounded-lg p-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="hidden md:block">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <FiCommand className="w-4 h-4 text-purple-600" />
-                    <h4 className="font-semibold text-slate-900 text-xs uppercase tracking-wide">
-                      Atajos
-                    </h4>
-                  </div>
-                  <ul className="text-xs text-slate-600 space-y-1.5">
-                    <li className="flex items-center space-x-1">
-                      <kbd className="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded text-[10px] font-mono">
-                        Cmd
-                      </kbd>
-                      <span>+</span>
-                      <kbd className="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded text-[10px] font-mono">
-                        Enter
-                      </kbd>
-                      <span className="text-slate-400">Ejecutar</span>
-                    </li>
-                    <li className="flex items-center space-x-1">
-                      <kbd className="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded text-[10px] font-mono">
-                        Tab
-                      </kbd>
-                      <span className="text-slate-400">Indentar</span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center space-x-2 mb-3">
-                    <FiLayers className="w-4 h-4 text-purple-600" />
-                    <h4 className="font-semibold text-slate-900 text-xs uppercase tracking-wide">
-                      Funciones
-                    </h4>
-                  </div>
-                  <ul className="text-xs text-slate-600 space-y-1.5">
-                    <li>Compartir código vía URL</li>
-                    <li>Descargar como archivo .txt</li>
-                    <li>Historial de ejecuciones</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <div className="flex items-center space-x-2 mb-3">
-                    <FiBookOpen className="w-4 h-4 text-purple-600" />
-                    <h4 className="font-semibold text-slate-900 text-xs uppercase tracking-wide">
-                      Recursos
-                    </h4>
-                  </div>
-                  <ul className="text-xs space-y-1.5">
-                    <li>
-                      <a
-                        href="/documentacion"
-                        className="text-purple-600 hover:text-purple-700 flex items-center space-x-1"
-                      >
-                        <span>Documentación</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="/lecciones"
-                        className="text-purple-600 hover:text-purple-700 flex items-center space-x-1"
-                      >
-                        <span>Lecciones</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          <PlaygroundLayout
+            code={code}
+            output={output}
+            isRunning={isRunning}
+            onCodeChange={setCode}
+            onRun={runCode}
+          />
         </div>
       </main>
 
