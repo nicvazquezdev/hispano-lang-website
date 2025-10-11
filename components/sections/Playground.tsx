@@ -219,9 +219,6 @@ si edad >= 18 {
           <Link href="/playground">
             <Button size="lg">Ir al Playground Completo</Button>
           </Link>
-          <p className="mt-4 text-sm text-slate-600">
-            Editor avanzado con más ejemplos y funcionalidades
-          </p>
         </div>
       </div>
     </Section>
