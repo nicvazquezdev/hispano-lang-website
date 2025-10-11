@@ -13,7 +13,22 @@ export default function CTA() {
       description="Comienza tu viaje de aprendizaje con nuestras lecciones interactivas y documentación completa."
     >
       <div className="text-center">
-        <div className="mb-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <InfoBlock
+            emoji="🎓"
+            title="Lecciones Interactivas"
+            description="15 lecciones completas desde principiante hasta avanzado. Aprende con ejemplos prácticos y ejecutables."
+            className=""
+          />
+          <InfoBlock
+            emoji="📚"
+            title="Documentación Completa"
+            description="Referencia completa de sintaxis, comandos y características del lenguaje. Todo lo que necesitas en un solo lugar."
+            className=""
+          />
+        </div>
+
+        <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/lecciones">
             <Button size="lg" className="rounded-full shadow-lg">
               Empieza ahora
@@ -28,21 +43,6 @@ export default function CTA() {
               Ver documentación
             </Button>
           </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <InfoBlock
-            emoji="🎓"
-            title="Lecciones Interactivas"
-            description="15 lecciones completas desde principiante hasta avanzado. Aprende con ejemplos prácticos y ejecutables."
-            className=""
-          />
-          <InfoBlock
-            emoji="📚"
-            title="Documentación Completa"
-            description="Referencia completa de sintaxis, comandos y características del lenguaje. Todo lo que necesitas en un solo lugar."
-            className=""
-          />
         </div>
       </div>
     </Section>
