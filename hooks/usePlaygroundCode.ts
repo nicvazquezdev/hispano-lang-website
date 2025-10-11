@@ -4,9 +4,7 @@ const DEFAULT_CODE = `// Bienvenido al Playground de HispanoLang
 // Escribe tu código en español y ejecútalo aquí
 
 variable mensaje = "¡Hola desde HispanoLang!"
-mostrar mensaje
-
-// Prueba estos ejemplos o carga uno de la biblioteca →`;
+mostrar mensaje`;
 
 export function usePlaygroundCode() {
   const [code, setCode] = useState(DEFAULT_CODE);
