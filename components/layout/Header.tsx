@@ -42,6 +42,14 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Helper function to check if a menu item is active
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname?.startsWith(href);
+  };
+
   return (
     <header
       className={`fixed top-2 sm:top-5 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-3/4 px-3 sm:px-4 z-50 bg-transparent backdrop-blur-lg border border-transparent rounded-xl sm:rounded-2xl transition-shadow duration-100 ${
@@ -71,7 +79,7 @@ export default function Header() {
                   target={item.targetBlank ? "_blank" : "_self"}
                   rel={item.targetBlank ? "noopener noreferrer" : undefined}
                   className={`font-medium transition-colors ${
-                    pathname === item.href
+                    isActive(item.href)
                       ? "text-purple-600"
                       : "text-slate-700 hover:text-purple-600"
                   }`}
@@ -115,10 +123,8 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-white/95 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl overflow-hidden transition-all duration-300 origin-top ${
-          isMenuOpen
-            ? "opacity-100 scale-y-100 max-h-96"
-            : "opacity-0 scale-y-95 max-h-0 border-transparent"
+        className={`md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-white/95 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl transition-opacity duration-300 ${
+          isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
         <nav className="flex flex-col">
@@ -130,13 +136,13 @@ export default function Header() {
               rel={item.targetBlank ? "noopener noreferrer" : undefined}
               onClick={() => setIsMenuOpen(false)}
               className={`px-6 py-4 font-medium transition-all border-b border-slate-100 ${
-                pathname === item.href
+                isActive(item.href)
                   ? "bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-l-4 border-purple-500"
                   : "text-slate-700 hover:bg-slate-50"
               }`}
             >
               <div className="flex items-center gap-3">
-                {pathname === item.href && (
+                {isActive(item.href) && (
                   <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
                 )}
                 {item.icon}
