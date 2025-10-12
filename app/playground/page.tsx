@@ -28,7 +28,7 @@ export default function PlaygroundPage() {
     <div className="min-h-screen bg-slate-50 py-20">
       <Header />
 
-      <main className="max-w-[1800px] mx-auto px-4 sm:px-6 py-6 pt-20">
+      <main className="max-w-[1800px] mx-auto px-4 sm:px-6 py-6 md:pt-20">
         <PlaygroundHeader
           onShare={handleShareCode}
           onDownload={handleDownloadCode}
