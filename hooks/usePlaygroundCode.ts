@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 const DEFAULT_CODE = `// Bienvenido al Playground de HispanoLang
 // Escribe tu código en español y ejecútalo aquí
@@ -66,7 +67,7 @@ export function usePlaygroundCode() {
     const encoded = btoa(encodeURIComponent(code));
     const url = `${window.location.origin}/playground?code=${encoded}`;
     navigator.clipboard.writeText(url);
-    alert("¡Enlace copiado al portapapeles!");
+    toast.success("¡Enlace copiado al portapapeles!");
   };
 
   const handleDownloadCode = () => {
