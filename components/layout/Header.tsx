@@ -4,6 +4,31 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import GitHubIcon from "@/components/ui/GitHubIcon";
 
+const MENU_ITEMS = [
+  {
+    label: "Inicio",
+    href: "/",
+  },
+  {
+    label: "Playground",
+    href: "/playground",
+  },
+  {
+    label: "Lecciones",
+    href: "/lecciones",
+  },
+  {
+    label: "Documentación",
+    href: "/documentacion",
+  },
+  {
+    label: "GitHub",
+    icon: <GitHubIcon />,
+    targetBlank: true,
+    href: "https://github.com/nicvazquezdev/hispano-lang",
+  },
+];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,55 +64,24 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
-              <Link
-                href="/"
-                className={`font-medium transition-colors ${
-                  pathname === "/"
-                    ? "text-purple-600"
-                    : "text-slate-700 hover:text-purple-600"
-                }`}
-              >
-                Inicio
-              </Link>
-              <Link
-                href="/playground"
-                className={`font-medium transition-colors ${
-                  pathname?.startsWith("/playground")
-                    ? "text-purple-600"
-                    : "text-slate-700 hover:text-purple-600"
-                }`}
-              >
-                Playground
-              </Link>
-              <Link
-                href="/lecciones"
-                className={`font-medium transition-colors ${
-                  pathname?.startsWith("/lecciones")
-                    ? "text-purple-600"
-                    : "text-slate-700 hover:text-purple-600"
-                }`}
-              >
-                Lecciones
-              </Link>
-              <Link
-                href="/documentacion"
-                className={`font-medium transition-colors ${
-                  pathname?.startsWith("/documentacion")
-                    ? "text-purple-600"
-                    : "text-slate-700 hover:text-purple-600"
-                }`}
-              >
-                Documentación
-              </Link>
-              <a
-                href="https://github.com/nicvazquezdev/hispano-lang"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-slate-700 hover:text-purple-600 font-medium transition-colors flex items-center gap-2"
-              >
-                <GitHubIcon />
-                GitHub
-              </a>
+              {MENU_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  target={item.targetBlank ? "_blank" : "_self"}
+                  rel={item.targetBlank ? "noopener noreferrer" : undefined}
+                  className={`font-medium transition-colors ${
+                    pathname === item.href
+                      ? "text-purple-600"
+                      : "text-slate-700 hover:text-purple-600"
+                  }`}
+                >
+                  <div className="flex items-center gap-2">
+                    {item.icon}
+                    {item.label}
+                  </div>
+                </Link>
+              ))}
             </div>
 
             {/* Mobile Hamburger Button */}
@@ -128,64 +122,28 @@ export default function Header() {
         }`}
       >
         <nav className="flex flex-col">
-          <Link
-            href="/"
-            onClick={() => setIsMenuOpen(false)}
-            className={`px-6 py-4 font-medium transition-all border-b border-slate-100 ${
-              pathname === "/"
-                ? "bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-l-4 border-purple-500"
-                : "text-slate-700 hover:bg-slate-50"
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              {pathname === "/" && (
-                <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-              )}
-              <span>Inicio</span>
-            </div>
-          </Link>
-          <Link
-            href="/lecciones"
-            onClick={() => setIsMenuOpen(false)}
-            className={`px-6 py-4 font-medium transition-all border-b border-slate-100 ${
-              pathname?.startsWith("/lecciones")
-                ? "bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-l-4 border-purple-500"
-                : "text-slate-700 hover:bg-slate-50"
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              {pathname?.startsWith("/lecciones") && (
-                <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-              )}
-              <span>Lecciones</span>
-            </div>
-          </Link>
-          <Link
-            href="/documentacion"
-            onClick={() => setIsMenuOpen(false)}
-            className={`px-6 py-4 font-medium transition-all border-b border-slate-100 ${
-              pathname?.startsWith("/documentacion")
-                ? "bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-l-4 border-purple-500"
-                : "text-slate-700 hover:bg-slate-50"
-            }`}
-          >
-            <div className="flex items-center gap-3">
-              {pathname?.startsWith("/documentacion") && (
-                <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
-              )}
-              <span>Documentación</span>
-            </div>
-          </Link>
-          <a
-            href="https://github.com/nicvazquezdev/hispano-lang"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setIsMenuOpen(false)}
-            className="px-6 py-4 text-slate-700 hover:bg-slate-50 font-medium transition-colors flex items-center gap-2"
-          >
-            <GitHubIcon />
-            GitHub
-          </a>
+          {MENU_ITEMS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              target={item.targetBlank ? "_blank" : "_self"}
+              rel={item.targetBlank ? "noopener noreferrer" : undefined}
+              onClick={() => setIsMenuOpen(false)}
+              className={`px-6 py-4 font-medium transition-all border-b border-slate-100 ${
+                pathname === item.href
+                  ? "bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-l-4 border-purple-500"
+                  : "text-slate-700 hover:bg-slate-50"
+              }`}
+            >
+              <div className="flex items-center gap-3">
+                {pathname === item.href && (
+                  <span className="w-2 h-2 rounded-full bg-purple-500 animate-pulse" />
+                )}
+                {item.icon}
+                {item.label}
+              </div>
+            </Link>
+          ))}
         </nav>
       </div>
     </header>
