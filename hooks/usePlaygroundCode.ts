@@ -71,13 +71,19 @@ export function usePlaygroundCode() {
   };
 
   const handleDownloadCode = () => {
-    const blob = new Blob([code], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "codigo.txt";
-    a.click();
-    URL.revokeObjectURL(url);
+    try {
+      const blob = new Blob([code], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "codigo.txt";
+      a.click();
+      URL.revokeObjectURL(url);
+      toast.success("¡Código descargado!");
+    } catch (error) {
+      toast.error("Error al descargar el código");
+      console.error("Error al descargar el código:", error);
+    }
   };
 
   return {
