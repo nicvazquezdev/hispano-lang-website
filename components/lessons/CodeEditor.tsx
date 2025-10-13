@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
+import EnhancedCodeEditor from "@/components/playground/EnhancedCodeEditor";
+import OutputConsole from "@/components/playground/OutputConsole";
 
 interface CodeEditorProps {
   initialCode: string;
@@ -65,48 +65,20 @@ export default function CodeEditor({
 
   return (
     <div className="space-y-4">
-      {/* Code Editor */}
-      <Card
-        variant="glass"
-        className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50 overflow-hidden"
-      >
-        <div className="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-700">
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-          </div>
-          <Button onClick={runCode} size="sm" disabled={isRunning}>
-            {isRunning ? "⏳ Ejecutando..." : "▶ Ejecutar"}
-          </Button>
-        </div>
+      {/* Code editor */}
+      <div className="h-[500px]">
+        <EnhancedCodeEditor
+          code={code}
+          onChange={handleCodeChange}
+          onRun={runCode}
+          isRunning={isRunning}
+        />
+      </div>
 
-        <div className="p-4">
-          <textarea
-            value={code}
-            onChange={(e) => handleCodeChange(e.target.value)}
-            className="w-full h-64 bg-transparent text-slate-100 font-mono text-sm resize-none outline-none placeholder-slate-500"
-            placeholder="Escribe tu código aquí..."
-            spellCheck={false}
-          />
-        </div>
-      </Card>
-
-      {/* Output */}
-      <Card
-        variant="glass"
-        className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50 overflow-hidden"
-      >
-        <div className="bg-slate-900 px-4 py-3 border-b border-slate-700">
-          <span className="text-slate-100 font-semibold">Resultado</span>
-        </div>
-
-        <div className="p-4 h-32">
-          <pre className="text-slate-100 font-mono text-sm whitespace-pre-wrap">
-            {output || "Haz clic en 'Ejecutar' para ver el resultado"}
-          </pre>
-        </div>
-      </Card>
+      {/* Output console */}
+      <div className="h-[300px]">
+        <OutputConsole output={output} isRunning={isRunning} />
+      </div>
     </div>
   );
 }
