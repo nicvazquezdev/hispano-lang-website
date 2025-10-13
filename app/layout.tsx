@@ -15,10 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://hispanolang.com"),
-  title: {
-    default: "HispanoLang",
-    template: "%s | HispanoLang",
-  },
+  title: "HispanoLang",
   description:
     "HispanoLang es un lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Sintaxis clara, potente y fácil de aprender. Aprende programación en tu idioma.",
   keywords: [
