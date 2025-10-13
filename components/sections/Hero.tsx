@@ -76,7 +76,7 @@ export default function Hero() {
                     <div className="text-green-400">&quot;! 👋&quot;</div>
                   </div>
 
-                  <div className="text-green-400">
+                  <div className="text-green-600">
                     {"// Calculadora simple"}
                   </div>
                   <div className="flex gap-2">
