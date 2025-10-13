@@ -103,10 +103,10 @@ export default function EnhancedCodeEditor({
         {/* Line numbers */}
         <div
           ref={lineNumbersRef}
-          className="bg-slate-50/50 px-3 py-3 text-right text-slate-400 font-mono text-xs select-none border-r border-slate-200 overflow-y-hidden flex-shrink-0"
+          className="bg-slate-50/50 py-3 text-right text-slate-400 font-mono text-xs select-none border-r border-slate-200 overflow-y-hidden flex-shrink-0 min-w-[2rem] flex flex-col items-center"
         >
           {lineNumbers.map((num) => (
-            <div
+            <span
               key={num}
               className={`leading-6 ${
                 isFocused && num === currentLine
@@ -115,7 +115,7 @@ export default function EnhancedCodeEditor({
               }`}
             >
               {num}
-            </div>
+            </span>
           ))}
         </div>
 
