@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import GitHubIcon from "@/components/ui/GitHubIcon";
+import Image from "next/image";
 
 const MENU_ITEMS = [
   {
@@ -84,13 +85,15 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex justify-between items-center h-12 sm:h-16">
             <div className="flex items-center">
-              <Link
-                href="/"
-                className="text-lg sm:text-xl lg:text-2xl font-bold text-white"
-              >
-                <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                  HispanoLang
-                </span>
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/hl-main-logo.png"
+                  alt="HispanoLang Logo"
+                  width={200}
+                  height={40}
+                  className="h-8 sm:h-10 w-auto"
+                  priority
+                />
               </Link>
             </div>
 
