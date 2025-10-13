@@ -74,12 +74,14 @@ mostrar "Hola " + lenguaje + "! 👋"`);
         ref={playgroundRef}
         className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
       >
-        <EnhancedCodeEditor
-          code={code}
-          onChange={setCode}
-          onRun={runCode}
-          isRunning={isRunning}
-        />
+        <div className="h-[400px]">
+          <EnhancedCodeEditor
+            code={code}
+            onChange={setCode}
+            onRun={runCode}
+            isRunning={isRunning}
+          />
+        </div>
 
         <div className="min-h-[400px]">
           <OutputConsole output={output} isRunning={isRunning} />

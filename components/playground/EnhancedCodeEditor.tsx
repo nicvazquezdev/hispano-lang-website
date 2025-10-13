@@ -17,12 +17,19 @@ export default function EnhancedCodeEditor({
   isRunning,
 }: EnhancedCodeEditorProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const lineNumbersRef = useRef<HTMLDivElement>(null);
   const [lineNumbers, setLineNumbers] = useState<number[]>([1]);
 
   useEffect(() => {
     const lines = code.split("\n").length;
     setLineNumbers(Array.from({ length: lines }, (_, i) => i + 1));
   }, [code]);
+
+  const handleScroll = () => {
+    if (textareaRef.current && lineNumbersRef.current) {
+      lineNumbersRef.current.scrollTop = textareaRef.current.scrollTop;
+    }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     // Ctrl/Cmd + Enter to run
@@ -52,9 +59,9 @@ export default function EnhancedCodeEditor({
   };
 
   return (
-    <div className="bg-white border border-slate-200 rounded-lg overflow-hidden h-full flex flex-col">
+    <div className="bg-white border border-slate-200 rounded-lg overflow-hidden flex flex-col h-full">
       {/* Header */}
-      <div className="bg-slate-50 px-4 py-2.5 flex items-center justify-between border-b border-slate-200">
+      <div className="bg-slate-50 px-4 py-2.5 flex items-center justify-between border-b border-slate-200 flex-shrink-0">
         <div className="flex items-center space-x-2">
           <span className="text-slate-900 font-semibold text-sm">Editor</span>
           <span className="text-xs text-slate-400">
@@ -81,9 +88,12 @@ export default function EnhancedCodeEditor({
       </div>
 
       {/* Editor */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden min-h-0">
         {/* Line numbers */}
-        <div className="bg-slate-50/50 px-3 py-3 text-right text-slate-400 font-mono text-xs select-none border-r border-slate-200 overflow-y-auto">
+        <div
+          ref={lineNumbersRef}
+          className="bg-slate-50/50 px-3 py-3 text-right text-slate-400 font-mono text-xs select-none border-r border-slate-200 overflow-y-hidden flex-shrink-0"
+        >
           {lineNumbers.map((num) => (
             <div key={num} className="leading-6">
               {num}
@@ -92,13 +102,14 @@ export default function EnhancedCodeEditor({
         </div>
 
         {/* Code area */}
-        <div className="flex-1 p-3 overflow-y-auto">
+        <div className="flex-1 overflow-hidden relative">
           <textarea
             ref={textareaRef}
             value={code}
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="w-full h-full bg-transparent text-slate-900 font-mono text-sm resize-none outline-none placeholder-slate-400 leading-6"
+            onScroll={handleScroll}
+            className="absolute inset-0 w-full h-full p-3 bg-transparent text-slate-900 font-mono text-sm resize-none outline-none placeholder-slate-400 leading-6 overflow-y-auto"
             placeholder="Escribe tu código aquí..."
             spellCheck={false}
           />
@@ -106,7 +117,7 @@ export default function EnhancedCodeEditor({
       </div>
 
       {/* Footer */}
-      <div className="bg-slate-50 px-4 py-2 border-t border-slate-200 text-xs text-slate-500 flex items-center justify-between">
+      <div className="bg-slate-50 px-4 py-2 border-t border-slate-200 text-xs text-slate-500 flex items-center justify-between flex-shrink-0">
         <span className="hidden md:block">Cmd/Ctrl + Enter para ejecutar</span>
         <span className="text-slate-400">{code.length} caracteres</span>
       </div>
