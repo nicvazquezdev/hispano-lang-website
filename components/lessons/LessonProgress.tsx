@@ -10,18 +10,18 @@ export default function LessonProgress({
   progress,
 }: LessonProgressProps) {
   return (
-    <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+    <div className="bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-slate-800">
+        <h3 className="text-lg font-semibold text-slate-100">
           Progreso de la Lección
         </h3>
-        <span className="text-slate-600 font-medium">
+        <span className="text-slate-300 font-medium">
           {currentStep} de {totalSteps} pasos
         </span>
       </div>
 
       {/* Progress Bar */}
-      <div className="w-full bg-slate-200 rounded-full h-3 mb-4">
+      <div className="w-full bg-slate-700 rounded-full h-3 mb-4">
         <div
           className="bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
@@ -38,7 +38,7 @@ export default function LessonProgress({
                 ? "bg-green-500 text-white"
                 : index === currentStep - 1
                 ? "bg-blue-500 text-white"
-                : "bg-slate-200 text-slate-500"
+                : "bg-slate-700 text-slate-400"
             }`}
           >
             {index < currentStep ? "✓" : index + 1}

@@ -45,13 +45,11 @@ export function usePlaygroundCode() {
         const output = result.output.join("\n");
         setOutput(output || "✓ Código ejecutado exitosamente");
       } else {
-        setOutput(`❌ Error: ${result.error}`);
+        setOutput(`❌ ${result.error}`);
       }
     } catch (error) {
       setOutput(
-        `❌ Error: ${
-          error instanceof Error ? error.message : "Error desconocido"
-        }`,
+        `❌ ${error instanceof Error ? error.message : "Error desconocido"}`,
       );
     } finally {
       setIsRunning(false);

@@ -90,7 +90,7 @@ mostrar "Hola " + lenguaje + "! 👋"`);
 
       {/* Ejemplos */}
       <div className="mt-8 sm:mt-12 lg:mt-16">
-        <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-6 sm:mb-8 text-center">
+        <h3 className="text-xl sm:text-2xl font-bold text-slate-100 mb-6 sm:mb-8 text-center">
           Ejemplos para probar
         </h3>
 
@@ -119,10 +119,10 @@ mostrar "Año de nacimiento: " + anioNacimiento`)
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">👤</div>
-            <div className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">
+            <div className="font-bold text-slate-100 mb-1 sm:mb-2 text-sm sm:text-base">
               Perfil Personal
             </div>
-            <div className="text-slate-600 text-xs sm:text-sm">
+            <div className="text-slate-300 text-xs sm:text-sm">
               Variables y cálculos
             </div>
           </Card>
@@ -145,10 +145,10 @@ mostrar "División: " + (a / b)`)
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🧮</div>
-            <div className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">
+            <div className="font-bold text-slate-100 mb-1 sm:mb-2 text-sm sm:text-base">
               Calculadora
             </div>
-            <div className="text-slate-600 text-xs sm:text-sm">
+            <div className="text-slate-300 text-xs sm:text-sm">
               Operaciones matemáticas
             </div>
           </Card>
@@ -175,10 +175,10 @@ si edad >= 18 {
             }
           >
             <div className="text-2xl sm:text-3xl mb-2 sm:mb-3">🤔</div>
-            <div className="font-bold text-slate-800 mb-1 sm:mb-2 text-sm sm:text-base">
+            <div className="font-bold text-slate-100 mb-1 sm:mb-2 text-sm sm:text-base">
               Condicionales
             </div>
-            <div className="text-slate-600 text-xs sm:text-sm">
+            <div className="text-slate-300 text-xs sm:text-sm">
               Toma decisiones
             </div>
           </Card>

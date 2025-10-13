@@ -70,17 +70,17 @@ export default function LessonPage({
     currentStep === 0 ? 1 : ((currentStep + 1) / steps.length) * 100;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden pt-10">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
       {/* Fondo animado */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-1/2 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-3/4 right-1/4 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-gradient-to-r from-pink-400/30 to-orange-400/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-0 left-1/2 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/4 w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 bg-gradient-to-r from-pink-500/20 to-orange-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
       </div>
 
       <Header />
 
-      <main className="relative z-10">
+      <main className="relative z-10 pt-20">
         <Section
           background="light"
           badge={badge}
@@ -99,34 +99,37 @@ export default function LessonPage({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
               {/* Lesson Content */}
               <div>
-                <Card variant="glass" className="bg-white/80 backdrop-blur-sm">
+                <Card
+                  variant="glass"
+                  className="bg-slate-800/80 backdrop-blur-sm"
+                >
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-800 mb-4">
+                    <h3 className="text-2xl font-bold text-slate-100 mb-4">
                       {steps[currentStep].title}
                     </h3>
 
                     <FormattedText
                       text={steps[currentStep].content}
-                      className="text-slate-600 mb-6 leading-relaxed"
+                      className="text-slate-300 mb-6 leading-relaxed"
                     />
 
                     <div className="mb-10">
-                      <h4 className="font-semibold text-slate-700 mb-2">
+                      <h4 className="font-semibold text-slate-200 mb-2">
                         💡 Explicación:
                       </h4>
                       <FormattedText
                         text={steps[currentStep].explanation}
-                        className="text-slate-600"
+                        className="text-slate-300"
                       />
                     </div>
 
                     {/* Summary for last step */}
                     {steps[currentStep].summary && (
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
-                        <h4 className="font-semibold text-green-800 mb-2">
+                      <div className="bg-green-900/30 border border-green-700/50 rounded-lg p-4 mb-6">
+                        <h4 className="font-semibold text-green-300 mb-2">
                           {steps[currentStep].summary.split("\n")[0]}
                         </h4>
-                        <div className="text-green-700 text-sm">
+                        <div className="text-green-400 text-sm">
                           {steps[currentStep].summary
                             .split("\n")
                             .slice(1)
@@ -141,8 +144,8 @@ export default function LessonPage({
 
                     {/* Mini Challenge */}
                     {steps[currentStep].challenge && (
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-10">
-                        <h4 className="font-semibold text-blue-800 mb-2">
+                      <div className="bg-blue-900/30 border border-blue-700/50 rounded-lg p-4 mb-10">
+                        <h4 className="font-semibold text-blue-300 mb-2">
                           <b>🧩 Desafío</b>: {steps[currentStep].challenge}
                         </h4>
                       </div>
@@ -189,7 +192,7 @@ export default function LessonPage({
 
             {/* Lesson Navigation - Always visible */}
             {(prevLessonUrl || nextLessonUrl) && (
-              <div className="mt-16 pt-8 border-t border-slate-200">
+              <div className="mt-16 pt-8 border-t border-slate-700">
                 <div className="flex flex-col gap-4 md:flex-row md:justify-between md:items-center">
                   {prevLessonUrl ? (
                     <Button

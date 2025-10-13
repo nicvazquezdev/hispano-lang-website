@@ -23,15 +23,15 @@ export default function Section({
   description,
 }: SectionProps) {
   const backgroundClasses = {
-    light: "",
+    light: "bg-slate-900/50",
     dark: "bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900",
   };
 
   const textClasses = {
     light: {
-      badge: "text-slate-700",
-      title: "text-slate-800",
-      description: "text-slate-600",
+      badge: "text-slate-200",
+      title: "text-slate-100",
+      description: "text-slate-300",
     },
     dark: {
       badge: "text-white/90",
@@ -41,7 +41,7 @@ export default function Section({
   };
 
   const badgeClasses = {
-    light: "bg-white/20 backdrop-blur-sm border border-white/30",
+    light: "bg-slate-800/50 backdrop-blur-sm border border-slate-600/30",
     dark: "bg-white/10 backdrop-blur-sm border border-white/20",
   };
 

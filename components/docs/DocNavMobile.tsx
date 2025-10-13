@@ -70,15 +70,15 @@ export default function DocNavMobile({
 
           {/* Modal Content */}
           <div
-            className="relative w-full max-w-md bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl animate-in zoom-in-95 fade-in duration-200"
+            className="relative w-full max-w-md bg-slate-900/95 backdrop-blur-sm rounded-2xl shadow-2xl animate-in zoom-in-95 fade-in duration-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-slate-200">
-              <h2 className="text-xl font-bold text-slate-800">Contenido</h2>
+            <div className="flex items-center justify-between p-6 border-b border-slate-700">
+              <h2 className="text-xl font-bold text-slate-100">Contenido</h2>
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="text-slate-400 hover:text-slate-600 transition-colors"
+                className="text-slate-400 hover:text-slate-200 transition-colors"
                 aria-label="Cerrar menú"
               >
                 <svg
@@ -106,8 +106,8 @@ export default function DocNavMobile({
                       onClick={() => handleSectionClick(section.id)}
                       className={`w-full text-left px-4 py-3 rounded-xl transition-all text-lg font-medium ${
                         activeSection === section.id
-                          ? "bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-l-4 border-purple-500"
-                          : "text-slate-700 hover:bg-slate-50"
+                          ? "bg-gradient-to-r from-purple-900/50 to-pink-900/50 text-purple-300 border-l-4 border-purple-500"
+                          : "text-slate-300 hover:bg-slate-800"
                       }`}
                     >
                       <div className="flex items-center gap-3">

@@ -21,7 +21,7 @@ function formatTextWithMarkup(text: string) {
               return (
                 <code
                   key={codeIndex}
-                  className="bg-slate-100 text-slate-800 px-1 py-0.5 rounded text-sm font-mono"
+                  className="bg-slate-700 text-slate-100 px-1 py-0.5 rounded text-sm font-mono"
                 >
                   {codePart.slice(1, -1)}
                 </code>
@@ -40,7 +40,7 @@ function formatTextWithMarkup(text: string) {
         return (
           <code
             key={`${boldIndex}-${codeIndex}`}
-            className="bg-slate-100 text-slate-800 px-1 py-0.5 rounded text-sm font-mono"
+            className="bg-slate-700 text-slate-100 px-1 py-0.5 rounded text-sm font-mono"
           >
             {codePart.slice(1, -1)}
           </code>
@@ -62,7 +62,7 @@ export default function FormattedText({
         if (line.trim().startsWith("•")) {
           return (
             <div key={index} className="flex items-center mb-2">
-              <span className="text-slate-500 mr-2 mt-1">•</span>
+              <span className="text-slate-400 mr-2 mt-1">•</span>
               <span>
                 {formatTextWithMarkup(line.trim().substring(1).trim())}
               </span>

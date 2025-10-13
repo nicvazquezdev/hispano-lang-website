@@ -25,9 +25,9 @@ export default function Button({
     primary:
       "bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-xl shadow-2xl transform transition-all duration-300",
     secondary:
-      "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-gray-500",
+      "bg-slate-700 text-slate-200 hover:bg-slate-600 focus:ring-slate-500",
     outline:
-      "border-2 border-slate-300 text-slate-700 bg-white hover:bg-slate-50 rounded-xl font-semibold",
+      "border-2 border-slate-600 text-slate-200 bg-slate-800/50 hover:bg-slate-700/50 rounded-xl font-semibold",
   };
 
   const sizeClasses = {

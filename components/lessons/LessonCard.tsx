@@ -17,9 +17,9 @@ interface LessonCardProps {
 
 export default function LessonCard({ lesson }: LessonCardProps) {
   const difficultyColors = {
-    Principiante: "bg-green-100 text-green-800",
-    Intermedio: "bg-yellow-100 text-yellow-800",
-    Avanzado: "bg-red-100 text-red-800",
+    Principiante: "bg-green-900/40 border border-green-700/50 text-green-300",
+    Intermedio: "bg-yellow-900/40 border border-yellow-700/50 text-yellow-300",
+    Avanzado: "bg-red-900/40 border border-red-700/50 text-red-300",
   };
 
   return (
@@ -27,14 +27,14 @@ export default function LessonCard({ lesson }: LessonCardProps) {
       <Card variant="interactive" className="h-full group cursor-pointer">
         <div className="flex items-start justify-between mb-4">
           <div className="text-4xl">{lesson.emoji}</div>
-          {lesson.completed && <div className="text-green-500 text-xl">✓</div>}
+          {lesson.completed && <div className="text-green-400 text-xl">✓</div>}
         </div>
 
-        <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors">
+        <h3 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-purple-400 transition-colors">
           {lesson.title}
         </h3>
 
-        <p className="text-slate-600 mb-4 leading-relaxed">
+        <p className="text-slate-300 mb-4 leading-relaxed">
           {lesson.description}
         </p>
 
@@ -48,7 +48,7 @@ export default function LessonCard({ lesson }: LessonCardProps) {
           >
             {lesson.difficulty}
           </span>
-          <span className="text-slate-500 text-sm">{lesson.duration}</span>
+          <span className="text-slate-400 text-sm">{lesson.duration}</span>
         </div>
       </Card>
     </Link>

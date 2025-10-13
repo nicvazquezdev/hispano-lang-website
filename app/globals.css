@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --border: #e5e7eb;
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --border: #334155;
 }
 
 @theme inline {
@@ -15,10 +15,11 @@
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(to bottom right, #020617, #0f172a, #020617);
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 /* Smooth scrolling */
@@ -32,16 +33,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #1e293b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #475569;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: #64748b;
 }
 
 /* Focus styles */
@@ -51,6 +52,6 @@ html {
 
 /* Selection styles */
 ::selection {
-  background: #3b82f6;
+  background: #6366f1;
   color: white;
 }

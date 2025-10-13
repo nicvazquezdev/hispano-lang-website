@@ -52,8 +52,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-2 sm:top-5 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-3/4 px-3 sm:px-4 z-50 bg-transparent backdrop-blur-lg border border-transparent rounded-xl sm:rounded-2xl transition-shadow duration-100 ${
-        isScrolled ? "border-white/10 shadow-[0_3px_20px_rgba(0,0,0,0.1)]" : ""
+      className={`fixed top-2 sm:top-5 left-1/2 transform -translate-x-1/2 w-[95%] sm:w-[90%] md:w-3/4 px-3 sm:px-4 z-50 bg-slate-900/50 backdrop-blur-lg rounded-xl sm:rounded-2xl transition-shadow duration-100 ${
+        isScrolled
+          ? "border border-slate-700/50 shadow-[0_3px_20px_rgba(0,0,0,0.5)]"
+          : ""
       }`}
     >
       <nav>
@@ -80,8 +82,8 @@ export default function Header() {
                   rel={item.targetBlank ? "noopener noreferrer" : undefined}
                   className={`font-medium transition-colors ${
                     isActive(item.href)
-                      ? "text-purple-600"
-                      : "text-slate-700 hover:text-purple-600"
+                      ? "text-purple-400"
+                      : "text-slate-300 hover:text-purple-400"
                   }`}
                 >
                   <div className="flex items-center gap-2">
@@ -95,23 +97,23 @@ export default function Header() {
             {/* Mobile Hamburger Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden text-slate-700 p-1 relative w-6 h-6"
+              className="md:hidden text-slate-300 p-1 relative w-6 h-6"
               aria-label="Toggle menu"
             >
               <span className="sr-only">Abrir menú</span>
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                 <span
-                  className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
+                  className={`block w-5 h-0.5 bg-slate-300 transition-all duration-300 ${
                     isMenuOpen ? "rotate-45 translate-y-0" : "-translate-y-1"
                   }`}
                 ></span>
                 <span
-                  className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
+                  className={`block w-5 h-0.5 bg-slate-300 transition-all duration-300 ${
                     isMenuOpen ? "opacity-0" : "opacity-100"
                   }`}
                 ></span>
                 <span
-                  className={`block w-5 h-0.5 bg-slate-700 transition-all duration-300 ${
+                  className={`block w-5 h-0.5 bg-slate-300 transition-all duration-300 ${
                     isMenuOpen ? "-rotate-45 -translate-y-0.5" : "translate-y-1"
                   }`}
                 ></span>
@@ -123,7 +125,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-white/95 backdrop-blur-lg border border-white/20 rounded-xl shadow-xl transition-opacity duration-300 ${
+        className={`md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-slate-900/95 backdrop-blur-lg border border-slate-700/50 rounded-xl shadow-xl transition-opacity duration-300 ${
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
@@ -135,10 +137,10 @@ export default function Header() {
               target={item.targetBlank ? "_blank" : "_self"}
               rel={item.targetBlank ? "noopener noreferrer" : undefined}
               onClick={() => setIsMenuOpen(false)}
-              className={`px-6 py-4 font-medium transition-all border-b border-slate-100 ${
+              className={`px-6 py-4 font-medium transition-all border-b border-slate-800 ${
                 isActive(item.href)
-                  ? "bg-gradient-to-r from-purple-50 to-pink-50 text-purple-700 border-l-4 border-purple-500"
-                  : "text-slate-700 hover:bg-slate-50"
+                  ? "bg-gradient-to-r from-purple-900/50 to-pink-900/50 text-purple-300 border-l-4 border-purple-500"
+                  : "text-slate-300 hover:bg-slate-800/50"
               }`}
             >
               <div className="flex items-center gap-3">

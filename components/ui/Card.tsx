@@ -17,12 +17,14 @@ export default function Card({
   const baseClasses = "rounded-2xl transition-all duration-200";
 
   const variantClasses = {
-    default: "bg-white shadow-sm",
-    outlined: "bg-white border border-gray-200",
-    elevated: "bg-white shadow-lg hover:shadow-xl",
-    glass: "bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg",
+    default: "bg-slate-800/50 shadow-sm border border-slate-700/50",
+    outlined: "bg-slate-800/50 border border-slate-700",
+    elevated:
+      "bg-slate-800/50 shadow-lg hover:shadow-xl border border-slate-700/50",
+    glass:
+      "bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 shadow-lg",
     interactive:
-      "bg-white/80 backdrop-blur-sm border border-white/20 shadow-lg hover:scale-105 transition-all duration-300 group",
+      "bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 shadow-lg hover:scale-105 transition-all duration-300 group",
   };
 
   const paddingClasses = {

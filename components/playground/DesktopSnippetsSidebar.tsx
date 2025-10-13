@@ -32,11 +32,11 @@ export default function DesktopSnippetsSidebar({
       {isCollapsed && (
         <button
           onClick={onToggleCollapse}
-          className="hidden lg:flex items-center justify-center w-10 h-20 bg-white border border-slate-200 rounded-lg hover:bg-purple-50 hover:border-purple-300 transition-all shadow-sm mr-4"
+          className="hidden lg:flex items-center justify-center w-10 h-20 bg-slate-800 border border-slate-700 rounded-lg hover:bg-slate-700 hover:border-purple-500 transition-all shadow-sm mr-4"
           title="Mostrar ejemplos"
         >
           <svg
-            className="w-4 h-4 text-slate-500"
+            className="w-4 h-4 text-slate-300"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

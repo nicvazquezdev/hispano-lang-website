@@ -68,9 +68,9 @@ export default function CodeEditor({
       {/* Code Editor */}
       <Card
         variant="glass"
-        className="bg-white/80 backdrop-blur-sm border-white/20 overflow-hidden"
+        className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50 overflow-hidden"
       >
-        <div className="bg-slate-100 px-4 py-3 flex items-center justify-between border-b border-slate-200">
+        <div className="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-700">
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-red-500 rounded-full"></div>
             <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -85,7 +85,7 @@ export default function CodeEditor({
           <textarea
             value={code}
             onChange={(e) => handleCodeChange(e.target.value)}
-            className="w-full h-64 bg-transparent text-slate-800 font-mono text-sm resize-none outline-none placeholder-slate-400"
+            className="w-full h-64 bg-transparent text-slate-100 font-mono text-sm resize-none outline-none placeholder-slate-500"
             placeholder="Escribe tu código aquí..."
             spellCheck={false}
           />
@@ -95,14 +95,14 @@ export default function CodeEditor({
       {/* Output */}
       <Card
         variant="glass"
-        className="bg-white/80 backdrop-blur-sm border-white/20 overflow-hidden"
+        className="bg-slate-800/80 backdrop-blur-sm border-slate-700/50 overflow-hidden"
       >
-        <div className="bg-slate-100 px-4 py-3 border-b border-slate-200">
-          <span className="text-slate-700 font-semibold">Resultado</span>
+        <div className="bg-slate-900 px-4 py-3 border-b border-slate-700">
+          <span className="text-slate-100 font-semibold">Resultado</span>
         </div>
 
         <div className="p-4 h-32">
-          <pre className="text-slate-800 font-mono text-sm whitespace-pre-wrap">
+          <pre className="text-slate-100 font-mono text-sm whitespace-pre-wrap">
             {output || "Haz clic en 'Ejecutar' para ver el resultado"}
           </pre>
         </div>

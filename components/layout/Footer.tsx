@@ -17,7 +17,7 @@ export default function Footer() {
               href="https://github.com/nicvazquezdev/hispano-lang"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium flex items-center gap-2"
+              className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium flex items-center gap-2"
             >
               <GitHubIcon />
               GitHub
@@ -26,7 +26,7 @@ export default function Footer() {
               href="https://github.com/nicvazquezdev/hispano-lang/blob/main/CONTRIBUTING.md"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium"
+              className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium"
             >
               Contribuir
             </a>
@@ -34,7 +34,7 @@ export default function Footer() {
               href="https://github.com/nicvazquezdev/hispano-lang/issues"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium"
+              className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium"
             >
               Reportar Issue
             </a>
@@ -42,34 +42,34 @@ export default function Footer() {
               href="https://www.npmjs.com/package/hispano-lang"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-600 hover:text-purple-600 transition-colors text-base sm:text-lg font-medium"
+              className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium"
             >
               NPM
             </a>
           </div>
 
           {/* Información adicional */}
-          <div className="border-t border-slate-200 pt-8">
+          <div className="border-t border-slate-700 pt-8">
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-4">
               <a
                 href="https://github.com/nicvazquezdev/hispano-lang/blob/main/LICENSE"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-purple-600 transition-colors text-sm"
+                className="text-slate-400 hover:text-purple-400 transition-colors text-sm"
               >
                 Licencia MIT
               </a>
-              <span className="hidden sm:inline text-slate-300">•</span>
+              <span className="hidden sm:inline text-slate-600">•</span>
               <a
                 href="https://github.com/nicvazquezdev"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-500 hover:text-purple-600 transition-colors text-sm"
+                className="text-slate-400 hover:text-purple-400 transition-colors text-sm"
               >
                 Por @nicvazquezdev
               </a>
             </div>
-            <p className="text-slate-500 text-sm sm:text-base">
+            <p className="text-slate-400 text-sm sm:text-base">
               © 2025 HispanoLang. Hecho con ❤️ para la comunidad
               hispanohablante.
             </p>

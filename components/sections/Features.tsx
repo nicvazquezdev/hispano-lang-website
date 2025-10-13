@@ -49,10 +49,10 @@ export default function Features() {
             <div className="text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
               {feature.icon}
             </div>
-            <h3 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 sm:mb-4">
+            <h3 className="text-lg sm:text-xl font-bold text-slate-100 mb-3 sm:mb-4">
               {feature.title}
             </h3>
-            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
               {feature.description}
             </p>
           </Card>

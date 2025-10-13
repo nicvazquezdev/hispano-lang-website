@@ -13,11 +13,11 @@ export default function InfoBlock({
 }: InfoBlockProps) {
   return (
     <div
-      className={`bg-gray-50 rounded-2xl p-8 max-w-2xl mx-auto bg-gradient-to-br from-white/90 via-blue-50/80 to-indigo-50/80 backdrop-blur-sm border border-white/30 shadow-xl ${className}`}
+      className={`rounded-2xl p-8 max-w-2xl mx-auto bg-gradient-to-br from-slate-800/90 via-slate-800/80 to-slate-900/80 backdrop-blur-sm border border-slate-700/50 shadow-xl ${className}`}
     >
       <div className="text-4xl mb-4">{emoji}</div>
-      <h3 className="text-lg font-semibold text-gray-800 mb-4">{title}</h3>
-      <p className="text-gray-600 text-lg leading-relaxed">{description}</p>
+      <h3 className="text-lg font-semibold text-slate-100 mb-4">{title}</h3>
+      <p className="text-slate-300 text-lg leading-relaxed">{description}</p>
     </div>
   );
 }

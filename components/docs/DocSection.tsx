@@ -28,28 +28,28 @@ export default function DocSection({
   nextSection,
 }: DocSectionProps) {
   return (
-    <Card variant="glass" className="bg-white/80 backdrop-blur-sm">
+    <Card variant="glass" className="bg-slate-800/80 backdrop-blur-sm">
       <div className="md:p-6">
-        <h2 className="text-3xl font-bold text-slate-800 mb-4">{title}</h2>
+        <h2 className="text-3xl font-bold text-slate-100 mb-4">{title}</h2>
 
         {description && (
-          <p className="text-slate-600 mb-6 text-lg">{description}</p>
+          <p className="text-slate-300 mb-6 text-lg">{description}</p>
         )}
 
         <div className="space-y-8">
           {subsections.map((subsection, index) => (
             <div key={index}>
-              <h3 className="text-xl font-semibold text-slate-800 mb-3">
+              <h3 className="text-xl font-semibold text-slate-100 mb-3">
                 {subsection.title}
               </h3>
 
               {subsection.description && (
-                <p className="text-slate-600 mb-4">{subsection.description}</p>
+                <p className="text-slate-300 mb-4">{subsection.description}</p>
               )}
 
               {subsection.syntax && (
-                <div className="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-4">
-                  <code className="text-purple-800 font-mono">
+                <div className="bg-purple-900/30 border border-purple-700/50 rounded-lg p-4 mb-4">
+                  <code className="text-purple-300 font-mono">
                     {subsection.syntax}
                   </code>
                 </div>
@@ -62,7 +62,7 @@ export default function DocSection({
               )}
 
               {subsection.notes && subsection.notes.length > 0 && (
-                <ul className="list-disc list-inside text-slate-600 space-y-2">
+                <ul className="list-disc list-inside text-slate-300 space-y-2">
                   {subsection.notes.map((note, noteIndex) => (
                     <li key={noteIndex}>{note}</li>
                   ))}
@@ -74,7 +74,7 @@ export default function DocSection({
 
         {/* Navegación Circular */}
         {(previousSection || nextSection) && (
-          <div className="mt-12 pt-8 border-t border-slate-200">
+          <div className="mt-12 pt-8 border-t border-slate-700">
             <div className="flex flex-col sm:flex-row justify-between gap-4">
               {/* Botón Anterior */}
               <div className="flex-1">
