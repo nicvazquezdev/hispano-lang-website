@@ -43,9 +43,9 @@ export default function OutputConsole({
   };
 
   return (
-    <div className="bg-[#141622] border border-slate-700 rounded-lg overflow-hidden h-full flex flex-col">
+    <div className="bg-[#0b111f] border border-slate-700 rounded-lg overflow-hidden h-full flex flex-col">
       {/* Header */}
-      <div className="bg-[#141622] px-4 py-2.5 flex items-center justify-between border-b border-[#3e3e42]">
+      <div className="bg-[#0b111f] px-4 py-2.5 flex items-center justify-between border-b border-[#3e3e42]">
         <div className="flex items-center space-x-2">
           <span className="text-[#cccccc] font-semibold text-sm">Consola</span>
           <span className="text-xs text-[#858585]">
@@ -65,7 +65,7 @@ export default function OutputConsole({
       {/* Console output */}
       <div
         ref={consoleRef}
-        className="flex-1 p-3 overflow-y-auto bg-[#141622] font-mono text-xs"
+        className="flex-1 p-3 overflow-y-auto bg-[#0b111f] font-mono text-xs"
       >
         {history.length === 0 && !output ? (
           <div className="text-[#858585] text-sm">
@@ -96,7 +96,7 @@ export default function OutputConsole({
       </div>
 
       {/* Footer */}
-      <div className="bg-[#141622] px-4 py-2 border-t border-[#3e3e42] text-xs text-[#858585]">
+      <div className="bg-[#0b111f] px-4 py-2 border-t border-[#3e3e42] text-xs text-[#858585]">
         Salida del programa
       </div>
     </div>

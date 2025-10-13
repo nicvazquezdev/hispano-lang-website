@@ -72,9 +72,9 @@ export default function EnhancedCodeEditor({
   };
 
   return (
-    <div className="bg-[#141622] border border-slate-700 rounded-lg overflow-hidden flex flex-col h-full">
+    <div className="bg-[#0b111f] border border-slate-700 rounded-lg overflow-hidden flex flex-col h-full">
       {/* Header */}
-      <div className="bg-[#141622] px-4 py-2.5 flex items-center justify-between border-b border-[#3e3e42] flex-shrink-0">
+      <div className="bg-[#0b111f] px-4 py-2.5 flex items-center justify-between border-b border-[#3e3e42] flex-shrink-0">
         <div className="flex items-center space-x-2">
           <span className="text-slate-100 font-semibold text-sm">Editor</span>
           <span className="text-xs text-slate-400">
@@ -105,7 +105,7 @@ export default function EnhancedCodeEditor({
         {/* Line numbers */}
         <div
           ref={lineNumbersRef}
-          className="bg-[#141622] py-3 text-right text-[#858585] font-mono text-xs select-none border-r border-[#3e3e42] overflow-y-hidden flex-shrink-0 min-w-[2rem] flex flex-col items-center"
+          className="bg-[#0b111f] py-3 text-right text-[#858585] font-mono text-xs select-none border-r border-[#3e3e42] overflow-y-hidden flex-shrink-0 min-w-[2rem] flex flex-col items-center"
         >
           {lineNumbers.map((num) => (
             <span
@@ -156,7 +156,7 @@ export default function EnhancedCodeEditor({
       </div>
 
       {/* Footer */}
-      <div className="bg-[#141622] px-4 py-2 border-t border-[#3e3e42] text-xs text-[#858585] flex items-center justify-between flex-shrink-0">
+      <div className="bg-[#0b111f] px-4 py-2 border-t border-[#3e3e42] text-xs text-[#858585] flex items-center justify-between flex-shrink-0">
         <span className="hidden md:block">Cmd/Ctrl + Enter para ejecutar</span>
         <span className="text-slate-500">{code.length} caracteres</span>
       </div>
