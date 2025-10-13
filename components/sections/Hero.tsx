@@ -26,7 +26,6 @@ export default function Hero() {
                 moderno diseñado para que aprender a programar sea tan natural
                 como hablar en español. Sintaxis clara, ejemplos prácticos y una
                 comunidad hispanohablante.
-                <br /> <em>Un paso, una idea, una línea de código.</em>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">
