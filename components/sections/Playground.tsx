@@ -5,6 +5,8 @@ import Link from "next/link";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
+import EnhancedCodeEditor from "../playground/EnhancedCodeEditor";
+import OutputConsole from "../playground/OutputConsole";
 
 export default function Playground() {
   const [code, setCode] = useState(`// Mi primer hola mundo
@@ -72,50 +74,16 @@ mostrar "Hola " + lenguaje + "! 👋"`);
         ref={playgroundRef}
         className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8"
       >
-        {/* Editor */}
-        <Card
-          variant="glass"
-          className="bg-white/80 backdrop-blur-sm border-white/20 overflow-hidden"
-        >
-          <div className="bg-slate-100 px-3 sm:px-4 py-2 sm:py-3 flex items-center justify-between border-b border-slate-200">
-            <div className="flex items-center space-x-1 sm:space-x-2">
-              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-red-500 rounded-full"></div>
-              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-yellow-500 rounded-full"></div>
-              <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full"></div>
-            </div>
-            <Button onClick={runCode} size="sm" disabled={isRunning}>
-              {isRunning ? "⏳ Ejecutando..." : "▶ Ejecutar"}
-            </Button>
-          </div>
+        <EnhancedCodeEditor
+          code={code}
+          onChange={setCode}
+          onRun={runCode}
+          isRunning={isRunning}
+        />
 
-          <div className="p-3 sm:p-4">
-            <textarea
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-              className="w-full h-60 sm:h-80 bg-transparent text-slate-800 font-mono text-xs sm:text-sm resize-none outline-none placeholder-slate-400"
-              placeholder="Escribe tu código aquí..."
-              spellCheck={false}
-            />
-          </div>
-        </Card>
-
-        {/* Output */}
-        <Card
-          variant="glass"
-          className="bg-white/80 backdrop-blur-sm border-white/20 overflow-hidden"
-        >
-          <div className="bg-slate-100 px-3 sm:px-4 py-2 sm:py-3 border-b border-slate-200">
-            <span className="text-slate-700 font-semibold text-sm sm:text-base">
-              Resultado
-            </span>
-          </div>
-
-          <div className="p-3 sm:p-4 h-60 sm:h-80">
-            <pre className="text-slate-800 font-mono text-xs sm:text-sm whitespace-pre-wrap">
-              {output || "Haz clic en 'Ejecutar' para ver el resultado"}
-            </pre>
-          </div>
-        </Card>
+        <div className="min-h-[400px]">
+          <OutputConsole output={output} isRunning={isRunning} />
+        </div>
       </div>
 
       {/* Ejemplos */}
