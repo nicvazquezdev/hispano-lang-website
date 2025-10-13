@@ -9,13 +9,13 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/hl-icon-logo.png",
+      "src": "/hl-og.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/hl-icon-logo.png",
+      "src": "/hl-og.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -27,7 +27,7 @@
   "scope": "/",
   "screenshots": [
     {
-      "src": "/hl-icon-logo.png",
+      "src": "/hl-og.png",
       "sizes": "512x512",
       "type": "image/png",
       "label": "HispanoLang - Logo"
@@ -41,7 +41,7 @@
       "url": "/playground",
       "icons": [
         {
-          "src": "/hl-icon-logo.png",
+          "src": "/hl-og.png",
           "sizes": "192x192"
         }
       ]
@@ -53,7 +53,7 @@
       "url": "/lecciones",
       "icons": [
         {
-          "src": "/hl-icon-logo.png",
+          "src": "/hl-og.png",
           "sizes": "192x192"
         }
       ]
@@ -65,7 +65,7 @@
       "url": "/documentacion",
       "icons": [
         {
-          "src": "/hl-icon-logo.png",
+          "src": "/hl-og.png",
           "sizes": "192x192"
         }
       ]

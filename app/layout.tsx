@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     siteName: "HispanoLang",
     images: [
       {
-        url: "/hl-icon-logo.png",
+        url: "/hl-og.png",
         width: 512,
         height: 512,
         alt: "HispanoLang - Programa en Español",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "HispanoLang",
     description:
       "Lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Sintaxis clara y fácil de aprender.",
-    images: ["/hl-icon-logo.png"],
+    images: ["/hl-og.png"],
     creator: "@nicvazquezdev",
   },
   robots: {
@@ -77,9 +77,9 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/hl-icon-logo.png",
-    shortcut: "/hl-icon-logo.png",
-    apple: "/hl-icon-logo.png",
+    icon: "/hl-og.png",
+    shortcut: "/hl-og.png",
+    apple: "/hl-og.png",
   },
   manifest: "/manifest.json",
   alternates: {

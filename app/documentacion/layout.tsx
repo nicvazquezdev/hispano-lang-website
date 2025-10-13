@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     description:
       "Documentación completa de HispanoLang. Aprende sintaxis, comandos y características del lenguaje.",
     url: "https://hispanolang.com/documentacion",
-    images: ["/hl-icon-logo.png"],
+    images: ["/hl-og.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Documentación HispanoLang",
     description: "Guía completa para aprender HispanoLang desde cero.",
-    images: ["/hl-icon-logo.png"],
+    images: ["/hl-og.png"],
   },
   alternates: {
     canonical: "https://hispanolang.com/documentacion",
