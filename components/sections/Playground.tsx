@@ -53,7 +53,7 @@ mostrar "Hola " + lenguaje + "! 👋"`);
         setOutput(output || "Código ejecutado exitosamente");
       } else {
         // Si hubo un error, mostrar el mensaje de error
-        setOutput(`Error: ${result.error}`);
+        setOutput(result.error);
       }
     } catch (error) {
       setOutput(error instanceof Error ? error.message : "Error desconocido");
