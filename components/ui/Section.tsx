@@ -22,11 +22,6 @@ export default function Section({
   titleGradient,
   description,
 }: SectionProps) {
-  const backgroundClasses = {
-    light: "bg-slate-900/50",
-    dark: "bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900",
-  };
-
   const textClasses = {
     light: {
       badge: "text-slate-200",
@@ -46,9 +41,7 @@ export default function Section({
   };
 
   return (
-    <section
-      className={`py-20 ${backgroundClasses[background]} relative overflow-hidden ${className}`}
-    >
+    <section className={`py-20 relative overflow-hidden ${className}`}>
       {/* Elementos decorativos de fondo */}
       <div className="absolute top-10 left-10 w-40 h-40 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-10 right-10 w-32 h-32 bg-gradient-to-r from-pink-400/10 to-orange-400/10 rounded-full blur-3xl animate-pulse delay-1000"></div>

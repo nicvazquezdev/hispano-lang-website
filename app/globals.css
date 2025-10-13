@@ -22,8 +22,8 @@ body {
   min-height: 100vh;
 }
 
-/* Smooth scrolling */
 html {
+  background-color: #0f172a;
   scroll-behavior: smooth;
 }
 

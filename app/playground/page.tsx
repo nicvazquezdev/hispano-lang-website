@@ -25,7 +25,7 @@ export default function PlaygroundPage() {
   } = usePlaygroundCode();
 
   return (
-    <div className="min-h-screen bg-slate-950 py-20">
+    <div className="min-h-screen py-20">
       <Header />
 
       <main className="max-w-[1800px] mx-auto px-4 sm:px-6 py-6 md:pt-20">
