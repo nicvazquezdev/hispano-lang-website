@@ -21,6 +21,7 @@ export default function EnhancedCodeEditor({
   const [lineNumbers, setLineNumbers] = useState<number[]>([1]);
   const [currentLine, setCurrentLine] = useState<number>(0);
   const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [scrollTop, setScrollTop] = useState<number>(0);
 
   useEffect(() => {
     const lines = code.split("\n").length;
@@ -30,6 +31,7 @@ export default function EnhancedCodeEditor({
   const handleScroll = () => {
     if (textareaRef.current && lineNumbersRef.current) {
       lineNumbersRef.current.scrollTop = textareaRef.current.scrollTop;
+      setScrollTop(textareaRef.current.scrollTop);
     }
   };
 
@@ -121,6 +123,17 @@ export default function EnhancedCodeEditor({
 
         {/* Code area */}
         <div className="flex-1 overflow-hidden relative">
+          {/* Current line highlight */}
+          {isFocused && currentLine > 0 && (
+            <div
+              className="absolute left-0 right-0 bg-[#2a2d3a] pointer-events-none z-0"
+              style={{
+                top: `${(currentLine - 1) * 24 + 12}px`,
+                height: "24px",
+                transform: `translateY(-${scrollTop}px)`,
+              }}
+            />
+          )}
           <textarea
             ref={textareaRef}
             value={code}
@@ -134,7 +147,7 @@ export default function EnhancedCodeEditor({
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             onScroll={handleScroll}
-            className="absolute inset-0 w-full h-full p-3 bg-transparent text-[#d4d4d4] font-mono text-sm resize-none outline-none placeholder-[#6a6a6a] leading-6 overflow-auto whitespace-pre"
+            className="absolute inset-0 w-full h-full p-3 bg-transparent text-[#d4d4d4] font-mono text-sm resize-none outline-none placeholder-[#6a6a6a] leading-6 overflow-auto whitespace-pre relative z-10"
             placeholder="Escribe tu código aquí..."
             spellCheck={false}
             wrap="off"
