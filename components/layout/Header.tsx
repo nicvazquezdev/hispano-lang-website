@@ -85,10 +85,14 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-3 sm:px-6">
           <div className="flex justify-between items-center h-12 sm:h-16">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center">
+              <Link
+                href="/"
+                className="flex items-center"
+                aria-label="Ir a la página principal de HispanoLang"
+              >
                 <Image
                   src="/hl-main-logo.png"
-                  alt="HispanoLang Logo"
+                  alt="HispanoLang - Lenguaje de Programación en Español"
                   width={200}
                   height={40}
                   className="h-8 sm:h-10 w-auto"

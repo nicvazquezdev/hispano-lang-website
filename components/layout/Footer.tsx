@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="mb-16 flex justify-center">
             <Image
               src="/hl-icon-logo.png"
-              alt="HispanoLang Logo"
+              alt="HispanoLang - Lenguaje de Programación en Español"
               width={48}
               height={48}
               className="h-12 w-auto"
@@ -30,6 +30,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium flex items-center gap-2"
+              aria-label="Ver código fuente de HispanoLang en GitHub"
             >
               <GitHubIcon />
               GitHub
@@ -39,6 +40,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium"
+              aria-label="Guía para contribuir al proyecto HispanoLang"
             >
               Contribuir
             </a>
@@ -47,6 +49,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium"
+              aria-label="Reportar un problema o sugerir mejoras"
             >
               Reportar Issue
             </a>
@@ -55,6 +58,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-300 hover:text-purple-400 transition-colors text-base sm:text-lg font-medium"
+              aria-label="Instalar HispanoLang desde NPM"
             >
               NPM
             </a>

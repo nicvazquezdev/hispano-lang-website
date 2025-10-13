@@ -1,0 +1,74 @@
+{
+  "name": "HispanoLang - Lenguaje de Programación en Español",
+  "short_name": "HispanoLang",
+  "description": "Lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Aprende a programar en tu idioma.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#a855f7",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/hl-icon-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/hl-icon-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "development", "productivity"],
+  "lang": "es",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "/hl-icon-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "label": "HispanoLang - Logo"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Playground",
+      "short_name": "Playground",
+      "description": "Editor de código interactivo",
+      "url": "/playground",
+      "icons": [
+        {
+          "src": "/hl-icon-logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Lecciones",
+      "short_name": "Lecciones",
+      "description": "Aprende HispanoLang paso a paso",
+      "url": "/lecciones",
+      "icons": [
+        {
+          "src": "/hl-icon-logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Documentación",
+      "short_name": "Docs",
+      "description": "Referencia completa del lenguaje",
+      "url": "/documentacion",
+      "icons": [
+        {
+          "src": "/hl-icon-logo.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ export default function Hero() {
               <OpenSourceBadge className="mb-4" />
 
               <h1 className="text-5xl lg:text-7xl font-bold text-slate-100 mb-4 sm:mb-6 leading-tight">
-                Programa en
+                Aprende a Programar en
                 <br />
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                   Español
@@ -22,9 +22,11 @@ export default function Hero() {
               </h1>
 
               <p className="text-lg xl:text-xl text-slate-300 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                <b>HispanoLang</b> fue creado para que aprender a programar sea
-                tan natural como hablar en español. <br /> Un paso, una idea,
-                una línea de código.
+                <strong>HispanoLang</strong> es un lenguaje de programación
+                moderno diseñado para que aprender a programar sea tan natural
+                como hablar en español. Sintaxis clara, ejemplos prácticos y una
+                comunidad hispanohablante.
+                <br /> <em>Un paso, una idea, una línea de código.</em>
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12">

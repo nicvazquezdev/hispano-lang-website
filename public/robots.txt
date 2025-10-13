@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://hispanolang.com/sitemap.xml
+
+# Hosts
+Host: https://hispanolang.com
+
