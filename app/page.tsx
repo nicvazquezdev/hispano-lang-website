@@ -11,7 +11,7 @@ export default function Home() {
     "@type": "WebSite",
     name: "HispanoLang",
     description:
-      "Lenguaje de programación moderno diseñado para desarrolladores de habla hispana",
+      "Lenguaje de programación moderno diseñado para estudiantes de habla hispana",
     url: "https://hispanolang.com",
     inLanguage: "es",
     author: {

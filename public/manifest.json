@@ -1,7 +1,7 @@
 {
   "name": "HispanoLang - Lenguaje de Programación en Español",
   "short_name": "HispanoLang",
-  "description": "Lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Aprende a programar en tu idioma.",
+  "description": "Lenguaje de programación moderno diseñado para estudiantes de habla hispana. Aprende a programar en tu idioma.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",

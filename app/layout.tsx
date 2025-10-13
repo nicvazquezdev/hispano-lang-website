@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://hispanolang.com"),
   title: "HispanoLang",
   description:
-    "HispanoLang es un lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Sintaxis clara, potente y fácil de aprender. Aprende programación en tu idioma.",
+    "HispanoLang es un lenguaje de programación moderno diseñado para estudiantes de habla hispana. Sintaxis clara, potente y fácil de aprender. Aprende programación en tu idioma.",
   keywords: [
     "HispanoLang",
     "lenguaje de programación en español",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     url: "https://hispanolang.com",
     title: "HispanoLang",
     description:
-      "HispanoLang es un lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Sintaxis clara, potente y fácil de aprender.",
+      "HispanoLang es un lenguaje de programación moderno diseñado para estudiantes de habla hispana. Sintaxis clara, potente y fácil de aprender.",
     siteName: "HispanoLang",
     images: [
       {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "HispanoLang",
     description:
-      "Lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Sintaxis clara y fácil de aprender.",
+      "Lenguaje de programación moderno diseñado para estudiantes de habla hispana. Sintaxis clara y fácil de aprender.",
     images: ["/hl-og.png"],
     creator: "@nicvazquezdev",
   },
