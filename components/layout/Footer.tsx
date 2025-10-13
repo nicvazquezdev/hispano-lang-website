@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Section from "@/components/ui/Section";
 import GitHubIcon from "@/components/ui/GitHubIcon";
 
@@ -11,6 +12,17 @@ export default function Footer() {
         description="HispanoLang es libre y abierto. Contribuye, aprende y comparte."
       >
         <div className="text-center">
+          {/* Logo */}
+          <div className="mb-16 flex justify-center">
+            <Image
+              src="/hl-icon-logo.png"
+              alt="HispanoLang Logo"
+              width={48}
+              height={48}
+              className="h-12 w-auto"
+            />
+          </div>
+
           {/* Enlaces principales */}
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-8">
             <a

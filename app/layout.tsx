@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   title: "HispanoLang - Lenguaje de Programación en Español",
   description:
     "HispanoLang es un lenguaje de programación moderno diseñado para desarrolladores de habla hispana. Sintaxis clara, potente y fácil de aprender.",
+  icons: {
+    icon: "/hl-icon-logo.png",
+    shortcut: "/hl-icon-logo.png",
+    apple: "/hl-icon-logo.png",
+  },
 };
 
 export default function RootLayout({
