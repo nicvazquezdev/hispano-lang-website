@@ -109,9 +109,10 @@ export default function EnhancedCodeEditor({
             onChange={(e) => onChange(e.target.value)}
             onKeyDown={handleKeyDown}
             onScroll={handleScroll}
-            className="absolute inset-0 w-full h-full p-3 bg-transparent text-slate-900 font-mono text-sm resize-none outline-none placeholder-slate-400 leading-6 overflow-y-auto"
+            className="absolute inset-0 w-full h-full p-3 bg-transparent text-slate-900 font-mono text-sm resize-none outline-none placeholder-slate-400 leading-6 overflow-auto whitespace-pre"
             placeholder="Escribe tu código aquí..."
             spellCheck={false}
+            wrap="off"
           />
         </div>
       </div>
