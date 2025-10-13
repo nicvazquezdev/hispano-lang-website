@@ -20,6 +20,7 @@ export default function EnhancedCodeEditor({
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const [lineNumbers, setLineNumbers] = useState<number[]>([1]);
   const [currentLine, setCurrentLine] = useState<number>(0);
+  const [isFocused, setIsFocused] = useState<boolean>(false);
 
   useEffect(() => {
     const lines = code.split("\n").length;
@@ -108,7 +109,7 @@ export default function EnhancedCodeEditor({
             <div
               key={num}
               className={`leading-6 ${
-                num === currentLine
+                isFocused && num === currentLine
                   ? "text-purple-600 font-semibold"
                   : "text-slate-400"
               }`}
@@ -130,6 +131,8 @@ export default function EnhancedCodeEditor({
             onKeyDown={handleKeyDown}
             onKeyUp={updateCurrentLine}
             onClick={updateCurrentLine}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
             onScroll={handleScroll}
             className="absolute inset-0 w-full h-full p-3 bg-transparent text-slate-900 font-mono text-sm resize-none outline-none placeholder-slate-400 leading-6 overflow-auto whitespace-pre"
             placeholder="Escribe tu código aquí..."
