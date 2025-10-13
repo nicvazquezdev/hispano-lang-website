@@ -24,11 +24,11 @@ export default function OutputConsole({
   }, [output, isRunning]);
 
   useEffect(() => {
-    // Auto-scroll to bottom
+    // Auto-scroll to bottom when history changes
     if (consoleRef.current) {
       consoleRef.current.scrollTop = consoleRef.current.scrollHeight;
     }
-  }, [output]);
+  }, [history]);
 
   const handleClearHistory = () => {
     setHistory([]);

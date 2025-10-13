@@ -83,7 +83,7 @@ mostrar "Hola " + lenguaje + "! 👋"`);
           />
         </div>
 
-        <div className="min-h-[400px]">
+        <div className="h-[400px]">
           <OutputConsole output={output} isRunning={isRunning} />
         </div>
       </div>
