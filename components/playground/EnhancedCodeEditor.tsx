@@ -19,6 +19,7 @@ export default function EnhancedCodeEditor({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
   const [lineNumbers, setLineNumbers] = useState<number[]>([1]);
+  const [currentLine, setCurrentLine] = useState<number>(0);
 
   useEffect(() => {
     const lines = code.split("\n").length;
@@ -28,6 +29,15 @@ export default function EnhancedCodeEditor({
   const handleScroll = () => {
     if (textareaRef.current && lineNumbersRef.current) {
       lineNumbersRef.current.scrollTop = textareaRef.current.scrollTop;
+    }
+  };
+
+  const updateCurrentLine = () => {
+    if (textareaRef.current) {
+      const cursorPosition = textareaRef.current.selectionStart;
+      const textBeforeCursor = code.substring(0, cursorPosition);
+      const lineNumber = textBeforeCursor.split("\n").length;
+      setCurrentLine(lineNumber);
     }
   };
 
@@ -95,7 +105,14 @@ export default function EnhancedCodeEditor({
           className="bg-slate-50/50 px-3 py-3 text-right text-slate-400 font-mono text-xs select-none border-r border-slate-200 overflow-y-hidden flex-shrink-0"
         >
           {lineNumbers.map((num) => (
-            <div key={num} className="leading-6">
+            <div
+              key={num}
+              className={`leading-6 ${
+                num === currentLine
+                  ? "text-purple-600 font-semibold"
+                  : "text-slate-400"
+              }`}
+            >
               {num}
             </div>
           ))}
@@ -106,8 +123,13 @@ export default function EnhancedCodeEditor({
           <textarea
             ref={textareaRef}
             value={code}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => {
+              onChange(e.target.value);
+              updateCurrentLine();
+            }}
             onKeyDown={handleKeyDown}
+            onKeyUp={updateCurrentLine}
+            onClick={updateCurrentLine}
             onScroll={handleScroll}
             className="absolute inset-0 w-full h-full p-3 bg-transparent text-slate-900 font-mono text-sm resize-none outline-none placeholder-slate-400 leading-6 overflow-auto whitespace-pre"
             placeholder="Escribe tu código aquí..."
