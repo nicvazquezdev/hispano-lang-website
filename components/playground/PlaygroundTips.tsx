@@ -22,12 +22,6 @@ export default function PlaygroundTips() {
               </kbd>
               <span className="text-slate-400">Ejecutar</span>
             </li>
-            <li className="flex items-center space-x-1">
-              <kbd className="px-1.5 py-0.5 bg-slate-100 border border-slate-200 rounded text-[10px] font-mono">
-                Tab
-              </kbd>
-              <span className="text-slate-400">Indentar</span>
-            </li>
           </ul>
         </div>
 
