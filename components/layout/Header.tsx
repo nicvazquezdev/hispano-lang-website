@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import GitHubIcon from "@/components/ui/GitHubIcon";
@@ -33,6 +33,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +43,26 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        buttonRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
 
   // Helper function to check if a menu item is active
   const isActive = (href: string) => {
@@ -96,6 +118,7 @@ export default function Header() {
 
             {/* Mobile Hamburger Button */}
             <button
+              ref={buttonRef}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-slate-300 p-1 relative w-6 h-6"
               aria-label="Toggle menu"
@@ -125,6 +148,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       <div
+        ref={menuRef}
         className={`md:hidden absolute top-full left-0 right-0 mt-2 mx-3 bg-slate-900/95 backdrop-blur-lg border border-slate-700/50 rounded-xl shadow-xl transition-opacity duration-300 ${
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
