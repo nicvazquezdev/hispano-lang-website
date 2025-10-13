@@ -16,14 +16,14 @@ export const metadata: Metadata = {
     description:
       "Aprende a programar en español con lecciones interactivas paso a paso. Desde básico hasta avanzado.",
     url: "https://hispanolang.com/lecciones",
-    images: ["/hl-og.png"],
+    images: ["https://hispanolang.com/hl-og.png"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lecciones Interactivas de HispanoLang",
     description:
       "Tutoriales paso a paso para aprender programación en español.",
-    images: ["/hl-og.png"],
+    images: ["https://hispanolang.com/hl-og.png"],
   },
   alternates: {
     canonical: "https://hispanolang.com/lecciones",

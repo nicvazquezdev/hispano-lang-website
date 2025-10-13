@@ -23,7 +23,7 @@ export default function Home() {
       name: "HispanoLang",
       logo: {
         "@type": "ImageObject",
-        url: "https://hispanolang.com/hl-main-logo.png",
+        url: "https://hispanolang.com/hl-og.png",
       },
     },
     potentialAction: {

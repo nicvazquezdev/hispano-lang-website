@@ -50,9 +50,9 @@ export const metadata: Metadata = {
     siteName: "HispanoLang",
     images: [
       {
-        url: "/hl-og.png",
-        width: 512,
-        height: 512,
+        url: "https://hispanolang.com/hl-og.png",
+        width: 1200,
+        height: 630,
         alt: "HispanoLang - Programa en Español",
       },
     ],
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     title: "HispanoLang",
     description:
       "Lenguaje de programación moderno diseñado para estudiantes de habla hispana. Sintaxis clara y fácil de aprender.",
-    images: ["/hl-og.png"],
+    images: ["https://hispanolang.com/hl-og.png"],
     creator: "@nicvazquezdev",
   },
   robots: {
@@ -103,6 +103,33 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="dark">
+      <head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5"
+        />
+        <meta name="theme-color" content="#a855f7" />
+        <link rel="canonical" href="https://hispanolang.com" />
+
+        {/* Open Graph adicionales */}
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta
+          property="og:image:secure_url"
+          content="https://hispanolang.com/hl-og.png"
+        />
+
+        {/* Twitter adicionales */}
+        <meta
+          name="twitter:image:src"
+          content="https://hispanolang.com/hl-og.png"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="HispanoLang - Programa en Español"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
