@@ -86,8 +86,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-slate-400 text-sm sm:text-base">
-              © 2025 HispanoLang. Hecho con ❤️ para la comunidad
-              hispanohablante.
+              Hecho con ❤️ para la comunidad hispanohablante.
             </p>
           </div>
         </div>
