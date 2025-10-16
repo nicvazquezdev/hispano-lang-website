@@ -77,12 +77,12 @@ export default function Footer() {
               </a>
               <span className="hidden sm:inline text-slate-600">•</span>
               <a
-                href="https://github.com/nicvazquezdev"
+                href="https://nicolasvazquez.com.ar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-400 hover:text-purple-400 transition-colors text-sm"
               >
-                Por @nicvazquezdev
+                nicolasvazquez.com.ar
               </a>
             </div>
             <p className="text-slate-400 text-sm sm:text-base">
