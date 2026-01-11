@@ -907,4 +907,509 @@ intentar {
       },
     ],
   },
+  constantes: {
+    title: "🔒 Constantes",
+    description:
+      "Las constantes son valores que no pueden cambiar después de ser asignados. Son ideales para configuración, valores matemáticos y datos que deben permanecer inmutables.",
+    subsections: [
+      {
+        title: "Declaración de Constantes",
+        description:
+          "Usa la palabra clave 'constante' seguida del nombre (por convención en MAYÚSCULAS) y el valor.",
+        syntax: "constante NOMBRE = valor",
+        code: `constante PI = 3.14159
+constante GRAVEDAD = 9.8
+constante NOMBRE_APP = "MiAplicación"
+constante MAX_INTENTOS = 3
+
+mostrar "El valor de PI es: " + PI
+mostrar "Gravedad: " + GRAVEDAD`,
+        notes: [
+          "Por convención, los nombres van en MAYÚSCULAS_CON_GUIONES",
+          "Deben inicializarse al momento de declararse",
+          "No se pueden reasignar después de la declaración",
+          "Intentar modificar una constante causa error",
+        ],
+      },
+      {
+        title: "Diferencia con Variables",
+        description:
+          "Las constantes protegen valores críticos de cambios accidentales.",
+        code: `// Variable: puede cambiar
+variable contador = 0
+contador = 1      // OK
+contador = 2      // OK
+
+// Constante: no puede cambiar
+constante MAXIMO = 100
+mostrar MAXIMO    // 100
+// MAXIMO = 200   // Error: No se puede reasignar
+
+// Operadores compuestos tampoco funcionan
+// MAXIMO += 50   // Error
+// MAXIMO++       // Error`,
+        notes: [
+          "Las variables pueden reasignarse, las constantes no",
+          "No funcionan con operadores +=, -=, *=, /=",
+          "No funcionan con incremento/decremento (++, --)",
+          "Usa constantes para valores de configuración",
+        ],
+      },
+    ],
+  },
+  templateStrings: {
+    title: "📝 Template Strings",
+    description:
+      "Los template strings permiten interpolación de variables y expresiones dentro de cadenas de texto usando backticks (`) y la sintaxis \${expresion}.",
+    subsections: [
+      {
+        title: "Sintaxis Básica",
+        description:
+          "Usa backticks (`) en lugar de comillas y \${} para insertar valores.",
+        syntax: "`Texto con \${variable} interpolada`",
+        code: `variable nombre = "María"
+variable edad = 25
+
+// Concatenación tradicional (más verbosa)
+mostrar "Hola, me llamo " + nombre + " y tengo " + edad + " años"
+
+// Template strings (más limpio)
+mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\``,
+        notes: [
+          "Usa backticks (`) en lugar de comillas",
+          "Las expresiones dentro de \${} se evalúan automáticamente",
+          "Más legible que concatenación con +",
+          "Puede contener cualquier expresión válida",
+        ],
+      },
+      {
+        title: "Expresiones en Templates",
+        description:
+          "Puedes incluir cálculos, llamadas a métodos y cualquier expresión dentro de \${}.",
+        code: `variable precio = 100
+variable descuento = 20
+
+mostrar \`Precio original: \${precio}\`
+mostrar \`Precio final: \${precio - descuento}\`
+mostrar \`El doble sería: \${precio * 2}\`
+
+variable items = [1, 2, 3]
+mostrar \`El arreglo tiene \${items.longitud} elementos\`
+
+variable texto = "hispanoLang"
+mostrar \`En mayúsculas: \${texto.mayusculas()}\``,
+        notes: [
+          "Operaciones matemáticas: \${precio * 2}",
+          "Propiedades: \${items.longitud}",
+          "Métodos: \${texto.mayusculas()}",
+          "Expresiones condicionales también funcionan",
+        ],
+      },
+    ],
+  },
+  elegirCaso: {
+    title: "🎯 Elegir/Caso (Switch)",
+    description:
+      "La estructura elegir/caso permite evaluar una expresión contra múltiples valores posibles. Es más limpia que múltiples si/sino encadenados.",
+    subsections: [
+      {
+        title: "Sintaxis Básica",
+        description:
+          "Evalúa una expresión y ejecuta el bloque del caso que coincida.",
+        syntax: "elegir (expresion) { caso valor: ... pordefecto: ... }",
+        code: `variable dia = 3
+
+elegir (dia) {
+    caso 1:
+        mostrar "Lunes"
+    caso 2:
+        mostrar "Martes"
+    caso 3:
+        mostrar "Miércoles"
+    caso 4:
+        mostrar "Jueves"
+    caso 5:
+        mostrar "Viernes"
+    pordefecto:
+        mostrar "Fin de semana"
+}`,
+        notes: [
+          "elegir (expresion) { ... } - Inicia el bloque switch",
+          "caso valor: - Define un caso a evaluar",
+          "pordefecto: - Caso por defecto (opcional)",
+          "Se ejecuta el primer caso que coincida",
+        ],
+      },
+      {
+        title: "Uso con Strings",
+        description: "Los casos pueden ser números, strings o cualquier valor.",
+        code: `variable fruta = "manzana"
+
+elegir (fruta) {
+    caso "manzana":
+        mostrar "Es roja o verde"
+    caso "banana":
+        mostrar "Es amarilla"
+    caso "naranja":
+        mostrar "Es naranja"
+    pordefecto:
+        mostrar "Fruta desconocida"
+}`,
+        notes: [
+          "Los casos pueden ser strings, números o booleanos",
+          "El pordefecto es opcional pero recomendado",
+          "Útil para menús y opciones múltiples",
+          "Más limpio que muchos si-sino encadenados",
+        ],
+      },
+    ],
+  },
+  buclesAvanzados: {
+    title: "🔁 Bucles Avanzados",
+    description:
+      "HispanoLang incluye estructuras de bucle adicionales: hacer/mientras (ejecuta al menos una vez) y para cada (itera sobre elementos).",
+    subsections: [
+      {
+        title: "Bucle hacer/mientras",
+        description:
+          "Ejecuta el bloque al menos una vez, luego repite mientras la condición sea verdadera.",
+        syntax: "hacer { ... } mientras (condicion)",
+        code: `variable contador = 1
+
+hacer {
+    mostrar contador
+    contador = contador + 1
+} mientras (contador <= 5)
+
+// Diferencia con mientras:
+variable x = 10
+mientras (x < 5) {
+    mostrar x  // Nunca se ejecuta (condición falsa desde inicio)
+}
+
+variable y = 10
+hacer {
+    mostrar y  // Se ejecuta una vez, aunque y >= 5
+} mientras (y < 5)`,
+        notes: [
+          "El bloque se ejecuta ANTES de evaluar la condición",
+          "Garantiza al menos una ejecución",
+          "La condición se evalúa al FINAL de cada iteración",
+          "Útil cuando necesitas ejecutar el código al menos una vez",
+        ],
+      },
+      {
+        title: "Bucle para cada",
+        description: "Itera sobre cada elemento de un arreglo de forma simple.",
+        syntax: "para cada variable en arreglo { ... }",
+        code: `variable frutas = ["manzana", "banana", "naranja"]
+
+para cada fruta en frutas {
+    mostrar fruta
+}
+
+// Sumar todos los números
+variable numeros = [1, 2, 3, 4, 5]
+variable suma = 0
+
+para cada num en numeros {
+    suma = suma + num
+}
+mostrar suma  // 15
+
+// Con objetos
+variable personas = [
+    { nombre: "Ana", edad: 25 },
+    { nombre: "Luis", edad: 30 }
+]
+
+para cada persona en personas {
+    mostrar \`\${persona.nombre} tiene \${persona.edad} años\`
+}`,
+        notes: [
+          "No necesitas manejar índices manualmente",
+          "Más limpio que un bucle para tradicional",
+          "La variable del elemento es local al bucle",
+          "Funciona con cualquier tipo de arreglo",
+        ],
+      },
+    ],
+  },
+  conversionTipos: {
+    title: "🔄 Conversión de Tipos",
+    description:
+      "Funciones integradas para convertir valores entre diferentes tipos de datos: entero(), decimal(), texto(), booleano() y tipo().",
+    subsections: [
+      {
+        title: "Funciones de Conversión",
+        description: "Convierte valores a tipos específicos.",
+        code: `// entero(valor) - Convierte a número entero
+mostrar entero("42")        // 42
+mostrar entero("3.7")       // 3 (trunca decimales)
+mostrar entero(3.9)         // 3
+mostrar entero(verdadero)   // 1
+mostrar entero(falso)       // 0
+
+// decimal(valor) - Convierte a número decimal
+mostrar decimal("3.14")     // 3.14
+mostrar decimal("42")       // 42.0
+mostrar decimal(verdadero)  // 1.0
+
+// texto(valor) - Convierte a cadena de texto
+mostrar texto(123)          // "123"
+mostrar texto(3.14)         // "3.14"
+mostrar texto(verdadero)    // "verdadero"
+mostrar texto([1, 2, 3])    // "[1, 2, 3]"`,
+        notes: [
+          "entero(valor): Convierte a número entero (trunca decimales)",
+          "decimal(valor): Convierte a número decimal",
+          "texto(valor): Convierte cualquier valor a string",
+          "Los booleanos se convierten a 1/0 o 1.0/0.0",
+        ],
+      },
+      {
+        title: "Funciones booleano() y tipo()",
+        description: "Convierte a booleano o retorna el tipo del valor.",
+        code: `// booleano(valor) - Convierte a booleano
+mostrar booleano(1)         // verdadero
+mostrar booleano(0)         // falso
+mostrar booleano(100)       // verdadero
+mostrar booleano("hola")    // verdadero
+mostrar booleano("")        // falso
+mostrar booleano(nulo)      // falso
+
+// tipo(valor) - Retorna el tipo como string
+mostrar tipo(42)            // "numero"
+mostrar tipo("hola")        // "texto"
+mostrar tipo(verdadero)     // "booleano"
+mostrar tipo([1, 2])        // "arreglo"
+mostrar tipo({a: 1})        // "objeto"
+mostrar tipo(nulo)          // "nulo"
+
+// Con clases
+clase Persona { constructor() {} }
+variable p = nuevo Persona()
+mostrar tipo(p)             // "Persona"`,
+        notes: [
+          "booleano(): 0, '', nulo, indefinido → falso, todo lo demás → verdadero",
+          "tipo(): Retorna el nombre del tipo como texto",
+          "Para instancias de clases, tipo() retorna el nombre de la clase",
+        ],
+      },
+    ],
+  },
+  metodosNumericos: {
+    title: "🔢 Métodos Numéricos",
+    description:
+      "Los números tienen métodos que se pueden llamar directamente para verificar propiedades o convertir a texto.",
+    subsections: [
+      {
+        title: "Métodos de Verificación",
+        description: "Verifica propiedades de números.",
+        code: `variable n = 42
+
+mostrar n.esPar()        // verdadero
+mostrar n.esImpar()      // falso
+mostrar n.esPositivo()   // verdadero
+mostrar n.esNegativo()   // falso
+
+// Con literales (requieren paréntesis)
+mostrar (7).esImpar()       // verdadero
+mostrar (8).esPar()         // verdadero
+mostrar (-5).esNegativo()   // verdadero
+mostrar (0).esPositivo()    // falso (cero no es positivo)
+mostrar (0).esNegativo()    // falso (cero no es negativo)`,
+        notes: [
+          ".esPar(): Verdadero si es divisible por 2",
+          ".esImpar(): Verdadero si no es divisible por 2",
+          ".esPositivo(): Verdadero si es mayor que 0",
+          ".esNegativo(): Verdadero si es menor que 0",
+          "El cero no es positivo ni negativo",
+        ],
+      },
+      {
+        title: "Conversión a Texto",
+        description: "Convierte números a su representación en texto.",
+        code: `variable precio = 99.99
+mostrar precio.aTexto()     // "99.99"
+
+// Con literales
+mostrar (42).aTexto()       // "42"
+mostrar (3.14).aTexto()     // "3.14"
+
+// Uso práctico
+variable puntos = 1500
+variable mensaje = "Has ganado " + puntos.aTexto() + " puntos"
+mostrar mensaje`,
+        notes: [
+          ".aTexto(): Convierte el número a cadena de texto",
+          "Útil para formateo y concatenación",
+          "Con literales numéricos usar paréntesis: (número).método()",
+        ],
+      },
+    ],
+  },
+  clases: {
+    title: "🏗️ Clases",
+    description:
+      "Las clases son plantillas para crear objetos con propiedades y métodos. Permiten programación orientada a objetos en HispanoLang.",
+    subsections: [
+      {
+        title: "Definición de Clases",
+        description:
+          "Define clases usando la palabra 'clase' con un constructor y métodos.",
+        syntax: "clase NombreClase { constructor(params) { } metodo() { } }",
+        code: `clase Persona {
+    constructor(nombre, edad) {
+        este.nombre = nombre
+        este.edad = edad
+    }
+
+    saludar() {
+        retornar \`Hola, soy \${este.nombre}\`
+    }
+
+    cumplirAnios() {
+        este.edad = este.edad + 1
+        mostrar \`\${este.nombre} ahora tiene \${este.edad} años\`
+    }
+}`,
+        notes: [
+          "clase NombreClase { ... } - Define una clase",
+          "constructor(params) - Inicializa la instancia",
+          "este.propiedad - Accede a propiedades de la instancia",
+          "Los métodos se definen sin la palabra 'funcion'",
+        ],
+      },
+      {
+        title: "Instanciación con nuevo",
+        description: "Crea instancias de clases usando la palabra 'nuevo'.",
+        code: `clase Persona {
+    constructor(nombre, edad) {
+        este.nombre = nombre
+        este.edad = edad
+    }
+
+    saludar() {
+        retornar \`Hola, soy \${este.nombre}\`
+    }
+}
+
+variable persona = nuevo Persona("Juan", 25)
+
+mostrar persona.nombre      // "Juan"
+mostrar persona.edad        // 25
+mostrar persona.saludar()   // "Hola, soy Juan"
+
+// Múltiples instancias
+variable persona2 = nuevo Persona("Ana", 30)
+mostrar persona2.nombre     // "Ana"`,
+        notes: [
+          "nuevo Clase(args) - Crea una nueva instancia",
+          "Cada instancia tiene sus propias propiedades",
+          "Los métodos se comparten entre instancias",
+          "tipo(instancia) retorna el nombre de la clase",
+        ],
+      },
+    ],
+  },
+  herencia: {
+    title: "🌳 Herencia",
+    description:
+      "La herencia permite crear clases basadas en otras clases existentes. La clase hija hereda propiedades y métodos de la clase padre.",
+    subsections: [
+      {
+        title: "Extender Clases",
+        description:
+          "Usa 'extiende' para heredar de otra clase y 'super' para llamar al constructor padre.",
+        syntax: "clase Hija extiende Padre { constructor() { super() } }",
+        code: `clase Animal {
+    constructor(nombre) {
+        este.nombre = nombre
+    }
+
+    hablar() {
+        retornar \`\${este.nombre} hace un sonido\`
+    }
+}
+
+clase Perro extiende Animal {
+    constructor(nombre, raza) {
+        super(nombre)    // Llama al constructor de Animal
+        este.raza = raza
+    }
+
+    hablar() {
+        retornar \`\${este.nombre} dice: ¡Guau!\`
+    }
+
+    describir() {
+        retornar \`\${este.nombre} es un \${este.raza}\`
+    }
+}
+
+variable perro = nuevo Perro("Max", "Labrador")
+mostrar perro.hablar()      // "Max dice: ¡Guau!"
+mostrar perro.describir()   // "Max es un Labrador"`,
+        notes: [
+          "clase Hija extiende Padre - Define herencia",
+          "super(args) - Llama al constructor del padre",
+          "La clase hija hereda todas las propiedades y métodos",
+          "Puedes sobrescribir métodos del padre",
+        ],
+      },
+      {
+        title: "Polimorfismo",
+        description:
+          "Diferentes clases pueden tener el mismo método pero comportarse diferente.",
+        code: `clase Figura {
+    constructor(nombre) {
+        este.nombre = nombre
+    }
+
+    calcularArea() {
+        retornar 0
+    }
+}
+
+clase Rectangulo extiende Figura {
+    constructor(ancho, alto) {
+        super("Rectángulo")
+        este.ancho = ancho
+        este.alto = alto
+    }
+
+    calcularArea() {
+        retornar este.ancho * este.alto
+    }
+}
+
+clase Circulo extiende Figura {
+    constructor(radio) {
+        super("Círculo")
+        este.radio = radio
+    }
+
+    calcularArea() {
+        retornar 3.14159 * este.radio * este.radio
+    }
+}
+
+variable figuras = [
+    nuevo Rectangulo(10, 5),
+    nuevo Circulo(7)
+]
+
+para cada figura en figuras {
+    mostrar \`\${figura.nombre}: \${figura.calcularArea()}\`
+}`,
+        notes: [
+          "Cada clase implementa el método a su manera",
+          "El mismo método funciona diferente según la clase",
+          "Permite código más flexible y reutilizable",
+          "tipo(instancia) retorna la clase específica",
+        ],
+      },
+    ],
+  },
 };

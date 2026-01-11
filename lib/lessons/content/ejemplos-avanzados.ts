@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const ejemplosAvanzados: LessonContent = {
-  badge: { emoji: "🎓", text: "Lección 14" },
+  badge: { emoji: "🎓", text: "Lección 22" },
   title: "Ejemplos Avanzados en",
   titleGradient: " HispanoLang",
   description: "Integra todo en proyectos completos",

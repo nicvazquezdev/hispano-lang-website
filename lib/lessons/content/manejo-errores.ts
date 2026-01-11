@@ -1,11 +1,11 @@
 import { LessonContent } from "../types";
 
 export const manejoErrores: LessonContent = {
-  badge: { emoji: "🛡️", text: "Lección 13" },
+  badge: { emoji: "🛡️", text: "Lección 21" },
   title: "Manejo de Errores en",
   titleGradient: " HispanoLang",
   description: "Crea programas robustos",
-  prev: { url: "/lecciones/objetos", title: "Objetos" },
+  prev: { url: "/lecciones/herencia", title: "Herencia" },
   next: { url: "/lecciones/ejemplos-avanzados", title: "Ejemplos Avanzados" },
   steps: [
     {

@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const tiposDatos: LessonContent = {
-  badge: { emoji: "🔢", text: "Lección 3" },
+  badge: { emoji: "🔢", text: "Lección 4" },
   title: "Tipos de Datos en",
   titleGradient: " HispanoLang",
   description: "Aprende sobre números, texto, booleanos y valores especiales",

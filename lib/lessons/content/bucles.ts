@@ -1,11 +1,11 @@
 import { LessonContent } from "../types";
 
 export const bucles: LessonContent = {
-  badge: { emoji: "🔄", text: "Lección 7" },
+  badge: { emoji: "🔄", text: "Lección 10" },
   title: "Bucles en",
   titleGradient: " HispanoLang",
   description: "Aprende a automatizar tareas repetitivas",
-  prev: { url: "/lecciones/condicionales", title: "Condicionales" },
+  prev: { url: "/lecciones/elegir-caso", title: "Elegir/Caso" },
   next: { url: "/lecciones/control-flujo-bucles", title: "Control de Flujo" },
   steps: [
     {

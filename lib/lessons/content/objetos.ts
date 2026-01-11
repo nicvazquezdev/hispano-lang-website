@@ -1,12 +1,12 @@
 import { LessonContent } from "../types";
 
 export const objetos: LessonContent = {
-  badge: { emoji: "🗂️", text: "Lección 12" },
+  badge: { emoji: "🗂️", text: "Lección 18" },
   title: "Objetos en",
   titleGradient: " HispanoLang",
   description: "Organiza datos con propiedades",
   prev: { url: "/lecciones/listas", title: "Listas" },
-  next: { url: "/lecciones/manejo-errores", title: "Manejo de Errores" },
+  next: { url: "/lecciones/clases", title: "Clases" },
   steps: [
     {
       title: "¿Qué son los objetos?",

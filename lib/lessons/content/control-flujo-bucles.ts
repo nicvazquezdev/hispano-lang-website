@@ -1,12 +1,12 @@
 import { LessonContent } from "../types";
 
 export const controlFlujoBucles: LessonContent = {
-  badge: { emoji: "🔀", text: "Lección 8" },
+  badge: { emoji: "🔀", text: "Lección 11" },
   title: "Control de Flujo en",
   titleGradient: " HispanoLang",
   description: "Aprende a usar romper y continuar",
   prev: { url: "/lecciones/bucles", title: "Bucles" },
-  next: { url: "/lecciones/funciones", title: "Funciones" },
+  next: { url: "/lecciones/bucles-avanzados", title: "Bucles Avanzados" },
   steps: [
     {
       title: "¿Qué es el control de flujo?",

@@ -1,11 +1,11 @@
 import { LessonContent } from "../types";
 
 export const comentarios: LessonContent = {
-  badge: { emoji: "💭", text: "Lección 2" },
+  badge: { emoji: "💭", text: "Lección 3" },
   title: "Comentarios en",
   titleGradient: " HispanoLang",
   description: "Aprende a documentar tu código con comentarios útiles",
-  prev: { url: "/lecciones/variables", title: "Variables" },
+  prev: { url: "/lecciones/constantes", title: "Constantes" },
   next: { url: "/lecciones/tipos-datos", title: "Tipos de Datos" },
   steps: [
     {

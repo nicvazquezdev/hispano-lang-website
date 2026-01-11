@@ -1,11 +1,11 @@
 import { LessonContent } from "../types";
 
 export const funciones: LessonContent = {
-  badge: { emoji: "⚡", text: "Lección 9" },
+  badge: { emoji: "⚡", text: "Lección 13" },
   title: "Funciones en",
   titleGradient: " HispanoLang",
   description: "Crea código reutilizable con funciones",
-  prev: { url: "/lecciones/control-flujo-bucles", title: "Control de Flujo" },
+  prev: { url: "/lecciones/bucles-avanzados", title: "Bucles Avanzados" },
   next: { url: "/lecciones/funciones-matematicas", title: "Funciones Matemáticas" },
   steps: [
     {

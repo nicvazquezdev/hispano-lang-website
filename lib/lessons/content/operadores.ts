@@ -1,11 +1,11 @@
 import { LessonContent } from "../types";
 
 export const operadores: LessonContent = {
-  badge: { emoji: "➕", text: "Lección 5" },
+  badge: { emoji: "➕", text: "Lección 7" },
   title: "Operadores en",
   titleGradient: " HispanoLang",
   description: "Aprende a usar operadores aritméticos, de comparación y lógicos",
-  prev: { url: "/lecciones/metodos-strings", title: "Métodos de Strings" },
+  prev: { url: "/lecciones/template-strings", title: "Template Strings" },
   next: { url: "/lecciones/condicionales", title: "Condicionales" },
   steps: [
     {

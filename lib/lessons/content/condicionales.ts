@@ -1,12 +1,12 @@
 import { LessonContent } from "../types";
 
 export const condicionales: LessonContent = {
-  badge: { emoji: "🤔", text: "Lección 6" },
+  badge: { emoji: "🤔", text: "Lección 8" },
   title: "Condicionales en",
   titleGradient: " HispanoLang",
   description: "Aprende a tomar decisiones en tus programas",
   prev: { url: "/lecciones/operadores", title: "Operadores" },
-  next: { url: "/lecciones/bucles", title: "Bucles" },
+  next: { url: "/lecciones/elegir-caso", title: "Elegir/Caso" },
   steps: [
     {
       title: "¿Qué son los condicionales?",

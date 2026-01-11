@@ -5,7 +5,7 @@ export const variables: LessonContent = {
   title: "Variables en",
   titleGradient: " HispanoLang",
   description: "Aprende a almacenar y manipular datos paso a paso",
-  next: { url: "/lecciones/comentarios", title: "Comentarios" },
+  next: { url: "/lecciones/constantes", title: "Constantes" },
   steps: [
     {
       title: "¿Qué son las variables?",
