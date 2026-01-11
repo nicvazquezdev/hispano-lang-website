@@ -2,6 +2,7 @@
 
 import { useMemo } from 'react';
 import { highlightLine } from '@/lib/syntax';
+import CopyButton from '@/components/ui/CopyButton';
 
 interface CodeBlockProps {
   code: string;
@@ -29,7 +30,8 @@ export default function CodeBlock({ code, title }: CodeBlockProps) {
   const lines = useMemo(() => code.split('\n'), [code]);
 
   return (
-    <div className="rounded-lg border border-slate-700 overflow-hidden bg-slate-900">
+    <div className="rounded-lg border border-slate-700 overflow-hidden bg-slate-900 relative">
+      <CopyButton text={code} className="absolute top-2 right-2 z-10" />
       {title && (
         <div className="px-4 py-2 bg-slate-800/50 border-b border-slate-700">
           <span className="text-sm text-slate-400">{title}</span>
