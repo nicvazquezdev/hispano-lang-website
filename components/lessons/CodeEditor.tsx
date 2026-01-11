@@ -112,10 +112,6 @@ export default function CodeEditor({
   const handleCodeChange = (newCode: string) => {
     setCode(newCode);
     onCodeChange(newCode);
-    // Ocultar validación cuando el usuario modifica el código
-    if (showValidation) {
-      setShowValidation(false);
-    }
   };
 
   return (
@@ -145,7 +141,7 @@ export default function CodeEditor({
             ? 'bg-green-900/30 border-green-700/50'
             : 'bg-red-900/30 border-red-700/50'
         }`}>
-          <div className="flex items-center gap-2 mb-2">
+          <div className={`flex items-center gap-2 ${validationResult.failed.length > 0 ? 'mb-2' : ''}`}>
             <span className="text-lg">{validationResult.isValid ? '✅' : '❌'}</span>
             <span className={`font-medium ${validationResult.isValid ? 'text-green-300' : 'text-red-300'}`}>
               {validationResult.isValid ? '¡Correcto!' : 'Intenta de nuevo'}

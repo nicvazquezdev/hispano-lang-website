@@ -232,9 +232,10 @@ export default function LessonPage({
                     <h4 className="font-semibold text-purple-300 mb-2">
                       Desafío
                     </h4>
-                    <p className="text-slate-300">
-                      {currentStepData.challenge}
-                    </p>
+                    <FormattedText
+                      text={currentStepData.challenge}
+                      className="text-slate-300"
+                    />
                   </div>
 
                   {/* Editor + Consola */}
