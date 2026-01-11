@@ -1,12 +1,32 @@
 'use client';
 
+import { useMemo } from 'react';
+import { highlightLine } from '@/lib/syntax';
+
 interface CodeBlockProps {
   code: string;
   title?: string;
 }
 
+/**
+ * Renders a single line with syntax highlighting
+ */
+function HighlightedLine({ line }: { line: string }) {
+  const segments = useMemo(() => highlightLine(line), [line]);
+
+  return (
+    <>
+      {segments.map((segment, index) => (
+        <span key={index} className={segment.className}>
+          {segment.text}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function CodeBlock({ code, title }: CodeBlockProps) {
-  const lines = code.split('\n');
+  const lines = useMemo(() => code.split('\n'), [code]);
 
   return (
     <div className="rounded-lg border border-slate-700 overflow-hidden bg-slate-900">
@@ -33,7 +53,7 @@ export default function CodeBlock({ code, title }: CodeBlockProps) {
             <code className="text-sm font-mono" style={{ fontVariantLigatures: 'none' }}>
               {lines.map((line, index) => (
                 <div key={index} className="whitespace-pre h-6 leading-6">
-                  {highlightSyntax(line)}
+                  <HighlightedLine line={line} />
                 </div>
               ))}
             </code>
@@ -42,61 +62,4 @@ export default function CodeBlock({ code, title }: CodeBlockProps) {
       </div>
     </div>
   );
-}
-
-function highlightSyntax(line: string): React.ReactNode {
-  const patterns: { regex: RegExp; className: string }[] = [
-    { regex: /(\/\/.*)$/, className: 'text-slate-500' },
-    { regex: /("[^"]*")/, className: 'text-green-400' },
-    { regex: /\b(variable|var|si|sino|mientras|para|funcion|retornar|verdadero|falso|nulo|intentar|capturar|romper|continuar)\b/, className: 'text-purple-400' },
-    { regex: /\b(mostrar|leer|longitud|agregar|eliminar|obtener|tipo|raiz|potencia|redondear|aleatorio|seno|coseno|tangente|absoluto|piso|techo|maximo|minimo)\b/, className: 'text-blue-400' },
-    { regex: /\b(\d+\.?\d*)\b/, className: 'text-amber-400' },
-  ];
-
-  const result: React.ReactNode[] = [];
-  let remaining = line;
-  let key = 0;
-
-  while (remaining.length > 0) {
-    let earliestMatch: { index: number; length: number; className: string; match: string } | null = null;
-
-    for (const pattern of patterns) {
-      const match = remaining.match(pattern.regex);
-      if (match && match.index !== undefined) {
-        if (!earliestMatch || match.index < earliestMatch.index) {
-          earliestMatch = {
-            index: match.index,
-            length: match[1]?.length || match[0].length,
-            className: pattern.className,
-            match: match[1] || match[0],
-          };
-        }
-      }
-    }
-
-    if (earliestMatch) {
-      if (earliestMatch.index > 0) {
-        result.push(
-          <span key={key++} className="text-slate-100">
-            {remaining.slice(0, earliestMatch.index)}
-          </span>
-        );
-      }
-      result.push(
-        <span key={key++} className={earliestMatch.className}>
-          {earliestMatch.match}
-        </span>
-      );
-      remaining = remaining.slice(earliestMatch.index + earliestMatch.length);
-    } else {
-      result.push(
-        <span key={key++} className="text-slate-100">
-          {remaining}
-        </span>
-      );
-      break;
-    }
-  }
-
-  return result.length > 0 ? result : <span className="text-slate-100">{line || ' '}</span>;
 }
