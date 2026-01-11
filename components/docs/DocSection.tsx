@@ -50,7 +50,10 @@ export default function DocSection({
 
               {subsection.syntax && (
                 <div className="bg-purple-900/30 border border-purple-700/50 rounded-lg p-4 mb-4">
-                  <code className="text-purple-300 font-mono" style={{ fontVariantLigatures: 'none' }}>
+                  <code
+                    className="text-purple-300 font-mono"
+                    style={{ fontVariantLigatures: "none" }}
+                  >
                     {subsection.syntax}
                   </code>
                 </div>
@@ -64,8 +67,13 @@ export default function DocSection({
 
               {subsection.output && (
                 <div className="mb-4 bg-slate-900/50 border border-slate-700/50 rounded-lg p-4">
-                  <span className="text-xs text-slate-500 uppercase tracking-wide">Resultado:</span>
-                  <pre className="text-sm text-green-400 font-mono mt-2 whitespace-pre" style={{ fontVariantLigatures: 'none' }}>
+                  <span className="text-xs text-slate-500 uppercase tracking-wide">
+                    Resultado:
+                  </span>
+                  <pre
+                    className="text-sm font-mono mt-2 whitespace-pre"
+                    style={{ fontVariantLigatures: "none" }}
+                  >
                     {subsection.output}
                   </pre>
                 </div>
