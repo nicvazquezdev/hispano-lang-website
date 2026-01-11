@@ -101,7 +101,7 @@ export default function EnhancedCodeEditor({
   const updateCurrentLine = () => {
     if (textareaRef.current) {
       const cursorPosition = textareaRef.current.selectionStart;
-      const textBeforeCursor = code.substring(0, cursorPosition);
+      const textBeforeCursor = textareaRef.current.value.substring(0, cursorPosition);
       const lineNumber = textBeforeCursor.split("\n").length;
       setCurrentLine(lineNumber);
     }
