@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const conversionTipos: LessonContent = {
-  badge: { emoji: "🔄", text: "Lección 15" },
+  badge: { emoji: "🔄", text: "Lección 16" },
   title: "Conversión de Tipos en",
   titleGradient: " HispanoLang",
   description: "Transforma datos entre diferentes tipos",

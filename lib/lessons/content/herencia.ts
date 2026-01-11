@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const herencia: LessonContent = {
-  badge: { emoji: "🌳", text: "Lección 20" },
+  badge: { emoji: "🌳", text: "Lección 21" },
   title: "Herencia en",
   titleGradient: " HispanoLang",
   description: "Extender clases con extiende y super",

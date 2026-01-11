@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const metodosNumericos: LessonContent = {
-  badge: { emoji: "🔢", text: "Lección 16" },
+  badge: { emoji: "🔢", text: "Lección 17" },
   title: "Métodos Numéricos en",
   titleGradient: " HispanoLang",
   description: "Operaciones especiales con números",

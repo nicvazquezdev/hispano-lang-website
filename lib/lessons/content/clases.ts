@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const clases: LessonContent = {
-  badge: { emoji: "🏗️", text: "Lección 19" },
+  badge: { emoji: "🏗️", text: "Lección 20" },
   title: "Clases en",
   titleGradient: " HispanoLang",
   description: "Programación orientada a objetos",

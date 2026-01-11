@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const objetos: LessonContent = {
-  badge: { emoji: "🗂️", text: "Lección 18" },
+  badge: { emoji: "🗂️", text: "Lección 19" },
   title: "Objetos en",
   titleGradient: " HispanoLang",
   description: "Organiza datos con propiedades",

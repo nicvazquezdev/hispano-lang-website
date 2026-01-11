@@ -1,7 +1,7 @@
 import { LessonContent } from "../types";
 
 export const manejoErrores: LessonContent = {
-  badge: { emoji: "🛡️", text: "Lección 21" },
+  badge: { emoji: "🛡️", text: "Lección 22" },
   title: "Manejo de Errores en",
   titleGradient: " HispanoLang",
   description: "Crea programas robustos",
