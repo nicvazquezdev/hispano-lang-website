@@ -1,6 +1,11 @@
 /**
  * Sistema de Validación Simplificado
- * Solo verifica: errores de ejecución y outputs esperados
+ * Verifica: errores de ejecución, outputs esperados y patrones de código
+ *
+ * Los patrones pueden ser:
+ * - Strings simples: se busca si el texto contiene el string
+ * - Patrones regex: strings que empiezan con "/" se convierten a RegExp
+ *   Ejemplo: "/mi_edad\\s*=/" se convierte a /mi_edad\s*=/
  */
 
 export interface SimpleValidation {
@@ -12,6 +17,37 @@ export interface ValidationResult {
   isValid: boolean;
   passed: string[];
   failed: string[];
+}
+
+function parsePattern(pattern: string): RegExp | string {
+  // Si empieza con "/" es un regex
+  if (pattern.startsWith("/")) {
+    // Extraer el patrón y las flags
+    const lastSlash = pattern.lastIndexOf("/");
+    if (lastSlash > 0) {
+      const regexBody = pattern.slice(1, lastSlash);
+      const flags = pattern.slice(lastSlash + 1);
+      return new RegExp(regexBody, flags);
+    }
+  }
+  return pattern;
+}
+
+function matchesPattern(text: string, pattern: string): boolean {
+  const parsed = parsePattern(pattern);
+  if (parsed instanceof RegExp) {
+    return parsed.test(text);
+  }
+  return text.includes(parsed);
+}
+
+function patternToString(pattern: string): string {
+  if (pattern.startsWith("/")) {
+    // Mostrar una versión más legible del regex
+    const lastSlash = pattern.lastIndexOf("/");
+    return pattern.slice(1, lastSlash > 0 ? lastSlash : undefined);
+  }
+  return pattern;
 }
 
 export function validateExercise(
@@ -42,21 +78,21 @@ export function validateExercise(
   // Verificar outputs esperados
   if (validation.expectedOutputs && validation.expectedOutputs.length > 0) {
     for (const expected of validation.expectedOutputs) {
-      if (outputText.includes(expected)) {
-        passed.push(`Output contiene "${expected}"`);
+      if (matchesPattern(outputText, expected)) {
+        passed.push(`Output correcto`);
       } else {
-        failed.push(`Falta en output: "${expected}"`);
+        failed.push(`Falta en output: "${patternToString(expected)}"`);
       }
     }
   }
 
-  // Verificar código requerido (opcional)
+  // Verificar código requerido
   if (validation.requiredCode && validation.requiredCode.length > 0) {
     for (const required of validation.requiredCode) {
-      if (execution.code.includes(required)) {
-        passed.push(`Código contiene "${required}"`);
+      if (matchesPattern(execution.code, required)) {
+        passed.push(`Código correcto`);
       } else {
-        failed.push(`Falta en código: "${required}"`);
+        failed.push(`Falta en código: "${patternToString(required)}"`);
       }
     }
   }

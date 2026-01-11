@@ -20,7 +20,9 @@ mostrar a * b
 mostrar a / b`,
       explanation: "Operadores básicos: + (suma), - (resta), * (multiplicación), / (división).",
       challenge: "Crea dos variables numéricas y muestra las cuatro operaciones básicas.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/\\+/", "/\\-/", "/\\*/", "/\\//"],
+      },
     },
     {
       title: "Operadores Aritméticos",
@@ -31,7 +33,10 @@ variable b = 5
 mostrar "Módulo: " + (a % b)`,
       explanation: "17 % 5 = 2 porque 17 dividido 5 es 3 con resto 2. Útil para detectar pares (n % 2 == 0).",
       challenge: "Calcula el área de un círculo: 3.14159 * radio * radio. Usa radio = 5.",
-      validation: { expectedOutputs: ["78"] },
+      validation: {
+        requiredCode: ["/3\\.14/", "/radio/", "/\\*/"],
+        expectedOutputs: ["78"],
+      },
     },
     {
       title: "Operadores de Comparación",
@@ -45,7 +50,9 @@ mostrar "a == b: " + (a == b)
 mostrar "a != b: " + (a != b)`,
       explanation: "> (mayor), < (menor), >= (mayor o igual), <= (menor o igual), == (igual), != (diferente).",
       challenge: "Crea dos edades y compara si la primera es mayor, menor o igual que la segunda.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/edad/", "/>|<|>=|<=|==/"],
+      },
     },
     {
       title: "Operadores Lógicos",
@@ -60,7 +67,9 @@ variable necesita_taxi = !tiene_licencia
 mostrar "¿Necesita taxi?: " + necesita_taxi`,
       explanation: "'y' requiere ambas verdaderas. 'o' requiere al menos una. '!' invierte el valor.",
       challenge: "Sistema de acceso: puede entrar si tiene tarjeta Y (tiene código O es admin).",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/tarjeta/", "/\\s+y\\s+/", "/\\s+o\\s+/"],
+      },
     },
     {
       title: "Operadores de Asignación",
@@ -76,7 +85,10 @@ x *= 2
 mostrar "Después de *= 2: " + x`,
       explanation: "x += 5 es lo mismo que x = x + 5. Más corto y claro.",
       challenge: "Sistema de puntos: empieza en 100, suma 50 (victoria), resta 20 (derrota), multiplica por 1.5 (bonus).",
-      validation: { expectedOutputs: ["100", "150", "130", "195"] },
+      validation: {
+        requiredCode: ["/=\\s*100/", "/\\+=\\s*50/", "/-=\\s*20/", "/\\*=\\s*1\\.5/"],
+        expectedOutputs: ["100", "150", "130", "195"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -90,7 +102,9 @@ mostrar "Duplicado: " + numero`,
       explanation: "Los operadores son tus herramientas básicas para procesar datos.",
       challenge: "Calcula el IMC: peso / (altura * altura). Muestra si es menor, igual o mayor que 25.",
       summary: "🧠 Recuerda:\n\n• Aritméticos: +, -, *, /, %\n• Comparación: >, <, >=, <=, ==, !=\n• Lógicos: y, o, !\n• Asignación: +=, -=, *=, /=",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/peso/", "/altura/", "/\\//", "/\\*/"],
+      },
     },
   ],
 };

@@ -18,8 +18,11 @@ export const funciones: LessonContent = {
 saludar()
 saludar()`,
       explanation: "Definimos una función con 'funcion' y la llamamos con su nombre y paréntesis.",
-      challenge: "Crea una función 'despedirse' que muestre dos mensajes. Llámala 3 veces.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea una función 'despedirse' que muestre '¡Adiós!'. Llámala 2 veces.",
+      validation: {
+        requiredCode: ["/funcion\\s+despedirse\\s*\\(/", "/despedirse\\(\\)/"],
+        expectedOutputs: ["/Adi|adi|Chao|chao|Hasta/"],
+      },
     },
     {
       title: "Funciones con Parámetros",
@@ -31,8 +34,11 @@ saludar()`,
 saludar("María")
 saludar("Carlos")`,
       explanation: "El parámetro 'nombre' recibe el valor que pasamos al llamar la función.",
-      challenge: "Crea 'calcularAreaRectangulo(base, altura)' que muestre el área. Pruébala con diferentes valores.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea 'calcularDoble(numero)' que muestre el doble de un número. Pruébala con 5 y 10.",
+      validation: {
+        requiredCode: ["/funcion\\s+\\w+\\s*\\(\\s*\\w+/", "/\\*\\s*2|2\\s*\\*/"],
+        expectedOutputs: ["10", "20"],
+      },
     },
     {
       title: "Funciones que Retornan",
@@ -44,8 +50,11 @@ saludar("Carlos")`,
 variable resultado = sumar(5, 3)
 mostrar "5 + 3 = " + resultado`,
       explanation: "El valor retornado se puede guardar en una variable o usar directamente.",
-      challenge: "Crea 'multiplicar(x, y)' que retorne el producto. Usa la función para calcular 3 áreas.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea 'multiplicar(x, y)' que retorne el producto. Muestra el resultado de 6 × 7.",
+      validation: {
+        requiredCode: ["/funcion\\s+multiplicar/", "/retornar/", "/\\*/"],
+        expectedOutputs: ["42"],
+      },
     },
     {
       title: "Con y Sin Retorno",
@@ -63,8 +72,11 @@ funcion calcularPromedio(a, b, c) {
 imprimirTabla(3)
 mostrar "Promedio: " + calcularPromedio(8, 9, 7)`,
       explanation: "Usa funciones sin retorno para acciones, con retorno para cálculos.",
-      challenge: "Crea 'mostrarEstadisticas(nombre, puntos)' sin retorno y 'calcularPuntosFinales(puntos, bonus)' con retorno.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea 'calcularSuma(a, b, c)' que retorne la suma de tres números. Muestra la suma de 10, 20, 30.",
+      validation: {
+        requiredCode: ["/funcion\\s+\\w+\\s*\\(\\s*\\w+\\s*,\\s*\\w+\\s*,\\s*\\w+/", "/retornar/"],
+        expectedOutputs: ["60"],
+      },
     },
     {
       title: "Funciones Anónimas",
@@ -75,8 +87,11 @@ mostrar "Promedio: " + calcularPromedio(8, 9, 7)`,
 
 mostrar saludar("Ana")`,
       explanation: "Útiles para callbacks y funciones pequeñas.",
-      challenge: "Crea una función anónima que convierta Celsius a Fahrenheit: (c * 9/5) + 32.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea una función anónima que calcule el cuadrado de un número. Muestra el cuadrado de 8.",
+      validation: {
+        requiredCode: ["/variable\\s+\\w+\\s*=\\s*funcion/", "/\\*\\s*\\w+|\\w+\\s*\\*\\s*\\w+/"],
+        expectedOutputs: ["64"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -88,9 +103,11 @@ mostrar saludar("Ana")`,
 variable miIMC = calcularIMC(70, 1.75)
 mostrar "Tu IMC es: " + miIMC`,
       explanation: "Las funciones dividen problemas grandes en piezas pequeñas.",
-      challenge: "Sistema de estudiantes: 'calcularNotaFinal', 'determinarEstado', 'mostrarReporte'.",
+      challenge: "Crea 'esMayorDeEdad(edad)' que retorne verdadero si edad >= 18. Prueba con 15 y 20.",
       summary: "🧠 Recuerda:\n\n• Las funciones encapsulan código reutilizable\n• Los parámetros hacen funciones flexibles\n• 'retornar' devuelve un valor\n• Divide problemas en funciones pequeñas",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/funcion\\s+esMayorDeEdad|funcion\\s+es_mayor/", "/>=?\\s*18|>\\s*17/", "/retornar/"],
+      },
     },
   ],
 };

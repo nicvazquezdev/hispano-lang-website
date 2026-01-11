@@ -15,7 +15,10 @@ export const funcionesMatematicas: LessonContent = {
 mostrar "2^3: " + potencia(2, 3)`,
       explanation: "raiz() calcula raíz cuadrada, potencia(base, exp) eleva a una potencia.",
       challenge: "Calcula la raíz de 144 y 2 elevado a la 5.",
-      validation: { expectedOutputs: ["12", "32"] },
+      validation: {
+        requiredCode: ["/raiz\\s*\\(\\s*144\\s*\\)/", "/potencia\\s*\\(\\s*2\\s*,\\s*5\\s*\\)/"],
+        expectedOutputs: ["12", "32"],
+      },
     },
     {
       title: "Funciones Trigonométricas",
@@ -23,8 +26,10 @@ mostrar "2^3: " + potencia(2, 3)`,
       code: `mostrar "Seno de 0: " + seno(0)
 mostrar "Coseno de 0: " + coseno(0)`,
       explanation: "Útiles para animaciones, física y geometría.",
-      challenge: "Calcula seno, coseno y tangente de 45.",
-      validation: { expectedOutputs: [] },
+      challenge: "Calcula seno y coseno de 0. Muestra ambos resultados.",
+      validation: {
+        requiredCode: ["/seno\\s*\\(/", "/coseno\\s*\\(/"],
+      },
     },
     {
       title: "Funciones de Redondeo",
@@ -36,7 +41,10 @@ mostrar "Techo: " + techo(decimal)
 mostrar "Piso: " + piso(decimal)`,
       explanation: "redondear: más cercano. techo: siempre arriba. piso: siempre abajo.",
       challenge: "Calcula cuántos paquetes de 6 necesitas para 20 unidades (usa división y techo).",
-      validation: { expectedOutputs: ["4"] },
+      validation: {
+        requiredCode: ["/techo\\s*\\(/", "/\\/\\s*6|6\\s*\\//"],
+        expectedOutputs: ["4"],
+      },
     },
     {
       title: "Valor Absoluto",
@@ -44,8 +52,11 @@ mostrar "Piso: " + piso(decimal)`,
       code: `mostrar valorAbsoluto(-5)
 mostrar valorAbsoluto(10 - 25)`,
       explanation: "Útil para calcular distancias o diferencias sin signo.",
-      challenge: "Crea dos números y calcula su diferencia absoluta.",
-      validation: { expectedOutputs: [] },
+      challenge: "Calcula la diferencia absoluta entre 15 y 42.",
+      validation: {
+        requiredCode: ["/valorAbsoluto\\s*\\(/"],
+        expectedOutputs: ["27"],
+      },
     },
     {
       title: "Números Aleatorios",
@@ -57,8 +68,10 @@ mostrar "5 a 15: " + aleatorio(5, 15)
 variable dado = piso(aleatorio(1, 7))
 mostrar "Dado: " + dado`,
       explanation: "Para enteros, combina con piso().",
-      challenge: "Simula dos dados (1-6) y suma sus valores.",
-      validation: { expectedOutputs: [] },
+      challenge: "Simula un dado de 6 caras usando aleatorio y piso. Muestra el resultado.",
+      validation: {
+        requiredCode: ["/aleatorio\\s*\\(/", "/piso\\s*\\(/"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -66,9 +79,12 @@ mostrar "Dado: " + dado`,
       code: `variable distancia = raiz(potencia(3, 2) + potencia(4, 2))
 mostrar "Distancia: " + distancia`,
       explanation: "Teorema de Pitágoras usando raiz() y potencia().",
-      challenge: "Juego de adivinanza: genera número aleatorio 1-100, calcula diferencia absoluta con tu intento.",
+      challenge: "Calcula la hipotenusa de un triángulo con catetos 5 y 12 usando Pitágoras.",
       summary: "🧠 Recuerda:\n\n• raiz(), potencia() para cálculos\n• seno(), coseno(), tangente() para trigonometría\n• redondear(), techo(), piso() para enteros\n• aleatorio() para números al azar",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/raiz\\s*\\(/", "/potencia\\s*\\(/"],
+        expectedOutputs: ["13"],
+      },
     },
   ],
 };

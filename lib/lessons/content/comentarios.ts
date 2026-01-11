@@ -16,7 +16,9 @@ variable x = 10
 mostrar x`,
       explanation: "Los comentarios empiezan con //. Todo lo que escribas después es ignorado por el programa.",
       challenge: "Crea una variable con tu nombre y muéstrala. Agrega un comentario antes explicando qué hace tu código.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["//", "/variable\\s+\\w+\\s*=/", "mostrar"],
+      },
     },
     {
       title: "Comentarios en Diferentes Lugares",
@@ -32,8 +34,10 @@ variable ciudad = "Madrid"
 
 mostrar nombre`,
       explanation: "Puedes poner comentarios donde más te convenga para explicar tu código.",
-      challenge: "Crea tres variables (nombre, edad, ciudad). Agrega un comentario al inicio y uno al final de cada variable.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea tres variables (nombre, edad, ciudad). Agrega un comentario al inicio explicando el programa.",
+      validation: {
+        requiredCode: ["//", "/nombre\\s*=/", "/edad\\s*=/", "/ciudad\\s*=/"],
+      },
     },
     {
       title: "Comentarios para Desactivar Código",
@@ -48,7 +52,9 @@ variable doble = numero * 2
 mostrar "El doble es: " + doble`,
       explanation: "La línea comentada no se ejecuta. Puedes activarla quitando //.",
       challenge: "Escribe 4 mensajes con mostrar. Comenta 2 de ellos y ejecuta. Solo se verán 2 mensajes.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/\\/\\/\\s*mostrar/", "/mostrar\\s+\"/"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -63,7 +69,9 @@ mostrar "Tengo " + mi_edad + " años"`,
       explanation: "Los comentarios te ayudan a entender tu código cuando lo revisas después.",
       challenge: "Crea un programa que sume dos números. Agrega comentarios explicando cada paso.",
       summary: "🧠 Recuerda:\n\n• Los comentarios empiezan con //\n• El programa ignora los comentarios\n• Úsalos para explicar tu código\n• Puedes comentar código para desactivarlo",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["//", "+"],
+      },
     },
   ],
 };

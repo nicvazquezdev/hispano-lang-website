@@ -20,7 +20,9 @@ si edad >= 18 {
 mostrar "Programa terminado"`,
       explanation: "El código dentro del 'si' solo se ejecuta si la condición es verdadera.",
       challenge: "Crea una variable con tu edad y muestra un mensaje solo si eres mayor de 21.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/edad\\s*=/", "/si\\s+/", "/>=?\\s*21|>\\s*20/"],
+      },
     },
     {
       title: "Condicional Si-Sino",
@@ -33,8 +35,11 @@ si edad >= 18 {
     mostrar "Eres menor de edad"
 }`,
       explanation: "Siempre se ejecuta exactamente uno de los dos bloques.",
-      challenge: "Pide un número y usa si-sino para mostrar si es par o impar (usa % 2).",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea un número y usa si-sino para mostrar si es par o impar (usa % 2).",
+      validation: {
+        requiredCode: ["/%\\s*2/", "/si\\s+/", "/sino/"],
+        expectedOutputs: ["/par|impar/i"],
+      },
     },
     {
       title: "Condicionales Anidados",
@@ -53,7 +58,9 @@ si edad >= 18 {
 }`,
       explanation: "Los condicionales anidados crean árboles de decisiones.",
       challenge: "Evalúa si un estudiante aprobó (nota >= 70). Si aprobó y nota >= 90, muestra '¡Excelente!'.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/nota\\s*=/", "/>=?\\s*70|>\\s*69/", "/>=?\\s*90|>\\s*89/"],
+      },
     },
     {
       title: "Cadenas de Condiciones",
@@ -75,7 +82,10 @@ si nota >= 90 {
 }`,
       explanation: "Se evalúa en orden hasta encontrar una condición verdadera.",
       challenge: "Categoriza temperatura: >= 30 'Calor', >= 20 'Agradable', >= 10 'Fresco', sino 'Frío'.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/temperatura/", "/>=?\\s*30|>\\s*29/", "/>=?\\s*20|>\\s*19/", "/>=?\\s*10|>\\s*9/"],
+        expectedOutputs: ["/Calor|Agradable|Fresco|Fr/"],
+      },
     },
     {
       title: "Condiciones Complejas",
@@ -90,7 +100,9 @@ si edad >= 18 y tiene_entrada {
 }`,
       explanation: "Usa 'y' cuando ambas deben ser verdaderas, 'o' cuando al menos una.",
       challenge: "Sistema de login: puede entrar si (nombre == 'admin' y password == '1234') o es_invitado.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/nombre/", "/password|contrase/", "/\\s+y\\s+/", "/\\s+o\\s+/"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -109,7 +121,9 @@ si temperatura > 30 {
       explanation: "Los condicionales son el cerebro de tus programas.",
       challenge: "Calculadora de descuentos: >= 100 da 20%, >= 50 da 10%, sino 0%. Calcula precio final.",
       summary: "🧠 Recuerda:\n\n• 'si' ejecuta código cuando la condición es verdadera\n• 'sino' cubre el caso contrario\n• Puedes anidar condicionales\n• Usa 'y', 'o' para condiciones complejas",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/precio/", "/si\\s+/", "/>=?\\s*100|>\\s*99/", "/>=?\\s*50|>\\s*49/"],
+      },
     },
   ],
 };

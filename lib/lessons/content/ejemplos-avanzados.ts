@@ -21,8 +21,11 @@ si esAdulto(edad) {
     mostrar nombre + " es adulto"
 }`,
       explanation: "Variables + funciones + condicionales trabajando juntos.",
-      challenge: "Crea 'esPar(n)' y usa un bucle para mostrar los pares del 1 al 20.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea 'esPar(n)' que retorne verdadero si n es par. Úsala para mostrar si 10 es par.",
+      validation: {
+        requiredCode: ["/funcion\\s+esPar|funcion\\s+es_par/", "/%\\s*2/", "/retornar/"],
+        expectedOutputs: ["/verdadero|par/i"],
+      },
     },
     {
       title: "Calculadora",
@@ -36,8 +39,11 @@ si esAdulto(edad) {
 
 mostrar calculadora(10, 5, "suma")`,
       explanation: "Patrón común: función que decide basada en parámetros.",
-      challenge: "Agrega la operación 'modulo' (%). Prueba todas las operaciones.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea una calculadora con operaciones: suma, resta, multiplicación. Muestra 8 + 4.",
+      validation: {
+        requiredCode: ["/funcion\\s+calculadora/", "/si\\s+.*==/", "/retornar.*\\+/", "/retornar.*\\-/", "/retornar.*\\*/"],
+        expectedOutputs: ["12"],
+      },
     },
     {
       title: "Procesamiento de Listas",
@@ -57,8 +63,11 @@ numeros.recorrer(funcion(n) {
 mostrar "Pares: " + pares
 mostrar "Impares: " + impares`,
       explanation: "Filtrar y clasificar es un patrón muy común.",
-      challenge: "Lista 1-20. Separa en: múltiplos de 3, múltiplos de 5, otros.",
-      validation: { expectedOutputs: [] },
+      challenge: "Lista [1,2,3,4,5,6]. Separa en pares e impares. Muestra ambas listas.",
+      validation: {
+        requiredCode: ["/\\.recorrer/", "/%\\s*2/", "/\\.agregar/"],
+        expectedOutputs: ["/2.*4.*6|pares/i", "/1.*3.*5|impares/i"],
+      },
     },
     {
       title: "Sistema de Estudiantes",
@@ -75,8 +84,10 @@ estudiantes.recorrer(funcion(est) {
     }
 })`,
       explanation: "Recorrer, filtrar y procesar objetos.",
-      challenge: "Agrega más estudiantes. Calcula el promedio. Muestra quiénes están sobre el promedio.",
-      validation: { expectedOutputs: [] },
+      challenge: "Lista de 3 estudiantes con nombre y nota. Muestra solo los que tienen nota >= 80.",
+      validation: {
+        requiredCode: ["/\\[\\s*\\{/", "/nombre\\s*:/", "/nota\\s*:/", "/\\.recorrer/", "/>=?\\s*80|>\\s*79/"],
+      },
     },
     {
       title: "Sistema de Inventario",
@@ -104,8 +115,10 @@ agregarProducto("Mouse", 25, 20)
 
 mostrar "Valor total: " + calcularValorTotal()`,
       explanation: "Funciones especializadas que trabajan con datos compartidos.",
-      challenge: "Agrega función 'buscarProducto(nombre)' que muestre la info del producto.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea un inventario con 2 productos. Calcula y muestra el valor total.",
+      validation: {
+        requiredCode: ["/funcion\\s+\\w+/", "/\\.agregar\\s*\\(\\s*\\{/", "/\\.recorrer/", "/retornar/"],
+      },
     },
     {
       title: "¡Proyecto Final!",
@@ -119,9 +132,11 @@ mostrar "Valor total: " + calcularValorTotal()`,
 
 mostrar "¡Felicidades por completar el curso!"`,
       explanation: "Has aprendido todo lo necesario para crear programas completos.",
-      challenge: "Crea un programa que combine al menos 5 conceptos diferentes. ¡Demuestra lo aprendido!",
+      challenge: "Crea un programa que use: variables, una función, un condicional y una lista. ¡Demuestra lo aprendido!",
       summary: "🎓 Has Completado el Curso:\n\n• Variables y tipos de datos\n• Operadores y condicionales\n• Bucles y funciones\n• Listas y objetos\n• Manejo de errores\n\n¡Ahora puedes crear programas completos en español!",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/variable/", "/funcion/", "/si\\s+/", "/\\[/"],
+      },
     },
   ],
 };

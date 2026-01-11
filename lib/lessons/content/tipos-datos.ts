@@ -20,7 +20,9 @@ mostrar "Texto: " + texto
 mostrar "Booleano: " + es_verdadero`,
       explanation: "Números sin comillas, texto entre comillas, booleanos son verdadero/falso.",
       challenge: "Crea tres variables: tu edad (número), tu nombre (texto) y si tienes mascota (booleano). Muéstralas.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/=\\s*\\d+/", "/=\\s*\"/", "/(verdadero|falso)/"],
+      },
     },
     {
       title: "Números: Enteros y Decimales",
@@ -36,7 +38,10 @@ mostrar "Decimal: " + decimal
 mostrar "Suma: " + suma`,
       explanation: "Los números permiten operaciones matemáticas: +, -, *, /",
       challenge: "Crea variables para precio (25.99) y descuento (5.50). Calcula y muestra el precio final.",
-      validation: { expectedOutputs: ["20.49"] },
+      validation: {
+        requiredCode: ["25.99", "/5\\.50|5\\.5/"],
+        expectedOutputs: ["20.49"],
+      },
     },
     {
       title: "Cadenas de Texto (Strings)",
@@ -49,8 +54,11 @@ variable mensaje = saludo + " " + nombre
 mostrar mensaje
 mostrar "Mi nombre tiene " + nombre.longitud() + " letras"`,
       explanation: "Usamos + para unir textos. El método .longitud() nos da la cantidad de caracteres.",
-      challenge: "Crea variables para tu ciudad y país. Muestra 'Vivo en [ciudad], [país]' y la longitud del mensaje.",
-      validation: { expectedOutputs: ["Vivo en"] },
+      challenge: "Crea variables para tu ciudad y país. Muestra 'Vivo en [ciudad], [país]'.",
+      validation: {
+        requiredCode: ["/ciudad\\s*=/", "/pais\\s*=/"],
+        expectedOutputs: ["Vivo en"],
+      },
     },
     {
       title: "Valores Booleanos",
@@ -65,7 +73,9 @@ variable puede_conducir = es_mayor y tiene_licencia
 mostrar "Puede conducir: " + puede_conducir`,
       explanation: "Usamos 'y' (AND) y 'o' (OR) para combinar booleanos.",
       challenge: "Crea variables: hambre, dinero, restaurante_abierto. Determina si puedes comer (los tres verdaderos).",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/hambre\\s*=/", "/dinero\\s*=/", "/restaurante_abierto\\s*=/", "/\\s+y\\s+/"],
+      },
     },
     {
       title: "Valores Especiales: Nulo",
@@ -80,7 +90,10 @@ variable telefono = nulo
 mostrar "Teléfono: " + telefono`,
       explanation: "Nulo se usa cuando intencionalmente no hay valor, como un campo opcional.",
       challenge: "Crea una variable email como nulo. Muéstrala con un mensaje explicativo.",
-      validation: { expectedOutputs: ["nulo"] },
+      validation: {
+        requiredCode: ["/email\\s*=\\s*nulo/"],
+        expectedOutputs: ["nulo"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -93,9 +106,11 @@ mostrar "Hola, soy " + mi_nombre
 mostrar "Tengo " + mi_edad + " años"
 mostrar "¿Soy programador? " + es_programador`,
       explanation: "Experimenta combinando diferentes tipos de datos.",
-      challenge: "Crea un perfil con nombre, edad, ciudad, si trabajas, y un hobby. Muestra todo en mensajes.",
+      challenge: "Crea un perfil con nombre, edad, ciudad, si trabajas, y un hobby. Muestra todo.",
       summary: "🧠 Recuerda:\n\n• Números: sin comillas, permiten matemáticas\n• Texto: entre comillas, se concatena con +\n• Booleanos: verdadero/falso\n• Nulo: ausencia de valor",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/nombre\\s*=/", "/edad\\s*=/", "/ciudad\\s*=/", "/(verdadero|falso)/"],
+      },
     },
   ],
 };

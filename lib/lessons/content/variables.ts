@@ -14,7 +14,10 @@ export const variables: LessonContent = {
 mostrar mi_nombre`,
       explanation: "Aquí creamos una variable llamada `mi_nombre` y le asignamos el valor 'Ana'. El texto va entre comillas dobles. Luego usamos `mostrar` para imprimir el valor en pantalla.",
       challenge: "Crea una variable llamada `mi_edad` con tu edad y muéstrala en pantalla.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/mi_edad\\s*=/", "mostrar"],
+        expectedOutputs: ["/\\d+/"],
+      },
     },
     {
       title: "Diferentes tipos de variables",
@@ -28,7 +31,9 @@ mostrar "Edad: " + edad
 mostrar "Es estudiante: " + es_estudiante`,
       explanation: "Creamos tres variables: texto (entre comillas), número (sin comillas) y booleano (verdadero/falso). Usamos + para concatenar.",
       challenge: "Crea variables para tu color favorito, tu número de la suerte y si te gusta programar. Muestra todo.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/variable\\s+\\w+\\s*=\\s*\"/", "/variable\\s+\\w+\\s*=\\s*\\d/", "/(verdadero|falso)/"],
+      },
     },
     {
       title: "Cambiar el valor de una variable",
@@ -43,7 +48,10 @@ contador = contador + 3
 mostrar "Contador final: " + contador`,
       explanation: "Cambiamos el valor del contador varias veces. En `contador = contador + 3`, tomamos el valor actual y le sumamos 3.",
       challenge: "Crea una variable `puntos` que empiece en 10, cámbiala a 25, y súmale 5. Muestra el resultado en cada paso.",
-      validation: { expectedOutputs: ["10", "25", "30"] },
+      validation: {
+        requiredCode: ["/puntos\\s*=\\s*10/", "/puntos\\s*=\\s*25/", "/puntos\\s*=\\s*puntos\\s*\\+\\s*5/"],
+        expectedOutputs: ["10", "25", "30"],
+      },
     },
     {
       title: "Variables con operaciones matemáticas",
@@ -57,7 +65,9 @@ mostrar "Descuento: " + descuento
 mostrar "Precio final: " + precio_final`,
       explanation: "Usamos operadores matemáticos para calcular el precio final.",
       challenge: "Crea variables `base` y `altura`, calcula el área (base × altura) y muéstrala.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/base\\s*=/", "/altura\\s*=/", "/base\\s*\\*\\s*altura/"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -67,7 +77,10 @@ mostrar mi_variable`,
       explanation: "Practica creando variables de diferentes tipos y combinándolas.",
       challenge: "Crea una variable `pais` y muestra 'Vivo en [tu país]'. Agrega `ciudad` y combina ambas.",
       summary: "🧠 Recuerda:\n\n• Usa `variable` para crear una nueva caja.\n• Puedes cambiar su contenido en cualquier momento.\n• Las variables pueden guardar texto, números o booleanos.\n• Usa `mostrar` para ver el contenido.",
-      validation: { expectedOutputs: ["Vivo en"] },
+      validation: {
+        requiredCode: ["/pais\\s*=/", "/ciudad\\s*=/"],
+        expectedOutputs: ["Vivo en"],
+      },
     },
   ],
 };

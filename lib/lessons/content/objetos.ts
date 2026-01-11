@@ -20,8 +20,10 @@ export const objetos: LessonContent = {
 mostrar persona.nombre
 mostrar persona.edad`,
       explanation: "Usamos clave: valor en lugar de índices numéricos.",
-      challenge: "Crea un objeto 'libro' con título, autor y año. Muestra cada propiedad.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea un objeto 'libro' con título, autor y año. Muestra el título.",
+      validation: {
+        requiredCode: ["/libro\\s*=\\s*\\{/", "/titulo|título/", "/autor/", "/\\.titulo|\\.título/"],
+      },
     },
     {
       title: "Modificar Propiedades",
@@ -37,8 +39,10 @@ estudiante.promedio = 9.5
 mostrar estudiante.edad
 mostrar estudiante.promedio`,
       explanation: "Asignamos nuevos valores con objeto.propiedad = valor.",
-      challenge: "Crea un objeto 'coche'. Agrega propiedades año, color y precio después.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea un objeto 'producto' con nombre y precio. Agrega la propiedad 'cantidad' después.",
+      validation: {
+        requiredCode: ["/producto\\s*=\\s*\\{/", "/\\.cantidad\\s*=/"],
+      },
     },
     {
       title: "Objetos con Listas",
@@ -51,8 +55,10 @@ mostrar estudiante.promedio`,
 
 mostrar producto.categorias[0]`,
       explanation: "Accedemos a elementos de la lista dentro del objeto.",
-      challenge: "Objeto 'estudiante' con nombre, edad, materias (lista), es_becado (booleano).",
-      validation: { expectedOutputs: [] },
+      challenge: "Objeto 'estudiante' con nombre y materias (lista de 3 materias). Muestra la segunda materia.",
+      validation: {
+        requiredCode: ["/estudiante\\s*=\\s*\\{/", "/materias\\s*:\\s*\\[/", "/\\.materias\\s*\\[\\s*1\\s*\\]/"],
+      },
     },
     {
       title: "Objetos Anidados",
@@ -67,8 +73,10 @@ mostrar producto.categorias[0]`,
 
 mostrar empresa.direccion.ciudad`,
       explanation: "Usamos múltiples puntos para acceder: objeto.subObjeto.propiedad.",
-      challenge: "Objeto 'persona' con nombre, edad, y 'contacto' (objeto con email y teléfono).",
-      validation: { expectedOutputs: [] },
+      challenge: "Objeto 'persona' con nombre y 'contacto' (objeto con email y telefono). Muestra el email.",
+      validation: {
+        requiredCode: ["/persona\\s*=\\s*\\{/", "/contacto\\s*:\\s*\\{/", "/email/", "/\\.contacto\\.email/"],
+      },
     },
     {
       title: "Listas de Objetos",
@@ -82,8 +90,10 @@ estudiantes.recorrer(funcion(est) {
     mostrar est.nombre + ": " + est.nota
 })`,
       explanation: "Combinamos índices y notación de punto.",
-      challenge: "Lista de 3 productos con nombre, precio, stock. Recorre y muestra los que tienen stock > 0.",
-      validation: { expectedOutputs: [] },
+      challenge: "Lista de 2 productos con nombre y precio. Recorre y muestra cada producto.",
+      validation: {
+        requiredCode: ["/\\[\\s*\\{/", "/nombre\\s*:/", "/precio\\s*:/", "/\\.recorrer/"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -99,9 +109,11 @@ biblioteca.libros.recorrer(funcion(libro) {
     mostrar libro.titulo
 })`,
       explanation: "Objetos + listas = estructuras poderosas.",
-      challenge: "Objeto 'restaurante' con nombre, dirección (anidado), menú (lista de platos con precio).",
+      challenge: "Objeto 'clase' con nombre y estudiantes (lista de objetos con nombre y nota). Muestra todos los nombres.",
       summary: "🧠 Recuerda:\n\n• Objetos: { clave: valor }\n• Acceso: objeto.propiedad\n• Propiedades pueden ser cualquier tipo\n• Objetos anidados con múltiples puntos\n• Listas de objetos para colecciones",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/clase\\s*=\\s*\\{/", "/estudiantes\\s*:\\s*\\[/", "/\\.recorrer/"],
+      },
     },
   ],
 };

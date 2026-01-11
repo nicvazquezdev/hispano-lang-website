@@ -15,8 +15,10 @@ export const metodosStrings: LessonContent = {
 mostrar saludo
 mostrar "Longitud: " + saludo.longitud()`,
       explanation: "Cada string tiene métodos como .longitud() que podemos usar con la notación de punto.",
-      challenge: "Crea una variable con tu frase favorita y muéstrala.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea una variable con tu frase favorita y muestra cuántos caracteres tiene.",
+      validation: {
+        requiredCode: [".longitud()"],
+      },
     },
     {
       title: "Método longitud()",
@@ -32,7 +34,9 @@ si nombre.longitud() < 3 {
 }`,
       explanation: "Útil para validar longitud de contraseñas o campos de formulario.",
       challenge: "Crea un nombre y verifica si tiene al menos 5 caracteres. Muestra un mensaje según el resultado.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: [".longitud()", "/si\\s+/", "/>=?\\s*5|>\\s*4/"],
+      },
     },
     {
       title: "Método mayusculas()",
@@ -41,8 +45,10 @@ si nombre.longitud() < 3 {
 mostrar "Original: " + texto
 mostrar "Mayúsculas: " + texto.mayusculas()`,
       explanation: "No modifica el original, retorna un nuevo string.",
-      challenge: "Crea tres variables con ciudades en minúsculas. Muéstralas en mayúsculas.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea una variable con una ciudad en minúsculas. Muéstrala en mayúsculas.",
+      validation: {
+        requiredCode: [".mayusculas()"],
+      },
     },
     {
       title: "Método minusculas()",
@@ -56,8 +62,10 @@ si respuesta.minusculas() == "si" {
     mostrar "Respuesta afirmativa"
 }`,
       explanation: "Normalizar a minúsculas antes de comparar evita problemas de mayúsculas/minúsculas.",
-      challenge: "Crea un comando en mayúsculas. Normalízalo a minúsculas y compáralo.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea un comando en mayúsculas. Normalízalo a minúsculas y compáralo con una palabra.",
+      validation: {
+        requiredCode: [".minusculas()", "=="],
+      },
     },
     {
       title: "Combinando Métodos",
@@ -69,8 +77,10 @@ mostrar "Mayúsculas: " + mensaje.mayusculas()
 mostrar "Minúsculas: " + mensaje.minusculas()
 mostrar "Longitud: " + mensaje.longitud()`,
       explanation: "Combina métodos con condicionales para validaciones completas.",
-      challenge: "Pide nombre y apellido. Nombre en mayúsculas, apellido en minúsculas. Muestra la longitud total.",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea nombre y apellido. Muestra nombre en mayúsculas y apellido en minúsculas.",
+      validation: {
+        requiredCode: ["nombre", "apellido", ".mayusculas()", ".minusculas()"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -82,9 +92,11 @@ mostrar "Mayúsculas: " + texto.mayusculas()
 mostrar "Minúsculas: " + texto.minusculas()
 mostrar "Longitud: " + texto.longitud()`,
       explanation: "Combina métodos de strings con condicionales para validaciones.",
-      challenge: "Crea un validador: usuario (mín 4 chars) y contraseña (mín 8 chars). Muestra si es válido.",
+      challenge: "Crea un validador: usuario (mín 4 chars) y contraseña (mín 8 chars). Muestra si son válidos.",
       summary: "🧠 Recuerda:\n\n• .longitud() retorna cantidad de caracteres\n• .mayusculas() convierte a MAYÚSCULAS\n• .minusculas() convierte a minúsculas\n• Los métodos no modifican el original",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["usuario", "contrase", ".longitud()", "/si\\s+/"],
+      },
     },
   ],
 };

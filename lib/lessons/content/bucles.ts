@@ -21,7 +21,10 @@ mientras i <= 5 {
 mostrar "Bucle terminado"`,
       explanation: "El bucle 'mientras' repite mientras la condición sea verdadera. ¡No olvides incrementar!",
       challenge: "Usa un bucle para mostrar los números del 10 al 1 (cuenta regresiva).",
-      validation: { expectedOutputs: ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"] },
+      validation: {
+        requiredCode: ["/mientras/"],
+        expectedOutputs: ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1"],
+      },
     },
     {
       title: "Bucle Mientras",
@@ -38,7 +41,10 @@ mientras contador < 5 {
 mostrar "Suma total: " + suma`,
       explanation: "Usamos un bucle para acumular valores.",
       challenge: "Calcula el factorial de 5 (5! = 5 × 4 × 3 × 2 × 1 = 120).",
-      validation: { expectedOutputs: ["120"] },
+      validation: {
+        requiredCode: ["/mientras/", "/\\*/"],
+        expectedOutputs: ["120"],
+      },
     },
     {
       title: "Bucle Para",
@@ -48,7 +54,10 @@ mostrar "Suma total: " + suma`,
 }`,
       explanation: "El bucle 'para' tiene: inicialización, condición, incremento.",
       challenge: "Crea la tabla de multiplicar del 7 (7 x 1 = 7, 7 x 2 = 14, ... hasta 7 x 10).",
-      validation: { expectedOutputs: ["7", "14", "21", "28", "35", "42", "49", "56", "63", "70"] },
+      validation: {
+        requiredCode: ["/para\\s*\\(/", "/7\\s*\\*/"],
+        expectedOutputs: ["7", "14", "21", "28", "35", "42", "49", "56", "63", "70"],
+      },
     },
     {
       title: "Continuar y Romper",
@@ -61,7 +70,9 @@ mostrar "Suma total: " + suma`,
 }`,
       explanation: "Se muestran 1,2,3,4,6,7,8,9,10 (falta el 5 porque se salta).",
       challenge: "Bucle del 1 al 20. Salta múltiplos de 3 y detente al llegar a 15.",
-      validation: { expectedOutputs: [] },
+      validation: {
+        requiredCode: ["/para\\s*\\(|mientras/", "/continuar/", "/romper/"],
+      },
     },
     {
       title: "Bucles Anidados",
@@ -72,8 +83,10 @@ mostrar "Suma total: " + suma`,
     }
 }`,
       explanation: "El bucle interno se ejecuta completamente por cada iteración del externo.",
-      challenge: "Crea una tabla de multiplicar del 1 al 5 (5x5 combinaciones).",
-      validation: { expectedOutputs: [] },
+      challenge: "Crea una tabla de multiplicar del 1 al 3 (3x3 combinaciones).",
+      validation: {
+        requiredCode: ["/para\\s*\\(.*para\\s*\\(|mientras.*mientras/"],
+      },
     },
     {
       title: "¡Práctica libre!",
@@ -88,7 +101,10 @@ mostrar "Suma de 1 a 10: " + suma`,
       explanation: "Los bucles son fundamentales para automatizar.",
       challenge: "Encuentra todos los números pares entre 1 y 50 y súmalos. Muestra la suma total.",
       summary: "🧠 Recuerda:\n\n• 'mientras' repite mientras condición sea verdadera\n• 'para' cuando sabes el número de iteraciones\n• 'continuar' salta a la siguiente iteración\n• 'romper' termina el bucle",
-      validation: { expectedOutputs: ["650"] },
+      validation: {
+        requiredCode: ["/para\\s*\\(|mientras/", "/%\\s*2/"],
+        expectedOutputs: ["650"],
+      },
     },
   ],
 };
