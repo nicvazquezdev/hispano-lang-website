@@ -30,7 +30,7 @@ export default function CodeBlock({ code, title }: CodeBlockProps) {
           </div>
           {/* Code content */}
           <div className="flex-1 py-3 px-4 overflow-x-auto">
-            <code className="text-sm font-mono">
+            <code className="text-sm font-mono" style={{ fontVariantLigatures: 'none' }}>
               {lines.map((line, index) => (
                 <div key={index} className="whitespace-pre h-6 leading-6">
                   {highlightSyntax(line)}

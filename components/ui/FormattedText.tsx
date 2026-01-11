@@ -22,6 +22,7 @@ function formatTextWithMarkup(text: string) {
                 <code
                   key={codeIndex}
                   className="bg-slate-700 text-slate-100 px-1 py-0.5 rounded text-sm font-mono"
+                  style={{ fontVariantLigatures: 'none' }}
                 >
                   {codePart.slice(1, -1)}
                 </code>
@@ -41,6 +42,7 @@ function formatTextWithMarkup(text: string) {
           <code
             key={`${boldIndex}-${codeIndex}`}
             className="bg-slate-700 text-slate-100 px-1 py-0.5 rounded text-sm font-mono"
+            style={{ fontVariantLigatures: 'none' }}
           >
             {codePart.slice(1, -1)}
           </code>

@@ -22,7 +22,7 @@ export default function CodeExample() {
               </div>
               <span className="text-gray-400 text-sm ml-4">ejemplo.hl</span>
             </div>
-            <pre className="text-gray-300 text-sm leading-relaxed overflow-x-auto">
+            <pre className="text-gray-300 text-sm leading-relaxed overflow-x-auto" style={{ fontVariantLigatures: 'none' }}>
               <code>{`// Calculadora simple en HispanoLang
 funcion calcular(operacion, a, b) {
     si operacion == "suma" {

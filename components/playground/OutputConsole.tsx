@@ -66,6 +66,7 @@ export default function OutputConsole({
       <div
         ref={consoleRef}
         className="flex-1 p-3 overflow-y-auto bg-[#0b111f] font-mono text-xs"
+        style={{ fontVariantLigatures: 'none' }}
       >
         {history.length === 0 && !output ? (
           <div className="text-[#858585] text-sm">

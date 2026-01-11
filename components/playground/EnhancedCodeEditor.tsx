@@ -202,6 +202,7 @@ export default function EnhancedCodeEditor({
             onBlur={() => setIsFocused(false)}
             onScroll={handleScroll}
             className="absolute inset-0 w-full h-full p-3 bg-transparent text-[#d4d4d4] font-mono text-sm resize-none outline-none placeholder-[#6a6a6a] leading-6 overflow-auto whitespace-pre-wrap break-words relative z-10"
+            style={{ fontVariantLigatures: 'none' }}
             placeholder="Escribe tu código aquí..."
             spellCheck={false}
           />
