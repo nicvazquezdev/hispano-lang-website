@@ -126,8 +126,8 @@ export default function LessonPage({
                         isSpeaking && !isPaused
                           ? "Pausar"
                           : isPaused
-                            ? "Continuar"
-                            : "Escuchar lección"
+                          ? "Continuar"
+                          : "Escuchar lección"
                       }
                     >
                       {isSpeaking && !isPaused ? (
@@ -151,8 +151,8 @@ export default function LessonPage({
                         {isSpeaking && !isPaused
                           ? "Pausar"
                           : isPaused
-                            ? "Continuar"
-                            : "Escuchar"}
+                          ? "Continuar"
+                          : "Escuchar"}
                       </span>
                     </button>
                     {isSpeaking && (
@@ -180,17 +180,17 @@ export default function LessonPage({
                 className="text-slate-300 text-lg mb-8 leading-relaxed"
               />
 
-              {/* Explicación */}
-              <FormattedText
-                text={currentStepData.explanation}
-                className="text-slate-300 text-lg mb-8 leading-relaxed"
-              />
-
               {/* Ejemplo de código */}
               <div className="mb-8">
                 <h4 className="font-semibold text-slate-200 mb-3">Ejemplo</h4>
                 <CodeBlock code={currentStepData.code} />
               </div>
+
+              {/* Explicación */}
+              <FormattedText
+                text={currentStepData.explanation}
+                className="text-slate-300 text-lg mb-8 leading-relaxed"
+              />
 
               {/* Summary (solo en último paso) */}
               {currentStepData.summary && (
@@ -258,10 +258,7 @@ export default function LessonPage({
                   ← Anterior
                 </Button>
               ) : prev ? (
-                <Button
-                  variant="outline"
-                  onClick={() => router.push(prev.url)}
-                >
+                <Button variant="outline" onClick={() => router.push(prev.url)}>
                   ← {prev.title}
                 </Button>
               ) : (
@@ -281,10 +278,7 @@ export default function LessonPage({
                   Siguiente →
                 </Button>
               ) : next ? (
-                <Button
-                  variant="primary"
-                  onClick={() => router.push(next.url)}
-                >
+                <Button variant="primary" onClick={() => router.push(next.url)}>
                   {next.title} →
                 </Button>
               ) : (

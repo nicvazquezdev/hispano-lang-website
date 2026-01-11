@@ -4,82 +4,159 @@ export const variables: LessonContent = {
   badge: { emoji: "📦", text: "Lección 1" },
   title: "Variables en",
   titleGradient: " HispanoLang",
-  description: "Aprende a almacenar y manipular datos paso a paso",
+  description:
+    "Aprende a almacenar y manipular datos como en tus redes sociales favoritas",
   next: { url: "/lecciones/constantes", title: "Constantes" },
   steps: [
     {
-      title: "¿Qué son las variables?",
-      content: "Las variables son uno de los conceptos más importantes en programación. Son como cajas donde guardamos información que queremos usar más adelante. En HispanoLang, usamos la palabra `variable` para crear una nueva caja con un nombre y un valor.",
-      code: `variable mi_nombre = "Ana"
-mostrar mi_nombre`,
-      explanation: "Aquí creamos una variable llamada `mi_nombre` y le asignamos el valor 'Ana'. El texto va entre comillas dobles. Luego usamos `mostrar` para imprimir el valor en pantalla.",
-      challenge: "Crea una variable llamada `mi_edad` con tu edad y muéstrala en pantalla.",
+      title: "¡Hola Mundo!",
+      content:
+        "Bienvenido a tu primera lección de programación. Vamos a crear tu primera variable y mostrarla en pantalla.\n\nUna variable es como una caja con un nombre donde guardas información.",
+      code: `variable mensaje = "Hola Mundo"
+mostrar mensaje`,
+      explanation:
+        "Aquí pasan varias cosas importantes:\n\n1. `variable mensaje` - Creamos una caja llamada 'mensaje'\n2. `= \"Hola Mundo\"` - Guardamos el texto 'Hola Mundo' en esa caja. El texto SIEMPRE va entre comillas (\" o ')\n3. `mostrar mensaje` - Le pedimos al programa que muestre en pantalla lo que hay dentro de la caja 'mensaje'\n\nRecuerda: el texto va entre comillas, pero el nombre de la variable NO lleva comillas.",
+      challenge:
+        "Ahora te toca a ti: crea una variable llamada `saludo` que guarde el texto 'Hola Mundo', y luego muéstrala en pantalla con `mostrar saludo`.",
       validation: {
-        requiredCode: ["/mi_edad\\s*=/", "mostrar"],
-        expectedOutputs: ["/\\d+/"],
+        requiredCode: ["/saludo/", "/mostrar/"],
+        expectedOutputs: ["/hola mundo/i"],
       },
     },
     {
-      title: "Diferentes tipos de variables",
-      content: "En programación, no toda la información es igual. Tenemos texto, números y valores verdadero/falso (booleanos).",
-      code: `variable nombre = "Juan"
-variable edad = 25
-variable es_estudiante = verdadero
-
-mostrar "Nombre: " + nombre
-mostrar "Edad: " + edad
-mostrar "Es estudiante: " + es_estudiante`,
-      explanation: "Creamos tres variables: texto (entre comillas), número (sin comillas) y booleano (verdadero/falso). Usamos + para concatenar.",
-      challenge: "Crea variables para tu color favorito, tu número de la suerte y si te gusta programar. Muestra todo.",
+      title: "Tu Perfil de Usuario",
+      content:
+        "Imagina que estás creando tu perfil en Instagram. Necesitas guardar tu nombre de usuario. Las variables son perfectas para esto.",
+      code: `variable nombreUsuario = "maria_gomez"
+mostrar nombreUsuario`,
+      explanation:
+        "Creamos una variable llamada `nombreUsuario` que guarda el texto 'maria_gomez'. El texto va entre comillas porque es una cadena de caracteres (también llamado 'string'). Luego usamos `mostrar` para ver el contenido en pantalla.",
+      challenge:
+        "Crea una variable `miUsuario` con tu nombre de usuario favorito (entre comillas) y muéstrala con `mostrar miUsuario`. Luego crea una variable `miBio` con una frase sobre ti (entre comillas) y también muéstrala con `mostrar miBio`.",
       validation: {
-        requiredCode: ["/variable\\s+\\w+\\s*=\\s*\"/", "/variable\\s+\\w+\\s*=\\s*\\d/", "/(verdadero|falso)/"],
+        requiredCode: [
+          "/miUsuario/",
+          "/miBio/",
+          "/mostrar.*miUsuario/",
+          "/mostrar.*miBio/",
+        ],
       },
     },
     {
-      title: "Cambiar el valor de una variable",
-      content: "Podemos cambiar el contenido de una variable en cualquier momento usando =.",
-      code: `variable contador = 0
-mostrar "Contador inicial: " + contador
+      title: "Tu Primera Publicación",
+      content:
+        "Cuando publicas en Instagram, hay información que se guarda: el título de tu post, cuántos likes tiene, si tiene comentarios. Cada dato es una variable diferente y cada tipo de dato se escribe distinto.",
+      code: `variable tituloPost = "Mi primera foto"
+variable likes = 0
+variable tieneComentarios = falso
 
-contador = 5
-mostrar "Contador después: " + contador
-
-contador = contador + 3
-mostrar "Contador final: " + contador`,
-      explanation: "Cambiamos el valor del contador varias veces. En `contador = contador + 3`, tomamos el valor actual y le sumamos 3.",
-      challenge: "Crea una variable `puntos` que empiece en 10, cámbiala a 25, y súmale 5. Muestra el resultado en cada paso.",
+mostrar "Post: " + tituloPost
+mostrar "Likes: " + likes
+mostrar "Tiene comentarios: " + tieneComentarios`,
+      explanation:
+        'Aquí vemos 3 tipos de datos diferentes:\n\n1. **Texto (string)**: `"Mi primera foto"` - Siempre entre comillas\n2. **Número**: `0` - Sin comillas, solo el número\n3. **Booleano**: `falso` o `verdadero` - Sin comillas, palabras especiales\n\nEl símbolo `+` une (concatena) texto con otras cosas para mostrarlas juntas.',
+      challenge:
+        "Crea tres variables: `titulo` con el nombre de tu post (entre comillas), `likes` con el número 5 (sin comillas), y `publicado` con el valor verdadero (sin comillas). Muestra las tres variables en pantalla.",
       validation: {
-        requiredCode: ["/puntos\\s*=\\s*10/", "/puntos\\s*=\\s*25/", "/puntos\\s*=\\s*puntos\\s*\\+\\s*5/"],
-        expectedOutputs: ["10", "25", "30"],
+        requiredCode: [
+          "/titulo/",
+          "/likes.*5/",
+          "/publicado.*verdadero/",
+          "/mostrar.*titulo/",
+          "/mostrar.*likes/",
+          "/mostrar.*publicado/",
+        ],
+        expectedOutputs: ["/5/", "/verdadero/"],
       },
     },
     {
-      title: "Variables con operaciones matemáticas",
-      content: "Las variables pueden participar en operaciones matemáticas: +, -, *, /",
-      code: `variable precio = 100
-variable descuento = 20
-variable precio_final = precio - descuento
+      title: "Likes en Tiempo Real",
+      content:
+        "¡Alguien le dio like a tu post! El contador de likes tiene que aumentar. Podemos cambiar el valor de una variable en cualquier momento simplemente asignándole un nuevo valor.",
+      code: `variable likes = 127
 
-mostrar "Precio original: " + precio
-mostrar "Descuento: " + descuento
-mostrar "Precio final: " + precio_final`,
-      explanation: "Usamos operadores matemáticos para calcular el precio final.",
-      challenge: "Crea variables `base` y `altura`, calcula el área (base × altura) y muéstrala.",
+mostrar "Likes iniciales: " + likes
+
+likes = 128
+
+mostrar "Después de 1 like: " + likes
+
+likes = likes + 10
+
+mostrar "Después de 10 likes más: " + likes`,
+      explanation:
+        "Para cambiar el valor de una variable:\n\n1. NO escribas la palabra `variable` de nuevo\n2. Solo escribe el nombre de la variable y el nuevo valor: `likes = 128`\n3. Puedes usar el valor actual en el cálculo: `likes = likes + 10` significa 'toma el valor que tiene likes (128) y súmale 10, guardando el resultado (138) de vuelta en likes'\n\nCada vez que haces `mostrar`, ves el valor actual en ese momento.",
+      challenge:
+        "Crea una variable `seguidores` que empiece en 100 y muéstrala. Luego cambia su valor para sumarle 25 y muéstrala de nuevo para ver el nuevo valor.",
       validation: {
-        requiredCode: ["/base\\s*=/", "/altura\\s*=/", "/base\\s*\\*\\s*altura/"],
+        requiredCode: [
+          "/seguidores.*100/",
+          "/seguidores.*seguidores.*25/",
+          "/mostrar.*seguidores/",
+        ],
+        expectedOutputs: ["/100/", "/125/"],
       },
     },
     {
-      title: "¡Práctica libre!",
-      content: "Ahora es tu turno. Crea tus propias variables y experimenta.",
-      code: `variable mi_variable = "¡Hola mundo!"
-mostrar mi_variable`,
-      explanation: "Practica creando variables de diferentes tipos y combinándolas.",
-      challenge: "Crea una variable `pais` y muestra 'Vivo en [tu país]'. Agrega `ciudad` y combina ambas.",
-      summary: "🧠 Recuerda:\n\n• Usa `variable` para crear una nueva caja.\n• Puedes cambiar su contenido en cualquier momento.\n• Las variables pueden guardar texto, números o booleanos.\n• Usa `mostrar` para ver el contenido.",
+      title: "Calculando Engagement",
+      content:
+        "El engagement de un post es la suma de todas las interacciones: likes + comentarios + guardados. Podemos usar variables para hacer estos cálculos.",
+      code: `variable likes = 250
+variable comentarios = 45
+variable guardados = 30
+
+variable totalInteracciones = likes + comentarios + guardados
+
+mostrar "Likes: " + likes
+mostrar "Comentarios: " + comentarios
+mostrar "Guardados: " + guardados
+mostrar "Total de interacciones: " + totalInteracciones`,
+      explanation:
+        "Podemos hacer operaciones matemáticas con números guardados en variables:\n\n• `+` suma\n• `-` resta\n• `*` multiplica\n• `/` divide\n\nEn el ejemplo, `likes + comentarios + guardados` suma los tres números (250 + 45 + 30 = 325) y el resultado se guarda en la variable `totalInteracciones`.",
+      challenge:
+        "Crea tres variables: `likes` con 150, `comentarios` con 30, y `compartidos` con 20. Luego crea una variable `totalEngagement` que sume las tres y muestra el resultado con `mostrar totalEngagement`.",
       validation: {
-        requiredCode: ["/pais\\s*=/", "/ciudad\\s*=/"],
-        expectedOutputs: ["Vivo en"],
+        requiredCode: [
+          "/likes.*150/",
+          "/comentarios.*30/",
+          "/compartidos.*20/",
+          "/totalEngagement/",
+          "/mostrar.*totalEngagement/",
+        ],
+        expectedOutputs: ["/200/"],
+      },
+    },
+    {
+      title: "Tu Dashboard Completo",
+      content:
+        "Ahora que sabes crear variables, cambiarlas y hacer cálculos, crea tu propio dashboard de red social completo combinando todo lo que aprendiste.",
+      code: `variable usuario = "mi_cuenta"
+variable seguidores = 1520
+variable siguiendo = 340
+variable posts = 87
+
+mostrar "Usuario: " + usuario
+mostrar "Seguidores: " + seguidores
+mostrar "Siguiendo: " + siguiendo
+mostrar "Posts: " + posts
+
+variable ratio = seguidores - siguiendo
+mostrar "Diferencia seguidores/siguiendo: " + ratio`,
+      explanation:
+        "Este ejemplo combina todo:\n\n• Variables de texto (entre comillas): `usuario`\n• Variables numéricas (sin comillas): `seguidores`, `siguiendo`, `posts`\n• Operaciones matemáticas: `seguidores - siguiendo`\n• Mostrar múltiples variables con texto descriptivo\n\n¡Puedes crear tantas variables como necesites y combinarlas de cualquier forma!",
+      challenge:
+        "Crea tu perfil completo con cuatro variables: `usuario` (tu nombre), `seguidores` (un número), `siguiendo` (otro número), y `posts` (cantidad de posts). Luego crea una variable `promedioLikesPorPost` que calcule un promedio dividiendo un número total de likes entre tus posts (usa el operador `/`). Muestra todas tus variables en pantalla.",
+      summary:
+        '🎉 ¡Felicitaciones! Ahora sabes:\n\n• Crear variables con `variable nombre = valor`\n• Texto va entre comillas: `"hola"`\n• Números van sin comillas: `42`\n• Booleanos: `verdadero` o `falso`\n• Cambiar valores: `nombre = nuevoValor`\n• Hacer cálculos: `+`, `-`, `*`, `/`\n• Mostrar con: `mostrar variable`\n\n💡 Las variables son la base de todo programa. ¡Siguiente: constantes!',
+      validation: {
+        requiredCode: [
+          "/usuario/",
+          "/seguidores/",
+          "/siguiendo/",
+          "/posts/",
+          "/promedioLikesPorPost/",
+          "/mostrar/",
+        ],
       },
     },
   ],

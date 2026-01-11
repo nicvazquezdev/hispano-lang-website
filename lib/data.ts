@@ -14,14 +14,14 @@ variable nombreUsuario = "maria_gomez"
 variable likes = 127
 variable comentarios = 45
 
-mostrar likes
 mostrar nombreUsuario
+mostrar likes
 mostrar comentarios
   `,
-        output: "127\nmaria_gomez\n45",
+        output: "maria_gomez\n127\n45",
         notes: [
           "Escribimos 'variable' para crear una caja nueva donde guardar información",
-          "El nombre va sin comillas: likes, nombreUsuario, comentarios",
+          "El nombre de la variable va sin comillas: likes, nombreUsuario, comentarios",
           "Los números van sin comillas: 127, 45",
           'El texto va entre comillas: "maria_gomez"',
           "La palabra 'mostrar' hace que aparezca en pantalla lo que está guardado en la variable",
