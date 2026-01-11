@@ -34,16 +34,25 @@ function DocumentacionContent() {
 
   const sections = [
     { id: "variables", title: "Variables" },
+    { id: "constantes", title: "Constantes" },
     { id: "comentarios", title: "Comentarios" },
     { id: "tiposDatos", title: "Tipos de Datos" },
+    { id: "metodosStrings", title: "Métodos de Strings" },
+    { id: "templateStrings", title: "Template Strings" },
     { id: "entradaSalida", title: "Entrada y Salida" },
     { id: "operadores", title: "Operadores" },
     { id: "condicionales", title: "Condicionales" },
+    { id: "elegirCaso", title: "Elegir/Caso" },
     { id: "bucles", title: "Bucles" },
+    { id: "buclesAvanzados", title: "Bucles Avanzados" },
     { id: "funciones", title: "Funciones" },
+    { id: "funcionesMatematicas", title: "Funciones Matemáticas" },
+    { id: "conversionTipos", title: "Conversión de Tipos" },
+    { id: "metodosNumericos", title: "Métodos Numéricos" },
     { id: "listas", title: "Listas" },
     { id: "objetos", title: "Objetos" },
-    { id: "funcionesMatematicas", title: "Funciones Matemáticas" },
+    { id: "clases", title: "Clases" },
+    { id: "herencia", title: "Herencia" },
     { id: "manejoErrores", title: "Manejo de Errores" },
   ];
 

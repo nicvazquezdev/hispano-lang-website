@@ -214,6 +214,188 @@ variable direccion           // indefinido (no asignado)`,
       },
     ],
   },
+  metodosStrings: {
+    title: "🔤 Métodos de Strings",
+    description:
+      "Los métodos de strings son funciones especiales que permiten manipular y transformar texto de forma sencilla. Cada cadena de texto tiene acceso a estos métodos usando la notación de punto.",
+    subsections: [
+      {
+        title: "Longitud y Acceso a Caracteres",
+        description:
+          "Obtén la cantidad de caracteres de un string y accede a caracteres individuales por su posición.",
+        code: `variable texto = "HispanoLang"
+
+// Longitud del texto
+mostrar texto.longitud()  // 11
+
+// Acceder a un carácter por índice (empieza en 0)
+mostrar texto.caracter(0)   // "H"
+mostrar texto.caracter(7)   // "L"
+mostrar texto.caracter(10)  // "g"`,
+        notes: [
+          ".longitud() retorna la cantidad de caracteres del string",
+          ".caracter(indice) retorna el carácter en la posición indicada",
+          "Los índices empiezan en 0, no en 1",
+          "El último carácter está en el índice longitud() - 1",
+        ],
+      },
+      {
+        title: "Mayúsculas y Minúsculas",
+        description:
+          "Convierte texto entre mayúsculas y minúsculas para normalizar o formatear.",
+        code: `variable texto = "HispanoLang"
+
+mostrar texto.mayusculas()  // "HISPANOLANG"
+mostrar texto.minusculas()  // "hispanolang"
+
+// Uso práctico: comparación insensible a mayúsculas
+variable respuesta = "SI"
+si respuesta.minusculas() == "si" {
+    mostrar "Respuesta afirmativa"
+}
+
+variable email = "Usuario@Email.COM"
+mostrar email.minusculas()  // "usuario@email.com"`,
+        notes: [
+          ".mayusculas() convierte todo el texto a mayúsculas",
+          ".minusculas() convierte todo el texto a minúsculas",
+          "Útil para normalizar antes de comparar textos",
+          "El texto original no se modifica, se retorna uno nuevo",
+        ],
+      },
+      {
+        title: "Búsqueda en Strings",
+        description:
+          "Verifica si un texto contiene, empieza o termina con cierta subcadena.",
+        code: `variable texto = "HispanoLang es genial"
+
+// Verificar si contiene
+mostrar texto.incluye("Lang")       // verdadero
+mostrar texto.contiene("Python")    // falso
+
+// Verificar inicio y final
+mostrar texto.empiezaCon("Hispano")  // verdadero
+mostrar texto.empiezaCon("Lang")     // falso
+mostrar texto.terminaCon("genial")   // verdadero
+mostrar texto.terminaCon("Hispano")  // falso
+
+// Validación de email
+variable email = "usuario@correo.com"
+si email.incluye("@") y email.terminaCon(".com") {
+    mostrar "Email válido"
+}`,
+        notes: [
+          ".incluye(texto) y .contiene(texto) son equivalentes",
+          ".empiezaCon(texto) verifica si comienza con el texto dado",
+          ".terminaCon(texto) verifica si termina con el texto dado",
+          "Todas retornan verdadero o falso",
+          "La búsqueda es sensible a mayúsculas/minúsculas",
+        ],
+      },
+      {
+        title: "Dividir y Extraer",
+        description:
+          "Divide un string en partes o extrae porciones específicas del texto.",
+        code: `// Dividir por un separador
+variable csv = "uno,dos,tres"
+variable partes = csv.dividir(",")
+mostrar partes  // ["uno", "dos", "tres"]
+
+variable oracion = "Hola mundo feliz"
+variable palabras = oracion.dividir(" ")
+mostrar palabras  // ["Hola", "mundo", "feliz"]
+
+// Extraer subcadenas
+variable texto = "HispanoLang"
+mostrar texto.subcadena(0, 7)   // "Hispano"
+mostrar texto.subcadena(7)      // "Lang"
+mostrar texto.subcadena(0, 4)   // "Hisp"`,
+        notes: [
+          ".dividir(separador) separa el texto y retorna una lista",
+          ".subcadena(inicio, fin) extrae desde inicio hasta fin (sin incluir fin)",
+          ".subcadena(inicio) extrae desde inicio hasta el final",
+          "Los índices empiezan en 0",
+        ],
+      },
+      {
+        title: "Reemplazar Texto",
+        description:
+          "Reemplaza todas las ocurrencias de un texto por otro.",
+        code: `variable frase = "Hola mundo, mundo feliz"
+
+// Reemplazar todas las ocurrencias
+mostrar frase.reemplazar("mundo", "universo")
+// "Hola universo, universo feliz"
+
+// Ejemplo práctico: limpiar datos
+variable telefono = "123-456-7890"
+mostrar telefono.reemplazar("-", "")
+// "1234567890"
+
+// Censurar palabras
+variable texto = "Esta palabra mala es mala"
+mostrar texto.reemplazar("mala", "****")
+// "Esta palabra **** es ****"`,
+        notes: [
+          ".reemplazar(buscar, reemplazo) cambia todas las ocurrencias",
+          "El texto original no se modifica, se retorna uno nuevo",
+          "Si no encuentra el texto a buscar, retorna el original",
+          "La búsqueda es sensible a mayúsculas/minúsculas",
+        ],
+      },
+      {
+        title: "Recortar e Invertir",
+        description:
+          "Elimina espacios en blanco y voltea el texto.",
+        code: `// Recortar espacios
+variable texto = "   Hola mundo   "
+mostrar "'" + texto + "'"           // "'   Hola mundo   '"
+mostrar "'" + texto.recortar() + "'"  // "'Hola mundo'"
+
+// Invertir texto
+variable palabra = "Hola"
+mostrar palabra.invertir()  // "aloH"
+
+// Verificar palíndromo
+variable palindromo = "reconocer"
+si palindromo == palindromo.invertir() {
+    mostrar "Es un palíndromo"
+}`,
+        notes: [
+          ".recortar() elimina espacios al inicio y al final",
+          ".invertir() voltea el texto de atrás hacia adelante",
+          "Útil para limpiar entrada del usuario",
+          "invertir() es útil para verificar palíndromos",
+        ],
+      },
+      {
+        title: "Encadenamiento de Métodos",
+        description:
+          "Los métodos se pueden encadenar para realizar múltiples operaciones.",
+        code: `variable email = "  Usuario@Email.COM  "
+
+// Encadenar múltiples métodos
+variable limpio = email.recortar().minusculas()
+mostrar limpio  // "usuario@email.com"
+
+// Procesar y validar
+variable entrada = "   HispanoLang   "
+variable procesado = entrada.recortar().mayusculas()
+mostrar procesado  // "HISPANOLANG"
+
+// Obtener nombre de usuario de email
+variable correo = "juan.perez@empresa.com"
+variable usuario = correo.dividir("@")[0]
+mostrar usuario  // "juan.perez"`,
+        notes: [
+          "Cada método retorna un nuevo string, permitiendo encadenar",
+          "Se ejecutan de izquierda a derecha",
+          "El encadenamiento hace el código más limpio y legible",
+          "Combina con otros métodos como dividir() para procesar datos",
+        ],
+      },
+    ],
+  },
   entradaSalida: {
     title: "💬 Entrada y Salida",
     description:
