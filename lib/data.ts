@@ -117,14 +117,14 @@ mostrar precio
           "En Twitter/X hay cosas que cambian todo el tiempo (tus tweets, tus seguidores, los likes) y cosas que son reglas fijas de la plataforma (límite de caracteres, precio de verificación). Las constantes son para esas reglas fijas.",
         syntax: "constante NOMBRE = valor",
         code: `
-  constante LIMITE_CARACTERES = 280
-  constante PRECIO_VERIFICACION = 8
-  constante MAX_HASHTAGS = 30
-  constante NOMBRE_PLATAFORMA = "Twitter/X"
-  
-  mostrar "Límite de caracteres: " + LIMITE_CARACTERES
-  mostrar "Precio verificación: $" + PRECIO_VERIFICACION
-  mostrar "Plataforma: " + NOMBRE_PLATAFORMA
+constante LIMITE_CARACTERES = 280
+constante PRECIO_VERIFICACION = 8
+constante MAX_HASHTAGS = 30
+constante NOMBRE_PLATAFORMA = "Twitter/X"
+
+mostrar "Límite de caracteres: " + LIMITE_CARACTERES
+mostrar "Precio verificación: $" + PRECIO_VERIFICACION
+mostrar "Plataforma: " + NOMBRE_PLATAFORMA
   `,
         output:
           "Límite de caracteres: 280\nPrecio verificación: $8\nPlataforma: Twitter/X",
@@ -140,13 +140,13 @@ mostrar precio
         description:
           "Para crear una constante, usas la palabra 'constante' en vez de 'variable'. El resto es igual: le das un nombre y un valor.",
         code: `
-  constante LIMITE_CARACTERES = 280
-  constante PRECIO_BASICO = 3
-  constante PRECIO_PREMIUM = 8
-  constante MAX_IMAGENES_TWEET = 4
-  
-  mostrar "Un tweet puede tener máximo " + LIMITE_CARACTERES + " caracteres"
-  mostrar "Puedes adjuntar hasta " + MAX_IMAGENES_TWEET + " imágenes"
+constante LIMITE_CARACTERES = 280
+constante PRECIO_BASICO = 3
+constante PRECIO_PREMIUM = 8
+constante MAX_IMAGENES_TWEET = 4
+
+mostrar "Un tweet puede tener máximo " + LIMITE_CARACTERES + " caracteres"
+mostrar "Puedes adjuntar hasta " + MAX_IMAGENES_TWEET + " imágenes"
   `,
         output:
           "Un tweet puede tener máximo 280 caracteres\nPuedes adjuntar hasta 4 imágenes",
@@ -162,17 +162,17 @@ mostrar precio
         description:
           "La diferencia es simple: si el valor puede cambiar durante el uso de la app, usa variable. Si es una regla fija que nunca cambia, usa constante.",
         code: `
-  constante LIMITE_CARACTERES = 280
-  variable caracteresEscritos = 0
-  
-  mostrar "Límite: " + LIMITE_CARACTERES
-  mostrar "Escritos: " + caracteresEscritos
-  
-  caracteresEscritos = 50
-  mostrar "Escritos ahora: " + caracteresEscritos
-  
-  caracteresEscritos = 150
-  mostrar "Escritos ahora: " + caracteresEscritos
+constante LIMITE_CARACTERES = 280
+variable caracteresEscritos = 0
+
+mostrar "Límite: " + LIMITE_CARACTERES
+mostrar "Escritos: " + caracteresEscritos
+
+caracteresEscritos = 50
+mostrar "Escritos ahora: " + caracteresEscritos
+
+caracteresEscritos = 150
+mostrar "Escritos ahora: " + caracteresEscritos
   `,
         output:
           "Límite: 280\nEscritos: 0\nEscritos ahora: 50\nEscritos ahora: 150",
@@ -188,10 +188,10 @@ mostrar precio
         description:
           "Si intentas cambiar el valor de una constante, el programa te detiene con un error. Esto es una protección: te avisa que estás tratando de romper una regla fija.",
         code: `
-  constante LIMITE_CARACTERES = 280
-  mostrar LIMITE_CARACTERES
-  
-  LIMITE_CARACTERES = 500
+constante LIMITE_CARACTERES = 280
+mostrar LIMITE_CARACTERES
+
+LIMITE_CARACTERES = 500
   `,
         output: "280\nError: No puedes reasignar una constante",
         notes: [
@@ -206,19 +206,19 @@ mostrar precio
         description:
           "Las constantes son perfectas para configuración de tu app, límites del sistema, precios y cualquier valor que definas una vez y no deba cambiar.",
         code: `
-  constante NOMBRE_APP = "MiRedSocial"
-  constante VERSION = "1.0.0"
-  constante LIMITE_BIO = 160
-  constante MAX_SEGUIDORES_GRATIS = 5000
-  constante PRECIO_PREMIUM = 999
-  
-  variable usuariosActivos = 1250
-  variable tweetsHoy = 450
-  
-  mostrar "App: " + NOMBRE_APP + " v" + VERSION
-  mostrar "Límite de biografía: " + LIMITE_BIO + " caracteres"
-  mostrar "Usuarios activos hoy: " + usuariosActivos
-  mostrar "Tweets publicados hoy: " + tweetsHoy
+constante NOMBRE_APP = "MiRedSocial"
+constante VERSION = "1.0.0"
+constante LIMITE_BIO = 160
+constante MAX_SEGUIDORES_GRATIS = 5000
+constante PRECIO_PREMIUM = 999
+
+variable usuariosActivos = 1250
+variable tweetsHoy = 450
+
+mostrar "App: " + NOMBRE_APP + " v" + VERSION
+mostrar "Límite de biografía: " + LIMITE_BIO + " caracteres"
+mostrar "Usuarios activos hoy: " + usuariosActivos
+mostrar "Tweets publicados hoy: " + tweetsHoy
   `,
         output:
           "App: MiRedSocial v1.0.0\nLímite de biografía: 160 caracteres\nUsuarios activos hoy: 1250\nTweets publicados hoy: 450",
@@ -232,44 +232,126 @@ mostrar precio
     ],
   },
   comentarios: {
-    title: "💭 Comentarios",
+    title: "💬 Comentarios",
     description:
-      "Los comentarios son líneas de texto que el intérprete ignora completamente. Sirven para documentar tu código, escribir notas, o desactivar líneas temporalmente.",
+      "Los comentarios son notas que escribís en tu código para vos mismo o para otros programadores. El programa los ignora completamente, como si no existieran. Son como las anotaciones que hacés en una receta de cocina: 'no te olvides de precalentar' o 'esta parte es importante'.",
     subsections: [
       {
-        title: "Sintaxis de Comentarios",
+        title: "¿Qué son los Comentarios?",
         description:
-          "Los comentarios en HispanoLang empiezan con dos barras diagonales (//) y continúan hasta el final de la línea.",
-        syntax: "// Este es un comentario",
-        code: `// Este es un comentario
-variable x = 10
-mostrar x  // Comentario al final de la línea`,
+          "Imagina que estás escribiendo tu receta favorita. Querés dejar notas como 'batir durante 5 minutos' o 'el secreto está en la temperatura'. Los comentarios en programación funcionan igual: son notas en tu código que ayudan a entender qué hace y por qué.",
+        syntax: "// Tu nota aquí",
+        code: `
+// RECETA: Pizza Casera
+// Tiempo total: 45 minutos
+
+constante TEMPERATURA_HORNO = 220  // Grados centígrados
+constante TIEMPO_HORNEADO = 15     // Minutos
+  
+variable pizzasHechas = 0
+
+mostrar "Pizzas hechas: " + pizzasHechas  // Contador de producción
+  `,
+        output: "Pizzas hechas: 0",
         notes: [
-          "Los comentarios empiezan con //",
-          "Todo después de // en esa línea es ignorado",
-          "Puedes poner comentarios en su propia línea o al final de código",
-          "Los comentarios no afectan la ejecución del programa",
+          "Los comentarios empiezan con dos barras: //",
+          "Todo lo que escribas después de // es ignorado por el programa",
+          "Puedes poner comentarios en su propia línea o al final de una línea de código",
+          "Son solo para humanos, el programa no los lee ni los ejecuta",
         ],
       },
       {
-        title: "Usos de Comentarios",
+        title: "¿Para qué sirven?",
         description:
-          "Los comentarios tienen múltiples propósitos: explicar código, documentar decisiones, dejar recordatorios, o desactivar código temporalmente.",
-        code: `// Programa: Calculadora de descuento
-// Autor: Tu nombre
+          "Los comentarios tienen tres usos principales: explicar tu código (como tips en una receta), dejar recordatorios importantes, y desactivar pasos temporalmente sin borrarlos.",
+        code: `
+// RECETA: Torta de Chocolate
+// Porciones: 8
 
-variable precio = 100
-// Aplicamos 20% de descuento
-variable descuento = precio * 0.20
-variable precioFinal = precio - descuento
+constante HARINA_GRAMOS = 200
+constante AZUCAR_GRAMOS = 150
+constante HUEVOS = 3
 
-// mostrar "Debug: precio = " + precio  // Código comentado
-mostrar "Precio final: " + precioFinal`,
+variable pasoActual = 1
+
+// PASO 1: Mezclar ingredientes secos
+mostrar "Paso " + pasoActual + ": Tamizar harina"
+pasoActual = pasoActual + 1
+
+// PASO 2: Agregar ingredientes húmedos
+mostrar "Paso " + pasoActual + ": Batir huevos"
+pasoActual = pasoActual + 1
+
+// Para hacer: Agregar paso de decoración
+// Para hacer: Calcular calorías totales
+  `,
+        output: "Paso 1: Tamizar harina\nPaso 2: Batir huevos",
         notes: [
-          "Usa comentarios para explicar el 'por qué', no solo el 'qué'",
-          "Comenta código para desactivarlo sin borrarlo",
-          "Documenta decisiones importantes o algoritmos complejos",
-          "Evita comentarios obvios que repiten lo que el código ya dice",
+          "Explica pasos importantes o complejos de tu receta/código",
+          "Usa TODO: para dejar recordatorios de cosas pendientes",
+          "Organiza tu código con comentarios como títulos de secciones",
+          "Documenta cantidades, tiempos o decisiones importantes",
+        ],
+      },
+      {
+        title: "Desactivar Código Temporalmente",
+        description:
+          "A veces querés probar tu receta sin ciertos ingredientes o pasos. En vez de borrar esas líneas, podés 'comentarlas' para desactivarlas temporalmente.",
+        code: `
+// RECETA: Panqueques
+constante HARINA = 200
+constante LECHE = 300
+constante HUEVOS = 2
+
+variable panquequesHechos = 0
+
+// mostrar "Debug: harina = " + HARINA
+// mostrar "Debug: leche = " + LECHE
+
+panquequesHechos = 5
+mostrar "Panqueques listos: " + panquequesHechos
+
+// variable azucar = 50  // Desactivado: versión sin azúcar
+  `,
+        output: "Panqueques listos: 5",
+        notes: [
+          "Comentar líneas es útil para probar diferentes versiones de tu código",
+          "Puedes desactivar ingredientes/pasos sin borrarlos, por si los necesitas después",
+          "Es más seguro que borrar: siempre podés 'des-comentar' sacando las //",
+          "Útil para debug: desactiva líneas para encontrar dónde está el problema",
+        ],
+      },
+      {
+        title: "Buenas Prácticas",
+        description:
+          "Como en una buena receta, tus comentarios deben agregar información útil, no repetir lo obvio. Aquí hay ejemplos de comentarios buenos y malos.",
+        code: `
+// ❌ MAL: Comentario obvio que no agrega valor
+variable huevos = 3  // Declaramos variable huevos con valor 3
+  
+// ✅ BIEN: Explica el por qué o da contexto útil
+variable huevos = 3  // 3 huevos para receta de 8 porciones
+  
+// ❌ MAL: Repite exactamente lo que el código hace
+temperatura = temperatura + 10  // Sumamos 10 a temperatura
+  
+// ✅ BIEN: Explica la razón o el contexto
+temperatura = temperatura + 10  // Ajuste para horno de gas
+  
+// ✅ BIEN: Documenta decisiones o tips importantes
+constante TEMPERATURA_HORNO = 180
+// 180°C es ideal para esta receta: más alto quema los bordes,
+// más bajo deja el centro crudo. Probado múltiples veces.
+
+variable tiempoReposo = 30  // IMPORTANTE: No saltear este paso
+  `,
+        output: "",
+        notes: [
+          "Explica el 'POR QUÉ', no el 'QUÉ' (el código ya muestra el qué)",
+          "Evita comentarios obvios: 'variable x = 5 // asignamos 5 a x' no ayuda",
+          "Documenta tips importantes: temperaturas críticas, tiempos exactos, trucos",
+          "Si el código es claro por sí mismo, no necesita comentario",
+          "Mantén los comentarios actualizados: si cambias el código, actualiza el comentario",
         ],
       },
     ],
