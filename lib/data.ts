@@ -2,66 +2,121 @@ export const docsData = {
   variables: {
     title: "📦 Variables",
     description:
-      "Las variables son contenedores que almacenan datos que puedes usar y modificar durante la ejecución de tu programa. Son fundamentales para cualquier programa ya que te permiten guardar información, realizar cálculos, y mantener el estado de tu aplicación.",
+      "Una variable es como una caja donde guardas información. Le pones un nombre a la caja para saber qué hay adentro. Por ejemplo, una caja llamada 'likes' que guarda el número de me gusta en una publicación de Instagram.",
     subsections: [
       {
-        title: "Declaración de Variables",
+        title: "Creando Variables",
         description:
-          "En HispanoLang, usamos la palabra clave 'variable' seguida del nombre que queremos darle y el valor inicial. Puedes declarar variables de cualquier tipo: números, texto, booleanos, listas, objetos, o valores especiales.",
-        syntax: "variable nombreVariable = valor",
-        code: `variable nombre = "Juan"
-variable edad = 25
-variable activo = verdadero
-variable salario = 50000.50
-variable valorNulo = nulo
-variable valorIndefinido = indefinido`,
+          "Imagina que estás en Instagram mirando una publicación. Hay información que se guarda: cuántos likes tiene, quién la publicó, cuántos comentarios hay. Todo eso se guarda en variables.",
+        syntax: "variable nombre = valor",
+        code: `
+variable nombreUsuario = "maria_gomez"
+variable likes = 127
+variable comentarios = 45
+
+mostrar likes
+mostrar nombreUsuario
+mostrar comentarios
+  `,
+        output: "127\nmaria_gomez\n45",
         notes: [
-          "El nombre de la variable puede contener letras (a-z, A-Z), números (0-9) y guiones bajos (_)",
-          "Debe comenzar con una letra o guion bajo, no puede empezar con un número",
-          "Los nombres son sensibles a mayúsculas/minúsculas: 'edad' y 'Edad' son variables diferentes",
-          "Se recomienda usar nombres descriptivos que indiquen qué almacena la variable",
-          "Usa snake_case (mi_variable) o camelCase (miVariable) para nombres con múltiples palabras",
+          "Escribimos 'variable' para crear una caja nueva donde guardar información",
+          "El nombre va sin comillas: likes, nombreUsuario, comentarios",
+          "Los números van sin comillas: 127, 45",
+          'El texto va entre comillas: "maria_gomez"',
+          "La palabra 'mostrar' hace que aparezca en pantalla lo que está guardado en la variable",
         ],
       },
       {
-        title: "Reasignación de Variables",
+        title: "Cambiando lo que Está Guardado",
         description:
-          "Puedes cambiar el valor de una variable en cualquier momento usando el operador de asignación (=). Esto sobrescribe el valor anterior con el nuevo valor. La variable mantiene su nombre pero cambia su contenido.",
+          "Cuando alguien le da 'me gusta' a la publicación de Instagram, el número de likes tiene que aumentar. Necesitamos cambiar lo que está guardado en la variable.",
+        code: `
+variable likes = 127
+mostrar likes
+
+likes = 128
+mostrar likes
+
+likes = 130
+mostrar likes
+  `,
+        output: "127\n128\n130",
+        notes: [
+          "Para cambiar el valor, NO escribas 'variable' de nuevo",
+          "Solo escribís el nombre de la variable y el nuevo valor: likes = 128",
+          "El número viejo (127) se borra y entra el nuevo (128)",
+          "Podés cambiar el valor todas las veces que quieras",
+          "Cada vez que alguien da like, el número cambia",
+        ],
+      },
+      {
+        title: "Haciendo Cálculos con Variables",
+        description:
+          "En vez de escribir el número nuevo cada vez, podemos hacer una cuenta. Si la publicación tenía 127 likes y llegan 5 más, podemos sumarle 5 al número que ya estaba guardado.",
+        code: `
+variable likes = 127
+mostrar likes
+
+likes = likes + 5
+mostrar likes
+
+likes = likes + 10
+mostrar likes
+  `,
+        output: "127\n132\n142",
+        notes: [
+          "likes + 5 significa: agarrá el número que hay en likes (127) y sumale 5",
+          "El resultado de la suma (132) se guarda de vuelta en likes",
+          "Esto es muy útil porque no necesitas saber cuánto había antes",
+          "Funciona con suma (+), resta (-), multiplicación (*) y división (/)",
+          "Es como cuando Instagram actualiza automáticamente el contador de likes",
+        ],
+      },
+    ],
+  },
+  constantes: {
+    title: "🔒 Constantes",
+    description:
+      "Las constantes son valores que no pueden cambiar después de ser asignados. Son ideales para configuración, valores matemáticos y datos que deben permanecer inmutables.",
+    subsections: [
+      {
+        title: "Declaración de Constantes",
+        description:
+          "Usa la palabra clave 'constante' seguida del nombre (por convención en MAYÚSCULAS) y el valor.",
+        syntax: "constante NOMBRE = valor",
+        code: `constante PI = 3.14159
+constante GRAVEDAD = 9.8
+constante NOMBRE_APP = "MiAplicación"
+constante MAX_INTENTOS = 3
+
+mostrar "El valor de PI es: " + PI
+mostrar "Gravedad: " + GRAVEDAD`,
+        output: "El valor de PI es: 3.14159\nGravedad: 9.8",
+        notes: [
+          "Por convención, los nombres van en MAYÚSCULAS_CON_GUIONES",
+          "Deben inicializarse al momento de declararse",
+          "No se pueden reasignar después de la declaración",
+          "Intentar modificar una constante causa error",
+        ],
+      },
+      {
+        title: "Diferencia con Variables",
+        description:
+          "Las constantes protegen valores críticos de cambios accidentales.",
         code: `variable contador = 0
+contador = 1
+contador = 2
 mostrar contador
 
-contador = 5
-mostrar contador
-
-contador = contador + 1
-mostrar contador`,
-        output: "0\n5\n6",
+constante MAXIMO = 100
+mostrar MAXIMO`,
+        output: "2\n100",
         notes: [
-          "La reasignación usa el mismo operador = que la declaración inicial",
-          "No necesitas la palabra 'variable' al reasignar, solo al declarar por primera vez",
-          "Puedes usar el valor actual de la variable en la expresión de reasignación (ej: contador = contador + 1)",
-          "El tipo de dato puede cambiar: una variable que era número puede convertirse en texto",
-        ],
-      },
-      {
-        title: "Alcance de Variables",
-        description:
-          "Las variables declaradas dentro de funciones o bloques son locales a ese contexto. Las variables declaradas fuera son globales y accesibles desde cualquier parte del programa.",
-        code: `variable global = "Soy global"
-
-funcion miFuncion() {
-    variable local = "Soy local"
-    mostrar global
-    mostrar local
-}
-
-miFuncion()
-mostrar global`,
-        output: "Soy global\nSoy local\nSoy global",
-        notes: [
-          "Las variables globales son accesibles desde cualquier parte del programa",
-          "Las variables locales solo existen dentro de la función donde se declaran",
-          "Intentar acceder a una variable local fuera de su función causa un error",
+          "Las variables pueden reasignarse, las constantes no",
+          "No funcionan con operadores +=, -=, *=, /=",
+          "No funcionan con incremento/decremento (++, --)",
+          "Usa constantes para valores de configuración",
         ],
       },
     ],
@@ -325,8 +380,7 @@ mostrar texto.subcadena(0, 4)   // "Hisp"`,
       },
       {
         title: "Reemplazar Texto",
-        description:
-          "Reemplaza todas las ocurrencias de un texto por otro.",
+        description: "Reemplaza todas las ocurrencias de un texto por otro.",
         code: `variable frase = "Hola mundo, mundo feliz"
 
 // Reemplazar todas las ocurrencias
@@ -351,8 +405,7 @@ mostrar texto.reemplazar("mala", "****")
       },
       {
         title: "Recortar e Invertir",
-        description:
-          "Elimina espacios en blanco y voltea el texto.",
+        description: "Elimina espacios en blanco y voltea el texto.",
         code: `// Recortar espacios
 variable texto = "   Hola mundo   "
 mostrar "'" + texto + "'"           // "'   Hola mundo   '"
@@ -1248,62 +1301,16 @@ intentar {
       },
     ],
   },
-  constantes: {
-    title: "🔒 Constantes",
-    description:
-      "Las constantes son valores que no pueden cambiar después de ser asignados. Son ideales para configuración, valores matemáticos y datos que deben permanecer inmutables.",
-    subsections: [
-      {
-        title: "Declaración de Constantes",
-        description:
-          "Usa la palabra clave 'constante' seguida del nombre (por convención en MAYÚSCULAS) y el valor.",
-        syntax: "constante NOMBRE = valor",
-        code: `constante PI = 3.14159
-constante GRAVEDAD = 9.8
-constante NOMBRE_APP = "MiAplicación"
-constante MAX_INTENTOS = 3
-
-mostrar "El valor de PI es: " + PI
-mostrar "Gravedad: " + GRAVEDAD`,
-        output: "El valor de PI es: 3.14159\nGravedad: 9.8",
-        notes: [
-          "Por convención, los nombres van en MAYÚSCULAS_CON_GUIONES",
-          "Deben inicializarse al momento de declararse",
-          "No se pueden reasignar después de la declaración",
-          "Intentar modificar una constante causa error",
-        ],
-      },
-      {
-        title: "Diferencia con Variables",
-        description:
-          "Las constantes protegen valores críticos de cambios accidentales.",
-        code: `variable contador = 0
-contador = 1
-contador = 2
-mostrar contador
-
-constante MAXIMO = 100
-mostrar MAXIMO`,
-        output: "2\n100",
-        notes: [
-          "Las variables pueden reasignarse, las constantes no",
-          "No funcionan con operadores +=, -=, *=, /=",
-          "No funcionan con incremento/decremento (++, --)",
-          "Usa constantes para valores de configuración",
-        ],
-      },
-    ],
-  },
   templateStrings: {
     title: "📝 Template Strings",
     description:
-      "Los template strings permiten interpolación de variables y expresiones dentro de cadenas de texto usando backticks (`) y la sintaxis \${expresion}.",
+      "Los template strings permiten interpolación de variables y expresiones dentro de cadenas de texto usando backticks (`) y la sintaxis ${expresion}.",
     subsections: [
       {
         title: "Sintaxis Básica",
         description:
-          "Usa backticks (`) en lugar de comillas y \${} para insertar valores.",
-        syntax: "`Texto con \${variable} interpolada`",
+          "Usa backticks (`) en lugar de comillas y ${} para insertar valores.",
+        syntax: "`Texto con ${variable} interpolada`",
         code: `variable nombre = "María"
 variable edad = 25
 
@@ -1314,7 +1321,7 @@ mostrar "Hola, me llamo " + nombre + " y tengo " + edad + " años"
 mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\``,
         notes: [
           "Usa backticks (`) en lugar de comillas",
-          "Las expresiones dentro de \${} se evalúan automáticamente",
+          "Las expresiones dentro de ${} se evalúan automáticamente",
           "Más legible que concatenación con +",
           "Puede contener cualquier expresión válida",
         ],
@@ -1322,7 +1329,7 @@ mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\``,
       {
         title: "Expresiones en Templates",
         description:
-          "Puedes incluir cálculos, llamadas a métodos y cualquier expresión dentro de \${}.",
+          "Puedes incluir cálculos, llamadas a métodos y cualquier expresión dentro de ${}.",
         code: `variable precio = 100
 variable descuento = 20
 
@@ -1336,9 +1343,9 @@ mostrar \`El arreglo tiene \${items.longitud} elementos\`
 variable texto = "hispanoLang"
 mostrar \`En mayúsculas: \${texto.mayusculas()}\``,
         notes: [
-          "Operaciones matemáticas: \${precio * 2}",
-          "Propiedades: \${items.longitud}",
-          "Métodos: \${texto.mayusculas()}",
+          "Operaciones matemáticas: ${precio * 2}",
+          "Propiedades: ${items.longitud}",
+          "Métodos: ${texto.mayusculas()}",
           "Expresiones condicionales también funcionan",
         ],
       },
