@@ -87,7 +87,7 @@ mostrar "Después de 10 likes más: " + likes`,
       explanation:
         "Para cambiar el valor de una variable:\n\n1. NO escribas la palabra `variable` de nuevo\n2. Solo escribe el nombre de la variable y el nuevo valor: `likes = 128`\n3. Puedes usar el valor actual en el cálculo: `likes = likes + 10` significa 'toma el valor que tiene likes (128) y súmale 10, guardando el resultado (138) de vuelta en likes'\n\nCada vez que haces `mostrar`, ves el valor actual en ese momento.",
       challenge:
-        "Crea una variable `seguidores` que empiece en 100 y muéstrala. Luego cambia su valor para sumarle 25 y muéstrala de nuevo para ver el nuevo valor.",
+        "Crea una variable `seguidores` que empiece en 100 y muéstrala. Luego cambia su valor para sumarle 25, y muéstrala de nuevo para ver el nuevo valor.",
       validation: {
         requiredCode: [
           "/seguidores.*100/",
@@ -95,6 +95,38 @@ mostrar "Después de 10 likes más: " + likes`,
           "/mostrar.*seguidores/",
         ],
         expectedOutputs: ["/100/", "/125/"],
+      },
+    },
+    {
+      title: "Atajos: Operadores Compuestos",
+      content:
+        "Escribir `likes = likes + 5` funciona, pero hay un atajo más corto. En vez de escribir la variable dos veces, podemos usar operadores compuestos como `+=`, `-=`, `*=` y `/=`.",
+      code: `variable puntos = 100
+mostrar "Puntos iniciales: " + puntos
+
+puntos += 50
+mostrar "Después de ganar puntos: " + puntos
+
+puntos -= 20
+mostrar "Después de perder puntos: " + puntos
+
+puntos *= 2
+mostrar "Después de duplicar: " + puntos
+
+puntos /= 4
+mostrar "Después de dividir: " + puntos`,
+      explanation:
+        "Los operadores compuestos son atajos:\n\n• `puntos += 50` es lo mismo que `puntos = puntos + 50`\n• `puntos -= 20` es lo mismo que `puntos = puntos - 20`\n• `puntos *= 2` es lo mismo que `puntos = puntos * 2`\n• `puntos /= 4` es lo mismo que `puntos = puntos / 4`\n\nEstos atajos hacen tu código más corto y más fácil de leer. Son especialmente útiles para contadores y acumuladores.",
+      challenge:
+        "Crea una variable `monedas` que empiece en 50. Usa `+=` para sumarle 30 monedas. Luego usa `-=` para restarle 15 monedas. Muestra el resultado final.",
+      validation: {
+        requiredCode: [
+          "/monedas.*50/",
+          "/monedas\\s*\\+=\\s*30/",
+          "/monedas\\s*-=\\s*15/",
+          "/mostrar.*monedas/",
+        ],
+        expectedOutputs: ["/65/"],
       },
     },
     {
@@ -147,7 +179,7 @@ mostrar "Diferencia seguidores/siguiendo: " + ratio`,
       challenge:
         "Crea tu perfil completo con cuatro variables: `usuario` (tu nombre), `seguidores` (un número), `siguiendo` (otro número), y `posts` (cantidad de posts). Luego crea una variable `promedioLikesPorPost` que calcule un promedio dividiendo un número total de likes entre tus posts (usa el operador `/`). Muestra todas tus variables en pantalla.",
       summary:
-        '🎉 ¡Felicitaciones! Ahora sabes:\n\n• Crear variables con `variable nombre = valor`\n• Texto va entre comillas: `"hola"`\n• Números van sin comillas: `42`\n• Booleanos: `verdadero` o `falso`\n• Cambiar valores: `nombre = nuevoValor`\n• Hacer cálculos: `+`, `-`, `*`, `/`\n• Mostrar con: `mostrar variable`\n\n💡 Las variables son la base de todo programa. ¡Siguiente: constantes!',
+        '🎉 ¡Felicitaciones! Ahora sabes:\n\n• Crear variables: `variable nombre = valor`\n• Texto entre comillas: `"hola"`\n• Números sin comillas: `42`\n• Booleanos: `verdadero` o `falso`\n• Cambiar valores: `nombre = nuevoValor`\n• Operaciones: `+`, `-`, `*`, `/`\n• Atajos: `+=`, `-=`, `*=`, `/=`\n• Mostrar: `mostrar variable`\n\n💡 ¡Siguiente: constantes!',
       validation: {
         requiredCode: [
           "/usuario/",

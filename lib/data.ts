@@ -73,6 +73,37 @@ mostrar likes
           "Es como cuando Instagram actualiza automáticamente el contador de likes",
         ],
       },
+      {
+        title: "Atajos para Operaciones",
+        description:
+          "Cuando querés sumar, restar, multiplicar o dividir el valor actual de una variable, hay atajos más cortos que escribir 'likes = likes + 5'.",
+        code: `
+variable seguidores = 100
+mostrar seguidores
+
+seguidores += 25
+mostrar seguidores
+
+seguidores -= 10
+mostrar seguidores
+
+variable precio = 50
+precio *= 2
+mostrar precio
+
+precio /= 4
+mostrar precio
+  `,
+        output: "100\n125\n115\n100\n25",
+        notes: [
+          "seguidores += 25 es lo mismo que seguidores = seguidores + 25",
+          "seguidores -= 10 es lo mismo que seguidores = seguidores - 10",
+          "precio *= 2 es lo mismo que precio = precio * 2",
+          "precio /= 4 es lo mismo que precio = precio / 4",
+          "Estos atajos hacen tu código más corto y más fácil de leer",
+          "Son muy útiles cuando actualizás contadores o acumuladores",
+        ],
+      },
     ],
   },
   constantes: {
