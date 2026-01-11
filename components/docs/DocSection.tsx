@@ -7,6 +7,7 @@ interface SubSection {
   title: string;
   description?: string;
   code?: string;
+  output?: string;
   notes?: string[];
   syntax?: string;
 }
@@ -58,6 +59,15 @@ export default function DocSection({
               {subsection.code && (
                 <div className="mb-4">
                   <CodeBlock code={subsection.code} />
+                </div>
+              )}
+
+              {subsection.output && (
+                <div className="mb-4 bg-slate-900/50 border border-slate-700/50 rounded-lg p-4">
+                  <span className="text-xs text-slate-500 uppercase tracking-wide">Resultado:</span>
+                  <pre className="text-sm text-green-400 font-mono mt-2 whitespace-pre">
+                    {subsection.output}
+                  </pre>
                 </div>
               )}
 

@@ -28,13 +28,14 @@ variable valorIndefinido = indefinido`,
         description:
           "Puedes cambiar el valor de una variable en cualquier momento usando el operador de asignación (=). Esto sobrescribe el valor anterior con el nuevo valor. La variable mantiene su nombre pero cambia su contenido.",
         code: `variable contador = 0
-mostrar contador  // 0
+mostrar contador
 
 contador = 5
-mostrar contador  // 5
+mostrar contador
 
 contador = contador + 1
-mostrar contador  // 6`,
+mostrar contador`,
+        output: "0\n5\n6",
         notes: [
           "La reasignación usa el mismo operador = que la declaración inicial",
           "No necesitas la palabra 'variable' al reasignar, solo al declarar por primera vez",
@@ -50,13 +51,18 @@ mostrar contador  // 6`,
 
 funcion miFuncion() {
     variable local = "Soy local"
-    mostrar global  // Funciona: acceso a variable global
-    mostrar local   // Funciona: acceso a variable local
+    mostrar global
+    mostrar local
 }
 
 miFuncion()
-mostrar global  // Funciona: variable global
-// mostrar local  // Error: 'local' no existe aquí`,
+mostrar global`,
+        output: "Soy global\nSoy local\nSoy global",
+        notes: [
+          "Las variables globales son accesibles desde cualquier parte del programa",
+          "Las variables locales solo existen dentro de la función donde se declaran",
+          "Intentar acceder a una variable local fuera de su función causa un error",
+        ],
       },
     ],
   },
@@ -1106,6 +1112,7 @@ constante MAX_INTENTOS = 3
 
 mostrar "El valor de PI es: " + PI
 mostrar "Gravedad: " + GRAVEDAD`,
+        output: "El valor de PI es: 3.14159\nGravedad: 9.8",
         notes: [
           "Por convención, los nombres van en MAYÚSCULAS_CON_GUIONES",
           "Deben inicializarse al momento de declararse",
@@ -1117,19 +1124,14 @@ mostrar "Gravedad: " + GRAVEDAD`,
         title: "Diferencia con Variables",
         description:
           "Las constantes protegen valores críticos de cambios accidentales.",
-        code: `// Variable: puede cambiar
-variable contador = 0
-contador = 1      // OK
-contador = 2      // OK
+        code: `variable contador = 0
+contador = 1
+contador = 2
+mostrar contador
 
-// Constante: no puede cambiar
 constante MAXIMO = 100
-mostrar MAXIMO    // 100
-// MAXIMO = 200   // Error: No se puede reasignar
-
-// Operadores compuestos tampoco funcionan
-// MAXIMO += 50   // Error
-// MAXIMO++       // Error`,
+mostrar MAXIMO`,
+        output: "2\n100",
         notes: [
           "Las variables pueden reasignarse, las constantes no",
           "No funcionan con operadores +=, -=, *=, /=",
