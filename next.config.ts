@@ -77,12 +77,6 @@ const nextConfig: NextConfig = {
   // Habilitar optimizaciones del compilador
   reactStrictMode: true,
 
-  // Optimizar fuentes
-  optimizeFonts: true,
-
-  // Habilitar SWC minification
-  swcMinify: true,
-
   // Generar ETags para mejor caché
   generateEtags: true,
 

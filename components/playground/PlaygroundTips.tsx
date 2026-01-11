@@ -1,4 +1,5 @@
 import { FiCommand, FiBookOpen, FiLayers } from "react-icons/fi";
+import Link from "next/link";
 
 export default function PlaygroundTips() {
   return (
@@ -48,20 +49,20 @@ export default function PlaygroundTips() {
           </div>
           <ul className="text-xs space-y-1.5">
             <li>
-              <a
+              <Link
                 href="/documentacion"
                 className="text-purple-400 hover:text-purple-300 flex items-center space-x-1"
               >
                 <span>Documentación</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 href="/lecciones"
                 className="text-purple-400 hover:text-purple-300 flex items-center space-x-1"
               >
                 <span>Lecciones</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
