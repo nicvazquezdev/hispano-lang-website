@@ -776,6 +776,120 @@ numeros.recorrer(funcion(elemento) {
       },
     ],
   },
+  funcionesFlecha: {
+    title: "➡️ Funciones Flecha",
+    description:
+      "Las funciones flecha son una sintaxis concisa para escribir funciones anónimas usando el operador =>. Son ideales para callbacks y programación funcional.",
+    subsections: [
+      {
+        title: "Sintaxis Básica",
+        description:
+          "Las funciones flecha usan => para separar los parámetros del cuerpo de la función.",
+        code: `variable doble = x => x * 2
+
+variable suma = (a, b) => a + b
+
+variable saludar = () => "Hola mundo"
+
+mostrar doble(5)
+mostrar suma(3, 4)
+mostrar saludar()`,
+        output: "10\n7\nHola mundo",
+        notes: [
+          "Un parámetro: no necesita paréntesis (x => ...)",
+          "Múltiples parámetros: requieren paréntesis ((a, b) => ...)",
+          "Sin parámetros: paréntesis vacíos (() => ...)",
+          "El retorno es implícito cuando el cuerpo es una expresión",
+        ],
+      },
+      {
+        title: "Cuerpo de Expresión vs Bloque",
+        description:
+          "Las funciones flecha pueden tener un cuerpo de expresión (retorno implícito) o un bloque (requiere retornar).",
+        code: `variable cuadrado = x => x * x
+
+variable factorial = n => {
+    si n <= 1 {
+        retornar 1
+    }
+    retornar n * factorial(n - 1)
+}
+
+mostrar cuadrado(5)
+mostrar factorial(5)`,
+        output: "25\n120",
+        notes: [
+          "Cuerpo de expresión: retorno implícito, ideal para operaciones simples",
+          "Cuerpo de bloque: usa llaves {} y requiere 'retornar' explícito",
+          "Usa bloques cuando necesites múltiples líneas o lógica condicional",
+        ],
+      },
+      {
+        title: "Con Métodos de Listas",
+        description:
+          "Las funciones flecha son ideales para usar con métodos funcionales de listas.",
+        code: `variable numeros = [1, 2, 3, 4, 5, 6]
+
+variable dobles = numeros.mapear(x => x * 2)
+mostrar dobles
+
+variable pares = numeros.filtrar(x => x % 2 == 0)
+mostrar pares
+
+variable suma = numeros.reducir((acc, x) => acc + x, 0)
+mostrar suma`,
+        output: "[2, 4, 6, 8, 10, 12]\n[2, 4, 6]\n21",
+        notes: [
+          ".mapear(fn) transforma cada elemento",
+          ".filtrar(fn) filtra elementos que cumplan la condición",
+          ".reducir(fn, inicial) reduce la lista a un solo valor",
+          "La sintaxis concisa hace el código más legible",
+        ],
+      },
+      {
+        title: "Encadenamiento de Métodos",
+        description:
+          "Puedes encadenar múltiples métodos para operaciones complejas.",
+        code: `variable numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+variable resultado = numeros
+    .filtrar(x => x % 2 == 0)
+    .mapear(x => x * 10)
+
+mostrar resultado`,
+        output: "[20, 40, 60, 80, 100]",
+        notes: [
+          "Cada método retorna una nueva lista",
+          "Puedes encadenar tantos métodos como necesites",
+          "El orden de las operaciones importa",
+        ],
+      },
+      {
+        title: "Funciones de Orden Superior",
+        description:
+          "Las funciones flecha facilitan pasar funciones como argumentos.",
+        code: `variable triple = x => x * 3
+
+variable aplicar = (fn, valor) => fn(valor)
+
+mostrar aplicar(triple, 7)
+
+variable duplicarYSumar = (x, y) => {
+    variable dx = x * 2
+    variable dy = y * 2
+    retornar dx + dy
+}
+
+mostrar duplicarYSumar(3, 4)`,
+        output: "21\n14",
+        notes: [
+          "Las funciones pueden recibir otras funciones como parámetros",
+          "Las funciones pueden retornar otras funciones",
+          "Este patrón es común en programación funcional",
+        ],
+      },
+    ],
+  },
   listas: {
     title: "📋 Listas (Arrays)",
     description:
@@ -855,6 +969,45 @@ frutas.recorrer(funcion(elemento, indice) {
           "Primer parámetro: el elemento actual",
           "Segundo parámetro (opcional): el índice del elemento",
           "Útil para procesar todos los elementos de forma consistente",
+        ],
+      },
+      {
+        title: "Métodos Funcionales",
+        description:
+          "Métodos avanzados para transformar, filtrar y reducir listas de forma funcional.",
+        code: `variable numeros = [1, 2, 3, 4, 5, 6]
+
+variable dobles = numeros.mapear(x => x * 2)
+mostrar dobles
+
+variable pares = numeros.filtrar(x => x % 2 == 0)
+mostrar pares
+
+variable suma = numeros.reducir((acc, x) => acc + x, 0)
+mostrar suma`,
+        output: "[2, 4, 6, 8, 10, 12]\n[2, 4, 6]\n21",
+        notes: [
+          ".mapear(fn): Transforma cada elemento y retorna nueva lista",
+          ".filtrar(fn): Retorna elementos que cumplan la condición",
+          ".reducir(fn, inicial): Reduce la lista a un solo valor",
+        ],
+      },
+      {
+        title: "Métodos de Búsqueda",
+        description:
+          "Métodos para buscar elementos y verificar condiciones en listas.",
+        code: `variable numeros = [1, 2, 3, 4, 5, 6]
+
+mostrar numeros.algunos(x => x > 5)
+
+mostrar numeros.todos(x => x > 0)
+
+mostrar numeros.buscar(x => x > 3)`,
+        output: "verdadero\nverdadero\n4",
+        notes: [
+          ".algunos(fn): Verdadero si algún elemento cumple la condición",
+          ".todos(fn): Verdadero si todos los elementos cumplen la condición",
+          ".buscar(fn): Retorna el primer elemento que cumple la condición",
         ],
       },
     ],

@@ -46,6 +46,7 @@ function DocumentacionContent() {
     { id: "bucles", title: "Bucles" },
     { id: "buclesAvanzados", title: "Bucles Avanzados" },
     { id: "funciones", title: "Funciones" },
+    { id: "funcionesFlecha", title: "Funciones Flecha" },
     { id: "funcionesMatematicas", title: "Funciones Matemáticas" },
     { id: "conversionTipos", title: "Conversión de Tipos" },
     { id: "metodosNumericos", title: "Métodos Numéricos" },

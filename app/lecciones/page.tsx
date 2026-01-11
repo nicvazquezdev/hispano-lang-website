@@ -5,7 +5,6 @@ import Section from "@/components/ui/Section";
 import { lessons } from "@/lib/lessons";
 
 export default function LeccionesPage() {
-
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Fondo animado */}

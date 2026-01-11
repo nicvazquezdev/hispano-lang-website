@@ -6,7 +6,7 @@ export const funciones: LessonContent = {
   titleGradient: " HispanoLang",
   description: "Crea código reutilizable con funciones",
   prev: { url: "/lecciones/bucles-avanzados", title: "Bucles Avanzados" },
-  next: { url: "/lecciones/funciones-matematicas", title: "Funciones Matemáticas" },
+  next: { url: "/lecciones/funciones-flecha", title: "Funciones Flecha" },
   steps: [
     {
       title: "¿Qué son las funciones?",

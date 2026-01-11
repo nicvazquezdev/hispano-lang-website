@@ -1,11 +1,11 @@
 import { LessonContent } from "../types";
 
 export const funcionesMatematicas: LessonContent = {
-  badge: { emoji: "🧮", text: "Lección 14" },
+  badge: { emoji: "🧮", text: "Lección 15" },
   title: "Funciones Matemáticas en",
   titleGradient: " HispanoLang",
   description: "Cálculos avanzados con funciones integradas",
-  prev: { url: "/lecciones/funciones", title: "Funciones" },
+  prev: { url: "/lecciones/funciones-flecha", title: "Funciones Flecha" },
   next: { url: "/lecciones/conversion-tipos", title: "Conversión de Tipos" },
   steps: [
     {

@@ -12,6 +12,7 @@ import { bucles } from "./bucles";
 import { controlFlujoBucles } from "./control-flujo-bucles";
 import { buclesAvanzados } from "./bucles-avanzados";
 import { funciones } from "./funciones";
+import { funcionesFlecha } from "./funciones-flecha";
 import { funcionesMatematicas } from "./funciones-matematicas";
 import { conversionTipos } from "./conversion-tipos";
 import { metodosNumericos } from "./metodos-numericos";
@@ -36,6 +37,7 @@ export const lessonsContent: Record<string, LessonContent> = {
   "control-flujo-bucles": controlFlujoBucles,
   "bucles-avanzados": buclesAvanzados,
   "funciones": funciones,
+  "funciones-flecha": funcionesFlecha,
   "funciones-matematicas": funcionesMatematicas,
   "conversion-tipos": conversionTipos,
   "metodos-numericos": metodosNumericos,
