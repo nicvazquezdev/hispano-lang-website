@@ -9,8 +9,10 @@ export type TokenType =
   | 'comment'
   | 'string'
   | 'template-string'
+  | 'template-punctuation'
   | 'keyword'
   | 'control-flow'
+  | 'builtin-command'
   | 'builtin-function'
   | 'builtin-method'
   | 'number'
@@ -78,11 +80,17 @@ const OOP_KEYWORDS = [
 ];
 
 /**
- * Built-in functions (global)
+ * Built-in commands (no parentheses)
  */
-const BUILTIN_FUNCTIONS = [
+const BUILTIN_COMMANDS = [
   'mostrar',
   'leer',
+];
+
+/**
+ * Built-in functions (with parentheses)
+ */
+const BUILTIN_FUNCTIONS = [
   'tipo',
   'entero',
   'decimal',
@@ -185,7 +193,13 @@ export const TOKEN_PATTERNS: TokenPattern[] = [
     pattern: new RegExp(`\\b(${ALL_KEYWORDS.join('|')})\\b`, 'g'),
   },
 
-  // Built-in functions (standalone calls)
+  // Built-in commands (no parentheses needed)
+  {
+    type: 'builtin-command',
+    pattern: new RegExp(`\\b(${BUILTIN_COMMANDS.join('|')})\\b`, 'g'),
+  },
+
+  // Built-in functions (with parentheses)
   {
     type: 'builtin-function',
     pattern: new RegExp(`\\b(${BUILTIN_FUNCTIONS.join('|')})(?=\\s*\\()`, 'g'),
@@ -235,6 +249,7 @@ export const KEYWORDS = {
   declaration: DECLARATION_KEYWORDS,
   controlFlow: CONTROL_FLOW_KEYWORDS,
   oop: OOP_KEYWORDS,
+  builtinCommands: BUILTIN_COMMANDS,
   builtinFunctions: BUILTIN_FUNCTIONS,
   builtinMethods: BUILTIN_METHODS,
 };
