@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { FiTrash2 } from "react-icons/fi";
 
 interface EnhancedCodeEditorProps {
@@ -8,6 +8,11 @@ interface EnhancedCodeEditorProps {
   onChange: (code: string) => void;
   onRun: () => void;
   isRunning: boolean;
+}
+
+interface LineHeight {
+  lineNumber: number;
+  height: number;
 }
 
 export default function EnhancedCodeEditor({
@@ -18,15 +23,48 @@ export default function EnhancedCodeEditor({
 }: EnhancedCodeEditorProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
-  const [lineNumbers, setLineNumbers] = useState<number[]>([1]);
+  const measureRef = useRef<HTMLDivElement>(null);
+  const [lineHeights, setLineHeights] = useState<LineHeight[]>([{ lineNumber: 1, height: 24 }]);
   const [currentLine, setCurrentLine] = useState<number>(0);
   const [isFocused, setIsFocused] = useState<boolean>(false);
   const [scrollTop, setScrollTop] = useState<number>(0);
 
-  useEffect(() => {
-    const lines = code.split("\n").length;
-    setLineNumbers(Array.from({ length: lines }, (_, i) => i + 1));
+  const measureLineHeights = useCallback(() => {
+    if (!measureRef.current || !textareaRef.current) return;
+
+    const lines = code.split("\n");
+    const measureDiv = measureRef.current;
+    const textarea = textareaRef.current;
+
+    // Match the textarea's width minus padding (12px on each side)
+    const textareaWidth = textarea.clientWidth - 24;
+    measureDiv.style.width = `${textareaWidth}px`;
+
+    const newLineHeights: LineHeight[] = [];
+
+    lines.forEach((line, index) => {
+      // Use a non-breaking space for empty lines to get proper height
+      measureDiv.textContent = line || '\u00A0';
+      // Calculate how many visual lines this takes (each line is 24px with leading-6)
+      const height = Math.max(Math.ceil(measureDiv.offsetHeight / 24) * 24, 24);
+      newLineHeights.push({
+        lineNumber: index + 1,
+        height,
+      });
+    });
+
+    setLineHeights(newLineHeights);
   }, [code]);
+
+  useEffect(() => {
+    measureLineHeights();
+
+    // Re-measure on window resize
+    const handleResize = () => measureLineHeights();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [measureLineHeights]);
 
   const handleScroll = () => {
     if (textareaRef.current && lineNumbersRef.current) {
@@ -72,7 +110,22 @@ export default function EnhancedCodeEditor({
   };
 
   return (
-    <div className="bg-[#0b111f] border border-slate-700 rounded-lg overflow-hidden flex flex-col h-full">
+    <>
+      {/* Hidden div for measuring line heights */}
+      <div
+        ref={measureRef}
+        className="absolute invisible overflow-hidden font-mono text-sm leading-6 whitespace-pre-wrap break-words"
+        style={{
+          position: 'absolute',
+          visibility: 'hidden',
+          height: 'auto',
+          whiteSpace: 'pre-wrap',
+          wordBreak: 'break-word',
+          padding: 0,
+        }}
+        aria-hidden="true"
+      />
+      <div className="bg-[#0b111f] border border-slate-700 rounded-lg overflow-hidden flex flex-col h-full">
       {/* Header */}
       <div className="bg-[#0b111f] px-4 py-2.5 flex items-center justify-between border-b border-[#3e3e42] flex-shrink-0">
         <div className="flex items-center space-x-2">
@@ -107,17 +160,18 @@ export default function EnhancedCodeEditor({
           ref={lineNumbersRef}
           className="bg-[#0b111f] py-3 text-right text-[#858585] font-mono text-xs select-none border-r border-[#3e3e42] overflow-y-hidden flex-shrink-0 min-w-[2rem] flex flex-col items-center"
         >
-          {lineNumbers.map((num) => (
-            <span
-              key={num}
-              className={`leading-6 ${
-                isFocused && num === currentLine
+          {lineHeights.map(({ lineNumber, height }) => (
+            <div
+              key={lineNumber}
+              className={`flex items-start justify-center w-full px-1 ${
+                isFocused && lineNumber === currentLine
                   ? "text-[#c586c0] font-semibold"
                   : "text-[#858585]"
               }`}
+              style={{ height: `${height}px`, lineHeight: '24px' }}
             >
-              {num}
-            </span>
+              {lineNumber}
+            </div>
           ))}
         </div>
 
@@ -128,8 +182,8 @@ export default function EnhancedCodeEditor({
             <div
               className="absolute left-0 right-0 bg-[#2a2d3a] pointer-events-none z-0"
               style={{
-                top: `${(currentLine - 1) * 24 + 12}px`,
-                height: "24px",
+                top: `${lineHeights.slice(0, currentLine - 1).reduce((sum, l) => sum + l.height, 0) + 12}px`,
+                height: `${lineHeights[currentLine - 1]?.height || 24}px`,
                 transform: `translateY(-${scrollTop}px)`,
               }}
             />
@@ -147,10 +201,9 @@ export default function EnhancedCodeEditor({
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
             onScroll={handleScroll}
-            className="absolute inset-0 w-full h-full p-3 bg-transparent text-[#d4d4d4] font-mono text-sm resize-none outline-none placeholder-[#6a6a6a] leading-6 overflow-auto whitespace-pre relative z-10"
+            className="absolute inset-0 w-full h-full p-3 bg-transparent text-[#d4d4d4] font-mono text-sm resize-none outline-none placeholder-[#6a6a6a] leading-6 overflow-auto whitespace-pre-wrap break-words relative z-10"
             placeholder="Escribe tu código aquí..."
             spellCheck={false}
-            wrap="off"
           />
         </div>
       </div>
@@ -160,6 +213,7 @@ export default function EnhancedCodeEditor({
         <span className="hidden md:block">Cmd/Ctrl + Enter para ejecutar</span>
         <span className="text-slate-500">{code.length} caracteres</span>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
