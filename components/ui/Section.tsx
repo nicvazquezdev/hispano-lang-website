@@ -4,10 +4,7 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   background?: "light" | "dark";
-  badge?: {
-    emoji: string;
-    text: string;
-  };
+  badge?: { emoji: string; text: string };
   title?: string;
   titleGradient?: string;
   description?: string;
@@ -35,11 +32,6 @@ export default function Section({
     },
   };
 
-  const badgeClasses = {
-    light: "bg-slate-800/50 backdrop-blur-sm border border-slate-600/30",
-    dark: "bg-white/10 backdrop-blur-sm border border-white/20",
-  };
-
   return (
     <section className={`py-20 relative overflow-hidden ${className}`}>
       {/* Elementos decorativos de fondo */}
@@ -51,18 +43,11 @@ export default function Section({
         {(badge || title || description) && (
           <div className="text-center mb-16">
             {badge && (
-              <div
-                className={`inline-flex items-center px-4 py-2 rounded-full ${badgeClasses[background]} mb-6`}
-              >
-                <span className="text-2xl mr-2">{badge.emoji}</span>
-                <span
-                  className={`font-medium ${textClasses[background].badge}`}
-                >
-                  {badge.text}
-                </span>
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 ${textClasses[background].badge} mb-6`}>
+                <span>{badge.emoji}</span>
+                <span className="text-sm font-medium">{badge.text}</span>
               </div>
             )}
-
             {title && (
               <h2
                 className={`text-4xl lg:text-5xl font-bold ${textClasses[background].title} mb-6`}

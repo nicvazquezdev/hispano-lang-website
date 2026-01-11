@@ -7,7 +7,6 @@ export default function CTA() {
   return (
     <Section
       background="light"
-      badge={{ emoji: "🚀", text: "Empezar Ahora" }}
       title="¿Listo para"
       titleGradient=" empezar?"
       description="Comienza tu viaje de aprendizaje con nuestras lecciones interactivas y documentación completa."

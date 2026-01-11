@@ -34,7 +34,6 @@ export default function Features() {
   return (
     <Section
       background="light"
-      badge={{ emoji: "✨", text: "Características Únicas" }}
       title="¿Por qué es"
       titleGradient=" diferente?"
       description="Cualquier persona, sin importar su idioma, debería poder aprender a programar desde cero y disfrutar el proceso"

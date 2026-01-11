@@ -8,7 +8,7 @@ interface Lesson {
   emoji: string;
   difficulty: string;
   duration: string;
-  completed: boolean;
+  completed?: boolean;
 }
 
 interface LessonCardProps {

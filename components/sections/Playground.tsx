@@ -65,7 +65,6 @@ mostrar "Hola " + lenguaje + "! 👋"`);
   return (
     <Section
       background="light"
-      badge={{ emoji: "⚡", text: "Prueba en Vivo" }}
       title="Playground de"
       titleGradient=" HispanoLang"
       description="Escribe código en español y ejecútalo aquí mismo"
