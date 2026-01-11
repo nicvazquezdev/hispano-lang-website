@@ -109,45 +109,124 @@ mostrar precio
   constantes: {
     title: "🔒 Constantes",
     description:
-      "Las constantes son valores que no pueden cambiar después de ser asignados. Son ideales para configuración, valores matemáticos y datos que deben permanecer inmutables.",
+      "Las constantes son valores que nunca cambian. Imagina las reglas fijas de Twitter/X: el límite de 280 caracteres por tweet, el precio de la suscripción premium. Estas son constantes porque Twitter decidió que no van a cambiar mientras uses la app.",
     subsections: [
       {
-        title: "Declaración de Constantes",
+        title: "¿Qué son las Constantes?",
         description:
-          "Usa la palabra clave 'constante' seguida del nombre (por convención en MAYÚSCULAS) y el valor.",
+          "En Twitter/X hay cosas que cambian todo el tiempo (tus tweets, tus seguidores, los likes) y cosas que son reglas fijas de la plataforma (límite de caracteres, precio de verificación). Las constantes son para esas reglas fijas.",
         syntax: "constante NOMBRE = valor",
-        code: `constante PI = 3.14159
-constante GRAVEDAD = 9.8
-constante NOMBRE_APP = "MiAplicación"
-constante MAX_INTENTOS = 3
-
-mostrar "El valor de PI es: " + PI
-mostrar "Gravedad: " + GRAVEDAD`,
-        output: "El valor de PI es: 3.14159\nGravedad: 9.8",
+        code: `
+  constante LIMITE_CARACTERES = 280
+  constante PRECIO_VERIFICACION = 8
+  constante MAX_HASHTAGS = 30
+  constante NOMBRE_PLATAFORMA = "Twitter/X"
+  
+  mostrar "Límite de caracteres: " + LIMITE_CARACTERES
+  mostrar "Precio verificación: $" + PRECIO_VERIFICACION
+  mostrar "Plataforma: " + NOMBRE_PLATAFORMA
+  `,
+        output:
+          "Límite de caracteres: 280\nPrecio verificación: $8\nPlataforma: Twitter/X",
         notes: [
-          "Por convención, los nombres van en MAYÚSCULAS_CON_GUIONES",
-          "Deben inicializarse al momento de declararse",
-          "No se pueden reasignar después de la declaración",
-          "Intentar modificar una constante causa error",
+          "Las constantes se escriben con MAYUSCULAS_Y_GUIONES por convención",
+          "Se usan para valores que NO deben cambiar: límites, precios, configuración",
+          "Una vez que creas una constante, su valor queda fijo para siempre",
+          "Si intentas cambiarla, el programa te muestra un error (esto es bueno, te protege)",
         ],
       },
       {
-        title: "Diferencia con Variables",
+        title: "Creando Constantes",
         description:
-          "Las constantes protegen valores críticos de cambios accidentales.",
-        code: `variable contador = 0
-contador = 1
-contador = 2
-mostrar contador
-
-constante MAXIMO = 100
-mostrar MAXIMO`,
-        output: "2\n100",
+          "Para crear una constante, usas la palabra 'constante' en vez de 'variable'. El resto es igual: le das un nombre y un valor.",
+        code: `
+  constante LIMITE_CARACTERES = 280
+  constante PRECIO_BASICO = 3
+  constante PRECIO_PREMIUM = 8
+  constante MAX_IMAGENES_TWEET = 4
+  
+  mostrar "Un tweet puede tener máximo " + LIMITE_CARACTERES + " caracteres"
+  mostrar "Puedes adjuntar hasta " + MAX_IMAGENES_TWEET + " imágenes"
+  `,
+        output:
+          "Un tweet puede tener máximo 280 caracteres\nPuedes adjuntar hasta 4 imágenes",
         notes: [
-          "Las variables pueden reasignarse, las constantes no",
-          "No funcionan con operadores +=, -=, *=, /=",
-          "No funcionan con incremento/decremento (++, --)",
-          "Usa constantes para valores de configuración",
+          "Usa 'constante' en lugar de 'variable' para crearlas",
+          "Por convención, los nombres van en MAYÚSCULAS (así es fácil identificarlas)",
+          "Puedes crear constantes de texto, números o booleanos",
+          "Las constantes se crean una sola vez al inicio del programa",
+        ],
+      },
+      {
+        title: "Constantes vs Variables: ¿Cuándo usar cada una?",
+        description:
+          "La diferencia es simple: si el valor puede cambiar durante el uso de la app, usa variable. Si es una regla fija que nunca cambia, usa constante.",
+        code: `
+  constante LIMITE_CARACTERES = 280
+  variable caracteresEscritos = 0
+  
+  mostrar "Límite: " + LIMITE_CARACTERES
+  mostrar "Escritos: " + caracteresEscritos
+  
+  caracteresEscritos = 50
+  mostrar "Escritos ahora: " + caracteresEscritos
+  
+  caracteresEscritos = 150
+  mostrar "Escritos ahora: " + caracteresEscritos
+  `,
+        output:
+          "Límite: 280\nEscritos: 0\nEscritos ahora: 50\nEscritos ahora: 150",
+        notes: [
+          "LIMITE_CARACTERES es constante: Twitter no lo cambia mientras escribís",
+          "caracteresEscritos es variable: cambia con cada letra que escribís",
+          "Regla práctica: ¿esto cambia mientras uso la app? → variable. ¿Es una regla fija? → constante",
+          "Las variables pueden cambiar todas las veces que quieras, las constantes jamás",
+        ],
+      },
+      {
+        title: "¿Qué pasa si intentas cambiar una Constante?",
+        description:
+          "Si intentas cambiar el valor de una constante, el programa te detiene con un error. Esto es una protección: te avisa que estás tratando de romper una regla fija.",
+        code: `
+  constante LIMITE_CARACTERES = 280
+  mostrar LIMITE_CARACTERES
+  
+  LIMITE_CARACTERES = 500
+  `,
+        output: "280\nError: No puedes reasignar una constante",
+        notes: [
+          "Intentar cambiar una constante causa un error inmediato",
+          "Esto es intencional: te protege de modificar accidentalmente valores importantes",
+          "Si necesitas que algo pueda cambiar, usa 'variable' en lugar de 'constante'",
+          "Los operadores +=, -=, *=, /= tampoco funcionan con constantes",
+        ],
+      },
+      {
+        title: "Casos de Uso Reales",
+        description:
+          "Las constantes son perfectas para configuración de tu app, límites del sistema, precios y cualquier valor que definas una vez y no deba cambiar.",
+        code: `
+  constante NOMBRE_APP = "MiRedSocial"
+  constante VERSION = "1.0.0"
+  constante LIMITE_BIO = 160
+  constante MAX_SEGUIDORES_GRATIS = 5000
+  constante PRECIO_PREMIUM = 999
+  
+  variable usuariosActivos = 1250
+  variable tweetsHoy = 450
+  
+  mostrar "App: " + NOMBRE_APP + " v" + VERSION
+  mostrar "Límite de biografía: " + LIMITE_BIO + " caracteres"
+  mostrar "Usuarios activos hoy: " + usuariosActivos
+  mostrar "Tweets publicados hoy: " + tweetsHoy
+  `,
+        output:
+          "App: MiRedSocial v1.0.0\nLímite de biografía: 160 caracteres\nUsuarios activos hoy: 1250\nTweets publicados hoy: 450",
+        notes: [
+          "Usa constantes para: nombre de app, versión, límites del sistema, precios, configuración",
+          "Usa variables para: contadores, estadísticas, datos de usuarios, estados temporales",
+          "Mezclar constantes y variables hace tu código más seguro y más fácil de entender",
+          "Si alguien más lee tu código, las MAYUSCULAS indican 'esto no cambia'",
         ],
       },
     ],
