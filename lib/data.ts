@@ -359,110 +359,200 @@ variable tiempoReposo = 30  // IMPORTANTE: No saltear este paso
   tiposDatos: {
     title: "🔢 Tipos de Datos",
     description:
-      "HispanoLang soporta múltiples tipos de datos básicos: números, cadenas de texto, booleanos y valores especiales. Cada tipo tiene sus propias características y operaciones permitidas.",
+      "Cuando llenás un formulario online (Netflix, Gmail, Instagram), cada campo pide un tipo diferente de información: tu nombre es texto, tu edad es un número, 'acepto términos' es sí o no. En programación, estos son los tipos de datos.",
     subsections: [
+      {
+        title: "Texto (Strings)",
+        description:
+          "El texto se usa para palabras, frases, nombres, direcciones, emails. Todo lo que escribirías con letras en un formulario. En programación, el texto siempre va entre comillas.",
+        syntax: 'variable nombre = "valor entre comillas"',
+        code: `
+variable nombreUsuario = "maria_dev"
+variable email = "maria@gmail.com"
+variable ciudad = "Buenos Aires"
+variable mensaje = "Hola, ¿cómo estás?"
+
+mostrar nombreUsuario
+mostrar email
+mostrar ciudad
+  `,
+        output: "maria_dev\nmaria@gmail.com\nBuenos Aires",
+        notes: [
+          "El texto SIEMPRE va entre comillas: \"así\" o 'así'",
+          "Puedes usar comillas dobles \" \" o simples ' ', pero sé consistente",
+          "Si tu texto tiene comillas, usa el otro tipo: 'Ella dijo \"hola\"'",
+          'Los espacios dentro de las comillas cuentan: "hola" no es igual a "hola "',
+          'El texto puede estar vacío: "" (comillas sin nada adentro)',
+        ],
+      },
+      {
+        title: "Uniendo Texto (Concatenación)",
+        description:
+          "Puedes unir varios pedazos de texto usando el símbolo +. Es como armar una oración juntando palabras.",
+        code: `
+variable nombre = "María"
+variable apellido = "González"
+
+variable nombreCompleto = nombre + " " + apellido
+mostrar nombreCompleto
+
+variable edad = 28
+variable presentacion = "Hola, soy " + nombre + " y tengo " + edad + " años"
+mostrar presentacion
+
+variable calle = "Av. Corrientes"
+variable numero = 1234
+variable direccion = calle + " " + numero
+mostrar direccion
+  `,
+        output:
+          "María González\nHola, soy María y tengo 28 años\nAv. Corrientes 1234",
+        notes: [
+          "Usa el símbolo + para unir texto",
+          'No olvides los espacios: nombre + apellido da "MaríaGonzález" (sin espacio)',
+          'Agrega espacios así: nombre + " " + apellido',
+          "Cuando unes texto con números, el número se convierte automáticamente a texto",
+          "Puedes unir tantos pedazos como quieras: texto1 + texto2 + texto3",
+        ],
+      },
       {
         title: "Números",
         description:
-          "Los números pueden ser enteros (sin decimales) o decimales (con punto flotante). También pueden ser positivos o negativos. No necesitan comillas y se pueden usar en operaciones matemáticas directamente.",
-        code: `variable entero = 42
-variable decimal = 3.14
-variable negativo = -10
-variable grande = 1000000
+          "Los números se usan para cantidades, precios, edades, teléfonos. Cualquier cosa que cuentes o con la que hagas cálculos. Los números NO llevan comillas.",
+        syntax: "variable edad = 25",
+        code: `
+variable edad = 28
+variable codigoPostal = 1414
+variable precio = 999
+variable temperatura = -5
+variable precioConDecimales = 99.50
 
-// Operaciones matemáticas
-variable suma = entero + decimal  // 45.14
-variable producto = entero * 2    // 84
-variable division = entero / 2    // 21`,
+mostrar edad
+mostrar precio
+mostrar precioConDecimales
+
+variable suma = 10 + 5
+variable resta = 20 - 8
+variable multiplicacion = 4 * 3
+variable division = 100 / 2
+
+mostrar suma
+mostrar division
+  `,
+        output: "28\n999\n99.5\n15\n50",
         notes: [
-          "Los números no llevan comillas",
-          "Usa punto (.) para decimales, no coma",
-          "Los números pueden ser tan grandes o pequeños como necesites",
-          "Puedes mezclar enteros y decimales en operaciones",
-          "Soporta notación científica para números muy grandes o pequeños",
+          'Los números NO llevan comillas: edad = 25 (no edad = "25")',
+          "Pueden ser positivos o negativos: 10, -5",
+          "Para decimales usa punto (.), no coma: 99.50 (no 99,50)",
+          "Puedes hacer operaciones: +, -, *, /",
+          "Mezclar enteros y decimales funciona: 10 + 5.5 = 15.5",
         ],
       },
       {
-        title: "Cadenas de Texto (Strings)",
+        title: "Booleanos (Verdadero o Falso)",
         description:
-          "Las cadenas de texto representan palabras, frases o cualquier secuencia de caracteres. Deben ir siempre entre comillas dobles (\") o simples ('). Puedes usar el operador + para concatenar (unir) cadenas.",
-        code: `variable saludo = "Hola mundo"
-variable nombre = 'Juan'
-variable apellido = "García"
+          "Los booleanos son como los checkbox en un formulario: están marcados o no marcados, sí o no, verdadero o falso. Solo tienen dos valores posibles.",
+        syntax: "variable activo = verdadero",
+        code: `
+variable aceptoTerminos = verdadero
+variable recibirOfertas = falso
+variable esMayorDeEdad = verdadero
+variable cuentaVerificada = falso
 
-// Concatenación
-variable nombreCompleto = nombre + " " + apellido
-mostrar nombreCompleto  // "Juan García"
-
-// Mezclar con números
-variable edad = 25
-variable mensaje = nombre + " tiene " + edad + " años"
-
-// Métodos de strings
-mostrar saludo.longitud()      // 10
-mostrar saludo.mayusculas()   // "HOLA MUNDO"
-mostrar saludo.minusculas()   // "hola mundo"`,
+mostrar aceptoTerminos
+mostrar recibirOfertas
+mostrar esMayorDeEdad
+  `,
+        output: "verdadero\nfalso\nverdadero",
         notes: [
-          "Las cadenas siempre van entre comillas (dobles \" o simples ')",
-          "El operador + concatena (une) cadenas de texto",
-          "Cuando concatenas texto con números, el número se convierte automáticamente a texto",
-          "Métodos disponibles: .longitud(), .mayusculas(), .minusculas()",
-          "Usa comillas dobles preferentemente para consistencia",
-        ],
-      },
-      {
-        title: "Booleanos",
-        description:
-          "Los valores booleanos solo pueden ser verdadero o falso. Se usan para representar estados lógicos, condiciones, o respuestas de sí/no. Son fundamentales para condicionales y lógica de programación.",
-        code: `variable activo = verdadero
-variable inactivo = falso
-
-// Uso en condicionales
-si activo {
-    mostrar "El sistema está activo"
-}
-
-// Resultado de comparaciones
-variable esMayor = 10 > 5      // verdadero
-variable esIgual = 5 == 5      // verdadero
-variable esDiferente = 5 != 3  // verdadero
-
-// Operadores lógicos
-variable ambos = verdadero y falso  // falso
-variable alguno = verdadero o falso  // verdadero
-variable negacion = !verdadero       // falso`,
-        notes: [
-          "Solo hay dos valores booleanos: verdadero y falso",
-          "No usan comillas, son palabras clave del lenguaje",
-          "Los operadores de comparación (>, <, ==, !=, >=, <=) retornan booleanos",
-          "Los operadores lógicos (y, o, !) trabajan con booleanos",
-          "En HispanoLang usamos 'verdadero' y 'falso' en español",
+          "Solo hay dos valores: verdadero o falso",
+          'NO llevan comillas: verdadero (no "verdadero")',
+          "Se usan para estados de sí/no: activo/inactivo, marcado/no marcado",
+          "Muy útiles para checkbox: aceptó términos (verdadero/falso)",
+          "En HispanoLang se escriben en español: verdadero y falso",
         ],
       },
       {
         title: "Valores Especiales: nulo e indefinido",
         description:
-          "HispanoLang tiene dos valores especiales para representar la ausencia de valor. 'nulo' indica que intencionalmente no hay valor, mientras que 'indefinido' indica que algo no ha sido inicializado o no existe.",
-        code: `variable sinValor = nulo
-variable noDefinido = indefinido
+          "A veces un campo en un formulario es opcional (como teléfono secundario). Puede estar vacío a propósito (nulo) o ni siquiera existir (indefinido).",
+        code: `
+variable nombreUsuario = "juan_perez"
+variable email = "juan@email.com"
+variable telefonoOpcional = nulo
+variable apellidoMaterno = nulo
 
-// Uso común: campos opcionales
-variable telefono = nulo  // No tiene teléfono
+mostrar nombreUsuario
+mostrar email
+mostrar telefonoOpcional
+mostrar apellidoMaterno
 
-// Verificar valores especiales
-si telefono == nulo {
-    mostrar "No hay teléfono registrado"
-}
-
-// Diferencia entre nulo e indefinido
-variable email = nulo        // Intencionalmente vacío
-variable direccion           // indefinido (no asignado)`,
+variable edad = 30
+variable direccionNoIngresada = indefinido
+  `,
+        output: "juan_perez\njuan@email.com\nnulo\nnulo",
         notes: [
-          "'nulo' se usa cuando intencionalmente no hay valor (campo opcional vacío)",
-          "'indefinido' indica que algo no ha sido definido o inicializado",
-          "Ambos son diferentes de 0, '' (cadena vacía), o falso",
-          "Son útiles para validaciones y manejo de datos opcionales",
-          "Usa 'nulo' cuando explícitamente quieres indicar ausencia de valor",
+          "nulo significa: este campo existe pero está vacío a propósito",
+          "indefinido significa: este campo ni siquiera fue creado/asignado",
+          'NO llevan comillas: nulo (no "nulo")',
+          'nulo es diferente de 0, "" (texto vacío), o falso',
+          "Usa nulo para campos opcionales que el usuario dejó en blanco",
+        ],
+      },
+      {
+        title: "¿Qué Tipo de Dato Usar?",
+        description:
+          "Guía rápida para decidir qué tipo usar según lo que necesites guardar.",
+        code: `
+variable nombre = "Ana"
+variable apellido = "García"
+variable edad = 25
+variable email = "ana@email.com"
+variable saldoCuenta = 1500.75
+variable aceptoTerminos = verdadero
+variable recibirNotificaciones = falso
+variable telefonoSecundario = nulo
+variable apodo = nulo
+
+mostrar "Nombre: " + nombre + " " + apellido
+mostrar "Edad: " + edad
+mostrar "Saldo: $" + saldoCuenta
+mostrar "Acepto términos: " + aceptoTerminos
+  `,
+        output:
+          "Nombre: Ana García\nEdad: 25\nSaldo: $1500.75\nAcepto términos: verdadero",
+        notes: [
+          "Texto: nombres, emails, direcciones, mensajes → entre comillas",
+          "Número: edad, precio, cantidad, teléfono → sin comillas",
+          "Booleano: checkbox, estados sí/no, activado/desactivado → verdadero o falso",
+          "nulo: campos opcionales dejados vacíos → nulo",
+          "Si no estás seguro: ¿tiene letras? → texto. ¿solo números? → número. ¿sí/no? → booleano",
+        ],
+      },
+      {
+        title: "Errores Comunes",
+        description:
+          "Errores típicos al elegir tipos de datos y cómo evitarlos.",
+        code: `
+  variable edadCorrecta = 25
+  variable edadIncorrecta = "25"
+  
+  variable precioTotal = 100 + 50
+  mostrar precioTotal
+  
+  variable precioTexto = "100" + "50"
+  mostrar precioTexto
+  
+  variable mensaje = "Tengo " + 25 + " años"
+  mostrar mensaje
+  `,
+        output: "150\n10050\nTengo 25 años",
+        notes: [
+          '❌ No pongas números entre comillas si vas a hacer cálculos: "25" es texto, 25 es número',
+          '❌ "100" + "50" da "10050" (une texto), no 150',
+          "✅ 100 + 50 da 150 (suma números)",
+          '✅ Mezclar es OK: "Tengo " + 25 se convierte automáticamente a texto',
+          "Si un número está entre comillas, se comporta como texto, no como número",
         ],
       },
     ],
