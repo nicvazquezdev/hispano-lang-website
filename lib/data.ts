@@ -2254,77 +2254,387 @@ mostrar "Total procesadas: " + (reproducidas + saltadas)
   funciones: {
     title: "⚡ Funciones",
     description:
-      "Las funciones permiten encapsular código reutilizable. Puedes definir funciones con o sin parámetros, y pueden retornar valores.",
+      "Las funciones son como los electrodomésticos de tu cocina: cada uno hace una tarea específica que puedes usar muchas veces. El microondas calienta, la licuadora mezcla, la tostadora tuesta. En programación, las funciones son bloques de código reutilizables que hacen tareas específicas.",
     subsections: [
       {
-        title: "Declaración de Funciones",
+        title: "¿Qué son las Funciones?",
         description:
-          "Define una función usando la palabra clave 'funcion' seguida del nombre, parámetros entre paréntesis, y el código entre llaves.",
-        syntax: "funcion nombreFuncion(parametros) { /* código */ }",
-        code: `// Función sin parámetros
-funcion saludar() {
-    mostrar "Hola mundo"
+          "Imagina que cada vez que quieras calentar algo, tuvieras que conectar cables, ajustar resistencias, controlar temperatura... imposible. Por eso existen electrodomésticos: pones la comida, presionas un botón, y listo.\n\nLas funciones son lo mismo: encapsulan código que usarás muchas veces.",
+        code: `
+mostrar "Calentando pizza..."
+mostrar "Tiempo: 2 minutos"
+mostrar "Potencia: Alta"
+mostrar "Listo!"
+
+mostrar "Calentando sopa..."
+mostrar "Tiempo: 3 minutos"
+mostrar "Potencia: Media"
+mostrar "Listo!"
+
+funcion calentar(comida, minutos) {
+    mostrar "Calentando " + comida + "..."
+    mostrar "Tiempo: " + minutos + " minutos"
+    mostrar "Listo!"
 }
 
-saludar()  // Llamar la función
-
-// Función con parámetros
-funcion saludarPersona(nombre) {
-    mostrar "Hola " + nombre
-}
-
-saludarPersona("Ana")
-saludarPersona("Carlos")`,
+calentar("pizza", 2)
+calentar("sopa", 3)
+`,
+        output:
+          "Calentando pizza...\nTiempo: 2 minutos\nPotencia: Alta\nListo!\nCalentando sopa...\nTiempo: 3 minutos\nPotencia: Media\nListo!\nCalentando pizza...\nTiempo: 2 minutos\nListo!\nCalentando sopa...\nTiempo: 3 minutos\nListo!",
         notes: [
-          "El nombre de la función sigue las mismas reglas que las variables",
-          "Los parámetros se separan con comas si hay múltiples",
-          "Para llamar la función, usa su nombre seguido de paréntesis ()",
-          "Si la función tiene parámetros, pasa los valores entre los paréntesis",
+          "Sin funciones: repites el mismo código una y otra vez",
+          "Con funciones: escribes el código una vez y lo usas múltiples veces",
+          "Las funciones tienen un nombre descriptivo (calentar, mezclar, tostar)",
+          "Puedes 'llamar' (usar) la función cuantas veces quieras",
+          "Las funciones hacen tu código más limpio, organizado y fácil de mantener",
         ],
       },
       {
-        title: "Retorno de Valores",
+        title: "Declaración de Funciones: Tu Primer Electrodoméstico",
         description:
-          "Las funciones pueden retornar valores usando la palabra 'retornar'. Esto permite usar el resultado de la función en expresiones.",
+          "Para crear una función usas la palabra 'funcion', le das un nombre, y defines qué hace entre llaves {}. Es como tener el manual de instrucciones de un electrodoméstico.",
+        syntax: "funcion nombreFuncion() { código }",
+        code: `
+funcion tostarPan() {
+    mostrar "🍞 Tostando pan..."
+    mostrar "Temperatura: Alta"
+    mostrar "Tiempo: 3 minutos"
+    mostrar "¡Pan tostado listo!"
+}
+
+tostarPan()
+
+funcion licuarFrutas() {
+    mostrar "🍓 Licuando frutas..."
+    mostrar "Velocidad: Máxima"
+    mostrar "¡Smoothie listo!"
+}
+
+licuarFrutas()
+licuarFrutas()
+`,
+        output:
+          "🍞 Tostando pan...\nTemperatura: Alta\nTiempo: 3 minutos\n¡Pan tostado listo!\n🍓 Licuando frutas...\nVelocidad: Máxima\n¡Smoothie listo!\n🍓 Licuando frutas...\nVelocidad: Máxima\n¡Smoothie listo!",
+        notes: [
+          "Declaración: funcion nombreFuncion() { ... }",
+          "El nombre debe ser descriptivo (tostar, calentar, mezclar)",
+          "Las llaves {} contienen el código que se ejecutará",
+          "Para usar la función: nombreFuncion() (se llama 'llamar la función')",
+          "Los paréntesis () son obligatorios, incluso si están vacíos",
+        ],
+      },
+      {
+        title: "Funciones con Parámetros: Configurar el Electrodoméstico",
+        description:
+          "El microondas tiene configuración: tiempo, potencia. La tostadora tiene nivel de tostado. Los parámetros son esas configuraciones que le das a la función.",
+        syntax: "funcion nombreFuncion(parametro1, parametro2) { código }",
+        code: `
+funcion calentar(comida, minutos, potencia) {
+    mostrar "Calentando " + comida
+    mostrar "Tiempo: " + minutos + " minutos"
+    mostrar "Potencia: " + potencia
+    mostrar "¡Listo!"
+}
+
+calentar("pizza", 2, "Alta")
+calentar("leche", 1, "Media")
+calentar("arroz", 5, "Alta")
+
+funcion tostar(alimento, nivel) {
+    mostrar "Tostando " + alimento
+    mostrar "Nivel: " + nivel
+    mostrar "¡Tostado perfecto!"
+}
+
+tostar("pan", 3)
+tostar("bagel", 5)
+`,
+        output:
+          "Calentando pizza\nTiempo: 2 minutos\nPotencia: Alta\n¡Listo!\nCalentando leche\nTiempo: 1 minutos\nPotencia: Media\n¡Listo!\nCalentando arroz\nTiempo: 5 minutos\nPotencia: Alta\n¡Listo!\nTostando pan\nNivel: 3\n¡Tostado perfecto!\nTostando bagel\nNivel: 5\n¡Tostado perfecto!",
+        notes: [
+          "Parámetros = configuración del electrodoméstico",
+          "Van entre paréntesis, separados por comas: (tiempo, potencia)",
+          "Al llamar la función, pasas los valores: calentar('pizza', 2, 'Alta')",
+          "El ORDEN importa: primer parámetro = primer valor",
+          "Puedes tener 0, 1, 2 o más parámetros según necesites",
+        ],
+      },
+      {
+        title: "Retornar Valores: El Resultado del Electrodoméstico",
+        description:
+          "Cuando usas la licuadora, no solo hace ruido: te da un smoothie. Cuando usas el microondas, te da comida caliente. Las funciones pueden 'retornar' (devolver) un resultado.",
         syntax: "retornar valor",
-        code: `funcion sumar(a, b) {
-    retornar a + b
+        code: `
+funcion calcularTiempoMicroondas(gramos) {
+    variable minutos = gramos / 100
+    retornar minutos
 }
 
-variable resultado = sumar(5, 3)
-mostrar resultado  // 8
+variable tiempo1 = calcularTiempoMicroondas(500)
+mostrar "Para 500g necesitas: " + tiempo1 + " minutos"
 
-// Usar directamente
-mostrar sumar(10, 20)  // 30
+variable tiempo2 = calcularTiempoMicroondas(300)
+mostrar "Para 300g necesitas: " + tiempo2 + " minutos"
 
-// En expresiones
-variable total = sumar(5, 3) + sumar(2, 4)  // 14`,
+funcion licuar(fruta1, fruta2) {
+    variable smoothie = fruta1 + " con " + fruta2
+    retornar smoothie
+}
+
+variable bebida = licuar("frutilla", "banana")
+mostrar "Tu smoothie: " + bebida
+
+variable otraBebida = licuar("mango", "naranja")
+mostrar "Tu smoothie: " + otraBebida
+`,
+        output:
+          "Para 500g necesitas: 5 minutos\nPara 300g necesitas: 3 minutos\nTu smoothie: frutilla con banana\nTu smoothie: mango con naranja",
         notes: [
-          "'retornar' devuelve un valor y termina la función inmediatamente",
+          "'retornar' devuelve un valor desde la función",
+          "Puedes guardar el resultado en una variable",
+          "Puedes usar el resultado directamente en operaciones",
+          "'retornar' termina la función inmediatamente",
           "El código después de 'retornar' no se ejecuta",
-          "Las funciones sin 'retornar' retornan 'indefinido' implícitamente",
-          "Puedes retornar cualquier tipo de dato",
         ],
       },
       {
-        title: "Funciones Anónimas",
-        description: "Funciones sin nombre que se pueden asignar a variables.",
-        code: `variable saludar = funcion(nombre) {
-    retornar "Hola " + nombre
+        title: "Funciones sin y con Retorno: Diferencias",
+        description:
+          "Algunos electrodomésticos solo hacen su trabajo (lavaplatos lava, pero no te da nada). Otros te dan un resultado (licuadora te da smoothie, cafetera te da café).",
+        code: `
+funcion lavarPlatos(cantidad) {
+    mostrar "Lavando " + cantidad + " platos..."
+    mostrar "Ciclo: Normal"
+    mostrar "¡Platos limpios!"
 }
 
-mostrar saludar("Mundo")  // "Hola Mundo"
+lavarPlatos(10)
 
-// Como callback
-variable numeros = [1, 2, 3]
-numeros.recorrer(funcion(elemento) {
-    mostrar elemento
-})`,
+funcion hacerCafe(tipo) {
+    variable cafe = "Café " + tipo + " listo"
+    retornar cafe
+}
+
+variable miCafe = hacerCafe("Americano")
+mostrar miCafe
+
+variable tuCafe = hacerCafe("Cappuccino")
+mostrar tuCafe
+
+funcion calcularCalorias(porcion) {
+    variable calorias = porcion * 150
+    retornar calorias
+}
+
+variable totalCalorias = calcularCalorias(2) + calcularCalorias(3)
+mostrar "Total de calorías: " + totalCalorias
+`,
+        output:
+          "Lavando 10 platos...\nCiclo: Normal\n¡Platos limpios!\nCafé Americano listo\nCafé Cappuccino listo\nTotal de calorías: 750",
         notes: [
-          "Se crean usando 'funcion' sin nombre",
-          "Se guardan en variables o se pasan como argumentos",
-          "Útiles para callbacks y funciones de orden superior",
-          "Funcionan igual que funciones normales",
+          "Función sin retorno: hace una acción (mostrar, modificar)",
+          "Función con retorno: produce un resultado que puedes usar",
+          "Sin retorno: solo llamas lavarPlatos(10)",
+          "Con retorno: guardas en variable → variable x = hacerCafe('Latte')",
+          "Puedes usar el retorno en cálculos: calcularCalorias(2) + calcularCalorias(3)",
+        ],
+      },
+      {
+        title: "Ámbito (Scope): Dentro y Fuera del Electrodoméstico",
+        description:
+          "Lo que pasa dentro del microondas se queda dentro del microondas. Las variables creadas dentro de una función solo existen ahí dentro.",
+        code: `
+variable temperaturaExterna = 25
+
+funcion calentar(comida) {
+    variable temperaturaInterna = 100
+    mostrar "Dentro del microondas: " + temperaturaInterna + "°C"
+    mostrar "Temperatura externa: " + temperaturaExterna + "°C"
+    mostrar "Calentando: " + comida
+}
+
+calentar("sopa")
+mostrar "Afuera: " + temperaturaExterna + "°C"
+
+funcion cocinar() {
+    variable platoPrincipal = "Pasta"
+    mostrar "Cocinando: " + platoPrincipal
+}
+
+cocinar()
+`,
+        output:
+          "Dentro del microondas: 100°C\nTemperatura externa: 25°C\nCalentando: sopa\nAfuera: 25°C\nCocinando: Pasta",
+        notes: [
+          "Variables DENTRO de función = locales (solo existen dentro)",
+          "Variables FUERA de función = globales (se ven en todas partes)",
+          "Función puede usar variables globales",
+          "Función NO puede ser usada fuera si es local",
+          "Ejemplo: temperaturaInterna solo existe dentro de calentar()",
+        ],
+      },
+      {
+        title:
+          "Funciones que Usan Otras Funciones: Electrodomésticos Combinados",
+        description:
+          "A veces una receta usa varios electrodomésticos: primero la licuadora, luego el microondas. Las funciones pueden llamar a otras funciones.",
+        code: `
+funcion picar(ingrediente) {
+    mostrar "Picando " + ingrediente
+    retornar ingrediente + " picado"
+}
+
+funcion cocinar(ingrediente, minutos) {
+    mostrar "Cocinando " + ingrediente + " por " + minutos + " minutos"
+    retornar ingrediente + " cocido"
+}
+
+funcion prepararSopa() {
+    variable cebolla = picar("cebolla")
+    variable zanahoria = picar("zanahoria")
+    
+    mostrar "Agregando agua y sal"
+    
+    variable resultado = cocinar("sopa", 10)
+    retornar resultado
+}
+
+variable sopa = prepararSopa()
+mostrar "Resultado: " + sopa
+
+funcion calcularPorciones(personas) {
+    retornar personas * 250
+}
+
+funcion cocinarArroz(personas) {
+    variable gramos = calcularPorciones(personas)
+    mostrar "Cocinando " + gramos + "g de arroz"
+    retornar "Arroz para " + personas + " personas"
+}
+
+variable plato = cocinarArroz(4)
+mostrar plato
+`,
+        output:
+          "Picando cebolla\nPicando zanahoria\nAgregando agua y sal\nCocinando sopa por 10 minutos\nResultado: sopa cocido\nCocinando 1000g de arroz\nArroz para 4 personas",
+        notes: [
+          "Las funciones pueden llamar a otras funciones",
+          "Esto se llama 'composición' o 'modularidad'",
+          "Cada función hace una tarea específica",
+          "Las combinas para hacer tareas complejas",
+          "Es como usar varios electrodomésticos para una receta completa",
+          "Hace el código más organizado y reutilizable",
+        ],
+      },
+      {
+        title: "Sistema Completo de Cocina: Múltiples Electrodomésticos",
+        description:
+          "Veamos un ejemplo completo que usa múltiples funciones trabajando juntas, como una cocina completa con todos sus electrodomésticos.",
+        code: `
+funcion calcularTiempo(gramos, tipoCoccion) {
+    si tipoCoccion == "microondas" {
+        retornar gramos / 100
+    } sino si tipoCoccion == "horno" {
+        retornar gramos / 50
+    } sino {
+        retornar gramos / 200
+    }
+}
+
+funcion convertirTemperatura(celsius) {
+    variable fahrenheit = (celsius * 9 / 5) + 32
+    retornar fahrenheit
+}
+
+funcion prepararPlato(nombre, gramos, tipo) {
+    mostrar "=== PREPARANDO: " + nombre + " ==="
+    
+    variable minutos = calcularTiempo(gramos, tipo)
+    mostrar "Tiempo necesario: " + minutos + " minutos"
+    
+    si tipo == "horno" {
+        variable temp = convertirTemperatura(180)
+        mostrar "Temperatura: 180°C (" + temp + "°F)"
+    }
+    
+    mostrar "Cocinando con: " + tipo
+    mostrar "¡" + nombre + " listo!"
+    mostrar ""
+    
+    retornar nombre + " terminado"
+}
+
+variable plato1 = prepararPlato("Pizza", 500, "horno")
+variable plato2 = prepararPlato("Sopa", 300, "microondas")
+variable plato3 = prepararPlato("Guiso", 800, "cocina")
+
+mostrar "=== MENÚ COMPLETO ==="
+mostrar plato1
+mostrar plato2
+mostrar plato3
+`,
+        output:
+          "=== PREPARANDO: Pizza ===\nTiempo necesario: 10 minutos\nTemperatura: 180°C (356°F)\nCocinando con: horno\n¡Pizza listo!\n\n=== PREPARANDO: Sopa ===\nTiempo necesario: 3 minutos\nCocinando con: microondas\n¡Sopa listo!\n\n=== PREPARANDO: Guiso ===\nTiempo necesario: 4 minutos\nCocinando con: cocina\n¡Guiso listo!\n\n=== MENÚ COMPLETO ===\nPizza terminado\nSopa terminado\nGuiso terminado",
+        notes: [
+          "Sistema completo con múltiples funciones:",
+          "• calcularTiempo(): calcula según tipo de cocción",
+          "• convertirTemperatura(): convierte Celsius a Fahrenheit",
+          "• prepararPlato(): función principal que usa las otras",
+          "",
+          "Ventajas de este diseño:",
+          "✅ Cada función hace UNA cosa específica",
+          "✅ Puedes reutilizar cada función individualmente",
+          "✅ Fácil de testear y debuggear",
+          "✅ Si cambias una función, no afectas las otras",
+          "✅ Código organizado y mantenible",
+        ],
+      },
+      {
+        title: "Consejos y Buenas Prácticas",
+        description:
+          "Recomendaciones para escribir funciones efectivas y mantener tu código limpio.",
+        code: `
+funcion calcularPrecioFinal(precio, descuento) {
+    variable precioConDescuento = precio - (precio * descuento)
+    retornar precioConDescuento
+}
+
+funcion mostrarRecibo(producto, precio) {
+    mostrar "=== RECIBO ==="
+    mostrar "Producto: " + producto
+    mostrar "Precio: $" + precio
+    mostrar "============="
+}
+
+variable precioFinal = calcularPrecioFinal(1000, 0.20)
+mostrarRecibo("Microondas", precioFinal)
+
+funcion validarTemperatura(temp) {
+    si temp < 0 o temp > 250 {
+        mostrar "Temperatura fuera de rango"
+        retornar falso
+    }
+    retornar verdadero
+}
+
+variable esValida = validarTemperatura(180)
+si esValida {
+    mostrar "Temperatura OK, procediendo..."
+}
+`,
+        output:
+          "=== RECIBO ===\nProducto: Microondas\nPrecio: $800\n=============\nTemperatura OK, procediendo...",
+        notes: [
+          "✅ Usa nombres descriptivos: calcularPrecio, no cp() o calc()",
+          "✅ Una función = una tarea específica",
+          "✅ Funciones cortas (menos de 20 líneas ideal)",
+          "✅ Si retorna algo, siempre retorna el mismo tipo",
+          "✅ Evita modificar variables globales dentro de funciones",
+          "✅ Documenta funciones complejas con comentarios",
+          "❌ No hagas funciones gigantes que hagan 10 cosas",
+          "❌ No uses nombres genéricos: funcion procesar(), funcion hacer()",
+          "💡 Si tu función hace más de una cosa, divídela en varias",
         ],
       },
     ],
