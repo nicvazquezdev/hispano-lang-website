@@ -1238,73 +1238,310 @@ mostrar "Puntos finales (bonus por vidas): " + puntosFinales
   condicionales: {
     title: "🤔 Condicionales",
     description:
-      "Las estructuras condicionales permiten ejecutar código solo cuando se cumplen ciertas condiciones. Son fundamentales para la toma de decisiones en programas.",
+      "Los condicionales son como las reglas de calificación en la escuela: SI tu nota es mayor o igual a 90, obtienes una A. SI es mayor o igual a 70, una B. SINO, repruebas. Los condicionales permiten que tu programa tome decisiones basadas en condiciones.",
     subsections: [
       {
-        title: "Estructura si",
+        title: "Estructura si: Tomar Decisiones",
         description:
-          "Ejecuta un bloque de código solo si la condición es verdadera.",
-        syntax: "si condicion { /* código */ }",
-        code: `variable edad = 18
+          "La estructura 'si' ejecuta código solo cuando se cumple una condición. Como cuando el profesor dice: 'Si tu nota es 90 o más, tienes una A'.",
+        syntax: "si condicion { código }",
+        code: `
+variable nota = 95
 
-si edad >= 18 {
-    mostrar "Eres mayor de edad"
+si nota >= 90 {
+    mostrar "¡Excelente! Tienes una A"
 }
 
-// Con múltiples líneas
-si edad >= 18 {
-    mostrar "Eres mayor de edad"
-    mostrar "Puedes votar"
-}`,
+variable asistencia = 80
+
+si asistencia >= 75 {
+    mostrar "Cumples con la asistencia mínima"
+    mostrar "Puedes presentar el examen final"
+}
+
+variable tareaEntregada = verdadero
+
+si tareaEntregada {
+    mostrar "Tarea registrada correctamente"
+}
+`,
+        output:
+          "¡Excelente! Tienes una A\nCumples con la asistencia mínima\nPuedes presentar el examen final\nTarea registrada correctamente",
         notes: [
-          "La condición debe ser una expresión que evalúe a verdadero o falso",
+          "La condición debe evaluar a verdadero o falso",
+          "Si la condición es verdadera, se ejecuta el código dentro de las llaves {}",
+          "Si la condición es falsa, se salta todo el bloque",
           "Las llaves {} son obligatorias, incluso para una sola línea",
-          "Si la condición es falsa, el bloque se salta",
+          "Puedes poner múltiples líneas de código dentro del bloque",
         ],
       },
       {
-        title: "Estructura si-sino",
+        title: "Estructura si-sino: Dos Caminos",
         description:
-          "Proporciona un camino alternativo cuando la condición es falsa.",
-        syntax: "si condicion { /* código */ } sino { /* código */ }",
-        code: `variable edad = 15
+          "A veces necesitas hacer algo cuando la condición es verdadera, y algo diferente cuando es falsa. Como: 'Si aprobaste, felicitaciones. Sino, debes recursar'.",
+        syntax: "si condicion { código } sino { código }",
+        code: `
+variable nota = 65
 
-si edad >= 18 {
-    mostrar "Eres mayor de edad"
-    mostrar "Puedes votar"
+si nota >= 70 {
+    mostrar "¡Aprobaste! Felicitaciones"
+    mostrar "Pasa a la siguiente materia"
 } sino {
-    mostrar "Eres menor de edad"
-    mostrar "Aún no puedes votar"
-}`,
+    mostrar "No aprobaste"
+    mostrar "Debes recursar la materia"
+}
+
+variable asistencia = 60
+variable minimoAsistencia = 75
+
+si asistencia >= minimoAsistencia {
+    mostrar "Asistencia suficiente"
+} sino {
+    mostrar "Asistencia insuficiente"
+    mostrar "No puedes rendir el examen"
+}
+`,
+        output:
+          "No aprobaste\nDebes recursar la materia\nAsistencia insuficiente\nNo puedes rendir el examen",
         notes: [
-          "Exactamente uno de los dos bloques se ejecuta",
-          "El bloque 'sino' se ejecuta solo si la condición es falsa",
-          "Es útil para manejar dos caminos mutuamente excluyentes",
+          "Exactamente UNO de los dos bloques se ejecuta, nunca ambos",
+          "Si la condición es verdadera → ejecuta el bloque 'si'",
+          "Si la condición es falsa → ejecuta el bloque 'sino'",
+          "Útil cuando tienes dos caminos mutuamente excluyentes",
+          "Piensa en 'sino' como 'en cualquier otro caso'",
         ],
       },
       {
-        title: "Condicionales Anidados",
+        title: "Estructura si-sino si: Múltiples Rangos",
         description:
-          "Puedes anidar estructuras condicionales para crear lógica más compleja.",
-        code: `variable edad = 25
-variable tieneLicencia = verdadero
+          "Cuando tienes múltiples rangos o categorías, usas 'si-sino si'. Como el sistema de calificaciones: A (90+), B (80-89), C (70-79), F (<70).",
+        syntax:
+          "si condicion1 { código } sino si condicion2 { código } sino { código }",
+        code: `
+variable nota = 85
 
-si edad >= 18 {
-    mostrar "Eres mayor de edad"
+si nota >= 90 {
+    mostrar "Calificación: A - Excelente"
+} sino si nota >= 80 {
+    mostrar "Calificación: B - Muy Bueno"
+} sino si nota >= 70 {
+    mostrar "Calificación: C - Bueno"
+} sino si nota >= 60 {
+    mostrar "Calificación: D - Suficiente"
+} sino {
+    mostrar "Calificación: F - Reprobado"
+}
+
+variable promedio = 92
+
+si promedio >= 95 {
+    mostrar "Honor Roll - Mención de Honor"
+} sino si promedio >= 85 {
+    mostrar "Cuadro de Honor"
+} sino si promedio >= 70 {
+    mostrar "Aprobado"
+} sino {
+    mostrar "Necesita mejorar"
+}
+  `,
+        output: "Calificación: B - Muy Bueno\nCuadro de Honor",
+        notes: [
+          "Se evalúan las condiciones en orden, de arriba hacia abajo",
+          "Se ejecuta el PRIMER bloque cuya condición sea verdadera",
+          "Una vez que se ejecuta un bloque, se salta el resto",
+          "El bloque 'sino' final es opcional (caso por defecto)",
+          "Útil para rangos numéricos o múltiples categorías",
+          "Importante: el orden importa. Pon las condiciones más específicas primero",
+        ],
+      },
+      {
+        title: "Condicionales Anidados: Decisiones Dentro de Decisiones",
+        description:
+          "Puedes poner condicionales dentro de otros condicionales. Como: 'Si aprobaste, ENTONCES si tu nota es mayor a 95, obtienes beca'.",
+        code: `
+variable nota = 88
+variable asistencia = 90
+variable entregaTrabajos = verdadero
+
+si nota >= 70 {
+    mostrar "¡Aprobaste la materia!"
     
-    si tieneLicencia {
-        mostrar "Puedes conducir"
-    } sino {
-        mostrar "Necesitas obtener licencia"
+    si nota >= 90 {
+        mostrar "Calificación sobresaliente"
+        
+        si asistencia >= 90 {
+            mostrar "¡Eres candidato a beca!"
+        }
+    } sino si nota >= 80 {
+        mostrar "Muy buen desempeño"
     }
 } sino {
-    mostrar "Eres menor de edad"
-    mostrar "No puedes conducir"
-}`,
+    mostrar "Reprobaste"
+    
+    si entregaTrabajos {
+        mostrar "Puedes hacer un trabajo de recuperación"
+    } sino {
+        mostrar "Debes recursar la materia completa"
+    }
+}
+  `,
+        output: "¡Aprobaste la materia!\nMuy buen desempeño",
         notes: [
           "Puedes anidar 'si' dentro de otros 'si'",
-          "Mantén una buena indentación para legibilidad",
-          "No anides demasiado, considera refactorizar si tienes más de 3 niveles",
+          "Cada nivel de anidamiento verifica una condición adicional",
+          "Mantén buena indentación para que sea legible",
+          "No anides demasiado: más de 3 niveles se vuelve confuso",
+          "A veces es mejor usar operadores lógicos (y, o) que anidar",
+        ],
+      },
+      {
+        title: "Usando Operadores en Condiciones",
+        description:
+          "Puedes usar operadores de comparación (>, <, ==, !=) y operadores lógicos (y, o, !) para crear condiciones más complejas.",
+        code: `
+variable notaExamen = 85
+variable notaTrabajos = 90
+variable asistencia = 95
+
+si notaExamen >= 70 y notaTrabajos >= 70 {
+    mostrar "Aprobaste ambas partes"
+}
+
+si notaExamen >= 90 o notaTrabajos >= 90 {
+    mostrar "Tienes al menos una nota excelente"
+}
+
+variable entregaTarde = falso
+
+si !entregaTarde {
+    mostrar "Entrega a tiempo - sin penalización"
+}
+
+si notaExamen >= 80 y notaTrabajos >= 80 y asistencia >= 90 {
+    mostrar "¡Estudiante destacado!"
+}
+
+variable notaFinal = (notaExamen + notaTrabajos) / 2
+
+si notaFinal >= 70 y asistencia >= 75 {
+    mostrar "Cumples todos los requisitos para aprobar"
+} sino {
+    mostrar "No cumples los requisitos mínimos"
+}
+  `,
+        output:
+          "Aprobaste ambas partes\nTienes al menos una nota excelente\nEntrega a tiempo - sin penalización\n¡Estudiante destacado!\nCumples todos los requisitos para aprobar",
+        notes: [
+          "Operadores de comparación: >, <, >=, <=, ==, !=",
+          "Operador 'y': Ambas condiciones deben ser verdaderas",
+          "Operador 'o': Al menos una condición debe ser verdadera",
+          "Operador '!': Invierte verdadero ↔ falso",
+          "Puedes combinar múltiples operadores",
+          "Usa paréntesis para agrupar condiciones complejas",
+        ],
+      },
+      {
+        title: "Sistema Completo de Calificaciones",
+        description:
+          "Veamos un ejemplo completo que combina todo: calcular la nota final, determinar si aprueba, asignar letra de calificación, y verificar elegibilidad para honores.",
+        code: `
+variable notaExamen1 = 85
+variable notaExamen2 = 90
+variable notaTrabajos = 88
+variable asistencia = 92
+variable participacion = 95
+
+variable promedioExamenes = (notaExamen1 + notaExamen2) / 2
+variable notaFinal = (promedioExamenes * 0.5) + (notaTrabajos * 0.3) + (participacion * 0.2)
+
+mostrar "=== REPORTE DE CALIFICACIONES ==="
+mostrar "Promedio exámenes: " + promedioExamenes
+mostrar "Trabajos: " + notaTrabajos
+mostrar "Participación: " + participacion
+mostrar "Nota final: " + notaFinal
+mostrar ""
+
+si notaFinal >= 70 y asistencia >= 75 {
+    mostrar "Estado: APROBADO ✓"
+    mostrar ""
+    
+    si notaFinal >= 90 {
+        mostrar "Calificación: A - Excelente"
+        
+        si asistencia >= 90 y participacion >= 90 {
+            mostrar "*** MENCIÓN DE HONOR ***"
+        }
+    } sino si notaFinal >= 80 {
+        mostrar "Calificación: B - Muy Bueno"
+        
+        si asistencia >= 90 {
+            mostrar "Elegible para Cuadro de Honor"
+        }
+    } sino {
+        mostrar "Calificación: C - Bueno"
+    }
+} sino {
+    mostrar "Estado: REPROBADO ✗"
+    mostrar ""
+    
+    si notaFinal >= 60 {
+        mostrar "Puedes presentar examen de recuperación"
+    } sino si asistencia < 75 {
+        mostrar "Asistencia insuficiente"
+        mostrar "Debes recursar la materia"
+    } sino {
+        mostrar "Debes recursar la materia"
+    }
+}
+`,
+        output:
+          "=== REPORTE DE CALIFICACIONES ===\nPromedio exámenes: 87.5\nTrabajos: 88\nParticipación: 95\nNota final: 89.5\n\nEstado: APROBADO ✓\n\nCalificación: B - Muy Bueno\nElegible para Cuadro de Honor",
+        notes: [
+          "Este sistema completo incluye:",
+          "• Cálculo de promedios ponderados",
+          "• Verificación de requisitos (nota Y asistencia)",
+          "• Asignación de calificación por rangos (A, B, C)",
+          "• Condicionales anidados para honores",
+          "• Manejo de casos de reprobación",
+          "• Uso de operadores lógicos (y)",
+          "Así funcionan los sistemas de calificaciones reales",
+        ],
+      },
+      {
+        title: "Consejos y Buenas Prácticas",
+        description:
+          "Recomendaciones para escribir condicionales claros y efectivos.",
+        code: `
+variable nota = 85
+
+si nota >= 90 {
+    mostrar "Excelente"
+} sino si nota >= 70 {
+    mostrar "Aprobado"
+} sino {
+    mostrar "Reprobado"
+}
+
+variable aprobado = nota >= 70
+si aprobado {
+    mostrar "Has aprobado"
+}
+
+variable notaMinima = 70
+si nota >= notaMinima {
+    mostrar "Cumple el mínimo"
+}
+`,
+        output: "Aprobado\nHas aprobado\nCumple el mínimo",
+        notes: [
+          "✅ Usa nombres de variables descriptivos: notaMinima, aprobado",
+          "✅ Guarda condiciones complejas en variables para claridad",
+          "✅ Ordena condiciones de mayor a menor en rangos numéricos",
+          "✅ Mantén la indentación consistente",
+          "✅ Usa constantes para valores que no cambian (ej: NOTA_MINIMA = 70)",
+          "❌ Evita anidar más de 3 niveles",
+          "❌ Evita condiciones muy largas (usa variables intermedias)",
+          "💡 Si tienes muchos 'sino si', considera usar 'elegir' más adelante",
         ],
       },
     ],
