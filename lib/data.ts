@@ -1901,71 +1901,352 @@ elegir (nivelSeleccionado) {
   bucles: {
     title: "🔄 Bucles",
     description:
-      "Los bucles permiten repetir bloques de código múltiples veces. HispanoLang soporta bucles 'mientras' y 'para'.",
+      "Los bucles son como reproducir una playlist: repites canciones una y otra vez. En programación, los bucles te permiten repetir código sin tener que escribirlo múltiples veces. Imagina tener que escribir 'reproducir canción' 100 veces... ¡imposible! Los bucles lo hacen automáticamente.",
     subsections: [
       {
-        title: "Bucle mientras",
-        description: "Repite el código mientras la condición sea verdadera.",
-        syntax: "mientras condicion { /* código */ }",
-        code: `variable i = 0
-
-mientras i < 5 {
-    mostrar i
-    i = i + 1
-}
-
-// Resultado: muestra 0, 1, 2, 3, 4`,
-        notes: [
-          "La condición se evalúa antes de cada iteración",
-          "Si la condición es falsa desde el inicio, el bucle no se ejecuta nunca",
-          "Asegúrate de que la condición pueda volverse falsa para evitar bucles infinitos",
-          "Útil cuando no sabes cuántas iteraciones necesitas",
-        ],
-      },
-      {
-        title: "Bucle para",
+        title: "¿Qué son los Bucles?",
         description:
-          "Bucle con inicialización, condición e incremento en una sola línea. Ideal cuando conoces el número de iteraciones.",
-        syntax: "para (inicialización; condición; incremento) { /* código */ }",
-        code: `para (variable i = 0; i < 5; i = i + 1) {
-    mostrar i
-}
+          "Imagina que tienes una playlist con 50 canciones. En vez de escribir 50 veces 'reproducir canción 1', 'reproducir canción 2', etc., el reproductor usa un bucle: repite la acción de reproducir para cada canción.\n\nEn programación es igual: los bucles repiten código automáticamente.",
+        code: `
+mostrar "Canción 1"
+mostrar "Canción 2"
+mostrar "Canción 3"
+mostrar "Canción 4"
+mostrar "Canción 5"
 
-// Con pasos diferentes
-para (variable i = 0; i < 10; i = i + 2) {
-    mostrar i  // Muestra 0, 2, 4, 6, 8
-}`,
+para (variable cancion = 1; cancion <= 5; cancion++) {
+    mostrar "Canción " + cancion
+}
+`,
+        output:
+          "Canción 1\nCanción 2\nCanción 3\nCanción 4\nCanción 5\nCanción 1\nCanción 2\nCanción 3\nCanción 4\nCanción 5",
         notes: [
-          "Tres partes separadas por punto y coma: inicialización; condición; incremento",
-          "La inicialización se ejecuta una sola vez al inicio",
-          "La condición se evalúa antes de cada iteración",
-          "El incremento se ejecuta al final de cada iteración",
-          "Más compacto que 'mientras' para bucles con contador",
+          "Sin bucles: tienes que escribir el código repetido muchas veces",
+          "Con bucles: escribes el código una vez y se repite automáticamente",
+          "Los bucles son fundamentales: listas, menús, búsquedas, cálculos repetitivos",
+          "Hay dos tipos principales: 'mientras' (while) y 'para' (for)",
+          "Los bucles ahorran tiempo, evitan errores y hacen el código más limpio",
         ],
       },
       {
-        title: "Control de Flujo: romper y continuar",
-        description: "Palabras clave para controlar la ejecución de bucles.",
-        code: `// romper: termina el bucle
-para (variable i = 1; i <= 10; i = i + 1) {
+        title: "Bucle mientras: Reproduce Mientras Haya Canciones",
+        description:
+          "El bucle 'mientras' repite código MIENTRAS una condición sea verdadera. Como un reproductor que sigue reproduciendo MIENTRAS queden canciones en la playlist.",
+        syntax: "mientras condicion { código }",
+        code: `
+variable cancionActual = 1
+variable totalCanciones = 5
+
+mientras cancionActual <= totalCanciones {
+    mostrar "Reproduciendo canción " + cancionActual
+    cancionActual++
+}
+
+mostrar "Playlist terminada"
+
+variable energia = 100
+
+mientras energia > 0 {
+    mostrar "Bailando... Energía: " + energia
+    energia = energia - 20
+}
+
+mostrar "Sin energía, a descansar"
+`,
+        output:
+          "Reproduciendo canción 1\nReproduciendo canción 2\nReproduciendo canción 3\nReproduciendo canción 4\nReproduciendo canción 5\nPlaylist terminada\nBailando... Energía: 100\nBailando... Energía: 80\nBailando... Energía: 60\nBailando... Energía: 40\nBailando... Energía: 20\nSin energía, a descansar",
+        notes: [
+          "mientras evalúa la condición ANTES de cada repetición",
+          "Si la condición es verdadera → ejecuta el código",
+          "Si la condición es falsa → sale del bucle",
+          "IMPORTANTE: Asegúrate que la condición se vuelva falsa en algún momento",
+          "Si no, tendrás un bucle infinito (nunca termina)",
+        ],
+      },
+      {
+        title: "⚠️ PELIGRO: Bucles Infinitos",
+        description:
+          "Un bucle infinito es como una canción en repeat que NUNCA para. El programa se queda atascado para siempre. Esto pasa cuando la condición nunca se vuelve falsa.",
+        code: `
+variable cancion = 1
+
+mientras cancion <= 5 {
+    mostrar "Canción " + cancion
+}
+
+variable contador = 1
+
+mientras contador <= 5 {
+    mostrar "Reproduciendo " + contador
+    contador++
+}
+
+mostrar "Playlist terminada"
+`,
+        output:
+          "Reproduciendo 1\nReproduciendo 2\nReproduciendo 3\nReproduciendo 4\nReproduciendo 5\nPlaylist terminada",
+        notes: [
+          "❌ PRIMER EJEMPLO: bucle infinito porque 'cancion' nunca cambia",
+          "  • cancion siempre es 1",
+          "  • 1 <= 5 es siempre verdadero",
+          "  • El bucle NUNCA termina",
+          "",
+          "✅ SEGUNDO EJEMPLO: bucle correcto porque 'contador++' lo incrementa",
+          "  • contador cambia: 1, 2, 3, 4, 5, 6",
+          "  • Cuando llega a 6, la condición 6 <= 5 es falsa",
+          "  • El bucle termina correctamente",
+          "",
+          "💡 REGLA: Siempre modifica la variable de la condición dentro del bucle",
+        ],
+      },
+      {
+        title: "Bucle para: Reproduce N Canciones",
+        description:
+          "El bucle 'para' es perfecto cuando sabes exactamente cuántas veces quieres repetir algo. Como 'reproduce las primeras 10 canciones' o 'repite la canción 5 veces'.",
+        syntax: "para (inicialización; condición; incremento) { código }",
+        code: `
+para (variable i = 1; i <= 5; i++) {
+    mostrar "Canción " + i
+}
+
+para (variable rep = 1; rep <= 3; rep++) {
+    mostrar "Repetición " + rep + " de la canción favorita"
+}
+
+para (variable vol = 10; vol >= 0; vol = vol - 2) {
+    mostrar "Volumen: " + vol
+}
+
+mostrar "Silencio"
+`,
+        output:
+          "Canción 1\nCanción 2\nCanción 3\nCanción 4\nCanción 5\nRepetición 1 de la canción favorita\nRepetición 2 de la canción favorita\nRepetición 3 de la canción favorita\nVolumen: 10\nVolumen: 8\nVolumen: 6\nVolumen: 4\nVolumen: 2\nVolumen: 0\nSilencio",
+        notes: [
+          "El bucle 'para' tiene 3 partes separadas por punto y coma:",
+          "1. Inicialización: variable i = 1 (se ejecuta UNA VEZ al inicio)",
+          "2. Condición: i <= 5 (se verifica ANTES de cada repetición)",
+          "3. Incremento: i++ (se ejecuta AL FINAL de cada repetición)",
+          "",
+          "Puedes contar hacia arriba: i++ o i = i + 1",
+          "O hacia abajo: i-- o i = i - 1",
+          "O con pasos: i = i + 2 (de 2 en 2)",
+        ],
+      },
+      {
+        title: "mientras vs para: ¿Cuál Usar?",
+        description:
+          "Ambos bucles hacen lo mismo: repetir código. Pero cada uno es mejor en diferentes situaciones.",
+        code: `
+variable cancion = 1
+
+mientras cancion <= 5 {
+    mostrar "Canción " + cancion
+    cancion++
+}
+
+para (variable cancion = 1; cancion <= 5; cancion++) {
+    mostrar "Canción " + cancion
+}
+
+variable hayMasCanciones = verdadero
+variable cancionesReproducidas = 0
+
+mientras hayMasCanciones {
+    cancionesReproducidas++
+    mostrar "Reproduciendo canción " + cancionesReproducidas
+    
+    si cancionesReproducidas >= 3 {
+        hayMasCanciones = falso
+    }
+}
+`,
+        output:
+          "Canción 1\nCanción 2\nCanción 3\nCanción 4\nCanción 5\nCanción 1\nCanción 2\nCanción 3\nCanción 4\nCanción 5\nReproduciendo canción 1\nReproduciendo canción 2\nReproduciendo canción 3",
+        notes: [
+          "✅ Usa 'para' cuando:",
+          "  • Sabes EXACTAMENTE cuántas repeticiones necesitas",
+          "  • Tienes un contador (1 a 10, 0 a 100)",
+          "  • Recorres listas, arrays, rangos de números",
+          "  • Ejemplo: 'reproduce las primeras 10 canciones'",
+          "",
+          "✅ Usa 'mientras' cuando:",
+          "  • NO sabes cuántas repeticiones necesitas",
+          "  • Dependes de una condición que puede cambiar",
+          "  • La repetición termina cuando algo pasa",
+          "  • Ejemplo: 'reproduce mientras el usuario no pause'",
+          "",
+          "💡 Si tienes un contador claro (1, 2, 3...), usa 'para'. Si no, usa 'mientras'.",
+        ],
+      },
+      {
+        title: "romper: Detener la Reproducción",
+        description:
+          "A veces necesitas detener un bucle antes de que termine naturalmente. Como cuando encuentras la canción que buscabas y ya no necesitas seguir buscando. Para eso existe 'romper'.",
+        code: `
+para (variable i = 1; i <= 10; i++) {
     si i == 5 {
+        mostrar "¡Encontré mi canción favorita!"
         romper
     }
-    mostrar i  // Muestra 1, 2, 3, 4
+    mostrar "Revisando canción " + i
 }
 
-// continuar: salta a la siguiente iteración
-para (variable i = 1; i <= 5; i = i + 1) {
+mostrar "Búsqueda terminada"
+
+variable cancion = 1
+variable encontrada = falso
+
+mientras cancion <= 20 {
+    mostrar "Buscando en canción " + cancion
+    
+    si cancion == 7 {
+        mostrar "¡Ahí está!"
+        encontrada = verdadero
+        romper
+    }
+    
+    cancion++
+}
+
+mostrar "Canción encontrada: " + encontrada
+`,
+        output:
+          "Revisando canción 1\nRevisando canción 2\nRevisando canción 3\nRevisando canción 4\n¡Encontré mi canción favorita!\nBúsqueda terminada\nBuscando en canción 1\nBuscando en canción 2\nBuscando en canción 3\nBuscando en canción 4\nBuscando en canción 5\nBuscando en canción 6\nBuscando en canción 7\n¡Ahí está!\nCanción encontrada: verdadero",
+        notes: [
+          "'romper' detiene el bucle INMEDIATAMENTE",
+          "Sale del bucle y continúa con el código después",
+          "Útil para búsquedas: cuando encuentras lo que buscas, dejas de buscar",
+          "También útil para salir de bucles cuando algo sale mal",
+          "No abuses: si siempre usas 'romper', tal vez el bucle está mal diseñado",
+        ],
+      },
+      {
+        title: "continuar: Saltar a la Siguiente Canción",
+        description:
+          "A veces quieres saltarte una repetición y continuar con la siguiente. Como cuando una canción no te gusta y la saltas. Para eso existe 'continuar'.",
+        code: `
+para (variable i = 1; i <= 5; i++) {
     si i == 3 {
+        mostrar "Saltando canción " + i
         continuar
     }
-    mostrar i  // Muestra 1, 2, 4, 5 (salta el 3)
-}`,
+    mostrar "Reproduciendo canción " + i
+}
+
+variable cancion = 0
+
+mientras cancion < 8 {
+    cancion++
+    
+    si cancion == 2 o cancion == 5 {
+        mostrar "Anuncio publicitario - Saltando"
+        continuar
+    }
+    
+    mostrar "♪ Canción " + cancion
+}
+`,
+        output:
+          "Reproduciendo canción 1\nReproduciendo canción 2\nSaltando canción 3\nReproduciendo canción 4\nReproduciendo canción 5\n♪ Canción 1\nAnuncio publicitario - Saltando\n♪ Canción 3\n♪ Canción 4\nAnuncio publicitario - Saltando\n♪ Canción 6\n♪ Canción 7\n♪ Canción 8",
         notes: [
-          "romper: Termina el bucle inmediatamente",
-          "continuar: Salta el resto de la iteración actual y va a la siguiente",
-          "Útil para búsquedas (romper al encontrar) o filtrado (continuar si no cumple condición)",
-          "Usa con moderación para mantener el código legible",
+          "'continuar' salta el resto del código en esa repetición",
+          "Va directamente a la siguiente iteración del bucle",
+          "En 'para': ejecuta el incremento y verifica la condición",
+          "En 'mientras': vuelve a verificar la condición",
+          "Útil para filtrar: 'si no cumple X, continuar'",
+          "Evita anidar muchos 'si': en vez de 'si... si... si...', usa 'si no... continuar'",
+        ],
+      },
+      {
+        title: "Bucles Anidados: Playlist de Playlists",
+        description:
+          "Puedes poner un bucle dentro de otro bucle. Como tener múltiples playlists y reproducir todas las canciones de cada playlist.",
+        code: `
+para (variable playlist = 1; playlist <= 3; playlist++) {
+    mostrar "=== PLAYLIST " + playlist + " ==="
+    
+    para (variable cancion = 1; cancion <= 4; cancion++) {
+        mostrar "  ♪ Canción " + cancion
+    }
+    
+    mostrar ""
+}
+
+para (variable album = 1; album <= 2; album++) {
+    mostrar "ÁLBUM " + album
+    
+    para (variable track = 1; track <= 3; track++) {
+        mostrar "  Track " + track + " del álbum " + album
+    }
+}
+`,
+        output:
+          "=== PLAYLIST 1 ===\n  ♪ Canción 1\n  ♪ Canción 2\n  ♪ Canción 3\n  ♪ Canción 4\n\n=== PLAYLIST 2 ===\n  ♪ Canción 1\n  ♪ Canción 2\n  ♪ Canción 3\n  ♪ Canción 4\n\n=== PLAYLIST 3 ===\n  ♪ Canción 1\n  ♪ Canción 2\n  ♪ Canción 3\n  ♪ Canción 4\n\nÁLBUM 1\n  Track 1 del álbum 1\n  Track 2 del álbum 1\n  Track 3 del álbum 1\nÁLBUM 2\n  Track 1 del álbum 2\n  Track 2 del álbum 2\n  Track 3 del álbum 2",
+        notes: [
+          "Bucle externo: se ejecuta pocas veces (playlists)",
+          "Bucle interno: se ejecuta muchas veces (canciones por playlist)",
+          "Por cada iteración del externo, el interno se ejecuta COMPLETO",
+          "Ejemplo: 3 playlists × 4 canciones = 12 reproducciones totales",
+          "Útil para: tablas, matrices, listas de listas",
+          "⚠️ Cuidado: pueden volverse lentos con muchos niveles",
+        ],
+      },
+      {
+        title: "Sistema Completo: Reproductor de Música",
+        description:
+          "Veamos un ejemplo completo que combina todo: un reproductor de música con búsqueda, reproducción y estadísticas.",
+        code: `
+variable totalCanciones = 10
+variable cancionActual = 1
+variable reproducidas = 0
+variable saltadas = 0
+
+mostrar "🎵 REPRODUCTOR DE MÚSICA"
+mostrar "Canciones en playlist: " + totalCanciones
+mostrar ""
+
+mientras cancionActual <= totalCanciones {
+    mostrar "Reproduciendo canción " + cancionActual
+    
+    si cancionActual == 3 o cancionActual == 7 {
+        mostrar "  ⏭️  Saltando (no me gusta)"
+        saltadas++
+        cancionActual++
+        continuar
+    }
+    
+    si cancionActual == 5 {
+        mostrar "  ❤️  ¡Mi favorita! Repetir"
+        reproducidas++
+    }
+    
+    reproducidas++
+    cancionActual++
+    
+    si reproducidas >= 7 {
+        mostrar ""
+        mostrar "Ya reproduje 7 canciones, suficiente por hoy"
+        romper
+    }
+}
+
+mostrar ""
+mostrar "=== ESTADÍSTICAS ==="
+mostrar "Canciones reproducidas: " + reproducidas
+mostrar "Canciones saltadas: " + saltadas
+mostrar "Total procesadas: " + (reproducidas + saltadas)
+`,
+        output:
+          "🎵 REPRODUCTOR DE MÚSICA\nCanciones en playlist: 10\n\nReproduciendo canción 1\nReproduciendo canción 2\nReproduciendo canción 3\n  ⏭️  Saltando (no me gusta)\nReproduciendo canción 4\nReproduciendo canción 5\n  ❤️  ¡Mi favorita! Repetir\nReproduciendo canción 6\nReproduciendo canción 7\n  ⏭️  Saltando (no me gusta)\nReproduciendo canción 8\n\nYa reproduje 7 canciones, suficiente por hoy\n\n=== ESTADÍSTICAS ===\nCanciones reproducidas: 7\nCanciones saltadas: 2\nTotal procesadas: 9",
+        notes: [
+          "Sistema completo con:",
+          "• Bucle mientras para recorrer playlist",
+          "• continuar para saltar canciones",
+          "• romper para detener cuando se alcanza límite",
+          "• Contadores para estadísticas",
+          "• Condiciones dentro del bucle",
+          "• Mensajes informativos",
+          "Así funcionan los reproductores de música reales",
         ],
       },
     ],
@@ -2363,6 +2644,77 @@ mostrar empresa.direccion.codigoPostal    // "28001"`,
       },
     ],
   },
+  buclesAvanzados: {
+    title: "🔁 Bucles Avanzados",
+    description:
+      "HispanoLang incluye estructuras de bucle adicionales: hacer/mientras (ejecuta al menos una vez) y para cada (itera sobre elementos).",
+    subsections: [
+      {
+        title: "Bucle hacer/mientras",
+        description:
+          "Ejecuta el bloque al menos una vez, luego repite mientras la condición sea verdadera.",
+        syntax: "hacer { ... } mientras (condicion)",
+        code: `variable contador = 1
+
+hacer {
+    mostrar contador
+    contador = contador + 1
+} mientras (contador <= 5)
+
+// Diferencia con mientras:
+variable x = 10
+mientras (x < 5) {
+    mostrar x  // Nunca se ejecuta (condición falsa desde inicio)
+}
+
+variable y = 10
+hacer {
+    mostrar y  // Se ejecuta una vez, aunque y >= 5
+} mientras (y < 5)`,
+        notes: [
+          "El bloque se ejecuta ANTES de evaluar la condición",
+          "Garantiza al menos una ejecución",
+          "La condición se evalúa al FINAL de cada iteración",
+          "Útil cuando necesitas ejecutar el código al menos una vez",
+        ],
+      },
+      {
+        title: "Bucle para cada",
+        description: "Itera sobre cada elemento de un arreglo de forma simple.",
+        syntax: "para cada variable en arreglo { ... }",
+        code: `variable frutas = ["manzana", "banana", "naranja"]
+
+para cada fruta en frutas {
+    mostrar fruta
+}
+
+// Sumar todos los números
+variable numeros = [1, 2, 3, 4, 5]
+variable suma = 0
+
+para cada num en numeros {
+    suma = suma + num
+}
+mostrar suma  // 15
+
+// Con objetos
+variable personas = [
+    { nombre: "Ana", edad: 25 },
+    { nombre: "Luis", edad: 30 }
+]
+
+para cada persona en personas {
+    mostrar \`\${persona.nombre} tiene \${persona.edad} años\`
+}`,
+        notes: [
+          "No necesitas manejar índices manualmente",
+          "Más limpio que un bucle para tradicional",
+          "La variable del elemento es local al bucle",
+          "Funciona con cualquier tipo de arreglo",
+        ],
+      },
+    ],
+  },
   funcionesMatematicas: {
     title: "🧮 Funciones Matemáticas",
     description:
@@ -2516,77 +2868,6 @@ intentar {
           "Acceder a propiedades de valores nulos o indefinidos",
           "Llamar funciones con parámetros incorrectos",
           "Usa intentar-capturar para operaciones que pueden fallar",
-        ],
-      },
-    ],
-  },
-  buclesAvanzados: {
-    title: "🔁 Bucles Avanzados",
-    description:
-      "HispanoLang incluye estructuras de bucle adicionales: hacer/mientras (ejecuta al menos una vez) y para cada (itera sobre elementos).",
-    subsections: [
-      {
-        title: "Bucle hacer/mientras",
-        description:
-          "Ejecuta el bloque al menos una vez, luego repite mientras la condición sea verdadera.",
-        syntax: "hacer { ... } mientras (condicion)",
-        code: `variable contador = 1
-
-hacer {
-    mostrar contador
-    contador = contador + 1
-} mientras (contador <= 5)
-
-// Diferencia con mientras:
-variable x = 10
-mientras (x < 5) {
-    mostrar x  // Nunca se ejecuta (condición falsa desde inicio)
-}
-
-variable y = 10
-hacer {
-    mostrar y  // Se ejecuta una vez, aunque y >= 5
-} mientras (y < 5)`,
-        notes: [
-          "El bloque se ejecuta ANTES de evaluar la condición",
-          "Garantiza al menos una ejecución",
-          "La condición se evalúa al FINAL de cada iteración",
-          "Útil cuando necesitas ejecutar el código al menos una vez",
-        ],
-      },
-      {
-        title: "Bucle para cada",
-        description: "Itera sobre cada elemento de un arreglo de forma simple.",
-        syntax: "para cada variable en arreglo { ... }",
-        code: `variable frutas = ["manzana", "banana", "naranja"]
-
-para cada fruta en frutas {
-    mostrar fruta
-}
-
-// Sumar todos los números
-variable numeros = [1, 2, 3, 4, 5]
-variable suma = 0
-
-para cada num en numeros {
-    suma = suma + num
-}
-mostrar suma  // 15
-
-// Con objetos
-variable personas = [
-    { nombre: "Ana", edad: 25 },
-    { nombre: "Luis", edad: 30 }
-]
-
-para cada persona en personas {
-    mostrar \`\${persona.nombre} tiene \${persona.edad} años\`
-}`,
-        notes: [
-          "No necesitas manejar índices manualmente",
-          "Más limpio que un bucle para tradicional",
-          "La variable del elemento es local al bucle",
-          "Funciona con cualquier tipo de arreglo",
         ],
       },
     ],
