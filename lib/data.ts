@@ -755,6 +755,232 @@ mostrar "Después: '" + textoCorregido + "'"
       },
     ],
   },
+  templateStrings: {
+    title: "📝 Template Strings",
+    description:
+      "Los template strings son como los mensajes automáticos de WhatsApp o emails: tienes una plantilla con espacios en blanco que se llenan automáticamente. En vez de escribir 'Hola ' + nombre + ', tu pedido ' + numero, escribes `Hola ${nombre}, tu pedido ${numero}`.",
+    subsections: [
+      {
+        title: "¿Qué son los Template Strings?",
+        description:
+          "Imagina que escribes un mensaje automático: 'Hola [NOMBRE], tu saldo es [SALDO]'. Los template strings funcionan así: tienes un texto con espacios que se llenan automáticamente con valores.",
+        syntax: "`Texto con ${variable} aquí`",
+        code: `
+variable nombre = "María"
+variable edad = 25
+
+mostrar "Hola, me llamo " + nombre + " y tengo " + edad + " años"
+
+mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\`
+  `,
+        output:
+          "Hola, me llamo María y tengo 25 años\nHola, me llamo María y tengo 25 años",
+        notes: [
+          'Template strings usan backticks ` ` en lugar de comillas " "',
+          "Para insertar variables usas ${variable}",
+          "Es más fácil de leer que usar muchos + y comillas",
+          "El resultado es exactamente el mismo, pero el código es más limpio",
+          "Los backticks están en la tecla al lado del 1, arriba del Tab",
+        ],
+      },
+      {
+        title: "Insertando Variables",
+        description:
+          "Puedes poner todas las variables que quieras dentro del texto usando ${}. Es como llenar los espacios en blanco de una plantilla.",
+        code: `
+variable producto = "Pizza"
+variable precio = 850
+variable cantidad = 2
+
+mostrar \`Producto: \${producto}\`
+mostrar \`Precio unitario: $\${precio}\`
+mostrar \`Cantidad: \${cantidad}\`
+
+variable cliente = "Juan Pérez"
+variable direccion = "Av. Corrientes 1234"
+variable telefono = "1234-5678"
+
+mostrar \`Cliente: \${cliente}
+Dirección: \${direccion}
+Teléfono: \${telefono}\`
+  `,
+        output:
+          "Producto: Pizza\nPrecio unitario: $850\nCantidad: 2\nCliente: Juan Pérez\nDirección: Av. Corrientes 1234\nTeléfono: 1234-5678",
+        notes: [
+          "Cada ${} se reemplaza automáticamente con el valor de la variable",
+          "Puedes tener tantos ${} como necesites en el mismo texto",
+          "Los espacios y saltos de línea dentro del template se mantienen",
+          "Nota: Para mostrar el símbolo $, usa \\$ (escape) o escribe $ fuera de ${}",
+        ],
+      },
+      {
+        title: "Comparación: Antes vs Ahora",
+        description:
+          "Veamos la diferencia entre concatenar con + (la forma vieja) y usar template strings (la forma nueva y más fácil).",
+        code: `
+variable nombre = "Ana"
+variable ciudad = "Buenos Aires"
+variable edad = 28
+
+mostrar "Hola, soy " + nombre + ", vivo en " + ciudad + " y tengo " + edad + " años."
+
+mostrar \`Hola, soy \${nombre}, vivo en \${ciudad} y tengo \${edad} años.\`
+
+variable producto = "Laptop"
+variable marca = "Dell"
+variable precio = 50000
+
+mostrar "El producto " + producto + " marca " + marca + " cuesta $" + precio
+
+mostrar \`El producto \${producto} marca \${marca} cuesta $\${precio}\`
+  `,
+        output:
+          "Hola, soy Ana, vivo en Buenos Aires y tengo 28 años.\nHola, soy Ana, vivo en Buenos Aires y tengo 28 años.\nEl producto Laptop marca Dell cuesta $50000\nEl producto Laptop marca Dell cuesta $50000",
+        notes: [
+          "Con +: muchas comillas, muchos símbolos, fácil olvidar espacios",
+          "Con template strings: todo junto, más natural, como escribir normalmente",
+          "Template strings son especialmente mejores cuando tienes muchas variables",
+          "Es menos probable cometer errores (olvidar espacios, comillas mal cerradas)",
+        ],
+      },
+      {
+        title: "Hacer Cálculos Dentro",
+        description:
+          "Dentro de ${} no solo puedes poner variables, también puedes hacer cálculos, usar métodos, o cualquier operación.",
+        code: `
+variable precio = 100
+variable cantidad = 3
+variable descuento = 15
+
+mostrar \`Precio unitario: $\${precio}\`
+mostrar \`Cantidad: \${cantidad}\`
+mostrar \`Subtotal: $\${precio * cantidad}\`
+mostrar \`Descuento: $\${descuento}\`
+mostrar \`Total final: $\${precio * cantidad - descuento}\`
+
+variable nombre = "juan pérez"
+mostrar \`Bienvenido \${nombre.mayusculas()}\`
+
+variable email = "  MARIA@EMAIL.COM  "
+mostrar \`Email registrado: \${email.recortar().minusculas()}\`
+  `,
+        output:
+          "Precio unitario: $100\nCantidad: 3\nSubtotal: $300\nDescuento: $15\nTotal final: $285\nBienvenido JUAN PÉREZ\nEmail registrado: maria@email.com",
+        notes: [
+          "Puedes hacer matemática dentro de ${}: ${precio * cantidad}",
+          "Puedes usar métodos dentro de ${}: ${nombre.mayusculas()}",
+          "Puedes encadenar métodos: ${email.recortar().minusculas()}",
+          "Todo lo que está dentro de ${} se evalúa primero, luego se inserta en el texto",
+        ],
+      },
+      {
+        title: "Mensajes de Múltiples Líneas",
+        description:
+          "Los template strings pueden tener saltos de línea naturales. Perfecto para recibos, emails, mensajes largos.",
+        code: `
+variable cliente = "María González"
+variable fecha = "12/01/2026"
+variable producto = "Zapatillas Nike"
+variable cantidad = 2
+variable precioUnitario = 15000
+variable total = cantidad * precioUnitario
+
+variable recibo = \`
+═══════════════════════════
+         RECIBO DE COMPRA
+═══════════════════════════
+
+Cliente: \${cliente}
+Fecha: \${fecha}
+
+Producto: \${producto}
+Cantidad: \${cantidad}
+Precio unitario: $\${precioUnitario}
+
+───────────────────────────
+TOTAL A PAGAR: $\${total}
+═══════════════════════════
+\`
+
+mostrar recibo
+  `,
+        output:
+          "\n═══════════════════════════\n         RECIBO DE COMPRA\n═══════════════════════════\n\nCliente: María González\nFecha: 12/01/2026\n\nProducto: Zapatillas Nike\nCantidad: 2\nPrecio unitario: $15000\n\n───────────────────────────\nTOTAL A PAGAR: $30000\n═══════════════════════════",
+        notes: [
+          "Los saltos de línea dentro del template se mantienen tal cual",
+          "Perfecto para recibos, tickets, emails formateados",
+          "Puedes hacer diseños con caracteres ASCII",
+          "Todo el formato visual se preserva exactamente como lo escribiste",
+        ],
+      },
+      {
+        title: "Casos Prácticos",
+        description:
+          "Situaciones reales donde los template strings hacen tu código más limpio y fácil de mantener.",
+        code: `
+variable nombreUsuario = "ana_dev"
+variable seguidoresNuevos = 47
+mostrar \`¡\${nombreUsuario}! Tienes \${seguidoresNuevos} seguidores nuevos\`
+
+variable remitente = "Banco Nacional"
+variable saldo = 15000
+variable ultimoMovimiento = 2500
+mostrar \`\${remitente}: Tu saldo actual es $\${saldo}. Último movimiento: -$\${ultimoMovimiento}\`
+
+variable curso = "HispanoLang"
+variable leccionActual = 5
+variable leccionesTotales = 20
+variable porcentaje = (leccionActual / leccionesTotales) * 100
+mostrar \`Curso: \${curso} - Progreso: \${leccionActual}/\${leccionesTotales} (\${porcentaje}%)\`
+
+variable nombreArchivo = "documento"
+variable extension = "pdf"
+variable tamanio = 2.5
+mostrar \`Archivo: \${nombreArchivo}.\${extension} - Tamaño: \${tamanio}MB\`
+  `,
+        output:
+          "¡ana_dev! Tienes 47 seguidores nuevos\nBanco Nacional: Tu saldo actual es $15000. Último movimiento: -$2500\nCurso: HispanoLang - Progreso: 5/20 (25%)\nArchivo: documento.pdf - Tamaño: 2.5MB",
+        notes: [
+          "Notificaciones de apps: más fácil personalizar mensajes",
+          "Mensajes bancarios/financieros: insertar montos dinámicamente",
+          "Progreso de cursos/tareas: calcular porcentajes en el mensaje",
+          "Información de archivos: combinar nombre, extensión, tamaño",
+          "Template strings hacen que estos casos sean mucho más simples de escribir",
+        ],
+      },
+      {
+        title: "¿Cuándo Usar Template Strings?",
+        description:
+          "Guía práctica para decidir cuándo usar template strings vs concatenación tradicional.",
+        code: `
+variable nombre = "Juan"
+
+mostrar "Hola " + nombre
+
+mostrar \`Hola \${nombre}\`
+
+variable producto = "Laptop"
+variable marca = "Dell"
+variable precio = 45000
+variable stock = 5
+
+mostrar "Producto: " + producto + ", Marca: " + marca + ", Precio: $" + precio + ", Stock: " + stock
+
+mostrar \`Producto: \${producto}, Marca: \${marca}, Precio: $\${precio}, Stock: \${stock}\`
+  `,
+        output:
+          "Hola Juan\nHola Juan\nProducto: Laptop, Marca: Dell, Precio: $45000, Stock: 5\nProducto: Laptop, Marca: Dell, Precio: $45000, Stock: 5",
+        notes: [
+          "✅ Usa template strings cuando: tienes 2+ variables para insertar",
+          "✅ Usa template strings cuando: necesitas hacer cálculos en el texto",
+          "✅ Usa template strings cuando: el mensaje tiene múltiples líneas",
+          "✅ Usa template strings cuando: usas métodos de strings en el mensaje",
+          "⚖️ Concatenación simple (solo 1 variable) está OK: 'Hola ' + nombre",
+          "📝 En general: template strings son más modernos y recomendados",
+        ],
+      },
+    ],
+  },
   entradaSalida: {
     title: "💬 Entrada y Salida",
     description:
@@ -1597,56 +1823,6 @@ intentar {
           "Acceder a propiedades de valores nulos o indefinidos",
           "Llamar funciones con parámetros incorrectos",
           "Usa intentar-capturar para operaciones que pueden fallar",
-        ],
-      },
-    ],
-  },
-  templateStrings: {
-    title: "📝 Template Strings",
-    description:
-      "Los template strings permiten interpolación de variables y expresiones dentro de cadenas de texto usando backticks (`) y la sintaxis ${expresion}.",
-    subsections: [
-      {
-        title: "Sintaxis Básica",
-        description:
-          "Usa backticks (`) en lugar de comillas y ${} para insertar valores.",
-        syntax: "`Texto con ${variable} interpolada`",
-        code: `variable nombre = "María"
-variable edad = 25
-
-// Concatenación tradicional (más verbosa)
-mostrar "Hola, me llamo " + nombre + " y tengo " + edad + " años"
-
-// Template strings (más limpio)
-mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\``,
-        notes: [
-          "Usa backticks (`) en lugar de comillas",
-          "Las expresiones dentro de ${} se evalúan automáticamente",
-          "Más legible que concatenación con +",
-          "Puede contener cualquier expresión válida",
-        ],
-      },
-      {
-        title: "Expresiones en Templates",
-        description:
-          "Puedes incluir cálculos, llamadas a métodos y cualquier expresión dentro de ${}.",
-        code: `variable precio = 100
-variable descuento = 20
-
-mostrar \`Precio original: \${precio}\`
-mostrar \`Precio final: \${precio - descuento}\`
-mostrar \`El doble sería: \${precio * 2}\`
-
-variable items = [1, 2, 3]
-mostrar \`El arreglo tiene \${items.longitud} elementos\`
-
-variable texto = "hispanoLang"
-mostrar \`En mayúsculas: \${texto.mayusculas()}\``,
-        notes: [
-          "Operaciones matemáticas: ${precio * 2}",
-          "Propiedades: ${items.longitud}",
-          "Métodos: ${texto.mayusculas()}",
-          "Expresiones condicionales también funcionan",
         ],
       },
     ],
