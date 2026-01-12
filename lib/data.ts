@@ -2642,113 +2642,428 @@ si esValida {
   funcionesFlecha: {
     title: "➡️ Funciones Flecha",
     description:
-      "Las funciones flecha son una sintaxis concisa para escribir funciones anónimas usando el operador =>. Son ideales para callbacks y programación funcional.",
+      "Las funciones flecha son como las abreviaturas en WhatsApp: en vez de escribir 'también', escribes 'tmb'. En vez de escribir 'qué', escribes 'q'. Mismo significado, menos caracteres. Las funciones flecha son una forma más corta de escribir funciones: mismo resultado, menos código.",
     subsections: [
       {
-        title: "Sintaxis Básica",
+        title: "¿Qué son las Funciones Flecha?",
         description:
-          "Las funciones flecha usan => para separar los parámetros del cuerpo de la función.",
-        code: `variable doble = x => x * 2
+          "Cuando chateás por WhatsApp, usas abreviaturas: 'tmb' = 'también', 'xq' = 'porque', 'q' = 'qué'. Entiendes perfectamente el mensaje, pero con menos caracteres.\n\nLas funciones flecha son lo mismo: una forma abreviada de escribir funciones.",
+        code: `
+funcion doble(x) {
+    retornar x * 2
+}
 
-variable suma = (a, b) => a + b
-
-variable saludar = () => "Hola mundo"
+variable doble = x => x * 2
 
 mostrar doble(5)
-mostrar suma(3, 4)
-mostrar saludar()`,
-        output: "10\n7\nHola mundo",
+mostrar doble(10)
+
+funcion sumar(a, b) {
+    retornar a + b
+}
+
+variable sumar = (a, b) => a + b
+
+mostrar sumar(3, 7)
+mostrar sumar(10, 20)
+`,
+        output: "10\n20\n10\n30",
         notes: [
-          "Un parámetro: no necesita paréntesis (x => ...)",
-          "Múltiples parámetros: requieren paréntesis ((a, b) => ...)",
-          "Sin parámetros: paréntesis vacíos (() => ...)",
-          "El retorno es implícito cuando el cuerpo es una expresión",
+          "Función normal: funcion nombre(params) { retornar valor }",
+          "Función flecha: variable nombre = params => valor",
+          "Mismo resultado, sintaxis más corta",
+          "La flecha => es como decir 'devuelve' o 'resulta en'",
+          "Se llaman 'arrow functions' en inglés (funciones flecha)",
         ],
       },
       {
-        title: "Cuerpo de Expresión vs Bloque",
+        title: "Sintaxis: Versión Corta vs Larga",
         description:
-          "Las funciones flecha pueden tener un cuerpo de expresión (retorno implícito) o un bloque (requiere retornar).",
-        code: `variable cuadrado = x => x * x
+          "Como en WhatsApp puedes escribir 'Hola, ¿cómo estás?' (formal) o 'Hola, q tal?' (casual), las funciones flecha tienen sintaxis flexible según cuántos parámetros tengas.",
+        syntax: "variable nombre = parametros => expresion",
+        code: `
+variable saludar = () => "Hola!"
+mostrar saludar()
 
-variable factorial = n => {
-    si n <= 1 {
-        retornar 1
-    }
-    retornar n * factorial(n - 1)
+variable duplicar = x => x * 2
+mostrar duplicar(4)
+
+variable sumar = (a, b) => a + b
+mostrar sumar(5, 3)
+
+variable calcularIVA = precio => precio * 1.21
+mostrar calcularIVA(100)
+`,
+        output: "Hola!\n8\n8\n121",
+        notes: [
+          "Sin parámetros: () => resultado",
+          "UN parámetro: x => resultado (sin paréntesis)",
+          "DOS+ parámetros: (a, b) => resultado (con paréntesis)",
+          "Si es una sola expresión, el retorno es automático",
+          "No necesitas escribir 'retornar' cuando es una línea",
+        ],
+      },
+      {
+        title: "Comparación: Normal vs Flecha",
+        description:
+          "Veamos lado a lado la diferencia entre escribir funciones normales (mensaje completo) y funciones flecha (mensaje abreviado).",
+        code: `
+funcion triple(numero) {
+    retornar numero * 3
 }
 
+variable triple = numero => numero * 3
+
+mostrar triple(5)
+
+funcion esPar(n) {
+    retornar n % 2 == 0
+}
+
+variable esPar = n => n % 2 == 0
+
+mostrar esPar(4)
+mostrar esPar(7)
+
+funcion formatearPrecio(precio) {
+    retornar "$" + precio
+}
+
+variable formatearPrecio = precio => "$" + precio
+
+mostrar formatearPrecio(150)
+`,
+        output: "15\nverdadero\nfalso\n$150",
+        notes: [
+          "Función normal: 3 líneas (funcion, retornar, cierre)",
+          "Función flecha: 1 línea (todo junto)",
+          "Ambas hacen exactamente lo mismo",
+          "Flecha es más rápida de escribir",
+          "Usa la que prefieras, ambas funcionan igual",
+        ],
+      },
+      {
+        title: "Retorno Implícito: Mensaje de Una Línea",
+        description:
+          "Cuando tu mensaje es corto ('ok', 'si', 'dale'), no necesitas explicaciones largas. Las funciones flecha de una línea retornan automáticamente, sin escribir 'retornar'.",
+        code: `
+variable cuadrado = x => x * x
 mostrar cuadrado(5)
-mostrar factorial(5)`,
-        output: "25\n120",
+mostrar cuadrado(8)
+
+variable mayorDeEdad = edad => edad >= 18
+mostrar mayorDeEdad(15)
+mostrar mayorDeEdad(21)
+
+variable concatenar = (a, b) => a + " " + b
+mostrar concatenar("Hola", "Mundo")
+
+variable descuento = precio => precio * 0.8
+mostrar descuento(100)
+`,
+        output: "25\n64\nfalso\nverdadero\nHola Mundo\n80",
         notes: [
-          "Cuerpo de expresión: retorno implícito, ideal para operaciones simples",
-          "Cuerpo de bloque: usa llaves {} y requiere 'retornar' explícito",
-          "Usa bloques cuando necesites múltiples líneas o lógica condicional",
+          "Si la función es UNA sola expresión → retorno automático",
+          "No necesitas escribir 'retornar'",
+          "No necesitas llaves { }",
+          "Sintaxis: parametro => expresion",
+          "La expresión se evalúa y se retorna automáticamente",
         ],
       },
       {
-        title: "Con Métodos de Listas",
+        title: "Retorno Explícito: Mensaje Largo",
         description:
-          "Las funciones flecha son ideales para usar con métodos funcionales de listas.",
-        code: `variable numeros = [1, 2, 3, 4, 5, 6]
-
-variable dobles = numeros.mapear(x => x * 2)
-mostrar dobles
-
-variable pares = numeros.filtrar(x => x % 2 == 0)
-mostrar pares
-
-variable suma = numeros.reducir((acc, x) => acc + x, 0)
-mostrar suma`,
-        output: "[2, 4, 6, 8, 10, 12]\n[2, 4, 6]\n21",
-        notes: [
-          ".mapear(fn) transforma cada elemento",
-          ".filtrar(fn) filtra elementos que cumplan la condición",
-          ".reducir(fn, inicial) reduce la lista a un solo valor",
-          "La sintaxis concisa hace el código más legible",
-        ],
-      },
-      {
-        title: "Encadenamiento de Métodos",
-        description:
-          "Puedes encadenar múltiples métodos para operaciones complejas.",
-        code: `variable numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-variable resultado = numeros
-    .filtrar(x => x % 2 == 0)
-    .mapear(x => x * 10)
-
-mostrar resultado`,
-        output: "[20, 40, 60, 80, 100]",
-        notes: [
-          "Cada método retorna una nueva lista",
-          "Puedes encadenar tantos métodos como necesites",
-          "El orden de las operaciones importa",
-        ],
-      },
-      {
-        title: "Funciones de Orden Superior",
-        description:
-          "Las funciones flecha facilitan pasar funciones como argumentos.",
-        code: `variable triple = x => x * 3
-
-variable aplicar = (fn, valor) => fn(valor)
-
-mostrar aplicar(triple, 7)
-
-variable duplicarYSumar = (x, y) => {
-    variable dx = x * 2
-    variable dy = y * 2
-    retornar dx + dy
+          "A veces necesitas escribir un mensaje más largo con varias oraciones. Para funciones con múltiples líneas de código, usas llaves { } y debes escribir 'retornar' explícitamente.",
+        code: `
+variable calcularDescuento = (precio, porcentaje) => {
+    variable descuento = precio * porcentaje / 100
+    variable precioFinal = precio - descuento
+    retornar precioFinal
 }
 
-mostrar duplicarYSumar(3, 4)`,
-        output: "21\n14",
+mostrar calcularDescuento(1000, 20)
+
+variable saludarPersona = nombre => {
+    variable saludo = "Hola " + nombre
+    variable mensaje = saludo + ", ¿cómo estás?"
+    retornar mensaje
+}
+
+mostrar saludarPersona("Ana")
+
+variable calcularTotal = (precio, cantidad, iva) => {
+    variable subtotal = precio * cantidad
+    variable conIVA = subtotal * (1 + iva)
+    retornar conIVA
+}
+
+mostrar calcularTotal(100, 3, 0.21)
+`,
+        output: "800\nHola Ana, ¿cómo estás?\n363",
         notes: [
-          "Las funciones pueden recibir otras funciones como parámetros",
-          "Las funciones pueden retornar otras funciones",
-          "Este patrón es común en programación funcional",
+          "Si necesitas MÚLTIPLES líneas → usa llaves { }",
+          "Con llaves, DEBES escribir 'retornar' explícitamente",
+          "Sintaxis: parametro => { codigo; retornar valor }",
+          "Útil cuando la lógica es más compleja",
+          "Puedes tener variables intermedias, condicionales, etc.",
+        ],
+      },
+      {
+        title: "Con Condicionales: Mensajes según Contexto",
+        description:
+          "Como cuando respondes diferente según quien te escriba, las funciones flecha pueden tener lógica condicional cuando necesitas decidir qué retornar.",
+        code: `
+variable calificar = nota => {
+    si nota >= 90 {
+        retornar "Excelente"
+    } sino si nota >= 70 {
+        retornar "Aprobado"
+    } sino {
+        retornar "Reprobado"
+    }
+}
+
+mostrar calificar(95)
+mostrar calificar(75)
+mostrar calificar(50)
+
+variable tipoDescuento = cantidad => {
+    si cantidad >= 100 {
+        retornar 0.30
+    } sino si cantidad >= 50 {
+        retornar 0.20
+    } sino {
+        retornar 0.10
+    }
+}
+
+mostrar "Descuento: " + (tipoDescuento(120) * 100) + "%"
+mostrar "Descuento: " + (tipoDescuento(60) * 100) + "%"
+`,
+        output:
+          "Excelente\nAprobado\nReprobado\nDescuento: 30%\nDescuento: 20%",
+        notes: [
+          "Funciones flecha pueden tener condicionales",
+          "Necesitas llaves { } para múltiples líneas",
+          "Cada rama del condicional puede retornar valores diferentes",
+          "Útil para validaciones, cálculos condicionales, clasificaciones",
+          "Recuerda: con llaves, 'retornar' es obligatorio",
+        ],
+      },
+      {
+        title: "Funciones como Argumentos: Enviar Abreviaturas",
+        description:
+          "Como cuando le reenvías un mensaje abreviado a otra persona, puedes pasar funciones flecha como argumentos a otras funciones.",
+        code: `
+funcion aplicar(fn, valor) {
+    retornar fn(valor)
+}
+
+variable resultado1 = aplicar(x => x * 2, 5)
+mostrar resultado1
+
+variable resultado2 = aplicar(x => x + 10, 5)
+mostrar resultado2
+
+variable resultado3 = aplicar(x => x * x, 5)
+mostrar resultado3
+
+funcion procesar(texto, transformar) {
+    variable resultado = transformar(texto)
+    retornar resultado
+}
+
+mostrar procesar("hola", t => t.mayusculas())
+mostrar procesar("MUNDO", t => t.minusculas())
+`,
+        output: "10\n15\n25\nHOLA\nmundo",
+        notes: [
+          "Puedes pasar funciones flecha como argumentos",
+          "Útil para callbacks y transformaciones",
+          "La función que recibe se ejecuta con el valor",
+          "Sintaxis: funcionReceptora(x => transformacion, valor)",
+          "Patrón común en programación funcional",
+        ],
+      },
+      {
+        title: "Casos Prácticos: Calculadoras y Conversiones",
+        description:
+          "Veamos ejemplos reales donde las funciones flecha brillan por su simplicidad: calculadoras rápidas y conversiones de unidades.",
+        code: `
+variable celsiusAFahrenheit = c => (c * 9 / 5) + 32
+variable fahrenheitACelsius = f => (f - 32) * 5 / 9
+
+mostrar "100°C = " + celsiusAFahrenheit(100) + "°F"
+mostrar "212°F = " + fahrenheitACelsius(212) + "°C"
+
+variable kmAMillas = km => km * 0.621371
+variable millasAKm = mi => mi / 0.621371
+
+mostrar "10km = " + kmAMillas(10) + " millas"
+mostrar "10mi = " + millasAKm(10) + " km"
+
+variable calcularPropina = (total, porcentaje) => total * (porcentaje / 100)
+
+mostrar "Propina 15%: $" + calcularPropina(500, 15)
+mostrar "Propina 20%: $" + calcularPropina(500, 20)
+
+variable calcularCuotas = (monto, cuotas) => monto / cuotas
+
+mostrar "12 cuotas de: $" + calcularCuotas(1200, 12)
+`,
+        output:
+          "100°C = 212°F\n212°F = 100°C\n10km = 6.21371 millas\n10mi = 16.0934 km\nPropina 15%: $75\nPropina 20%: $100\n12 cuotas de: $100",
+        notes: [
+          "Funciones flecha perfectas para conversiones simples",
+          "Calculadoras de una línea",
+          "Fácil de leer: la fórmula es visible",
+          "Útil para transformaciones matemáticas",
+          "Se pueden reutilizar en cualquier parte",
+        ],
+      },
+      {
+        title: "¿Cuándo Usar Flecha vs Normal?",
+        description:
+          "Como elegir entre escribir un mensaje completo formal o uno casual abreviado, hay situaciones donde conviene cada tipo de función.",
+        code: `
+variable doble = x => x * 2
+
+funcion procesarPedido(producto, cantidad) {
+    mostrar "=== PEDIDO ==="
+    mostrar "Producto: " + producto
+    mostrar "Cantidad: " + cantidad
+    
+    variable total = cantidad * 100
+    mostrar "Total: $" + total
+    
+    retornar total
+}
+
+variable esPositivo = n => n > 0
+
+funcion generarReporte(datos) {
+    mostrar "Generando reporte..."
+    mostrar "Procesando datos..."
+    mostrar "Reporte completo"
+    retornar "Reporte listo"
+}
+
+mostrar doble(5)
+procesarPedido("Laptop", 2)
+mostrar esPositivo(10)
+generarReporte("datos")
+`,
+        output:
+          "10\n=== PEDIDO ===\nProducto: Laptop\nCantidad: 2\nTotal: $200\nverdadero\nGenerando reporte...\nProcesando datos...\nReporte completo",
+        notes: [
+          "✅ Usa función FLECHA cuando:",
+          "  • La función es simple (1-2 líneas)",
+          "  • Solo hace un cálculo o transformación",
+          "  • Es una función auxiliar rápida",
+          "  • Ejemplo: conversiones, validaciones, cálculos",
+          "",
+          "✅ Usa función NORMAL cuando:",
+          "  • La función es compleja (5+ líneas)",
+          "  • Tiene múltiples pasos o lógica",
+          "  • Muestra mensajes o tiene efectos secundarios",
+          "  • Necesitas que sea más descriptiva",
+          "",
+          "💡 Regla simple: ¿Es una operación rápida? → Flecha. ¿Es un proceso complejo? → Normal.",
+        ],
+      },
+      {
+        title: "Sistema Completo: Calculadora de Precios",
+        description:
+          "Veamos un ejemplo completo que combina funciones normales y flecha: un sistema de cálculo de precios con descuentos e impuestos.",
+        code: `
+variable calcularSubtotal = (precio, cantidad) => precio * cantidad
+variable aplicarDescuento = (monto, porcentaje) => monto * (1 - porcentaje / 100)
+variable aplicarIVA = monto => monto * 1.21
+variable redondear = numero => numero
+
+funcion procesarCompra(producto, precio, cantidad, tieneDescuento) {
+    mostrar "=== COMPRA ==="
+    mostrar "Producto: " + producto
+    mostrar "Precio unitario: $" + precio
+    mostrar "Cantidad: " + cantidad
+    mostrar ""
+    
+    variable subtotal = calcularSubtotal(precio, cantidad)
+    mostrar "Subtotal: $" + subtotal
+    
+    variable montoFinal = subtotal
+    
+    si tieneDescuento {
+        montoFinal = aplicarDescuento(montoFinal, 15)
+        mostrar "Descuento 15%: $" + (subtotal - montoFinal)
+    }
+    
+    montoFinal = aplicarIVA(montoFinal)
+    mostrar "IVA 21%: $" + (montoFinal - (tieneDescuento ? aplicarDescuento(subtotal, 15) : subtotal))
+    
+    mostrar ""
+    mostrar "TOTAL A PAGAR: $" + redondear(montoFinal)
+    
+    retornar montoFinal
+}
+
+procesarCompra("Teclado", 500, 2, verdadero)
+procesarCompra("Mouse", 300, 1, falso)
+`,
+        output:
+          "=== COMPRA ===\nProducto: Teclado\nPrecio unitario: $500\nCantidad: 2\n\nSubtotal: $1000\nDescuento 15%: $150\nIVA 21%: $178.5\n\nTOTAL A PAGAR: $1028.5\n=== COMPRA ===\nProducto: Mouse\nPrecio unitario: $300\nCantidad: 1\n\nSubtotal: $300\nIVA 21%: $63\n\nTOTAL A PAGAR: $363",
+        notes: [
+          "Sistema que combina:",
+          "• Funciones flecha para cálculos simples",
+          "• Función normal para el proceso completo",
+          "• Las flecha son rápidas y reutilizables",
+          "• La normal coordina todo y muestra mensajes",
+          "",
+          "Ventajas de este diseño:",
+          "✅ Cálculos claros con funciones flecha",
+          "✅ Fácil modificar una fórmula (cambiar una línea)",
+          "✅ Reutilizar cálculos en otros lugares",
+          "✅ Código organizado y mantenible",
+        ],
+      },
+      {
+        title: "Consejos y Buenas Prácticas",
+        description:
+          "Recomendaciones para escribir funciones flecha efectivas y saber cuándo usarlas.",
+        code: `
+variable area = (base, altura) => base * altura
+
+variable esPar = n => n % 2 == 0
+
+variable nombreCompleto = (nombre, apellido) => \`\${nombre} \${apellido}\`
+
+variable calcular = (a, b, operacion) => {
+    si operacion == "suma" {
+        retornar a + b
+    } sino si operacion == "resta" {
+        retornar a - b
+    }
+    retornar 0
+}
+
+mostrar area(5, 10)
+mostrar esPar(7)
+mostrar nombreCompleto("Ana", "García")
+mostrar calcular(10, 5, "suma")
+`,
+        output: "50\nfalso\nAna García\n15",
+        notes: [
+          "✅ Usa nombres descriptivos: area, esPar, nombreCompleto",
+          "✅ Funciones cortas y simples son ideales para flecha",
+          "✅ Una operación = función flecha. Proceso complejo = normal",
+          "✅ Si cabe en una línea legible, usa retorno implícito",
+          "✅ Si necesitas variables intermedias, usa llaves { }",
+          "",
+          "❌ No hagas funciones flecha muy complejas",
+          "❌ No anides muchas flechas (confuso de leer)",
+          "❌ No uses flecha si necesitas nombre descriptivo largo",
+          "",
+          "💡 Piensa: ¿es un mensaje corto? → flecha. ¿Es un párrafo? → normal",
         ],
       },
     ],
