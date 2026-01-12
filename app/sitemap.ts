@@ -26,7 +26,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "variables",
     "comentarios",
     "tiposDatos",
-    "entradaSalida",
     "operadores",
     "condicionales",
     "bucles",

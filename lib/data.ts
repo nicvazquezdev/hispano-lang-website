@@ -981,50 +981,6 @@ mostrar \`Producto: \${producto}, Marca: \${marca}, Precio: $\${precio}, Stock: 
       },
     ],
   },
-  entradaSalida: {
-    title: "💬 Entrada y Salida",
-    description:
-      "HispanoLang proporciona comandos simples para mostrar información al usuario (salida) y obtener información del usuario (entrada).",
-    subsections: [
-      {
-        title: "Comando mostrar",
-        description:
-          "El comando 'mostrar' imprime valores en la consola. Puedes mostrar variables, resultados de expresiones, o texto literal.",
-        syntax: "mostrar valor",
-        code: `mostrar "Hola mundo"
-mostrar variable
-mostrar "El resultado es: " + resultado
-
-// Múltiples mostrar
-mostrar "Nombre: " + nombre
-mostrar "Edad: " + edad`,
-        notes: [
-          "Puedes mostrar cualquier tipo de dato: números, texto, booleanos, listas, objetos",
-          "Usa el operador + para concatenar texto con valores",
-          "Cada 'mostrar' imprime en una nueva línea",
-        ],
-      },
-      {
-        title: "Comando leer",
-        description:
-          "El comando 'leer' obtiene entrada del usuario. Puedes agregar un mensaje opcional para indicar qué se espera del usuario.",
-        syntax: 'leer nombreVariable ["mensaje opcional"]',
-        code: `// Entrada básica
-leer nombre
-mostrar "Hola " + nombre
-
-// Entrada con mensaje
-leer edad "¿Cuál es tu edad?"
-mostrar "Tienes " + edad + " años"`,
-        notes: [
-          "El programa se pausa hasta que el usuario ingrese datos",
-          "El mensaje es opcional pero recomendado para claridad",
-          "El valor ingresado se guarda en la variable especificada",
-          "Siempre proporciona mensajes claros al usuario",
-        ],
-      },
-    ],
-  },
   operadores: {
     title: "➕ Operadores",
     description:

@@ -39,7 +39,6 @@ function DocumentacionContent() {
     { id: "tiposDatos", title: "Tipos de Datos" },
     { id: "metodosStrings", title: "Métodos de Strings" },
     { id: "templateStrings", title: "Template Strings" },
-    { id: "entradaSalida", title: "Entrada y Salida" },
     { id: "operadores", title: "Operadores" },
     { id: "condicionales", title: "Condicionales" },
     { id: "elegirCaso", title: "Elegir/Caso" },
