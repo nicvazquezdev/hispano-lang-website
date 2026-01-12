@@ -560,179 +560,197 @@ mostrar "Acepto términos: " + aceptoTerminos
   metodosStrings: {
     title: "🔤 Métodos de Strings",
     description:
-      "Los métodos de strings son funciones especiales que permiten manipular y transformar texto de forma sencilla. Cada cadena de texto tiene acceso a estos métodos usando la notación de punto.",
+      "Los métodos de strings son como las herramientas de edición en Microsoft Word: contar caracteres, cambiar a mayúsculas, buscar y reemplazar texto. Cada texto tiene estas herramientas incorporadas que puedes usar.",
     subsections: [
       {
-        title: "Longitud y Acceso a Caracteres",
+        title: "Contar Caracteres",
         description:
-          "Obtén la cantidad de caracteres de un string y accede a caracteres individuales por su posición.",
-        code: `variable texto = "HispanoLang"
+          "Como el contador de palabras y caracteres que aparece abajo a la izquierda en Word. Te dice cuántos caracteres tiene tu texto.",
+        syntax: "texto.longitud()",
+        code: `
+variable titulo = "Mi Documento Importante"
+variable parrafo = "Este es un párrafo de ejemplo para contar caracteres."
 
-// Longitud del texto
-mostrar texto.longitud()  // 11
+mostrar "El título tiene " + titulo.longitud() + " caracteres"
+mostrar "El párrafo tiene " + parrafo.longitud() + " caracteres"
 
-// Acceder a un carácter por índice (empieza en 0)
-mostrar texto.caracter(0)   // "H"
-mostrar texto.caracter(7)   // "L"
-mostrar texto.caracter(10)  // "g"`,
+variable tweet = "Hola mundo"
+variable limite = 280
+variable restantes = limite - tweet.longitud()
+mostrar "Te quedan " + restantes + " caracteres"
+  `,
+        output:
+          "El título tiene 23 caracteres\nEl párrafo tiene 54 caracteres\nTe quedan 270 caracteres",
         notes: [
-          ".longitud() retorna la cantidad de caracteres del string",
-          ".caracter(indice) retorna el carácter en la posición indicada",
-          "Los índices empiezan en 0, no en 1",
-          "El último carácter está en el índice longitud() - 1",
+          ".longitud() retorna la cantidad de caracteres del texto",
+          "Los espacios cuentan como caracteres",
+          "Útil para límites de caracteres (Twitter, SMS, formularios)",
+          "El método se escribe con paréntesis: .longitud()",
         ],
       },
       {
-        title: "Mayúsculas y Minúsculas",
+        title: "Cambiar Mayúsculas y Minúsculas",
         description:
-          "Convierte texto entre mayúsculas y minúsculas para normalizar o formatear.",
-        code: `variable texto = "HispanoLang"
+          "Como el botón 'Aa' en Word que cambia el texto a mayúsculas o minúsculas. Muy útil para títulos o para normalizar texto.",
+        code: `
+variable titulo = "mi documento importante"
+variable grito = "no me gusta esto"
+variable email = "USUARIO@EMAIL.COM"
 
-mostrar texto.mayusculas()  // "HISPANOLANG"
-mostrar texto.minusculas()  // "hispanolang"
+mostrar titulo.mayusculas()
+mostrar grito.mayusculas()
+mostrar email.minusculas()
 
-// Uso práctico: comparación insensible a mayúsculas
-variable respuesta = "SI"
-si respuesta.minusculas() == "si" {
-    mostrar "Respuesta afirmativa"
-}
-
-variable email = "Usuario@Email.COM"
-mostrar email.minusculas()  // "usuario@email.com"`,
+variable nombre = "JUAN PÉREZ"
+variable nombreNormalizado = nombre.minusculas()
+mostrar "Hola, " + nombreNormalizado
+  `,
+        output:
+          "MI DOCUMENTO IMPORTANTE\nNO ME GUSTA ESTO\nusuario@email.com\nHola, juan pérez",
         notes: [
-          ".mayusculas() convierte todo el texto a mayúsculas",
+          ".mayusculas() convierte todo el texto a MAYÚSCULAS",
           ".minusculas() convierte todo el texto a minúsculas",
-          "Útil para normalizar antes de comparar textos",
-          "El texto original no se modifica, se retorna uno nuevo",
+          "El texto original NO cambia, se crea uno nuevo",
+          "Útil para normalizar emails, usernames, comparaciones",
         ],
       },
       {
-        title: "Búsqueda en Strings",
+        title: "Limpiar Espacios Extra",
         description:
-          "Verifica si un texto contiene, empieza o termina con cierta subcadena.",
-        code: `variable texto = "HispanoLang es genial"
-
-// Verificar si contiene
-mostrar texto.incluye("Lang")       // verdadero
-mostrar texto.contiene("Python")    // falso
-
-// Verificar inicio y final
-mostrar texto.empiezaCon("Hispano")  // verdadero
-mostrar texto.empiezaCon("Lang")     // falso
-mostrar texto.terminaCon("genial")   // verdadero
-mostrar texto.terminaCon("Hispano")  // falso
-
-// Validación de email
-variable email = "usuario@correo.com"
-si email.incluye("@") y email.terminaCon(".com") {
-    mostrar "Email válido"
-}`,
+          "Cuando copias texto de internet y pegas en Word, a veces trae espacios extra al inicio o al final. El método .recortar() los elimina automáticamente.",
+        code: `
+variable textoCopiado = "   Hola mundo   "
+variable emailPegado = "  juan@email.com  "
+variable nombreConEspacios = "    María    "
+  
+mostrar "Con espacios: '" + textoCopiado + "'"
+mostrar "Sin espacios: '" + textoCopiado.recortar() + "'"
+  
+mostrar emailPegado.recortar()
+mostrar nombreConEspacios.recortar()
+  `,
+        output:
+          "Con espacios: '   Hola mundo   '\nSin espacios: 'Hola mundo'\njuan@email.com\nMaría",
         notes: [
-          ".incluye(texto) y .contiene(texto) son equivalentes",
-          ".empiezaCon(texto) verifica si comienza con el texto dado",
-          ".terminaCon(texto) verifica si termina con el texto dado",
-          "Todas retornan verdadero o falso",
-          "La búsqueda es sensible a mayúsculas/minúsculas",
+          ".recortar() elimina espacios al inicio y al final del texto",
+          "NO elimina espacios del medio, solo de los bordes",
+          "Muy útil cuando el usuario copia/pega información",
+          "Los espacios normales entre palabras se mantienen",
         ],
       },
       {
-        title: "Dividir y Extraer",
+        title: "Buscar en el Texto",
         description:
-          "Divide un string en partes o extrae porciones específicas del texto.",
-        code: `// Dividir por un separador
-variable csv = "uno,dos,tres"
-variable partes = csv.dividir(",")
-mostrar partes  // ["uno", "dos", "tres"]
+          "Como usar Ctrl+F en Word para buscar una palabra. Puedes verificar si un texto contiene algo, si empieza con algo, o si termina con algo.",
+        code: `
+variable documento = "Introducción a la Programación en HispanoLang"
+variable email = "usuario@gmail.com"
+variable archivo = "reporte_final.pdf"
 
-variable oracion = "Hola mundo feliz"
-variable palabras = oracion.dividir(" ")
-mostrar palabras  // ["Hola", "mundo", "feliz"]
+mostrar documento.incluye("Programación")
+mostrar documento.incluye("Python")
 
-// Extraer subcadenas
-variable texto = "HispanoLang"
-mostrar texto.subcadena(0, 7)   // "Hispano"
-mostrar texto.subcadena(7)      // "Lang"
-mostrar texto.subcadena(0, 4)   // "Hisp"`,
+mostrar email.incluye("@")
+mostrar email.terminaCon(".com")
+mostrar email.empiezaCon("usuario")
+
+mostrar archivo.terminaCon(".pdf")
+mostrar archivo.terminaCon(".docx")
+  `,
+        output:
+          "verdadero\nfalso\nverdadero\nverdadero\nverdadero\nverdadero\nfalso",
         notes: [
-          ".dividir(separador) separa el texto y retorna una lista",
-          ".subcadena(inicio, fin) extrae desde inicio hasta fin (sin incluir fin)",
-          ".subcadena(inicio) extrae desde inicio hasta el final",
-          "Los índices empiezan en 0",
+          ".incluye(texto) verifica si contiene ese texto → retorna verdadero o falso",
+          ".empiezaCon(texto) verifica si comienza con ese texto",
+          ".terminaCon(texto) verifica si termina con ese texto",
+          "La búsqueda distingue mayúsculas: 'Hola' ≠ 'hola'",
+          "Útil para validar: emails tienen @, archivos terminan en .pdf, etc.",
         ],
       },
       {
-        title: "Reemplazar Texto",
-        description: "Reemplaza todas las ocurrencias de un texto por otro.",
-        code: `variable frase = "Hola mundo, mundo feliz"
-
-// Reemplazar todas las ocurrencias
-mostrar frase.reemplazar("mundo", "universo")
-// "Hola universo, universo feliz"
-
-// Ejemplo práctico: limpiar datos
+        title: "Buscar y Reemplazar",
+        description:
+          "Como la función Ctrl+H 'Buscar y Reemplazar' en Word. Encuentra todas las veces que aparece una palabra y la cambia por otra.",
+        code: `
+variable documento = "Hola mundo, mundo feliz"
+variable correccion = "El perro es un aninal muy leal"
 variable telefono = "123-456-7890"
+
+mostrar documento.reemplazar("mundo", "universo")
+
+mostrar correccion.reemplazar("aninal", "animal")
+
 mostrar telefono.reemplazar("-", "")
-// "1234567890"
 
-// Censurar palabras
-variable texto = "Esta palabra mala es mala"
-mostrar texto.reemplazar("mala", "****")
-// "Esta palabra **** es ****"`,
+variable texto = "Me gusta Python. Python es genial."
+mostrar texto.reemplazar("Python", "HispanoLang")
+  `,
+        output:
+          "Hola universo, universo feliz\nEl perro es un animal muy leal\n1234567890\nMe gusta HispanoLang. HispanoLang es genial.",
         notes: [
-          ".reemplazar(buscar, reemplazo) cambia todas las ocurrencias",
-          "El texto original no se modifica, se retorna uno nuevo",
-          "Si no encuentra el texto a buscar, retorna el original",
-          "La búsqueda es sensible a mayúsculas/minúsculas",
+          ".reemplazar(buscar, reemplazo) cambia TODAS las apariciones",
+          "Si la palabra aparece 5 veces, las cambia las 5 veces",
+          "El texto original NO cambia, se crea uno nuevo",
+          "Si no encuentra la palabra, retorna el texto original sin cambios",
+          "La búsqueda distingue mayúsculas: 'Hola' ≠ 'hola'",
         ],
       },
       {
-        title: "Recortar e Invertir",
-        description: "Elimina espacios en blanco y voltea el texto.",
-        code: `// Recortar espacios
-variable texto = "   Hola mundo   "
-mostrar "'" + texto + "'"           // "'   Hola mundo   '"
-mostrar "'" + texto.recortar() + "'"  // "'Hola mundo'"
-
-// Invertir texto
-variable palabra = "Hola"
-mostrar palabra.invertir()  // "aloH"
-
-// Verificar palíndromo
-variable palindromo = "reconocer"
-si palindromo == palindromo.invertir() {
-    mostrar "Es un palíndromo"
-}`,
-        notes: [
-          ".recortar() elimina espacios al inicio y al final",
-          ".invertir() voltea el texto de atrás hacia adelante",
-          "Útil para limpiar entrada del usuario",
-          "invertir() es útil para verificar palíndromos",
-        ],
-      },
-      {
-        title: "Encadenamiento de Métodos",
+        title: "Combinando Herramientas",
         description:
-          "Los métodos se pueden encadenar para realizar múltiples operaciones.",
-        code: `variable email = "  Usuario@Email.COM  "
-
-// Encadenar múltiples métodos
-variable limpio = email.recortar().minusculas()
-mostrar limpio  // "usuario@email.com"
-
-// Procesar y validar
-variable entrada = "   HispanoLang   "
-variable procesado = entrada.recortar().mayusculas()
-mostrar procesado  // "HISPANOLANG"
-
-// Obtener nombre de usuario de email
-variable correo = "juan.perez@empresa.com"
-variable usuario = correo.dividir("@")[0]
-mostrar usuario  // "juan.perez"`,
+          "Como cuando en Word usas varias herramientas seguidas: primero quitas espacios, luego cambias a minúsculas, luego buscas y reemplazas. En programación puedes encadenar métodos.",
+        code: `
+variable emailSucio = "  USUARIO@EMAIL.COM  "
+variable emailLimpio = emailSucio.recortar().minusculas()
+mostrar emailLimpio
+  
+variable titulo = "   MI DOCUMENTO IMPORTANTE   "
+variable tituloFormateado = titulo.recortar().minusculas()
+mostrar tituloFormateado
+  
+variable texto = "  Hola MUNDO  "
+variable procesado = texto.recortar().mayusculas().reemplazar("MUNDO", "AMIGO")
+mostrar procesado
+  `,
+        output: "usuario@email.com\nmi documento importante\nHOLA AMIGO",
         notes: [
-          "Cada método retorna un nuevo string, permitiendo encadenar",
-          "Se ejecutan de izquierda a derecha",
-          "El encadenamiento hace el código más limpio y legible",
-          "Combina con otros métodos como dividir() para procesar datos",
+          "Puedes usar varios métodos seguidos, uno tras otro",
+          "Se ejecutan de izquierda a derecha, en orden",
+          "Cada método crea un nuevo texto que el siguiente método usa",
+          "Ejemplo: .recortar() quita espacios, luego .minusculas() convierte a minúsculas",
+          "Es como una cadena de ediciones en Word",
+        ],
+      },
+      {
+        title: "Casos Prácticos",
+        description:
+          "Situaciones reales donde estos métodos son útiles, como limpiar datos que copias de internet o preparar texto para guardar.",
+        code: `
+variable nombreUsuario = "  MARIA_DEV  "
+variable usuarioLimpio = nombreUsuario.recortar().minusculas()
+mostrar "Usuario: " + usuarioLimpio
+
+variable emailFormulario = "Juan@Email.COM"
+variable emailNormalizado = emailFormulario.minusculas()
+mostrar "Email guardado: " + emailNormalizado
+
+variable busqueda = "Cómo hacer pizza casera"
+mostrar "Buscando: " + busqueda
+mostrar "Longitud: " + busqueda.longitud() + " caracteres"
+
+variable textoImportado = "   Este texto tiene espacios extra   "
+variable textoCorregido = textoImportado.recortar()
+mostrar "Antes: '" + textoImportado + "'"
+mostrar "Después: '" + textoCorregido + "'"
+  `,
+        output:
+          "Usuario: maria_dev\nEmail guardado: juan@email.com\nBuscando: Cómo hacer pizza casera\nLongitud: 25 caracteres\nAntes: '   Este texto tiene espacios extra   '\nDespués: 'Este texto tiene espacios extra'",
+        notes: [
+          "Limpia datos antes de guardarlos: quita espacios, normaliza mayúsculas",
+          "Valida formatos: emails deben tener @, archivos deben terminar en extensión",
+          "Procesa búsquedas: convierte a minúsculas para que 'Pizza' = 'pizza'",
+          "Corrige errores comunes: reemplaza palabras mal escritas",
+          "Formatea texto: prepara para mostrar o guardar en base de datos",
         ],
       },
     ],
