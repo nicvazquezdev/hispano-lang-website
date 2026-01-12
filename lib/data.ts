@@ -1546,6 +1546,358 @@ si nota >= notaMinima {
       },
     ],
   },
+  elegirCaso: {
+    title: "🎯 Elegir/Caso (Switch)",
+    description:
+      "La estructura elegir/caso es como el menú de la cafetería escolar: tienes un número y según ese número obtienes un plato diferente. Es más limpia que escribir muchos 'si-sino si' cuando comparas un valor contra múltiples opciones.",
+    subsections: [
+      {
+        title: "¿Qué es Elegir/Caso?",
+        description:
+          "Imagina que en la cafetería escolar eliges tu almuerzo por número: 1=Milanesa, 2=Pizza, 3=Ensalada. En vez de preguntar '¿es 1? ¿es 2? ¿es 3?', simplemente dices tu número y te dan el plato correspondiente. Eso es elegir/caso.",
+        syntax: "elegir (variable) { caso valor: código }",
+        code: `
+variable opcionMenu = 2
+
+elegir (opcionMenu) {
+    caso 1:
+        mostrar "Milanesa con puré"
+    caso 2:
+        mostrar "Pizza de muzzarella"
+    caso 3:
+        mostrar "Ensalada César"
+    caso 4:
+        mostrar "Pasta con salsa"
+    pordefecto:
+        mostrar "Opción no disponible"
+}
+  `,
+        output: "Pizza de muzzarella",
+        notes: [
+          "elegir (variable) evalúa el valor de la variable",
+          "Compara ese valor con cada 'caso'",
+          "Ejecuta el código del caso que coincida",
+          "pordefecto se ejecuta si ningún caso coincide (opcional pero recomendado)",
+          "Más limpio que muchos si-sino si cuando comparas contra valores específicos",
+        ],
+      },
+      {
+        title: "Comparación: Elegir vs Si-Sino Si",
+        description:
+          "Veamos la diferencia entre usar 'si-sino si' y 'elegir/caso' para el mismo problema.",
+        code: `
+variable dia = 3
+
+si dia == 1 {
+    mostrar "Lunes"
+} sino si dia == 2 {
+    mostrar "Martes"
+} sino si dia == 3 {
+    mostrar "Miércoles"
+} sino si dia == 4 {
+    mostrar "Jueves"
+} sino si dia == 5 {
+    mostrar "Viernes"
+} sino {
+    mostrar "Fin de semana"
+}
+
+elegir (dia) {
+    caso 1:
+        mostrar "Lunes"
+    caso 2:
+        mostrar "Martes"
+    caso 3:
+        mostrar "Miércoles"
+    caso 4:
+        mostrar "Jueves"
+    caso 5:
+        mostrar "Viernes"
+    pordefecto:
+        mostrar "Fin de semana"
+}
+  `,
+        output: "Miércoles\nMiércoles",
+        notes: [
+          "Ambos hacen exactamente lo mismo",
+          "Con si-sino si: repetimos 'dia ==' muchas veces",
+          "Con elegir/caso: mencionamos 'dia' una sola vez",
+          "elegir/caso es más claro cuando comparas UNA variable contra MUCHOS valores",
+          "si-sino si es mejor cuando tienes condiciones complejas (>, <, y, o)",
+        ],
+      },
+      {
+        title: "Eligiendo Días de la Semana",
+        description:
+          "Un uso común es mostrar información según el día. Como el horario escolar que cambia cada día.",
+        code: `
+variable diaSemana = 1
+
+elegir (diaSemana) {
+    caso 1:
+        mostrar "Lunes - Matemática, Historia, Educación Física"
+    caso 2:
+        mostrar "Martes - Lengua, Ciencias, Arte"
+    caso 3:
+        mostrar "Miércoles - Matemática, Inglés, Música"
+    caso 4:
+        mostrar "Jueves - Historia, Ciencias, Educación Física"
+    caso 5:
+        mostrar "Viernes - Lengua, Matemática, Laboratorio"
+    caso 6:
+        mostrar "Sábado - No hay clases"
+    caso 7:
+        mostrar "Domingo - No hay clases"
+    pordefecto:
+        mostrar "Día inválido"
+}
+
+variable mesActual = 12
+
+elegir (mesActual) {
+    caso 1:
+        mostrar "Enero - Vacaciones de verano"
+    caso 2:
+        mostrar "Febrero - Vacaciones de verano"
+    caso 3:
+        mostrar "Marzo - Inicio de clases"
+    caso 12:
+        mostrar "Diciembre - Fin de año escolar"
+    pordefecto:
+        mostrar "Mes regular de clases"
+}
+  `,
+        output:
+          "Lunes - Matemática, Historia, Educación Física\nDiciembre - Fin de año escolar",
+        notes: [
+          "Cada caso representa una opción diferente",
+          "Los números deben coincidir exactamente: caso 1 solo coincide con 1",
+          "El orden de los casos no importa (a diferencia de si-sino si)",
+          "pordefecto captura cualquier valor que no coincida con los casos",
+          "Útil para menús, días, meses, opciones numeradas",
+        ],
+      },
+      {
+        title: "Uso con Texto: Calificaciones por Letra",
+        description:
+          "Los casos no solo funcionan con números. También puedes usar texto, como las letras de calificación (A, B, C, D, F).",
+        code: `
+variable calificacion = "B"
+
+elegir (calificacion) {
+    caso "A":
+        mostrar "Excelente - 90 a 100 puntos"
+        mostrar "¡Felicitaciones!"
+    caso "B":
+        mostrar "Muy Bueno - 80 a 89 puntos"
+        mostrar "Buen trabajo"
+    caso "C":
+        mostrar "Bueno - 70 a 79 puntos"
+        mostrar "Aprobado"
+    caso "D":
+        mostrar "Suficiente - 60 a 69 puntos"
+        mostrar "Debes mejorar"
+    caso "F":
+        mostrar "Reprobado - Menos de 60 puntos"
+        mostrar "Debes recursar"
+    pordefecto:
+        mostrar "Calificación inválida"
+}
+  `,
+        output: "Muy Bueno - 80 a 89 puntos\nBuen trabajo",
+        notes: [
+          'Los strings (texto) deben ir entre comillas: caso "A"',
+          'La comparación distingue mayúsculas: "A" ≠ "a"',
+          "Puedes poner múltiples líneas de código en cada caso",
+          "Cada caso se ejecuta completo antes de salir del elegir",
+          "Los casos con texto son útiles para menús, comandos, opciones",
+        ],
+      },
+      {
+        title: "Sistema de Menú de Materias",
+        description:
+          "Veamos un ejemplo práctico: un sistema para elegir materias optativas según tu preferencia.",
+        code: `
+variable materiaElegida = "Deportes"
+
+elegir (materiaElegida) {
+    caso "Arte":
+        mostrar "=== MATERIA: ARTE ==="
+        mostrar "Horario: Lunes y Miércoles 14:00-16:00"
+        mostrar "Profesor: María González"
+        mostrar "Materiales: Pinceles, témperas, lienzo"
+    caso "Música":
+        mostrar "=== MATERIA: MÚSICA ==="
+        mostrar "Horario: Martes y Jueves 14:00-16:00"
+        mostrar "Profesor: Carlos Ruiz"
+        mostrar "Materiales: Instrumento propio"
+    caso "Deportes":
+        mostrar "=== MATERIA: DEPORTES ==="
+        mostrar "Horario: Lunes, Miércoles y Viernes 15:00-17:00"
+        mostrar "Profesor: Ana Martínez"
+        mostrar "Materiales: Ropa deportiva, zapatillas"
+    caso "Teatro":
+        mostrar "=== MATERIA: TEATRO ==="
+        mostrar "Horario: Jueves 14:00-17:00"
+        mostrar "Profesor: Roberto Silva"
+        mostrar "Materiales: Ninguno especial"
+    pordefecto:
+        mostrar "Materia no disponible"
+        mostrar "Opciones: Arte, Música, Deportes, Teatro"
+}
+  `,
+        output:
+          "=== MATERIA: DEPORTES ===\nHorario: Lunes, Miércoles y Viernes 15:00-17:00\nProfesor: Ana Martínez\nMateriales: Ropa deportiva, zapatillas",
+        notes: [
+          "Cada caso puede tener múltiples líneas de código",
+          "Es como un menú interactivo: seleccionas una opción y obtienes info",
+          "pordefecto muestra un mensaje de error y opciones válidas",
+          "Más organizado que si-sino si para este tipo de selección",
+          "Fácil de mantener: agregar una materia = agregar un caso",
+        ],
+      },
+      {
+        title: "¿Cuándo Usar Elegir vs Si-Sino Si?",
+        description: "Guía práctica para decidir cuándo usar cada estructura.",
+        code: `
+variable opcion = 2
+
+elegir (opcion) {
+    caso 1:
+        mostrar "Opción A"
+    caso 2:
+        mostrar "Opción B"
+    caso 3:
+        mostrar "Opción C"
+}
+
+variable nota = 85
+
+si nota >= 90 {
+    mostrar "A"
+} sino si nota >= 80 {
+    mostrar "B"
+} sino si nota >= 70 {
+    mostrar "C"
+}
+  `,
+        output: "Opción B\nB",
+        notes: [
+          "✅ Usa elegir/caso cuando:",
+          "  • Comparas UNA variable contra valores EXACTOS (==)",
+          "  • Tienes muchas opciones específicas (menús, días, letras)",
+          "  • Los valores son números o strings concretos",
+          "  • Quieres código más limpio y organizado",
+          "",
+          "✅ Usa si-sino si cuando:",
+          "  • Usas operadores como >, <, >=, <=",
+          "  • Verificas rangos (nota >= 90, nota >= 80...)",
+          "  • Combinas condiciones con 'y', 'o'",
+          "  • Las condiciones son complejas",
+          "",
+          "💡 Regla simple: ¿Solo verificas igualdad (==)? → elegir. ¿Usas <, >, y, o? → si-sino si",
+        ],
+      },
+      {
+        title: "Sistema Completo: Selector de Nivel de Dificultad",
+        description:
+          "Ejemplo completo que muestra cómo usar elegir/caso en un contexto real: un selector de dificultad de examen.",
+        code: `
+variable nivelSeleccionado = 2
+
+mostrar "=== SELECTOR DE DIFICULTAD DE EXAMEN ==="
+mostrar ""
+
+elegir (nivelSeleccionado) {
+    caso 1:
+        mostrar "📗 NIVEL BÁSICO"
+        mostrar "Duración: 60 minutos"
+        mostrar "Preguntas: 20"
+        mostrar "Temas: Conceptos fundamentales"
+        mostrar "Puntaje mínimo: 70 puntos"
+    caso 2:
+        mostrar "📘 NIVEL INTERMEDIO"
+        mostrar "Duración: 90 minutos"
+        mostrar "Preguntas: 30"
+        mostrar "Temas: Aplicación de conceptos"
+        mostrar "Puntaje mínimo: 75 puntos"
+    caso 3:
+        mostrar "📙 NIVEL AVANZADO"
+        mostrar "Duración: 120 minutos"
+        mostrar "Preguntas: 40"
+        mostrar "Temas: Análisis y síntesis"
+        mostrar "Puntaje mínimo: 80 puntos"
+    caso 4:
+        mostrar "📕 NIVEL EXPERTO"
+        mostrar "Duración: 150 minutos"
+        mostrar "Preguntas: 50"
+        mostrar "Temas: Casos complejos y resolución de problemas"
+        mostrar "Puntaje mínimo: 85 puntos"
+    pordefecto:
+        mostrar "❌ Nivel inválido"
+        mostrar "Por favor selecciona: 1, 2, 3 o 4"
+}
+
+mostrar ""
+mostrar "Examen configurado correctamente"
+  `,
+        output:
+          "=== SELECTOR DE DIFICULTAD DE EXAMEN ===\n\n📘 NIVEL INTERMEDIO\nDuración: 90 minutos\nPreguntas: 30\nTemas: Aplicación de conceptos\nPuntaje mínimo: 75 puntos\n\nExamen configurado correctamente",
+        notes: [
+          "Sistema organizado con información clara por nivel",
+          "Cada caso muestra múltiples datos relacionados",
+          "pordefecto maneja errores de entrada",
+          "Fácil de expandir: agregar nivel 5 = agregar un caso",
+          "Estructura clara para el usuario y el programador",
+          "Este patrón se usa en: configuraciones, menús, selectores",
+        ],
+      },
+      {
+        title: "Consejos y Buenas Prácticas",
+        description: "Recomendaciones para usar elegir/caso de forma efectiva.",
+        code: `
+variable opcion = 3
+
+elegir (opcion) {
+    caso 1:
+        mostrar "Primera opción"
+    caso 2:
+        mostrar "Segunda opción"
+    caso 3:
+        mostrar "Tercera opción"
+    pordefecto:
+        mostrar "Opción no válida"
+}
+
+variable OPCION_BASICO = 1
+variable OPCION_INTERMEDIO = 2
+variable OPCION_AVANZADO = 3
+
+variable nivelSeleccionado = 2
+
+elegir (nivelSeleccionado) {
+    caso OPCION_BASICO:
+        mostrar "Básico"
+    caso OPCION_INTERMEDIO:
+        mostrar "Intermedio"
+    caso OPCION_AVANZADO:
+        mostrar "Avanzado"
+}
+  `,
+        output: "Tercera opción\nIntermedio",
+        notes: [
+          "✅ SIEMPRE incluye pordefecto (aunque creas que no es necesario)",
+          "✅ Agrupa casos relacionados visualmente con líneas en blanco",
+          "✅ Mantén los casos en orden lógico (1, 2, 3 o A, B, C)",
+          "✅ Usa constantes para opciones: OPCION_BASICO = 1",
+          "✅ Si todos los casos hacen lo mismo, considera usar otra estructura",
+          "❌ No pongas lógica muy compleja dentro de un caso (crea funciones)",
+          "❌ No uses elegir si solo tienes 2-3 opciones (usa si-sino)",
+          "💡 elegir/caso brilla cuando tienes 4+ opciones específicas",
+        ],
+      },
+    ],
+  },
   bucles: {
     title: "🔄 Bucles",
     description:
@@ -2164,63 +2516,6 @@ intentar {
           "Acceder a propiedades de valores nulos o indefinidos",
           "Llamar funciones con parámetros incorrectos",
           "Usa intentar-capturar para operaciones que pueden fallar",
-        ],
-      },
-    ],
-  },
-  elegirCaso: {
-    title: "🎯 Elegir/Caso (Switch)",
-    description:
-      "La estructura elegir/caso permite evaluar una expresión contra múltiples valores posibles. Es más limpia que múltiples si/sino encadenados.",
-    subsections: [
-      {
-        title: "Sintaxis Básica",
-        description:
-          "Evalúa una expresión y ejecuta el bloque del caso que coincida.",
-        syntax: "elegir (expresion) { caso valor: ... pordefecto: ... }",
-        code: `variable dia = 3
-
-elegir (dia) {
-    caso 1:
-        mostrar "Lunes"
-    caso 2:
-        mostrar "Martes"
-    caso 3:
-        mostrar "Miércoles"
-    caso 4:
-        mostrar "Jueves"
-    caso 5:
-        mostrar "Viernes"
-    pordefecto:
-        mostrar "Fin de semana"
-}`,
-        notes: [
-          "elegir (expresion) { ... } - Inicia el bloque switch",
-          "caso valor: - Define un caso a evaluar",
-          "pordefecto: - Caso por defecto (opcional)",
-          "Se ejecuta el primer caso que coincida",
-        ],
-      },
-      {
-        title: "Uso con Strings",
-        description: "Los casos pueden ser números, strings o cualquier valor.",
-        code: `variable fruta = "manzana"
-
-elegir (fruta) {
-    caso "manzana":
-        mostrar "Es roja o verde"
-    caso "banana":
-        mostrar "Es amarilla"
-    caso "naranja":
-        mostrar "Es naranja"
-    pordefecto:
-        mostrar "Fruta desconocida"
-}`,
-        notes: [
-          "Los casos pueden ser strings, números o booleanos",
-          "El pordefecto es opcional pero recomendado",
-          "Útil para menús y opciones múltiples",
-          "Más limpio que muchos si-sino encadenados",
         ],
       },
     ],
