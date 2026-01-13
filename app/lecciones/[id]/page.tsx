@@ -1,11 +1,9 @@
 import { notFound } from "next/navigation";
-import { lessonsContent } from "@/lib/lessons/content";
+import { getLessonContent, getAllLessonIds } from "@/lib/content";
 import LessonPage from "@/components/lessons/LessonPage";
 
 export function generateStaticParams() {
-  return Object.keys(lessonsContent).map((id) => ({
-    id,
-  }));
+  return getAllLessonIds().map((id) => ({ id }));
 }
 
 interface PageProps {
@@ -14,7 +12,7 @@ interface PageProps {
 
 export default async function Page({ params }: PageProps) {
   const { id } = await params;
-  const lesson = lessonsContent[id];
+  const lesson = getLessonContent(id);
 
   if (!lesson) {
     notFound();
