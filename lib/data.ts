@@ -3623,121 +3623,895 @@ logaritmo(10)         // → 2.302`,
   listas: {
     title: "📋 Listas (Arrays)",
     description:
-      "Las listas permiten almacenar colecciones ordenadas de elementos. Soportan múltiples métodos para manipular y acceder a los datos.",
+      "Imagina tu lista de compras del supermercado: tienes varios items escritos en orden. Puedes agregar más items, tachar los que ya compraste, contar cuántos hay, o ver el primer item de la lista. Las listas en programación funcionan igual: colecciones ordenadas de elementos donde puedes agregar, quitar, buscar, y procesar cada item. Es como tener una lista de compras digital con superpoderes.",
     subsections: [
       {
-        title: "Creación y Acceso",
+        title: "¿Qué son las Listas?",
         description:
-          "Las listas se crean con corchetes [] y se accede a elementos por índice (base 0).",
-        syntax: "variable lista = [elemento1, elemento2, ...]",
-        code: `// Creación
+          "Cuando vas al supermercado, haces una lista: 'leche, pan, huevos, manzanas'. En vez de tener 4 variables separadas (item1, item2, item3, item4), tienes UNA lista con todos los items.\n\nLas listas son perfectas cuando necesitas almacenar múltiples valores relacionados en una sola variable.",
+        syntax: "variable lista = [elemento1, elemento2, elemento3, ...]",
+        code: `variable compras = ["leche", "pan", "huevos", "manzanas"]
+mostrar compras
+
 variable numeros = [1, 2, 3, 4, 5]
-variable frutas = ["manzana", "banana", "naranja"]
+mostrar numeros
+
 variable mixto = [1, "hola", verdadero, 3.14]
+mostrar mixto
 
-// Acceso por índice (empieza en 0)
-mostrar numeros[0]  // 1
-mostrar frutas[1]   // "banana"
+variable vacia = []
+mostrar "Lista vacía: " + texto(vacia)
 
-// Modificar elementos
-numeros[1] = 25
-mostrar numeros[1]  // 25`,
+variable unoSolo = ["único item"]
+mostrar unoSolo`,
+        output:
+          '["leche", "pan", "huevos", "manzanas"]\n[1, 2, 3, 4, 5]\n[1, "hola", verdadero, 3.14]\nLista vacía: []\n["único item"]',
         notes: [
-          "Los índices empiezan en 0, no en 1",
-          "Puedes mezclar diferentes tipos de datos",
-          "Usa lista[indice] para acceder o modificar",
-          "Acceder a un índice fuera de rango causa error",
+          "Las listas se crean con corchetes: []",
+          "Los elementos se separan con comas",
+          "Pueden contener cualquier tipo de dato",
+          "Puedes mezclar tipos diferentes (números, texto, booleanos)",
+          "Una lista vacía es válida: []",
+          "",
+          "¿Cuándo usar listas?",
+          "✅ Múltiples items relacionados (compras, tareas, notas)",
+          "✅ Datos que necesitas recorrer (playlist, inventario)",
+          "✅ Colecciones que crecen/decrecen (carrito, fila)",
+          "",
+          "Como tu lista de compras:",
+          "• Ordenada: item 1, item 2, item 3...",
+          "• Múltiples elementos en un solo lugar",
+          "• Puedes agregar, quitar, contar",
         ],
       },
       {
-        title: "Métodos de Listas",
+        title: "Acceder a Items: Índices",
         description:
-          "Las listas tienen métodos incorporados para operaciones comunes.",
-        code: `variable frutas = ["manzana", "banana"]
+          "Tu lista tiene posiciones numeradas: el primer item es posición 0, el segundo es posición 1, y así sucesivamente. En programación, SIEMPRE empezamos a contar desde 0, no desde 1.",
+        code: `variable compras = ["leche", "pan", "huevos", "manzanas", "queso"]
 
-// Información
-mostrar frutas.longitud()  // 2
-mostrar frutas.primero()   // "manzana"
-mostrar frutas.ultimo()    // "banana"
+mostrar "Item 0 (primero): " + compras[0]
+mostrar "Item 1 (segundo): " + compras[1]
+mostrar "Item 2 (tercero): " + compras[2]
+mostrar "Item 3 (cuarto): " + compras[3]
+mostrar "Item 4 (quinto): " + compras[4]
 
-// Agregar elementos
-frutas.agregar("naranja")        // ["manzana", "banana", "naranja"]
-frutas.agregar("uva", "pera")    // Agregar múltiples
+variable notas = [85, 90, 78, 92, 88]
+mostrar "Primera nota: " + texto(notas[0])
+mostrar "Segunda nota: " + texto(notas[1])
+mostrar "Tercera nota: " + texto(notas[2])
 
-// Remover elemento
-variable eliminado = frutas.remover()  // Remueve y retorna el último
+variable primerItem = compras[0]
+mostrar "Primer item de la lista: " + primerItem
 
-// Verificar
-variable tiene = frutas.contiene("banana")  // verdadero`,
+variable ultimaPosicion = 4
+mostrar "Último item: " + compras[ultimaPosicion]`,
+        output:
+          "Item 0 (primero): leche\nItem 1 (segundo): pan\nItem 2 (tercero): huevos\nItem 3 (cuarto): manzanas\nItem 4 (quinto): queso\nPrimera nota: 85\nSegunda nota: 90\nTercera nota: 78\nPrimer item de la lista: leche\nÚltimo item: queso",
         notes: [
-          ".longitud(): Retorna la cantidad de elementos",
-          ".primero(): Retorna el primer elemento",
+          "Acceso con corchetes: lista[indice]",
+          "⚠️ IMPORTANTE: Los índices empiezan en 0, no en 1",
+          "",
+          "Posiciones:",
+          "• Primer elemento: lista[0]",
+          "• Segundo elemento: lista[1]",
+          "• Tercer elemento: lista[2]",
+          "• ...",
+          "",
+          "¿Por qué empezar en 0?",
+          "• Convención universal en programación",
+          "• Lista de 5 elementos: índices 0, 1, 2, 3, 4",
+          "• Más eficiente para la computadora",
+          "",
+          "Como tu lista de compras:",
+          "Item #0: leche",
+          "Item #1: pan",
+          "Item #2: huevos",
+          "",
+          "⚠️ Acceder fuera de rango causa error",
+          "Si tienes 3 items, solo existen índices 0, 1, 2",
+        ],
+      },
+      {
+        title: "Modificar Items de la Lista",
+        description:
+          "Como cuando tachas un item de tu lista y escribes otro, puedes cambiar elementos usando su índice.",
+        code: `variable compras = ["leche", "pan", "huevos"]
+mostrar "Lista original: " + texto(compras)
+
+compras[1] = "pan integral"
+mostrar "Después de cambiar: " + texto(compras)
+
+variable notas = [85, 90, 78]
+mostrar "Notas originales: " + texto(notas)
+
+notas[2] = 80
+mostrar "Después de corregir: " + texto(notas)
+
+variable tareas = ["Estudiar", "Comprar", "Cocinar"]
+tareas[0] = "Estudiar matemáticas"
+tareas[2] = "Cocinar pasta"
+mostrar "Tareas actualizadas: " + texto(tareas)`,
+        output:
+          'Lista original: ["leche", "pan", "huevos"]\nDespués de cambiar: ["leche", "pan integral", "huevos"]\nNotas originales: [85, 90, 78]\nDespués de corregir: [85, 90, 80]\nTareas actualizadas: ["Estudiar matemáticas", "Comprar", "Cocinar pasta"]',
+        notes: [
+          "Modificar: lista[indice] = nuevoValor",
+          "El índice debe existir en la lista",
+          "No puedes modificar índices que no existen",
+          "",
+          "Ejemplos:",
+          "• compras[0] = 'yogurt' - Cambia el primer item",
+          "• notas[1] = 95 - Cambia la segunda nota",
+          "",
+          "Como tachar y reescribir:",
+          "Lista: ['leche', 'pan', 'huevos']",
+          "Tachas 'pan' y escribes 'pan integral'",
+          "Resultado: ['leche', 'pan integral', 'huevos']",
+          "",
+          "💡 La lista mantiene su tamaño",
+          "💡 Solo cambias el contenido, no agregas ni quitas",
+        ],
+      },
+      {
+        title: "Información de la Lista: Longitud y Extremos",
+        description:
+          "¿Cuántos items tengo? ¿Cuál es el primero? ¿Cuál es el último? Métodos útiles para obtener información básica de tu lista.",
+        code: `variable compras = ["leche", "pan", "huevos", "manzanas", "queso"]
+
+mostrar "Cantidad de items: " + texto(compras.longitud())
+mostrar "Primer item: " + compras.primero()
+mostrar "Último item: " + compras.ultimo()
+
+variable vacia = []
+mostrar "Lista vacía tiene: " + texto(vacia.longitud()) + " items"
+
+variable unoSolo = ["único"]
+mostrar "Una lista con 1 item:"
+mostrar "Longitud: " + texto(unoSolo.longitud())
+mostrar "Primero: " + unoSolo.primero()
+mostrar "Último: " + unoSolo.ultimo()
+
+variable notas = [85, 90, 78, 92, 88]
+variable cantidad = notas.longitud()
+mostrar "Tienes " + texto(cantidad) + " notas"
+mostrar "Primera nota: " + texto(notas.primero())
+mostrar "Última nota: " + texto(notas.ultimo())`,
+        output:
+          "Cantidad de items: 5\nPrimer item: leche\nÚltimo item: queso\nLista vacía tiene: 0 items\nUna lista con 1 item:\nLongitud: 1\nPrimero: único\nÚltimo: único\nTienes 5 notas\nPrimera nota: 85\nÚltima nota: 88",
+        notes: [
+          ".longitud(): Retorna cuántos elementos tiene la lista",
+          ".primero(): Retorna el primer elemento (índice 0)",
           ".ultimo(): Retorna el último elemento",
-          ".agregar(elemento): Agrega al final de la lista",
-          ".remover(): Elimina y retorna el último elemento",
-          ".contiene(elemento): Verifica si el elemento existe",
+          "",
+          "Equivalencias:",
+          "• lista.primero() ≈ lista[0]",
+          "• lista.ultimo() ≈ lista[lista.longitud() - 1]",
+          "",
+          "Como contar items en tu lista de compras:",
+          "• .longitud() → contar líneas escritas",
+          "• .primero() → mirar el primer item",
+          "• .ultimo() → mirar el último item",
+          "",
+          "Casos de uso:",
+          "✅ Saber cuántos items tienes",
+          "✅ Verificar si la lista está vacía (longitud == 0)",
+          "✅ Acceder rápido al primero/último",
+          "",
+          "💡 Si la lista tiene 1 elemento, primero y último son el mismo",
         ],
       },
       {
-        title: "Recorrer Listas",
+        title: "Agregar Items: Construir tu Lista",
         description:
-          "El método .recorrer() ejecuta una función para cada elemento de la lista.",
-        syntax: "lista.recorrer(funcion(elemento, indice) { /* código */ })",
-        code: `variable frutas = ["manzana", "banana", "naranja"]
+          "Como cuando vas agregando items a tu lista de compras conforme recuerdas lo que necesitas. El método .agregar() añade elementos al final de la lista.",
+        code: `variable compras = ["leche", "pan"]
+mostrar "Inicial: " + texto(compras)
 
-// Recorrer simple
-frutas.recorrer(funcion(elemento) {
-    mostrar "Fruta: " + elemento
+compras.agregar("huevos")
+mostrar "Después de agregar huevos: " + texto(compras)
+
+compras.agregar("manzanas")
+mostrar "Después de agregar manzanas: " + texto(compras)
+
+compras.agregar("queso")
+mostrar "Final: " + texto(compras)
+
+mostrar ""
+mostrar "=== CARRITO DE COMPRAS ==="
+variable carrito = []
+mostrar "Carrito vacío: " + texto(carrito)
+
+carrito.agregar("Teclado")
+carrito.agregar("Mouse")
+carrito.agregar("Monitor")
+mostrar "Carrito lleno: " + texto(carrito)
+mostrar "Total de items: " + texto(carrito.longitud())`,
+        output:
+          'Inicial: ["leche", "pan"]\nDespués de agregar huevos: ["leche", "pan", "huevos"]\nDespués de agregar manzanas: ["leche", "pan", "huevos", "manzanas"]\nFinal: ["leche", "pan", "huevos", "manzanas", "queso"]\n\n=== CARRITO DE COMPRAS ===\nCarrito vacío: []\nCarrito lleno: ["Teclado", "Mouse", "Monitor"]\nTotal de items: 3',
+        notes: [
+          ".agregar(elemento): Agrega un elemento al final de la lista",
+          "La lista crece dinámicamente",
+          "Siempre se agrega al final, no al inicio",
+          "",
+          "Patrón común:",
+          "1. Crear lista vacía: variable lista = []",
+          "2. Ir agregando: lista.agregar(item1)",
+          "3. Ir agregando: lista.agregar(item2)",
+          "4. La lista crece automáticamente",
+          "",
+          "Como tu lista de compras:",
+          "• Empiezas con papel en blanco",
+          "• Vas escribiendo items conforme recuerdas",
+          "• Cada .agregar() es escribir una línea nueva",
+          "",
+          "Casos de uso:",
+          "✅ Construir carrito de compras",
+          "✅ Acumular resultados en bucle",
+          "✅ Lista de tareas que crece",
+          "✅ Inventario que se actualiza",
+          "",
+          "💡 No hay límite de tamaño",
+          "💡 Puedes agregar cualquier tipo de dato",
+        ],
+      },
+      {
+        title: "Quitar Items: Remover del Final",
+        description:
+          "Como cuando tachas el último item de tu lista. El método .remover() elimina y retorna el último elemento.",
+        code: `variable compras = ["leche", "pan", "huevos", "manzanas", "queso"]
+mostrar "Lista completa: " + texto(compras)
+mostrar "Longitud: " + texto(compras.longitud())
+
+variable ultimo = compras.remover()
+mostrar "Removiste: " + ultimo
+mostrar "Ahora tienes: " + texto(compras)
+mostrar "Longitud: " + texto(compras.longitud())
+
+variable siguiente = compras.remover()
+mostrar "Removiste: " + siguiente
+mostrar "Ahora tienes: " + texto(compras)
+
+mostrar ""
+mostrar "=== DESHACER ACCIONES ==="
+variable acciones = []
+acciones.agregar("Escribir")
+acciones.agregar("Guardar")
+acciones.agregar("Editar")
+mostrar "Acciones: " + texto(acciones)
+
+variable deshacer = acciones.remover()
+mostrar "Deshaciendo: " + deshacer
+mostrar "Acciones restantes: " + texto(acciones)`,
+        output:
+          'Lista completa: ["leche", "pan", "huevos", "manzanas", "queso"]\nLongitud: 5\nRemoviste: queso\nAhora tienes: ["leche", "pan", "huevos", "manzanas"]\nLongitud: 4\nRemoviste: manzanas\nAhora tienes: ["leche", "pan", "huevos"]\n\n=== DESHACER ACCIONES ===\nAcciones: ["Escribir", "Guardar", "Editar"]\nDeshaciendo: Editar\nAcciones restantes: ["Escribir", "Guardar"]',
+        notes: [
+          ".remover(): Elimina el último elemento y lo retorna",
+          "La lista se acorta en 1",
+          "Retorna el elemento eliminado (puedes guardarlo)",
+          "Si la lista está vacía, causa error",
+          "",
+          "Patrón común:",
+          "variable elemento = lista.remover()",
+          "• lista pierde el último elemento",
+          "• elemento guarda el valor eliminado",
+          "",
+          "Como tachar el último item:",
+          "Lista: ['leche', 'pan', 'huevos']",
+          "Tachas 'huevos' (último)",
+          "Resultado: ['leche', 'pan']",
+          "",
+          "Casos de uso:",
+          "✅ Deshacer última acción (Ctrl+Z)",
+          "✅ Stack/Pila de operaciones",
+          "✅ Procesar items del final al inicio",
+          "✅ Quitar items de carrito",
+          "",
+          "💡 .agregar() y .remover() trabajan en el mismo extremo (final)",
+          "💡 Combinados forman una 'pila' (stack)",
+        ],
+      },
+      {
+        title: "Verificar Existencia: ¿Tengo Este Item?",
+        description:
+          "¿Ya escribí 'leche' en mi lista? El método .contiene() verifica si un elemento existe en la lista.",
+        code: `variable compras = ["leche", "pan", "huevos", "manzanas"]
+
+mostrar "¿Tengo leche?: " + texto(compras.contiene("leche"))
+mostrar "¿Tengo queso?: " + texto(compras.contiene("queso"))
+mostrar "¿Tengo pan?: " + texto(compras.contiene("pan"))
+
+si compras.contiene("huevos") {
+    mostrar "Ya tienes huevos en la lista"
+} sino {
+    mostrar "Necesitas agregar huevos"
+}
+
+mostrar ""
+mostrar "=== VALIDAR ANTES DE AGREGAR ==="
+variable carrito = ["Mouse", "Teclado"]
+
+variable nuevoItem = "Mouse"
+si carrito.contiene(nuevoItem) {
+    mostrar nuevoItem + " ya está en el carrito"
+} sino {
+    carrito.agregar(nuevoItem)
+    mostrar "Agregado: " + nuevoItem
+}
+
+variable otroItem = "Monitor"
+si carrito.contiene(otroItem) {
+    mostrar otroItem + " ya está en el carrito"
+} sino {
+    carrito.agregar(otroItem)
+    mostrar "Agregado: " + otroItem
+}
+
+mostrar "Carrito final: " + texto(carrito)`,
+        output:
+          '¿Tengo leche?: verdadero\n¿Tengo queso?: falso\n¿Tengo pan?: verdadero\nYa tienes huevos en la lista\n\n=== VALIDAR ANTES DE AGREGAR ===\nMouse ya está en el carrito\nAgregado: Monitor\nCarrito final: ["Mouse", "Teclado", "Monitor"]',
+        notes: [
+          ".contiene(elemento): Retorna verdadero si existe, falso si no",
+          "Busca el elemento exacto (case-sensitive para texto)",
+          "Útil para validar antes de agregar",
+          "Recorre toda la lista hasta encontrarlo",
+          "",
+          "Como revisar tu lista de compras:",
+          "• Miras línea por línea",
+          "• Si encuentras el item → verdadero",
+          "• Si terminas sin encontrarlo → falso",
+          "",
+          "Casos de uso:",
+          "✅ Evitar duplicados en carrito",
+          "✅ Verificar si completaste una tarea",
+          "✅ Validar permisos/roles",
+          "✅ Filtrar items únicos",
+          "",
+          "Patrón común: validar antes de agregar",
+          "si !lista.contiene(item) {",
+          "    lista.agregar(item)",
+          "}",
+          "",
+          "💡 Compara con == (igualdad exacta)",
+          "💡 'Leche' != 'leche' (case-sensitive)",
+        ],
+      },
+      {
+        title: "Recorrer la Lista: Procesar Cada Item",
+        description:
+          "Como cuando pasas por cada línea de tu lista de compras en el super, revisando item por item. El método .recorrer() ejecuta una función para cada elemento.",
+        code: `variable compras = ["leche", "pan", "huevos", "manzanas"]
+
+mostrar "=== LISTA DE COMPRAS ==="
+compras.recorrer(funcion(item) {
+    mostrar "☐ " + item
 })
 
-// Recorrer con índice
-frutas.recorrer(funcion(elemento, indice) {
-    mostrar "Posición " + indice + ": " + elemento
-})`,
+mostrar ""
+mostrar "=== CON ÍNDICE ==="
+compras.recorrer(funcion(item, indice) {
+    mostrar "Item " + texto(indice) + ": " + item
+})
+
+mostrar ""
+mostrar "=== CALCULAR TOTAL ==="
+variable precios = [100, 250, 150, 300]
+variable total = 0
+
+precios.recorrer(funcion(precio) {
+    total = total + precio
+    mostrar "Agregando $" + texto(precio) + " → Total: $" + texto(total)
+})
+
+mostrar "Total final: $" + texto(total)`,
+        output:
+          "=== LISTA DE COMPRAS ===\n☐ leche\n☐ pan\n☐ huevos\n☐ manzanas\n\n=== CON ÍNDICE ===\nItem 0: leche\nItem 1: pan\nItem 2: huevos\nItem 3: manzanas\n\n=== CALCULAR TOTAL ===\nAgregando $100 → Total: $100\nAgregando $250 → Total: $350\nAgregando $150 → Total: $500\nAgregando $300 → Total: $800\nTotal final: $800",
         notes: [
-          "La función se ejecuta una vez por cada elemento",
+          ".recorrer(funcion(elemento) { código })",
+          "Ejecuta la función una vez por cada elemento",
           "Primer parámetro: el elemento actual",
-          "Segundo parámetro (opcional): el índice del elemento",
-          "Útil para procesar todos los elementos de forma consistente",
+          "Segundo parámetro (opcional): índice del elemento",
+          "",
+          "Patrón común:",
+          "lista.recorrer(funcion(item) {",
+          "    // Hacer algo con item",
+          "})",
+          "",
+          "Con índice:",
+          "lista.recorrer(funcion(item, indice) {",
+          "    // Usar item y su posición",
+          "})",
+          "",
+          "Como revisar tu lista físicamente:",
+          "• Empiezas desde arriba",
+          "• Miras cada línea (elemento)",
+          "• Haces algo con cada una (mostrar, sumar, etc.)",
+          "• Continúas hasta el final",
+          "",
+          "Casos de uso:",
+          "✅ Mostrar todos los items",
+          "✅ Sumar/calcular totales",
+          "✅ Procesar cada elemento",
+          "✅ Buscar manualmente",
+          "",
+          "💡 Más moderno que bucle para",
+          "💡 Más legible y expresivo",
         ],
       },
       {
-        title: "Métodos Funcionales",
+        title: "Buscar en la Lista: Encontrar lo que Necesitas",
         description:
-          "Métodos avanzados para transformar, filtrar y reducir listas de forma funcional.",
-        code: `variable numeros = [1, 2, 3, 4, 5, 6]
+          "¿Dónde está el item que cuesta más de $100? ¿Hay alguno que empiece con 'M'? Métodos para buscar elementos que cumplan condiciones.",
+        code: `variable precios = [50, 150, 80, 200, 90]
 
-variable dobles = numeros.mapear(x => x * 2)
-mostrar dobles
+variable caro = precios.buscar(funcion(precio) {
+    retornar precio > 100
+})
+mostrar "Primer precio > $100: $" + texto(caro)
 
-variable pares = numeros.filtrar(x => x % 2 == 0)
-mostrar pares
+variable hayCaros = precios.algunos(funcion(precio) {
+    retornar precio > 100
+})
+mostrar "¿Hay precios > $100?: " + texto(hayCaros)
 
-variable suma = numeros.reducir((acc, x) => acc + x, 0)
-mostrar suma`,
-        output: "[2, 4, 6, 8, 10, 12]\n[2, 4, 6]\n21",
+variable todosPositivos = precios.todos(funcion(precio) {
+    retornar precio > 0
+})
+mostrar "¿Todos positivos?: " + texto(todosPositivos)
+
+mostrar ""
+mostrar "=== BUSCAR PRODUCTOS ==="
+variable productos = ["Manzana", "Banana", "Mango", "Uva"]
+
+variable conM = productos.buscar(funcion(producto) {
+    retornar producto[0] == "M"
+})
+mostrar "Primer producto con M: " + conM
+
+variable hayLargos = productos.algunos(funcion(producto) {
+    retornar producto.longitud() > 5
+})
+mostrar "¿Hay nombres largos?: " + texto(hayLargos)`,
+        output:
+          "Primer precio > $100: $150\n¿Hay precios > $100?: verdadero\n¿Todos positivos?: verdadero\n\n=== BUSCAR PRODUCTOS ===\nPrimer producto con M: Manzana\n¿Hay nombres largos?: verdadero",
         notes: [
-          ".mapear(fn): Transforma cada elemento y retorna nueva lista",
-          ".filtrar(fn): Retorna elementos que cumplan la condición",
-          ".reducir(fn, inicial): Reduce la lista a un solo valor",
-        ],
-      },
-      {
-        title: "Métodos de Búsqueda",
-        description:
-          "Métodos para buscar elementos y verificar condiciones en listas.",
-        code: `variable numeros = [1, 2, 3, 4, 5, 6]
-
-mostrar numeros.algunos(x => x > 5)
-
-mostrar numeros.todos(x => x > 0)
-
-mostrar numeros.buscar(x => x > 3)`,
-        output: "verdadero\nverdadero\n4",
-        notes: [
-          ".algunos(fn): Verdadero si algún elemento cumple la condición",
-          ".todos(fn): Verdadero si todos los elementos cumplen la condición",
           ".buscar(fn): Retorna el primer elemento que cumple la condición",
+          ".algunos(fn): Verdadero si AL MENOS UNO cumple",
+          ".todos(fn): Verdadero si TODOS cumplen",
+          "",
+          "La función debe retornar verdadero/falso",
+          "",
+          "Ejemplos:",
+          "• .buscar(x => x > 10) → encuentra primer número > 10",
+          "• .algunos(x => x < 0) → ¿hay algún negativo?",
+          "• .todos(x => x > 0) → ¿todos son positivos?",
+          "",
+          "Como buscar en tu lista de compras:",
+          "• .buscar → encontrar el primer item que...",
+          "• .algunos → ¿hay algún item que...?",
+          "• .todos → ¿todos los items...?",
+          "",
+          "Casos de uso:",
+          "✅ Encontrar primer item que cumple criterio",
+          "✅ Validar si existe al menos uno",
+          "✅ Verificar que todos cumplan regla",
+          "✅ Búsquedas condicionales",
+          "",
+          "💡 .buscar retorna el elemento o indefinido",
+          "💡 .algunos y .todos retornan booleano",
+        ],
+      },
+      {
+        title: "Transformar: Mapear a Nueva Lista",
+        description:
+          "¿Y si quiero una lista con todos los precios con IVA? El método .mapear() transforma cada elemento y retorna una NUEVA lista.",
+        code: `variable precios = [100, 200, 150, 300]
+
+variable conIVA = precios.mapear(funcion(precio) {
+    retornar precio * 1.21
+})
+mostrar "Precios originales: " + texto(precios)
+mostrar "Precios con IVA: " + texto(conIVA)
+
+mostrar ""
+mostrar "=== TRANSFORMACIONES ==="
+variable numeros = [1, 2, 3, 4, 5]
+
+variable dobles = numeros.mapear(funcion(n) {
+    retornar n * 2
+})
+mostrar "Originales: " + texto(numeros)
+mostrar "Dobles: " + texto(dobles)
+
+variable cuadrados = numeros.mapear(funcion(n) {
+    retornar n * n
+})
+mostrar "Cuadrados: " + texto(cuadrados)
+
+mostrar ""
+mostrar "=== FORMATEAR TEXTO ==="
+variable nombres = ["ana", "pedro", "luis"]
+
+variable mayusculas = nombres.mapear(funcion(nombre) {
+    retornar nombre.mayusculas()
+})
+mostrar "Originales: " + texto(nombres)
+mostrar "Mayúsculas: " + texto(mayusculas)`,
+        output:
+          'Precios originales: [100, 200, 150, 300]\nPrecios con IVA: [121, 242, 181.5, 363]\n\n=== TRANSFORMACIONES ===\nOriginales: [1, 2, 3, 4, 5]\nDobles: [2, 4, 6, 8, 10]\nCuadrados: [1, 4, 9, 16, 25]\n\n=== FORMATEAR TEXTO ===\nOriginales: ["ana", "pedro", "luis"]\nMayúsculas: ["ANA", "PEDRO", "LUIS"]',
+        notes: [
+          ".mapear(fn): Transforma cada elemento y retorna NUEVA lista",
+          "La lista original NO se modifica",
+          "La nueva lista tiene la misma longitud",
+          "La función debe retornar el nuevo valor",
+          "",
+          "Patrón:",
+          "variable nueva = lista.mapear(funcion(elemento) {",
+          "    retornar elementoTransformado",
+          "})",
+          "",
+          "Como hacer una lista derivada:",
+          "Lista original: [100, 200, 300]",
+          "Transformar: multiplicar por 1.21",
+          "Nueva lista: [121, 242, 363]",
+          "Original intacta: [100, 200, 300]",
+          "",
+          "Casos de uso:",
+          "✅ Aplicar descuento/impuesto a precios",
+          "✅ Convertir unidades (km → mi)",
+          "✅ Formatear texto (mayúsculas, minúsculas)",
+          "✅ Extraer propiedades",
+          "✅ Calcular derivados (dobles, cuadrados)",
+          "",
+          "💡 Lista original permanece igual",
+          "💡 Crea nueva lista transformada",
+          "💡 Longitud se mantiene",
+        ],
+      },
+      {
+        title: "Filtrar: Quedarte con Algunos",
+        description:
+          "¿Y si solo quiero los items que cuestan menos de $200? El método .filtrar() retorna una NUEVA lista solo con los elementos que cumplen la condición.",
+        code: `variable precios = [100, 250, 150, 300, 80, 200]
+
+variable baratos = precios.filtrar(funcion(precio) {
+    retornar precio < 200
+})
+mostrar "Todos: " + texto(precios)
+mostrar "Baratos (< $200): " + texto(baratos)
+
+mostrar ""
+mostrar "=== FILTRAR NÚMEROS ==="
+variable numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+variable pares = numeros.filtrar(funcion(n) {
+    retornar n.esPar()
+})
+mostrar "Todos: " + texto(numeros)
+mostrar "Pares: " + texto(pares)
+
+variable mayoresQue5 = numeros.filtrar(funcion(n) {
+    retornar n > 5
+})
+mostrar "Mayores que 5: " + texto(mayoresQue5)
+
+mostrar ""
+mostrar "=== FILTRAR TEXTO ==="
+variable productos = ["Manzana", "Banana", "Mango", "Uva", "Melón"]
+
+variable conM = productos.filtrar(funcion(producto) {
+    retornar producto[0] == "M"
+})
+mostrar "Todos: " + texto(productos)
+mostrar "Empiezan con M: " + texto(conM)`,
+        output:
+          'Todos: [100, 250, 150, 300, 80, 200]\nBaratos (< $200): [100, 150, 80]\n\n=== FILTRAR NÚMEROS ===\nTodos: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]\nPares: [2, 4, 6, 8, 10]\nMayores que 5: [6, 7, 8, 9, 10]\n\n=== FILTRAR TEXTO ===\nTodos: ["Manzana", "Banana", "Mango", "Uva", "Melón"]\nEmpiezan con M: ["Manzana", "Mango", "Melón"]',
+        notes: [
+          ".filtrar(fn): Retorna NUEVA lista solo con elementos que cumplen",
+          "La lista original NO se modifica",
+          "La nueva lista puede ser más corta",
+          "La función debe retornar verdadero/falso",
+          "",
+          "Patrón:",
+          "variable filtrada = lista.filtrar(funcion(elemento) {",
+          "    retornar condicion",
+          "})",
+          "",
+          "Como filtrar tu lista de compras:",
+          "Lista completa: [100, 250, 150, 300, 80]",
+          "Filtrar: solo < 200",
+          "Resultado: [100, 150, 80]",
+          "Original intacta: [100, 250, 150, 300, 80]",
+          "",
+          "Casos de uso:",
+          "✅ Productos en rango de precio",
+          "✅ Números pares/impares",
+          "✅ Elementos que cumplen condición",
+          "✅ Búsquedas múltiples",
+          "✅ Remover items no deseados",
+          "",
+          "💡 Lista original permanece igual",
+          "💡 Nueva lista puede ser más corta",
+          "💡 Si ninguno cumple, retorna lista vacía []",
+        ],
+      },
+      {
+        title: "Reducir: Combinar Todo en Uno",
+        description:
+          "¿Cuál es el total de mi lista de compras? El método .reducir() combina todos los elementos en un solo valor.",
+        code: `variable precios = [100, 250, 150, 300]
+
+variable total = precios.reducir(funcion(acumulado, precio) {
+    retornar acumulado + precio
+}, 0)
+mostrar "Precios: " + texto(precios)
+mostrar "Total: $" + texto(total)
+
+mostrar ""
+mostrar "=== OPERACIONES ==="
+variable numeros = [1, 2, 3, 4, 5]
+
+variable suma = numeros.reducir(funcion(acc, n) {
+    retornar acc + n
+}, 0)
+mostrar "Suma: " + texto(suma)
+
+variable producto = numeros.reducir(funcion(acc, n) {
+    retornar acc * n
+}, 1)
+mostrar "Producto: " + texto(producto)
+
+mostrar ""
+mostrar "=== CONCATENAR TEXTO ==="
+variable palabras = ["Hola", "mundo", "desde", "HispanoLang"]
+
+variable frase = palabras.reducir(funcion(acc, palabra) {
+    retornar acc + " " + palabra
+}, "")
+mostrar "Frase: " + frase`,
+        output:
+          "Precios: [100, 250, 150, 300]\nTotal: $800\n\n=== OPERACIONES ===\nSuma: 15\nProducto: 120\n\n=== CONCATENAR TEXTO ===\nFrase:  Hola mundo desde HispanoLang",
+        notes: [
+          ".reducir(fn, inicial): Reduce la lista a un solo valor",
+          "Combina todos los elementos usando la función",
+          "Necesita valor inicial (0 para sumas, 1 para productos, '' para texto)",
+          "",
+          "Parámetros de la función:",
+          "• acumulador: valor acumulado hasta ahora",
+          "• elemento: elemento actual de la lista",
+          "",
+          "Patrón:",
+          "variable resultado = lista.reducir(funcion(acc, elem) {",
+          "    retornar acc + elem  // combinar",
+          "}, valorInicial)",
+          "",
+          "Como sumar cuenta en el super:",
+          "Empiezas en 0 (valorInicial)",
+          "Item 1: $100 → total = 0 + 100 = $100",
+          "Item 2: $250 → total = 100 + 250 = $350",
+          "Item 3: $150 → total = 350 + 150 = $500",
+          "Resultado final: $500",
+          "",
+          "Casos de uso:",
+          "✅ Sumar precios (carrito de compras)",
+          "✅ Calcular promedio",
+          "✅ Encontrar máximo/mínimo",
+          "✅ Concatenar strings",
+          "✅ Contar ocurrencias",
+          "",
+          "💡 Valor inicial importa: 0 para suma, 1 para producto",
+          "💡 El más poderoso pero también el más complejo",
+        ],
+      },
+      {
+        title: "Combinar Métodos: Encadenar Operaciones",
+        description:
+          "La magia de las listas: puedes encadenar métodos para operaciones complejas en una sola expresión legible.",
+        code: `variable precios = [100, 250, 150, 300, 80, 200]
+
+mostrar "=== PRECIOS ORIGINALES ==="
+mostrar "Todos: " + texto(precios)
+
+mostrar ""
+mostrar "=== FILTRAR Y MAPEAR ==="
+variable baratosConIVA = precios
+    .filtrar(funcion(precio) { retornar precio < 200 })
+    .mapear(funcion(precio) { retornar precio * 1.21 })
+
+mostrar "Baratos con IVA: " + texto(baratosConIVA)
+
+mostrar ""
+mostrar "=== FILTRAR, MAPEAR Y REDUCIR ==="
+variable totalBaratos = precios
+    .filtrar(funcion(p) { retornar p < 200 })
+    .mapear(funcion(p) { retornar p * 1.21 })
+    .reducir(funcion(acc, p) { retornar acc + p }, 0)
+
+mostrar "Total de baratos con IVA: $" + texto(totalBaratos)
+
+mostrar ""
+mostrar "=== NÚMEROS ==="
+variable numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+variable sumaParesDoblados = numeros
+    .filtrar(funcion(n) { retornar n.esPar() })
+    .mapear(funcion(n) { retornar n * 2 })
+    .reducir(funcion(acc, n) { retornar acc + n }, 0)
+
+mostrar "Suma de pares doblados: " + texto(sumaParesDoblados)`,
+        output:
+          "=== PRECIOS ORIGINALES ===\nTodos: [100, 250, 150, 300, 80, 200]\n\n=== FILTRAR Y MAPEAR ===\nBaratos con IVA: [121, 181.5, 96.8]\n\n=== FILTRAR, MAPEAR Y REDUCIR ===\nTotal de baratos con IVA: $399.3\n\n=== NÚMEROS ===\nSuma de pares doblados: 60",
+        notes: [
+          "Puedes encadenar métodos uno tras otro",
+          "Cada método retorna una lista que alimenta al siguiente",
+          "Se lee de arriba hacia abajo (o izquierda a derecha)",
+          "",
+          "Ejemplo de pipeline:",
+          "lista",
+          "  .filtrar(...)  → lista más pequeña",
+          "  .mapear(...)   → lista transformada",
+          "  .reducir(...)  → valor único",
+          "",
+          "Como procesar tu lista de compras:",
+          "1. Filtrar: solo items < $200",
+          "2. Mapear: agregar IVA a cada uno",
+          "3. Reducir: sumar todo",
+          "Resultado: total a pagar",
+          "",
+          "Casos de uso:",
+          "✅ Filtrar → Transformar → Sumar",
+          "✅ Seleccionar → Formatear → Unir",
+          "✅ Limpiar → Calcular → Agregar",
+          "",
+          "Ventajas:",
+          "✅ Código muy legible",
+          "✅ Sin variables intermedias",
+          "✅ Flujo claro de operaciones",
+          "✅ Estilo funcional moderno",
+          "",
+          "💡 Cada método retorna nueva lista (inmutable)",
+          "💡 Orden importa: filtrar antes de mapear es más eficiente",
+        ],
+      },
+      {
+        title: "Casos de Uso Completos",
+        description:
+          "Ejemplos reales de cómo usar listas en aplicaciones: carrito de compras, inventario, y sistema de tareas.",
+        code: `mostrar "=== CARRITO DE COMPRAS ==="
+variable carrito = []
+
+carrito.agregar("Mouse")
+carrito.agregar("Teclado")
+carrito.agregar("Monitor")
+
+mostrar "Items en carrito: " + texto(carrito.longitud())
+carrito.recorrer(funcion(producto, i) {
+    mostrar (i + 1).aTexto() + ". " + producto
+})
+
+mostrar ""
+mostrar "=== INVENTARIO CON PRECIOS ==="
+variable productos = ["Mouse", "Teclado", "Monitor", "WebCam"]
+variable precios = [150, 300, 2000, 500]
+
+mostrar "Productos disponibles:"
+productos.recorrer(funcion(producto, i) {
+    mostrar producto + ": $" + precios[i].aTexto()
+})
+
+variable total = precios.reducir(funcion(acc, precio) {
+    retornar acc + precio
+}, 0)
+mostrar "Valor total inventario: $" + total.aTexto()
+
+mostrar ""
+mostrar "=== ANÁLISIS DE VENTAS ==="
+variable ventas = [1500, 2300, 1800, 2100, 1900]
+
+variable mayorVenta = ventas.reducir(funcion(max, venta) {
+    retornar venta > max ? venta : max
+}, 0)
+
+mostrar "Ventas: " + texto(ventas)
+mostrar "Mayor venta: $" + mayorVenta.aTexto()
+
+variable promedio = ventas.reducir(funcion(acc, v) {
+    retornar acc + v
+}, 0) / ventas.longitud()
+
+mostrar "Promedio: $" + promedio.aTexto()`,
+        output:
+          "=== CARRITO DE COMPRAS ===\nItems en carrito: 3\n1. Mouse\n2. Teclado\n3. Monitor\n\n=== INVENTARIO CON PRECIOS ===\nProductos disponibles:\nMouse: $150\nTeclado: $300\nMonitor: $2000\nWebCam: $500\nValor total inventario: $2950\n\n=== ANÁLISIS DE VENTAS ===\nVentas: [1500, 2300, 1800, 2100, 1900]\nMayor venta: $2300\nPromedio: $1920",
+        notes: [
+          "Ejemplos completos de aplicaciones reales",
+          "",
+          "🛒 CARRITO DE COMPRAS:",
+          "• Lista vacía inicial",
+          "• Agregar productos",
+          "• Mostrar con índices (numeración)",
+          "• Contar items",
+          "",
+          "📦 INVENTARIO:",
+          "• Dos listas paralelas (productos y precios)",
+          "• Acceso por índice sincronizado",
+          "• Calcular valor total con .reducir()",
+          "",
+          "📊 ANÁLISIS DE VENTAS:",
+          "• Encontrar máximo con .reducir()",
+          "• Calcular promedio (suma / longitud)",
+          "• Múltiples cálculos sobre mismos datos",
+          "",
+          "Patrones comunes:",
+          "✅ Empezar con lista vacía",
+          "✅ Ir agregando elementos",
+          "✅ Recorrer para mostrar",
+          "✅ Reducir para cálculos",
+          "✅ Listas paralelas (índices sincronizados)",
+          "",
+          "💡 Las listas son fundamentales en toda aplicación",
+        ],
+      },
+      {
+        title: "Referencia Rápida: Todos los Métodos",
+        description:
+          "Tabla de referencia completa con todos los métodos de listas disponibles en HispanoLang.",
+        code: `variable lista = ["a", "b", "c"]
+
+lista[0]                    // Acceso: "a"
+lista.longitud()            // 3
+lista.primero()             // "a"
+lista.ultimo()              // "c"
+
+lista.agregar("d")          // ["a", "b", "c", "d"]
+variable ultimo = lista.remover()  // "d", lista = ["a", "b", "c"]
+lista.contiene("b")         // verdadero
+
+lista.recorrer(fn)          // Ejecuta fn para cada elemento
+lista.mapear(fn)            // Nueva lista transformada
+lista.filtrar(fn)           // Nueva lista filtrada
+lista.reducir(fn, inicial)  // Valor único combinado
+
+lista.buscar(fn)            // Primer elemento que cumple
+lista.algunos(fn)           // ¿Alguno cumple?
+lista.todos(fn)             // ¿Todos cumplen?`,
+        output: "",
+        notes: [
+          "📊 MÉTODOS DE LISTAS POR CATEGORÍA:",
+          "",
+          "🔍 INFORMACIÓN:",
+          "⭐⭐⭐ .longitud() - Cantidad de elementos",
+          "⭐⭐⭐ .primero() - Primer elemento",
+          "⭐⭐⭐ .ultimo() - Último elemento",
+          "",
+          "✏️ MODIFICACIÓN:",
+          "⭐⭐⭐ .agregar(elem) - Agregar al final",
+          "⭐⭐⭐ .remover() - Quitar último",
+          "⭐⭐⭐ lista[i] = valor - Modificar por índice",
+          "",
+          "🔎 BÚSQUEDA:",
+          "⭐⭐⭐ .contiene(elem) - ¿Existe?",
+          "⭐⭐ .buscar(fn) - Primer elemento que cumple",
+          "⭐⭐ .algunos(fn) - ¿Alguno cumple?",
+          "⭐⭐ .todos(fn) - ¿Todos cumplen?",
+          "",
+          "🔄 ITERACIÓN:",
+          "⭐⭐⭐ .recorrer(fn) - Ejecutar para cada uno",
+          "",
+          "🎯 FUNCIONAL (Avanzado):",
+          "⭐⭐⭐ .mapear(fn) - Transformar cada elemento",
+          "⭐⭐⭐ .filtrar(fn) - Filtrar por condición",
+          "⭐⭐ .reducir(fn, inicial) - Combinar en uno",
+          "",
+          "💡 ORDEN DE APRENDIZAJE:",
+          "1. Crear, acceder, modificar",
+          "2. longitud, primero, ultimo",
+          "3. agregar, remover, contiene",
+          "4. recorrer",
+          "5. buscar, algunos, todos",
+          "6. mapear, filtrar",
+          "7. reducir (más complejo)",
+          "",
+          "🔗 ENCADENAR:",
+          "lista.filtrar(...).mapear(...).reducir(...)",
         ],
       },
     ],
