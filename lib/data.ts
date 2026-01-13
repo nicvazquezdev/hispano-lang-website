@@ -3068,6 +3068,558 @@ mostrar calcular(10, 5, "suma")
       },
     ],
   },
+  funcionesMatematicas: {
+    title: "🧮 Funciones Matemáticas",
+    description:
+      "Tu smartphone tiene una calculadora con botones especiales: √ para raíz, x² para potencia, sin/cos/tan para trigonometría. HispanoLang incluye estas mismas funciones matemáticas, listas para usar en tu código. Son como los botones de una calculadora científica: presionas uno y obtienes el resultado.",
+    subsections: [
+      {
+        title: "¿Qué son las Funciones Matemáticas?",
+        description:
+          "Abre la calculadora de tu celular y gira la pantalla para ver la calculadora científica. Aparecen muchos botones: √, x², sin, cos, log, y más.\n\nCada botón hace un cálculo específico que sería tedioso hacer a mano. Las funciones matemáticas en HispanoLang son exactamente eso: botones pre-programados para cálculos comunes.",
+        code: `variable raizDe16 = raiz(16)
+mostrar raizDe16
+
+variable dosAlCubo = potencia(2, 3)
+mostrar dosAlCubo
+
+variable sinSigno = valorAbsoluto(-10)
+mostrar sinSigno
+
+variable redondeado = redondear(3.7)
+mostrar redondeado`,
+        output: "4\n8\n10\n4",
+        notes: [
+          "Ya vienen incluidas en HispanoLang, no necesitas crearlas",
+          "Solo llamas la función con su nombre: raiz(16)",
+          "Como presionar un botón en la calculadora",
+          "Retornan el resultado del cálculo",
+          "Cubren desde operaciones básicas hasta trigonometría avanzada",
+        ],
+      },
+      {
+        title: "Redondeo: Ajustar Decimales",
+        description:
+          "Cuando divides la cuenta del restaurante entre 3 personas, obtienes $156.6666... Necesitas redondear. La calculadora tiene tres formas de hacerlo, y HispanoLang también.",
+        code: `variable numero = 3.7
+
+variable cercano = redondear(numero)
+mostrar "Redondear (más cercano): " + cercano
+
+variable arriba = techo(numero)
+mostrar "Techo (siempre arriba): " + arriba
+
+variable abajo = piso(numero)
+mostrar "Piso (siempre abajo): " + abajo
+
+variable cuenta = 156.66
+variable porPersona = redondear(cuenta / 3)
+mostrar "Cada persona paga: $" + porPersona
+
+variable productos = 15.3
+variable cajas = techo(productos)
+mostrar "Necesitas " + cajas + " cajas completas"
+
+variable descuento = 99.99
+variable precioBase = piso(descuento)
+mostrar "Precio base: $" + precioBase`,
+        output:
+          "Redondear (más cercano): 4\nTecho (siempre arriba): 4\nPiso (siempre abajo): 3\nCada persona paga: $52\nNecesitas 16 cajas completas\nPrecio base: $99",
+        notes: [
+          "redondear(n): Al entero más cercano (3.4→3, 3.6→4)",
+          "techo(n): Siempre hacia arriba (3.1→4, 3.9→4)",
+          "piso(n): Siempre hacia abajo (3.1→3, 3.9→3)",
+          "",
+          "Casos de uso reales:",
+          "• Dividir cuentas entre personas",
+          "• Calcular cantidad de paquetes/cajas necesarias",
+          "• Mostrar precios sin tantos decimales",
+          "• Calcular propinas redondeadas",
+        ],
+      },
+      {
+        title: "Números Aleatorios: Botón de Sorteo",
+        description:
+          "Las calculadoras científicas tienen un botón 'Random' o 'Rnd' que genera números aleatorios. Útil para simulaciones, juegos, sorteos, y decisiones al azar.",
+        syntax:
+          "aleatorio()  // 0 a 1\naleatorio(max)  // 0 a max\naleatorio(min, max)  // min a max",
+        code: `variable entreCorY1 = aleatorio()
+mostrar "Random (0-1): " + entreCorY1
+
+variable entre0y10 = aleatorio(10)
+mostrar "Random (0-10): " + entre0y10
+
+variable entre5y15 = aleatorio(5, 15)
+mostrar "Random (5-15): " + entre5y15
+
+variable dado = piso(aleatorio(1, 7))
+mostrar "Tirar dado (1-6): " + dado
+
+variable moneda = aleatorio() < 0.5
+si moneda {
+    mostrar "Moneda: CARA"
+} sino {
+    mostrar "Moneda: CRUZ"
+}
+
+variable sorteo = piso(aleatorio(1, 101))
+mostrar "Número de sorteo (1-100): " + sorteo
+
+variable descuento = redondear(aleatorio(10, 31))
+mostrar "Descuento aleatorio: " + descuento + "%"`,
+        output:
+          "Random (0-1): 0.547\nRandom (0-10): 7.32\nRandom (5-15): 12.8\nTirar dado (1-6): 4\nMoneda: CRUZ\nNúmero de sorteo (1-100): 67\nDescuento aleatorio: 23%",
+        notes: [
+          "aleatorio(): Número decimal entre 0.0 y 1.0",
+          "aleatorio(max): Número decimal entre 0.0 y max",
+          "aleatorio(min, max): Número decimal entre min y max",
+          "",
+          "Para enteros aleatorios:",
+          "• Usa piso(aleatorio(min, max+1)) para incluir el máximo",
+          "• Ejemplo: piso(aleatorio(1, 7)) → dado de 1 a 6",
+          "",
+          "Casos de uso:",
+          "• Tirar dados virtuales",
+          "• Sorteos y rifas",
+          "• Cara o cruz",
+          "• Selección aleatoria",
+          "• Descuentos/ofertas aleatorias",
+          "• Simulaciones y juegos",
+        ],
+      },
+      {
+        title: "Potencias y Raíces: Cálculos Exponenciales",
+        description:
+          "Los botones x², x³, xʸ, y √ de la calculadora científica. Útiles para áreas, volúmenes, crecimiento exponencial, y problemas geométricos.",
+        code: `variable cuadrado = potencia(5, 2)
+mostrar "5² = " + cuadrado
+
+variable cubo = potencia(3, 3)
+mostrar "3³ = " + cubo
+
+variable dosALaOcho = potencia(2, 8)
+mostrar "2⁸ = " + dosALaOcho
+
+variable raizDe16 = raiz(16)
+mostrar "√16 = " + raizDe16
+
+variable raizDe25 = raiz(25)
+mostrar "√25 = " + raizDe25
+
+variable ladoCuadrado = 7
+variable area = potencia(ladoCuadrado, 2)
+mostrar "Área de cuadrado 7x7: " + area + " m²"
+
+variable areaCirculo = raiz(100)
+mostrar "Si área es 100, radio ≈ " + areaCirculo
+
+variable interesCompuesto = 1000 * potencia(1.05, 3)
+mostrar "Inversión con 5% anual por 3 años: $" + redondear(interesCompuesto)
+
+variable hipotenusa = raiz(potencia(3, 2) + potencia(4, 2))
+mostrar "Hipotenusa de triángulo 3-4: " + hipotenusa`,
+        output:
+          "5² = 25\n3³ = 27\n2⁸ = 256\n√16 = 4\n√25 = 5\nÁrea de cuadrado 7x7: 49 m²\nSi área es 100, radio ≈ 10\nInversión con 5% anual por 3 años: $1158\nHipotenusa de triángulo 3-4: 5",
+        notes: [
+          "potencia(base, exponente): Eleva base a exponente",
+          "raiz(n): Raíz cuadrada de n (√n)",
+          "",
+          "Casos de uso:",
+          "• Calcular áreas (lado²) y volúmenes (lado³)",
+          "• Interés compuesto en finanzas",
+          "• Teorema de Pitágoras (a² + b² = c²)",
+          "• Crecimiento exponencial",
+          "• Escalas logarítmicas",
+          "",
+          "Ejemplos prácticos:",
+          "• Área de terreno cuadrado",
+          "• Volumen de cubo",
+          "• Cálculos de inversión",
+          "• Distancias en geometría",
+        ],
+      },
+      {
+        title: "Valor Absoluto: Distancia Sin Signo",
+        description:
+          "El botón |x| o abs en la calculadora científica. Convierte cualquier número en su versión positiva. Útil para distancias, diferencias, y cuando el signo no importa.",
+        code: `variable positivo = valorAbsoluto(10)
+mostrar "Absoluto de 10: " + positivo
+
+variable negativo = valorAbsoluto(-10)
+mostrar "Absoluto de -10: " + negativo
+
+variable cero = valorAbsoluto(0)
+mostrar "Absoluto de 0: " + cero
+
+variable temp1 = 25
+variable temp2 = 15
+variable diferencia = valorAbsoluto(temp1 - temp2)
+mostrar "Diferencia de temperatura: " + diferencia + "°C"
+
+variable saldo = -150
+variable deuda = valorAbsoluto(saldo)
+mostrar "Monto de deuda: $" + deuda
+
+variable esperado = 100
+variable obtenido = 85
+variable error = valorAbsoluto(esperado - obtenido)
+mostrar "Error absoluto: " + error
+
+variable posicion1 = 50
+variable posicion2 = 30
+variable distancia = valorAbsoluto(posicion1 - posicion2)
+mostrar "Distancia entre puntos: " + distancia + " unidades"`,
+        output:
+          "Absoluto de 10: 10\nAbsoluto de -10: 10\nAbsoluto de 0: 0\nDiferencia de temperatura: 10°C\nMonto de deuda: $150\nError absoluto: 15\nDistancia entre puntos: 20 unidades",
+        notes: [
+          "valorAbsoluto(n): Retorna el valor sin signo",
+          "Números positivos → quedan igual",
+          "Números negativos → se vuelven positivos",
+          "Cero → queda en cero",
+          "",
+          "Casos de uso:",
+          "• Calcular distancias (siempre positivas)",
+          "• Diferencias de temperatura",
+          "• Mostrar montos de deuda",
+          "• Calcular errores o desviaciones",
+          "• Cuando solo importa la magnitud, no la dirección",
+          "",
+          "Fórmula común:",
+          "distancia = valorAbsoluto(punto1 - punto2)",
+        ],
+      },
+      {
+        title: "Máximo, Mínimo, Suma, Promedio",
+        description:
+          "Funciones de agregación que operan sobre múltiples números. Como calcular la nota más alta, el producto más barato, el total de gastos, o el promedio de ventas.",
+        code: `variable precios = maximo(100, 250, 180, 320)
+mostrar "Precio más alto: $" + precios
+
+variable barato = minimo(100, 250, 180, 320)
+mostrar "Precio más bajo: $" + barato
+
+variable notas = suma(85, 90, 78, 92)
+mostrar "Suma de notas: " + notas
+
+variable promedio = promedio(85, 90, 78, 92)
+mostrar "Promedio de notas: " + promedio
+
+variable mejorVenta = maximo(1500, 2300, 1800, 2100)
+mostrar "Mejor día de ventas: $" + mejorVenta
+
+variable peorVenta = minimo(1500, 2300, 1800, 2100)
+mostrar "Peor día de ventas: $" + peorVenta
+
+variable gastosMensuales = suma(500, 300, 150, 200, 400)
+mostrar "Gastos totales: $" + gastosMensuales
+
+variable gastoPromedio = promedio(500, 300, 150, 200, 400)
+mostrar "Gasto promedio: $" + gastoPromedio`,
+        output:
+          "Precio más alto: $320\nPrecio más bajo: $100\nSuma de notas: 345\nPromedio de notas: 86.25\nMejor día de ventas: $2300\nPeor día de ventas: $1500\nGastos totales: $1550\nGasto promedio: $310",
+        notes: [
+          "maximo(...): Retorna el número más grande",
+          "minimo(...): Retorna el número más pequeño",
+          "suma(...): Retorna la suma de todos",
+          "promedio(...): Retorna el promedio aritmético",
+          "",
+          "Todas aceptan múltiples argumentos:",
+          "• maximo(10, 20, 15) → 20",
+          "• minimo(10, 20, 15) → 10",
+          "• suma(10, 20, 30) → 60",
+          "• promedio(10, 20, 30) → 20",
+          "",
+          "Casos de uso:",
+          "• Encontrar mejor/peor precio",
+          "• Calcular nota más alta/baja",
+          "• Sumar gastos o ventas",
+          "• Calcular promedios de calificaciones",
+          "• Análisis básico de datos",
+          "• Comparaciones rápidas",
+        ],
+      },
+      {
+        title: "Trigonometría: Ángulos y Círculos",
+        description:
+          "Los botones sin, cos, tan de la calculadora científica. Útiles para cálculos con ángulos, rotaciones, movimientos circulares, y geometría avanzada.",
+        code: `variable sen0 = seno(0)
+mostrar "seno(0°) = " + sen0
+
+variable cos0 = coseno(0)
+mostrar "coseno(0°) = " + cos0
+
+variable sen90 = seno(90)
+mostrar "seno(90°) = " + sen90
+
+variable cos90 = coseno(90)
+mostrar "coseno(90°) = " + cos90
+
+variable tan45 = tangente(45)
+mostrar "tangente(45°) = " + tan45
+
+variable distancia = 100
+variable angulo = 30
+variable altura = distancia * seno(angulo)
+mostrar "Altura del edificio: " + redondear(altura) + "m"
+
+variable radio = 10
+variable angulo = 45
+variable x = radio * coseno(angulo)
+variable y = radio * seno(angulo)
+mostrar "Posición en círculo: (" + redondear(x) + ", " + redondear(y) + ")"`,
+        output:
+          "seno(0°) = 0\ncoseno(0°) = 1\nseno(90°) = 1\ncoseno(90°) = 0\ntangente(45°) = 1\nAltura del edificio: 50m\nPosición en círculo: (7, 7)",
+        notes: [
+          "seno(angulo): Calcula el seno del ángulo",
+          "coseno(angulo): Calcula el coseno del ángulo",
+          "tangente(angulo): Calcula la tangente del ángulo",
+          "",
+          "⚠️ Los ángulos se miden en GRADOS (0-360), no radianes",
+          "",
+          "Valores importantes:",
+          "• seno(0°) = 0, seno(90°) = 1",
+          "• coseno(0°) = 1, coseno(90°) = 0",
+          "• tangente(45°) = 1",
+          "",
+          "Casos de uso:",
+          "• Calcular alturas con ángulos",
+          "• Movimiento circular (juegos, animaciones)",
+          "• Rotaciones de objetos",
+          "• Posiciones en círculo (reloj, rueda)",
+          "• Navegación y direcciones",
+          "• Física y simulaciones",
+          "",
+          "💡 Si no trabajas con ángulos, puedes omitir estas funciones",
+        ],
+      },
+      {
+        title: "Logaritmos: Crecimiento y Escalas",
+        description:
+          "El botón log o ln en la calculadora científica. Útil para escalas logarítmicas, crecimiento exponencial inverso, y cálculos científicos avanzados.",
+        code: `variable log10 = logaritmo(10)
+mostrar "logaritmo(10) = " + log10
+
+variable log100 = logaritmo(100)
+mostrar "logaritmo(100) = " + log100
+
+variable logE = logaritmo(2.71828)
+mostrar "logaritmo(e) ≈ " + redondear(logE)
+
+variable tiempoDoble = logaritmo(2) / logaritmo(1.05)
+mostrar "Años para duplicar inversión al 5%: " + redondear(tiempoDoble)`,
+        output:
+          "logaritmo(10) = 2.302\nlogaritmo(100) = 4.605\nlogaritmo(e) ≈ 1\nAños para duplicar inversión al 5%: 14",
+        notes: [
+          "logaritmo(n): Logaritmo natural (base e) de n",
+          "También conocido como 'ln' en calculadoras",
+          "",
+          "Relación con potencia:",
+          "• Si potencia(e, x) = n, entonces logaritmo(n) = x",
+          "• logaritmo es la operación inversa de potencia",
+          "",
+          "Casos de uso:",
+          "• Cálculos financieros (tiempo para duplicar inversión)",
+          "• Escalas logarítmicas (pH, decibeles, Richter)",
+          "• Crecimiento exponencial",
+          "• Algoritmos y complejidad computacional",
+          "• Estadística y probabilidad",
+          "",
+          "💡 Función avanzada, no siempre necesaria para principiantes",
+          "💡 Si no haces cálculos científicos, puedes omitirla",
+        ],
+      },
+      {
+        title: "Combinando Funciones: Calculadora Completa",
+        description:
+          "Así como presionas varios botones en secuencia en la calculadora, puedes combinar múltiples funciones matemáticas para resolver problemas complejos.",
+        code: `variable a = 3
+variable b = 4
+variable hipotenusa = raiz(potencia(a, 2) + potencia(b, 2))
+mostrar "Hipotenusa: " + hipotenusa
+
+variable ventas = suma(1500, 2300, 1800, 2100, 1900)
+variable promVentas = promedio(1500, 2300, 1800, 2100, 1900)
+mostrar "Total ventas: $" + ventas
+mostrar "Promedio ventas: $" + promVentas
+
+variable precio = 99.99
+variable descuentoAleatorio = redondear(aleatorio(10, 31))
+variable precioConDesc = precio * (1 - descuentoAleatorio / 100)
+variable precioFinal = redondear(precioConDesc)
+mostrar "Precio original: $" + precio
+mostrar "Descuento: " + descuentoAleatorio + "%"
+mostrar "Precio final: $" + precioFinal
+
+variable nota1 = 85
+variable nota2 = 90
+variable nota3 = 78
+variable promedioNotas = promedio(nota1, nota2, nota3)
+variable notaRedondeada = redondear(promedioNotas)
+variable notaMaxima = maximo(nota1, nota2, nota3)
+variable notaMinima = minimo(nota1, nota2, nota3)
+mostrar "Promedio: " + notaRedondeada
+mostrar "Mejor nota: " + notaMaxima
+mostrar "Peor nota: " + notaMinima
+
+variable diferencia = valorAbsoluto(notaMaxima - notaMinima)
+mostrar "Diferencia entre mejor y peor: " + diferencia`,
+        output:
+          "Hipotenusa: 5\nTotal ventas: $9600\nPromedio ventas: $1920\nPrecio original: $99.99\nDescuento: 23%\nPrecio final: $77\nPromedio: 84\nMejor nota: 90\nPeor nota: 78\nDiferencia entre mejor y peor: 12",
+        notes: [
+          "Puedes anidar funciones: raiz(potencia(x, 2) + potencia(y, 2))",
+          "Combina resultados de varias funciones",
+          "Cada función retorna un valor que puedes usar en otra",
+          "",
+          "Patrones comunes:",
+          "• Teorema de Pitágoras: raiz(potencia(a,2) + potencia(b,2))",
+          "• Redondear promedio: redondear(promedio(...))",
+          "• Precio con descuento aleatorio: redondear(precio * aleatorio())",
+          "• Diferencia absoluta: valorAbsoluto(maximo(...) - minimo(...))",
+          "",
+          "Consejos:",
+          "✅ Usa variables intermedias para claridad",
+          "✅ Guarda resultados parciales con nombres descriptivos",
+          "✅ Redondea al final si trabajas con dinero",
+          "✅ Combina funciones paso a paso, no todo en una línea",
+        ],
+      },
+      {
+        title: "Casos de Uso Reales: Aplicaciones Prácticas",
+        description:
+          "Ejemplos completos de cómo usar estas funciones en situaciones del mundo real: finanzas, juegos, análisis de datos, y más.",
+        code: `mostrar "=== CALCULADORA DE PROPINAS ==="
+variable cuenta = 156.50
+variable propina15 = cuenta * 0.15
+variable propina20 = cuenta * 0.20
+variable total15 = redondear(cuenta + propina15)
+variable total20 = redondear(cuenta + propina20)
+mostrar "Cuenta: $" + cuenta
+mostrar "Con propina 15%: $" + total15
+mostrar "Con propina 20%: $" + total20
+
+mostrar ""
+mostrar "=== SIMULADOR DE DADO ==="
+variable dado1 = piso(aleatorio(1, 7))
+variable dado2 = piso(aleatorio(1, 7))
+variable sumaDados = suma(dado1, dado2)
+mostrar "Dado 1: " + dado1
+mostrar "Dado 2: " + dado2
+mostrar "Suma: " + sumaDados
+
+mostrar ""
+mostrar "=== ANÁLISIS DE GASTOS ==="
+variable gastos = suma(500, 300, 150, 450, 200)
+variable promGasto = promedio(500, 300, 150, 450, 200)
+variable mayorGasto = maximo(500, 300, 150, 450, 200)
+variable menorGasto = minimo(500, 300, 150, 450, 200)
+mostrar "Total gastado: $" + gastos
+mostrar "Gasto promedio: $" + promGasto
+mostrar "Mayor gasto: $" + mayorGasto
+mostrar "Menor gasto: $" + menorGasto
+
+mostrar ""
+mostrar "=== CALCULADORA DE ÁREA ==="
+variable radio = 5
+variable areaCuadrado = potencia(radio, 2)
+variable perimetro = 4 * radio
+mostrar "Cuadrado de lado " + radio + ":"
+mostrar "Área: " + areaCuadrado + " m²"
+mostrar "Perímetro: " + perimetro + " m"
+
+mostrar ""
+mostrar "=== SISTEMA DE DESCUENTOS ==="
+variable precioOriginal = 1000
+variable descuento = redondear(aleatorio(10, 41))
+variable ahorro = precioOriginal * descuento / 100
+variable precioFinal = redondear(precioOriginal - ahorro)
+mostrar "Precio: $" + precioOriginal
+mostrar "Descuento sorpresa: " + descuento + "%"
+mostrar "Ahorras: $" + redondear(ahorro)
+mostrar "Pagas: $" + precioFinal`,
+        output:
+          "=== CALCULADORA DE PROPINAS ===\nCuenta: $156.5\nCon propina 15%: $180\nCon propina 20%: $188\n\n=== SIMULADOR DE DADO ===\nDado 1: 4\nDado 2: 6\nSuma: 10\n\n=== ANÁLISIS DE GASTOS ===\nTotal gastado: $1600\nGasto promedio: $320\nMayor gasto: $500\nMenor gasto: $150\n\n=== CALCULADORA DE ÁREA ===\nCuadrado de lado 5:\nÁrea: 25 m²\nPerímetro: 20 m\n\n=== SISTEMA DE DESCUENTOS ===\nPrecio: $1000\nDescuento sorpresa: 27%\nAhorras: $270\nPagas: $730",
+        notes: [
+          "Ejemplos completos de aplicaciones reales",
+          "",
+          "Calculadora de propinas:",
+          "✅ Redondear totales para facilitar pago",
+          "✅ Calcular múltiples opciones de propina",
+          "",
+          "Simulador de dado:",
+          "✅ Generar números aleatorios enteros",
+          "✅ Útil para juegos de mesa digitales",
+          "",
+          "Análisis de gastos:",
+          "✅ Encontrar totales y promedios",
+          "✅ Identificar mayor y menor gasto",
+          "",
+          "Calculadora de área:",
+          "✅ Usar potencias para áreas",
+          "✅ Cálculos geométricos básicos",
+          "",
+          "Sistema de descuentos:",
+          "✅ Generar ofertas aleatorias",
+          "✅ Calcular ahorros y precio final",
+          "",
+          "💡 Estos ejemplos se pueden expandir en aplicaciones completas",
+        ],
+      },
+      {
+        title: "Referencia Rápida: Todas las Funciones",
+        description:
+          "Tabla de referencia con todas las funciones matemáticas disponibles en HispanoLang.",
+        code: `// REDONDEO
+redondear(3.7)        // → 4
+techo(3.1)            // → 4
+piso(3.9)             // → 3
+
+// ALEATORIOS
+aleatorio()           // → 0.0 a 1.0
+aleatorio(10)         // → 0.0 a 10.0
+aleatorio(5, 15)      // → 5.0 a 15.0
+
+// POTENCIAS Y RAÍCES
+potencia(2, 3)        // → 8
+raiz(16)              // → 4
+
+// VALOR ABSOLUTO
+valorAbsoluto(-10)    // → 10
+
+// AGREGACIÓN
+maximo(10, 20, 5)     // → 20
+minimo(10, 20, 5)     // → 5
+suma(10, 20, 30)      // → 60
+promedio(10, 20, 30)  // → 20
+
+// TRIGONOMETRÍA
+seno(90)              // → 1
+coseno(0)             // → 1
+tangente(45)          // → 1
+
+// LOGARITMOS
+logaritmo(10)         // → 2.302`,
+        output: "",
+        notes: [
+          "📊 FUNCIONES MÁS ÚTILES (para principiantes):",
+          "⭐⭐⭐ redondear(), techo(), piso() - Esenciales",
+          "⭐⭐⭐ aleatorio() - Muy útil y divertido",
+          "⭐⭐⭐ maximo(), minimo(), suma(), promedio() - Análisis básico",
+          "⭐⭐ potencia(), raiz() - Cálculos comunes",
+          "⭐⭐ valorAbsoluto() - Distancias y diferencias",
+          "⭐ seno(), coseno(), tangente() - Solo si necesitas ángulos",
+          "⭐ logaritmo() - Avanzado, raramente necesario",
+          "",
+          "💡 Empieza con las 3 estrellas y aprende las demás cuando las necesites",
+          "",
+          "🔗 Todas retornan un valor que puedes:",
+          "• Guardar en variable",
+          "• Mostrar directamente",
+          "• Usar en cálculos",
+          "• Pasar a otras funciones",
+        ],
+      },
+    ],
+  },
   listas: {
     title: "📋 Listas (Arrays)",
     description:
@@ -3336,108 +3888,6 @@ para cada persona en personas {
           "Más limpio que un bucle para tradicional",
           "La variable del elemento es local al bucle",
           "Funciona con cualquier tipo de arreglo",
-        ],
-      },
-    ],
-  },
-  funcionesMatematicas: {
-    title: "🧮 Funciones Matemáticas",
-    description:
-      "HispanoLang incluye funciones matemáticas integradas para cálculos comunes: raíces, potencias, trigonometría, redondeo, y más.",
-    subsections: [
-      {
-        title: "Funciones Básicas",
-        description:
-          "Funciones matemáticas fundamentales para cálculos comunes.",
-        code: `// Raíz cuadrada
-variable r = raiz(16)  // 4
-
-// Potencia
-variable p = potencia(2, 3)  // 8 (2³)
-
-// Valor absoluto
-variable abs = valorAbsoluto(-5)  // 5
-
-// Logaritmo natural
-variable log = logaritmo(10)  // 2.302...`,
-        notes: [
-          "raiz(n): Raíz cuadrada de n",
-          "potencia(base, exponente): base elevado a exponente",
-          "valorAbsoluto(n): Valor absoluto (sin signo)",
-          "logaritmo(n): Logaritmo natural de n",
-        ],
-      },
-      {
-        title: "Funciones Trigonométricas",
-        description: "Funciones para cálculos trigonométricos.",
-        code: `variable s = seno(0)       // 0
-variable c = coseno(0)     // 1
-variable t = tangente(0)   // 0`,
-        notes: [
-          "seno(angulo): Calcula el seno",
-          "coseno(angulo): Calcula el coseno",
-          "tangente(angulo): Calcula la tangente",
-          "Los ángulos se miden en grados",
-        ],
-      },
-      {
-        title: "Funciones de Redondeo",
-        description:
-          "Convierten números decimales a enteros de diferentes formas.",
-        code: `variable n = 3.7
-
-variable r = redondear(n)  // 4 (redondea al más cercano)
-variable t = techo(n)      // 4 (siempre hacia arriba)
-variable p = piso(n)       // 3 (siempre hacia abajo)
-
-// Otros ejemplos
-mostrar redondear(3.2)  // 3
-mostrar techo(3.2)      // 4
-mostrar piso(3.8)       // 3`,
-        notes: [
-          "redondear(n): Redondea al entero más cercano",
-          "techo(n): Redondea hacia arriba (ceiling)",
-          "piso(n): Redondea hacia abajo (floor)",
-        ],
-      },
-      {
-        title: "Números Aleatorios",
-        description: "Genera números aleatorios en diferentes rangos.",
-        syntax: "aleatorio([min], [max])",
-        code: `// Entre 0 y 1
-variable r1 = aleatorio()  // 0.0 a 1.0
-
-// Entre 0 y max
-variable r2 = aleatorio(10)  // 0.0 a 10.0
-
-// Entre min y max
-variable r3 = aleatorio(5, 15)  // 5.0 a 15.0
-
-// Número entero aleatorio (1-6, como un dado)
-variable dado = piso(aleatorio(1, 7))`,
-        notes: [
-          "aleatorio(): Retorna número entre 0.0 y 1.0",
-          "aleatorio(max): Retorna número entre 0.0 y max",
-          "aleatorio(min, max): Retorna número entre min y max",
-          "Retorna números decimales, usa piso() o redondear() para enteros",
-        ],
-      },
-      {
-        title: "Funciones de Agregación",
-        description: "Funciones que operan sobre múltiples números.",
-        code: `// Máximo y mínimo
-variable max = maximo(10, 5, 8, 3)     // 10
-variable min = minimo(10, 5, 8, 3)     // 3
-
-// Suma y promedio
-variable total = suma(1, 2, 3, 4, 5)        // 15
-variable prom = promedio(10, 20, 30)        // 20`,
-        notes: [
-          "maximo(...): Retorna el número más grande",
-          "minimo(...): Retorna el número más pequeño",
-          "suma(...): Retorna la suma de todos los números",
-          "promedio(...): Retorna el promedio aritmético",
-          "Todas aceptan múltiples argumentos",
         ],
       },
     ],
