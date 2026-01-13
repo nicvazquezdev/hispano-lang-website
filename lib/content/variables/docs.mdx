@@ -1,0 +1,96 @@
+# 📦 Variables
+
+Una variable es como una caja donde guardas información. Le pones un nombre a la caja para saber qué hay adentro. Por ejemplo, una caja llamada `likes` que guarda el número de me gusta en una publicación de Instagram.
+
+## Creando Variables
+
+Imagina que estás en Instagram mirando una publicación. Hay información que se guarda: cuántos likes tiene, quién la publicó, cuántos comentarios hay. Todo eso se guarda en variables.
+
+<Syntax>variable nombre = valor</Syntax>
+
+<Code code={`variable nombreUsuario = "maria_gomez"
+variable likes = 127
+variable comentarios = 45
+
+mostrar nombreUsuario
+mostrar likes
+mostrar comentarios`} />
+
+<Output text={`maria_gomez
+127
+45`} />
+
+- Escribimos `variable` para crear una caja nueva donde guardar información
+- El nombre de la variable va sin comillas: `likes`, `nombreUsuario`, `comentarios`
+- Los números van sin comillas: `127`, `45`
+- El texto va entre comillas: `"maria_gomez"`
+- La palabra `mostrar` hace que aparezca en pantalla lo que está guardado en la variable
+
+## Cambiando lo que Está Guardado
+
+Cuando alguien le da "me gusta" a la publicación de Instagram, el número de likes tiene que aumentar. Necesitamos cambiar lo que está guardado en la variable.
+
+<Code code={`variable likes = 127
+mostrar likes
+
+likes = 128
+mostrar likes
+
+likes = 130
+mostrar likes`} />
+
+<Output text={`127
+128
+130`} />
+
+Para cambiar el valor, NO escribas `variable` de nuevo. Solo escribe el nombre de la variable y el nuevo valor: `likes = 128`. El número viejo se borra y entra el nuevo.
+
+## Haciendo Cálculos con Variables
+
+En vez de escribir el número nuevo cada vez, podemos hacer una cuenta. Si la publicación tenía 127 likes y llegan 5 más, podemos sumarle 5 al número que ya estaba guardado.
+
+<Code code={`variable likes = 127
+mostrar likes
+
+likes = likes + 5
+mostrar likes
+
+likes = likes + 10
+mostrar likes`} />
+
+<Output text={`127
+132
+142`} />
+
+`likes + 5` significa: agarra el número que hay en likes (127) y súmale 5. El resultado de la suma (132) se guarda de vuelta en likes. Funciona con suma (`+`), resta (`-`), multiplicación (`*`) y división (`/`).
+
+## Atajos para Operaciones
+
+Cuando quieres sumar, restar, multiplicar o dividir el valor actual de una variable, hay atajos más cortos que escribir `likes = likes + 5`.
+
+<Code code={`variable seguidores = 100
+mostrar seguidores
+
+seguidores += 25
+mostrar seguidores
+
+seguidores -= 10
+mostrar seguidores
+
+variable precio = 50
+precio *= 2
+mostrar precio
+
+precio /= 4
+mostrar precio`} />
+
+<Output text={`100
+125
+115
+100
+25`} />
+
+- `seguidores += 25` es lo mismo que `seguidores = seguidores + 25`
+- `seguidores -= 10` es lo mismo que `seguidores = seguidores - 10`
+- `precio *= 2` es lo mismo que `precio = precio * 2`
+- `precio /= 4` es lo mismo que `precio = precio / 4`
