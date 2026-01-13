@@ -4519,78 +4519,697 @@ lista.todos(fn)             // ¿Todos cumplen?`,
   objetos: {
     title: "🗂️ Objetos",
     description:
-      "Los objetos permiten almacenar datos estructurados usando pares clave-valor. Son ideales para representar entidades con múltiples propiedades.",
+      "Imagina tu perfil de Instagram o Facebook: tienes nombre, usuario, bio, cantidad de seguidores, foto de perfil... Son varios datos relacionados que describen QUIÉN eres. En vez de tener variables separadas (nombre, usuario, bio, seguidores), usas UN objeto que agrupa todo. Los objetos son perfectos para representar entidades con múltiples propiedades usando pares clave-valor, como tu perfil digital.",
     subsections: [
       {
-        title: "Creación de Objetos",
+        title: "¿Qué son los Objetos?",
         description:
-          "Los objetos se crean con llaves {} y contienen pares clave:valor separados por comas.",
+          "Tu perfil de Instagram tiene campos: nombre, usuario, bio, seguidores, seguidos, verificado. No es una lista de valores aleatorios, cada dato tiene un nombre específico.\n\nLos objetos agrupan datos relacionados con nombres (claves) que los identifican.",
         syntax: "variable objeto = { clave1: valor1, clave2: valor2 }",
-        code: `variable persona = {
-    nombre: "Juan",
-    edad: 30,
-    ciudad: "Madrid"
+        code: `variable perfil = {
+    nombre: "Juan Pérez",
+    usuario: "@juanperez",
+    bio: "Desarrollador",
+    seguidores: 1500,
+    seguidos: 300,
+    verificado: falso
 }
 
-// Objeto vacío
-variable vacio = {}`,
+mostrar perfil
+
+variable producto = {
+    nombre: "Mouse Gamer",
+    precio: 150,
+    marca: "Logitech",
+    stock: 25
+}
+
+mostrar producto
+
+variable vacio = {}
+mostrar "Perfil vacío: " + texto(vacio)`,
+        output:
+          '{ nombre: "Juan Pérez", usuario: "@juanperez", bio: "Desarrollador", seguidores: 1500, seguidos: 300, verificado: falso }\n{ nombre: "Mouse Gamer", precio: 150, marca: "Logitech", stock: 25 }\nPerfil vacío: {}',
         notes: [
-          "Usa llaves {} para crear objetos",
-          "Cada propiedad tiene una clave y un valor separados por :",
-          "Las propiedades se separan con comas",
-          "Las claves no necesitan comillas (a menos que tengan espacios)",
-          "Los valores pueden ser de cualquier tipo",
+          "Los objetos se crean con llaves: {}",
+          "Contienen pares clave:valor separados por comas",
+          "Sintaxis: { clave1: valor1, clave2: valor2 }",
+          "Las claves (nombres) identifican cada valor",
+          "Los valores pueden ser cualquier tipo",
+          "",
+          "¿Cuándo usar objetos?",
+          "✅ Representar una entidad (persona, producto, perfil)",
+          "✅ Datos con nombres significativos",
+          "✅ Propiedades relacionadas agrupadas",
+          "",
+          "Como tu perfil de red social:",
+          "• Nombre: Juan Pérez",
+          "• Usuario: @juanperez",
+          "• Bio: Desarrollador",
+          "• Seguidores: 1500",
+          "Cada campo tiene un nombre claro",
         ],
       },
       {
-        title: "Acceso a Propiedades",
+        title: "Acceder a Propiedades: Leer tu Perfil",
         description:
-          "Usa la notación de punto para acceder o modificar propiedades de un objeto.",
-        syntax: "objeto.propiedad",
-        code: `variable persona = {
-    nombre: "Juan",
-    edad: 30
+          "Como cuando abres tu perfil y ves tu nombre, tu bio, tus seguidores... Usas la notación de punto (objeto.propiedad) para acceder a cada campo.",
+        code: `variable perfil = {
+    nombre: "Ana García",
+    usuario: "@anagarcia",
+    seguidores: 2500,
+    seguidos: 180,
+    verificado: verdadero
 }
 
-// Leer propiedades
-mostrar persona.nombre  // "Juan"
-mostrar persona.edad    // 30
+mostrar "Nombre: " + perfil.nombre
+mostrar "Usuario: " + perfil.usuario
+mostrar "Seguidores: " + texto(perfil.seguidores)
+mostrar "Seguidos: " + texto(perfil.seguidos)
+mostrar "Verificado: " + texto(perfil.verificado)
 
-// Modificar propiedades
-persona.edad = 31
+variable producto = {
+    nombre: "Teclado",
+    precio: 300,
+    stock: 15
+}
 
-// Agregar nuevas propiedades
-persona.ciudad = "Madrid"
-persona.telefono = "123456789"`,
+mostrar ""
+mostrar "Producto: " + producto.nombre
+mostrar "Precio: $" + texto(producto.precio)
+mostrar "Stock: " + texto(producto.stock) + " unidades"`,
+        output:
+          "Nombre: Ana García\nUsuario: @anagarcia\nSeguidores: 2500\nSeguidos: 180\nVerificado: verdadero\n\nProducto: Teclado\nPrecio: $300\nStock: 15 unidades",
         notes: [
-          "Usa objeto.propiedad para acceder",
-          "Puedes modificar propiedades existentes",
-          "Puedes agregar nuevas propiedades en cualquier momento",
-          "Acceder a una propiedad que no existe retorna indefinido",
+          "Acceso con punto: objeto.propiedad",
+          "perfil.nombre → 'Ana García'",
+          "perfil.seguidores → 2500",
+          "",
+          "Como leer tu perfil:",
+          "• perfil.nombre - ver tu nombre",
+          "• perfil.usuario - ver tu @usuario",
+          "• perfil.seguidores - ver cuántos seguidores",
+          "",
+          "Diferencia con listas:",
+          "• Lista: lista[0], lista[1] (posición numérica)",
+          "• Objeto: objeto.nombre, objeto.usuario (nombre significativo)",
+          "",
+          "💡 Las claves son como los campos de un formulario",
+          "💡 Más legible que índices numéricos",
+          "💡 Acceder a propiedad inexistente → indefinido",
         ],
       },
       {
-        title: "Objetos Anidados",
+        title: "Modificar Propiedades: Actualizar tu Perfil",
         description:
-          "Los objetos pueden contener otros objetos como propiedades, creando estructuras jerárquicas.",
-        code: `variable empresa = {
-    nombre: "TechCorp",
-    empleados: 150,
+          "Como cuando editas tu bio, cambias tu foto de perfil, o actualizas tu nombre. Puedes modificar propiedades existentes o agregar nuevas.",
+        code: `variable perfil = {
+    nombre: "Carlos López",
+    usuario: "@carlos",
+    seguidores: 500
+}
+
+mostrar "Perfil original: " + texto(perfil)
+
+perfil.seguidores = 600
+mostrar "Después de ganar seguidores: " + texto(perfil.seguidores)
+
+perfil.nombre = "Carlos López Pérez"
+mostrar "Nombre actualizado: " + perfil.nombre
+
+perfil.bio = "Fotógrafo profesional"
+mostrar "Bio agregada: " + perfil.bio
+
+perfil.verificado = verdadero
+perfil.ciudad = "Buenos Aires"
+
+mostrar ""
+mostrar "Perfil completo actualizado:"
+mostrar "Nombre: " + perfil.nombre
+mostrar "Usuario: " + perfil.usuario
+mostrar "Bio: " + perfil.bio
+mostrar "Seguidores: " + texto(perfil.seguidores)
+mostrar "Verificado: " + texto(perfil.verificado)
+mostrar "Ciudad: " + perfil.ciudad`,
+        output:
+          'Perfil original: { nombre: "Carlos López", usuario: "@carlos", seguidores: 500 }\nDespués de ganar seguidores: 600\nNombre actualizado: Carlos López Pérez\nBio agregada: Fotógrafo profesional\n\nPerfil completo actualizado:\nNombre: Carlos López Pérez\nUsuario: @carlos\nBio: Fotógrafo profesional\nSeguidores: 600\nVerificado: verdadero\nCiudad: Buenos Aires',
+        notes: [
+          "Modificar existente: objeto.propiedad = nuevoValor",
+          "Agregar nueva: objeto.nuevaPropiedad = valor",
+          "Los objetos son dinámicos (pueden crecer)",
+          "",
+          "Como editar tu perfil:",
+          "• perfil.bio = 'Nueva bio' - actualizar bio",
+          "• perfil.seguidores = 1000 - actualizar contador",
+          "• perfil.ciudad = 'Madrid' - agregar campo nuevo",
+          "",
+          "Modificar vs Agregar:",
+          "• Si existe → modifica el valor",
+          "• Si no existe → crea la propiedad",
+          "",
+          "Diferencia con listas:",
+          "• Lista: tamaño fijo, índices numéricos",
+          "• Objeto: dinámico, propiedades con nombre",
+          "",
+          "💡 Puedes agregar propiedades en cualquier momento",
+          "💡 No necesitas declarar todas desde el inicio",
+        ],
+      },
+      {
+        title: "Objetos vs Listas: ¿Cuándo Usar Cada Uno?",
+        description:
+          "¿Lista de seguidores o perfil de usuario? Entender cuándo usar listas y cuándo usar objetos es fundamental.",
+        code: `mostrar "=== LISTA: COLECCIÓN ORDENADA ==="
+variable seguidores = ["@ana", "@pedro", "@luis", "@maria"]
+mostrar "Seguidores: " + texto(seguidores)
+mostrar "Primero: " + seguidores[0]
+mostrar "Segundo: " + seguidores[1]
+mostrar "Total: " + texto(seguidores.longitud())
+
+mostrar ""
+mostrar "=== OBJETO: DATOS ESTRUCTURADOS ==="
+variable perfil = {
+    nombre: "Juan Pérez",
+    usuario: "@juan",
+    seguidores: 1500,
+    seguidos: 300,
+    verificado: falso
+}
+
+mostrar "Nombre: " + perfil.nombre
+mostrar "Usuario: " + perfil.usuario
+mostrar "Seguidores: " + texto(perfil.seguidores)
+
+mostrar ""
+mostrar "=== COMBINADOS ==="
+variable perfilCompleto = {
+    nombre: "Ana García",
+    usuario: "@ana",
+    posts: ["Foto1", "Foto2", "Foto3"],
+    seguidores: 2500
+}
+
+mostrar "Usuario: " + perfilCompleto.usuario
+mostrar "Posts: " + texto(perfilCompleto.posts)
+mostrar "Primer post: " + perfilCompleto.posts[0]`,
+        output:
+          '=== LISTA: COLECCIÓN ORDENADA ===\nSeguidores: ["@ana", "@pedro", "@luis", "@maria"]\nPrimero: @ana\nSegundo: @pedro\nTotal: 4\n\n=== OBJETO: DATOS ESTRUCTURADOS ===\nNombre: Juan Pérez\nUsuario: @juan\nSeguidores: 1500\n\n=== COMBINADOS ===\nUsuario: @ana\nPosts: ["Foto1", "Foto2", "Foto3"]\nPrimer post: Foto1',
+        notes: [
+          "USA LISTAS cuando:",
+          "✅ Colección de elementos similares",
+          "✅ El orden importa",
+          "✅ Acceso por posición (índice)",
+          "✅ Ejemplos: lista de seguidores, posts, comentarios",
+          "",
+          "USA OBJETOS cuando:",
+          "✅ Datos con nombres específicos",
+          "✅ Representar una entidad",
+          "✅ Acceso por nombre de propiedad",
+          "✅ Ejemplos: perfil de usuario, producto, configuración",
+          "",
+          "Comparación visual:",
+          "",
+          "Lista de seguidores:",
+          "['@ana', '@pedro', '@luis']",
+          "Acceso: seguidores[0], seguidores[1]",
+          "",
+          "Perfil de usuario:",
+          "{ nombre: 'Ana', usuario: '@ana', seguidores: 1500 }",
+          "Acceso: perfil.nombre, perfil.usuario",
+          "",
+          "💡 Puedes combinarlos: objeto con lista como propiedad",
+          "💡 Lista de objetos: agenda de contactos, inventario",
+        ],
+      },
+      {
+        title: "Objetos Anidados: Perfil con Dirección",
+        description:
+          "Como cuando tu perfil tiene una sección 'Dirección' con calle, ciudad, país... Un objeto puede contener otros objetos, creando estructura jerárquica.",
+        code: `variable perfil = {
+    nombre: "María González",
+    usuario: "@maria",
     direccion: {
         calle: "Av. Principal 123",
         ciudad: "Madrid",
+        pais: "España",
         codigoPostal: "28001"
+    },
+    verificado: verdadero
+}
+
+mostrar "Nombre: " + perfil.nombre
+mostrar "Ciudad: " + perfil.direccion.ciudad
+mostrar "País: " + perfil.direccion.pais
+mostrar "Código postal: " + perfil.direccion.codigoPostal
+
+mostrar ""
+mostrar "=== PRODUCTO CON ESPECIFICACIONES ==="
+variable producto = {
+    nombre: "Laptop",
+    precio: 50000,
+    especificaciones: {
+        procesador: "Intel i7",
+        ram: "16GB",
+        almacenamiento: "512GB SSD",
+        pantalla: "15.6 pulgadas"
+    },
+    stock: 10
+}
+
+mostrar "Producto: " + producto.nombre
+mostrar "Precio: $" + texto(producto.precio)
+mostrar "Procesador: " + producto.especificaciones.procesador
+mostrar "RAM: " + producto.especificaciones.ram
+mostrar "Pantalla: " + producto.especificaciones.pantalla`,
+        output:
+          "Nombre: María González\nCiudad: Madrid\nPaís: España\nCódigo postal: 28001\n\n=== PRODUCTO CON ESPECIFICACIONES ===\nProducto: Laptop\nPrecio: $50000\nProcesador: Intel i7\nRAM: 16GB\nPantalla: 15.6 pulgadas",
+        notes: [
+          "Objetos anidados: objetos dentro de objetos",
+          "Acceso multinivel: objeto.sub.propiedad",
+          "perfil.direccion.ciudad → 'Madrid'",
+          "",
+          "Como secciones en tu perfil:",
+          "• Perfil principal: nombre, usuario",
+          "• Dirección: calle, ciudad, país",
+          "• Contacto: email, teléfono",
+          "",
+          "Sintaxis:",
+          "variable perfil = {",
+          "    nombre: 'Ana',",
+          "    direccion: {",
+          "        ciudad: 'Madrid',",
+          "        pais: 'España'",
+          "    }",
+          "}",
+          "",
+          "Acceso:",
+          "• perfil.nombre → 'Ana'",
+          "• perfil.direccion.ciudad → 'Madrid'",
+          "",
+          "Casos de uso:",
+          "✅ Dirección (calle, ciudad, país)",
+          "✅ Especificaciones técnicas",
+          "✅ Configuración anidada",
+          "✅ Datos jerárquicos",
+          "",
+          "💡 Puedes anidar cuantos niveles necesites",
+        ],
+      },
+      {
+        title: "Lista de Objetos: Red Social Completa",
+        description:
+          "El patrón más común: una lista de objetos. Como tu feed de Instagram: cada post es un objeto con autor, imagen, likes, comentarios...",
+        code: `variable usuarios = [
+    {
+        nombre: "Ana García",
+        usuario: "@ana",
+        seguidores: 2500,
+        verificado: verdadero
+    },
+    {
+        nombre: "Pedro López",
+        usuario: "@pedro",
+        seguidores: 800,
+        verificado: falso
+    },
+    {
+        nombre: "Luis Martínez",
+        usuario: "@luis",
+        seguidores: 3200,
+        verificado: verdadero
+    }
+]
+
+mostrar "=== TODOS LOS USUARIOS ==="
+usuarios.recorrer(funcion(usuario, i) {
+    mostrar (i + 1).aTexto() + ". " + usuario.nombre + " (" + usuario.usuario + ")"
+    mostrar "   Seguidores: " + texto(usuario.seguidores)
+})
+
+mostrar ""
+mostrar "=== VERIFICADOS ==="
+variable verificados = usuarios.filtrar(funcion(u) {
+    retornar u.verificado
+})
+mostrar "Usuarios verificados: " + texto(verificados.longitud())
+
+mostrar ""
+mostrar "=== INFLUENCERS (>1000) ==="
+variable influencers = usuarios.filtrar(funcion(u) {
+    retornar u.seguidores > 1000
+})
+
+influencers.recorrer(funcion(inf) {
+    mostrar inf.nombre + ": " + texto(inf.seguidores) + " seguidores"
+})`,
+        output:
+          "=== TODOS LOS USUARIOS ===\n1. Ana García (@ana)\n   Seguidores: 2500\n2. Pedro López (@pedro)\n   Seguidores: 800\n3. Luis Martínez (@luis)\n   Seguidores: 3200\n\n=== VERIFICADOS ===\nUsuarios verificados: 2\n\n=== INFLUENCERS (>1000) ===\nAna García: 2500 seguidores\nLuis Martínez: 3200 seguidores",
+        notes: [
+          "Lista de objetos: patrón fundamental",
+          "Cada elemento es un objeto completo",
+          "Sintaxis: [ {obj1}, {obj2}, {obj3} ]",
+          "",
+          "Acceso:",
+          "• usuarios[0] → primer objeto completo",
+          "• usuarios[0].nombre → propiedad del primer objeto",
+          "• usuarios[1].seguidores → seguidores del segundo",
+          "",
+          "Métodos de lista funcionan:",
+          "• .recorrer() - procesar cada perfil",
+          "• .filtrar() - usuarios verificados, influencers",
+          "• .mapear() - extraer solo nombres",
+          "• .buscar() - encontrar por username",
+          "",
+          "Como tu feed de Instagram:",
+          "• Cada post es un objeto",
+          "• Feed completo es lista de posts",
+          "• Filtras posts de seguidos",
+          "• Mapeas para extraer imágenes",
+          "",
+          "Casos de uso:",
+          "✅ Lista de usuarios",
+          "✅ Inventario de productos",
+          "✅ Agenda de contactos",
+          "✅ Posts de blog",
+          "✅ Transacciones bancarias",
+          "",
+          "💡 Este patrón está en TODA aplicación web",
+        ],
+      },
+      {
+        title: "Funciones con Objetos: Pasar Perfiles",
+        description:
+          "Como cuando compartes un perfil o envías tus datos a una función. Los objetos se pasan completos como argumentos.",
+        code: `funcion mostrarPerfil(usuario) {
+    mostrar "=== PERFIL ==="
+    mostrar "Nombre: " + usuario.nombre
+    mostrar "Usuario: " + usuario.usuario
+    mostrar "Seguidores: " + texto(usuario.seguidores)
+    mostrar "Verificado: " + (usuario.verificado ? "✓" : "✗")
+}
+
+variable ana = {
+    nombre: "Ana García",
+    usuario: "@ana",
+    seguidores: 2500,
+    verificado: verdadero
+}
+
+mostrarPerfil(ana)
+
+mostrar ""
+funcion agregarSeguidores(usuario, cantidad) {
+    usuario.seguidores = usuario.seguidores + cantidad
+    mostrar usuario.nombre + " ahora tiene " + texto(usuario.seguidores) + " seguidores"
+}
+
+agregarSeguidores(ana, 100)
+agregarSeguidores(ana, 50)
+
+mostrar ""
+funcion crearPerfil(nombre, usuario) {
+    retornar {
+        nombre: nombre,
+        usuario: usuario,
+        seguidores: 0,
+        seguidos: 0,
+        verificado: falso
     }
 }
 
-// Acceso multinivel
-mostrar empresa.nombre                    // "TechCorp"
-mostrar empresa.direccion.ciudad          // "Madrid"
-mostrar empresa.direccion.codigoPostal    // "28001"`,
+variable nuevoPerfil = crearPerfil("Pedro López", "@pedro")
+mostrarPerfil(nuevoPerfil)`,
+        output:
+          "=== PERFIL ===\nNombre: Ana García\nUsuario: @ana\nSeguidores: 2500\nVerificado: ✓\n\nAna García ahora tiene 2600 seguidores\nAna García ahora tiene 2650 seguidores\n\n=== PERFIL ===\nNombre: Pedro López\nUsuario: @pedro\nSeguidores: 0\nVerificado: ✗",
         notes: [
-          "Usa múltiples puntos para acceder a objetos anidados",
-          "Puedes tener tantos niveles como necesites",
-          "Útil para organizar datos complejos jerárquicamente",
+          "Pasar objetos a funciones:",
+          "funcion procesarPerfil(usuario) { ... }",
+          "",
+          "Modificar propiedades:",
+          "• Los objetos se pasan por referencia",
+          "• Modificaciones afectan el original",
+          "• usuario.seguidores += 100 → modifica original",
+          "",
+          "Retornar objetos:",
+          "funcion crearPerfil(...) {",
+          "    retornar { nombre: ..., usuario: ... }",
+          "}",
+          "",
+          "Casos de uso:",
+          "✅ Validar perfil completo",
+          "✅ Actualizar múltiples propiedades",
+          "✅ Crear perfiles nuevos",
+          "✅ Formatear para mostrar",
+          "✅ Calcular estadísticas",
+          "",
+          "Patrones comunes:",
+          "1. Función muestra: recibe objeto, muestra bonito",
+          "2. Función modifica: recibe objeto, actualiza props",
+          "3. Función crea: retorna nuevo objeto",
+          "",
+          "💡 Objetos permiten pasar muchos datos como uno solo",
+          "💡 Más limpio que 10 parámetros separados",
+        ],
+      },
+      {
+        title: "Transformar Lista de Objetos: Operaciones Comunes",
+        description:
+          "Combina objetos con métodos de listas para operaciones poderosas: extraer nombres, calcular totales, filtrar por criterio...",
+        code: `variable productos = [
+    { nombre: "Mouse", precio: 150, stock: 25 },
+    { nombre: "Teclado", precio: 300, stock: 15 },
+    { nombre: "Monitor", precio: 2000, stock: 8 },
+    { nombre: "WebCam", precio: 500, stock: 12 }
+]
+
+mostrar "=== NOMBRES DE PRODUCTOS ==="
+variable nombres = productos.mapear(funcion(p) {
+    retornar p.nombre
+})
+mostrar nombres.unir(", ")
+
+mostrar ""
+mostrar "=== PRODUCTOS DISPONIBLES (stock > 10) ==="
+variable disponibles = productos.filtrar(funcion(p) {
+    retornar p.stock > 10
+})
+
+disponibles.recorrer(funcion(p) {
+    mostrar p.nombre + ": " + texto(p.stock) + " unidades"
+})
+
+mostrar ""
+mostrar "=== VALOR TOTAL INVENTARIO ==="
+variable valorTotal = productos.reducir(funcion(acc, p) {
+    retornar acc + (p.precio * p.stock)
+}, 0)
+
+mostrar "Valor total: $" + texto(valorTotal)
+
+mostrar ""
+mostrar "=== APLICAR DESCUENTO 10% ==="
+variable conDescuento = productos.mapear(funcion(p) {
+    retornar {
+        nombre: p.nombre,
+        precioOriginal: p.precio,
+        precioFinal: p.precio * 0.9,
+        stock: p.stock
+    }
+})
+
+conDescuento.recorrer(funcion(p) {
+    mostrar p.nombre + ": $" + texto(p.precioOriginal) + " → $" + texto(p.precioFinal)
+})`,
+        output:
+          "=== NOMBRES DE PRODUCTOS ===\nMouse, Teclado, Monitor, WebCam\n\n=== PRODUCTOS DISPONIBLES (stock > 10) ===\nMouse: 25 unidades\nTeclado: 15 unidades\nWebCam: 12 unidades\n\n=== VALOR TOTAL INVENTARIO ===\nValor total: $24950\n\n=== APLICAR DESCUENTO 10% ===\nMouse: $150 → $135\nTeclado: $300 → $270\nMonitor: $2000 → $1800\nWebCam: $500 → $450",
+        notes: [
+          "Operaciones comunes con lista de objetos:",
+          "",
+          "🔍 EXTRAER PROPIEDAD (.mapear):",
+          "productos.mapear(p => p.nombre)",
+          "→ lista de solo nombres",
+          "",
+          "🎯 FILTRAR POR CRITERIO (.filtrar):",
+          "productos.filtrar(p => p.stock > 10)",
+          "→ solo productos con stock suficiente",
+          "",
+          "📊 CALCULAR TOTAL (.reducir):",
+          "productos.reducir((acc, p) => acc + p.precio, 0)",
+          "→ suma de todos los precios",
+          "",
+          "🔄 TRANSFORMAR OBJETOS (.mapear):",
+          "productos.mapear(p => { ...p, precioConIVA: p.precio * 1.21 })",
+          "→ nuevos objetos con propiedad extra",
+          "",
+          "Casos de uso:",
+          "✅ Extraer emails de usuarios",
+          "✅ Filtrar productos en stock",
+          "✅ Calcular total de carrito",
+          "✅ Aplicar descuentos masivos",
+          "✅ Generar reportes",
+          "",
+          "💡 Combina filtrar → mapear → reducir",
+          "💡 Pipeline de datos poderoso",
+        ],
+      },
+      {
+        title: "Casos de Uso Completos",
+        description:
+          "Ejemplos reales completos: sistema de usuarios, inventario de productos, y red social básica.",
+        code: `mostrar "=== SISTEMA DE USUARIOS ==="
+
+variable usuarios = [
+    { nombre: "Ana", edad: 25, rol: "admin", activo: verdadero },
+    { nombre: "Pedro", edad: 30, rol: "usuario", activo: verdadero },
+    { nombre: "Luis", edad: 22, rol: "usuario", activo: falso },
+    { nombre: "María", edad: 28, rol: "moderador", activo: verdadero }
+]
+
+variable activos = usuarios.filtrar(funcion(u) { retornar u.activo })
+mostrar "Usuarios activos: " + texto(activos.longitud())
+
+variable admins = usuarios.filtrar(funcion(u) { retornar u.rol == "admin" })
+mostrar "Administradores: " + texto(admins.longitud())
+
+mostrar ""
+mostrar "=== INVENTARIO DE PRODUCTOS ==="
+
+variable inventario = [
+    { id: 1, nombre: "Mouse", precio: 150, stock: 25, categoria: "perifericos" },
+    { id: 2, nombre: "Teclado", precio: 300, stock: 15, categoria: "perifericos" },
+    { id: 3, nombre: "Monitor", precio: 2000, stock: 0, categoria: "pantallas" }
+]
+
+variable sinStock = inventario.filtrar(funcion(p) { retornar p.stock == 0 })
+mostrar "Productos sin stock: " + texto(sinStock.longitud())
+
+variable perifericos = inventario.filtrar(funcion(p) { retornar p.categoria == "perifericos" })
+mostrar "Periféricos disponibles: " + texto(perifericos.longitud())
+
+variable valorInventario = inventario.reducir(funcion(acc, p) {
+    retornar acc + (p.precio * p.stock)
+}, 0)
+mostrar "Valor total: $" + texto(valorInventario)
+
+mostrar ""
+mostrar "=== RED SOCIAL ==="
+
+variable posts = [
+    { autor: "@ana", texto: "¡Hola mundo!", likes: 150, comentarios: 12 },
+    { autor: "@pedro", texto: "Nuevo proyecto", likes: 85, comentarios: 5 },
+    { autor: "@ana", texto: "Tutorial completo", likes: 320, comentarios: 45 }
+]
+
+variable postsAna = posts.filtrar(funcion(p) { retornar p.autor == "@ana" })
+mostrar "Posts de @ana: " + texto(postsAna.longitud())
+
+variable totalLikes = posts.reducir(funcion(acc, p) { retornar acc + p.likes }, 0)
+mostrar "Total likes: " + texto(totalLikes)
+
+variable populares = posts.filtrar(funcion(p) { retornar p.likes > 100 })
+mostrar "Posts populares: " + texto(populares.longitud())`,
+        output:
+          "=== SISTEMA DE USUARIOS ===\nUsuarios activos: 3\nAdministradores: 1\n\n=== INVENTARIO DE PRODUCTOS ===\nProductos sin stock: 1\nPeriféricos disponibles: 2\nValor total: $8250\n\n=== RED SOCIAL ===\nPosts de @ana: 2\nTotal likes: 555\nPosts populares: 2",
+        notes: [
+          "Ejemplos completos de aplicaciones reales:",
+          "",
+          "👥 SISTEMA DE USUARIOS:",
+          "• Lista de usuarios con roles",
+          "• Filtrar por estado (activo/inactivo)",
+          "• Filtrar por rol (admin, usuario, moderador)",
+          "• Gestión de permisos",
+          "",
+          "📦 INVENTARIO:",
+          "• Lista de productos con propiedades",
+          "• Filtrar sin stock",
+          "• Filtrar por categoría",
+          "• Calcular valor total",
+          "",
+          "📱 RED SOCIAL:",
+          "• Lista de posts con estadísticas",
+          "• Filtrar por autor",
+          "• Calcular totales (likes, comentarios)",
+          "• Identificar contenido popular",
+          "",
+          "Patrones aplicados:",
+          "✅ Lista de objetos",
+          "✅ Filtrar por propiedades",
+          "✅ Reducir para totales",
+          "✅ Contar con .longitud()",
+          "",
+          "💡 Estos patrones están en Facebook, Instagram, Amazon...",
+          "💡 Base de toda aplicación web moderna",
+        ],
+      },
+      {
+        title: "Referencia Rápida: Objetos",
+        description:
+          "Tabla de referencia completa con todo lo que necesitas saber sobre objetos en HispanoLang.",
+        code: `variable perfil = {
+    nombre: "Ana",
+    edad: 25
+}
+
+perfil.nombre                    // Acceso: "Ana"
+perfil.edad = 26                 // Modificar
+perfil.ciudad = "Madrid"         // Agregar
+
+variable empresa = {
+    nombre: "TechCorp",
+    direccion: {
+        ciudad: "Madrid",
+        pais: "España"
+    }
+}
+
+empresa.direccion.ciudad         // Anidado: "Madrid"
+
+variable usuarios = [
+    { nombre: "Ana", edad: 25 },
+    { nombre: "Pedro", edad: 30 }
+]
+
+usuarios[0].nombre               // "Ana"
+usuarios.filtrar(u => u.edad > 25)
+usuarios.mapear(u => u.nombre)`,
+        output: "",
+        notes: [
+          "📊 OPERACIONES CON OBJETOS:",
+          "",
+          "🔨 CREAR:",
+          "• Sintaxis: { clave: valor, clave2: valor2 }",
+          "• Vacío: {}",
+          "",
+          "🔍 ACCEDER:",
+          "• Leer: objeto.propiedad",
+          "• Anidado: objeto.sub.propiedad",
+          "",
+          "✏️ MODIFICAR:",
+          "• Cambiar: objeto.propiedad = nuevoValor",
+          "• Agregar: objeto.nuevaProp = valor",
+          "",
+          "📋 LISTAS DE OBJETOS:",
+          "• Crear: [ {obj1}, {obj2} ]",
+          "• Acceso: lista[0].propiedad",
+          "• Filtrar: lista.filtrar(x => x.prop > 10)",
+          "• Mapear: lista.mapear(x => x.nombre)",
+          "• Reducir: lista.reducir((acc, x) => acc + x.precio, 0)",
+          "",
+          "🔄 CON FUNCIONES:",
+          "• Pasar: funcion(objeto) { ... }",
+          "• Retornar: funcion() { retornar {...} }",
+          "",
+          "💡 CUÁNDO USAR:",
+          "✅ Objetos: datos con nombres (perfil, producto)",
+          "✅ Listas: colección ordenada (seguidores, posts)",
+          "✅ Lista de objetos: múltiples entidades (usuarios, inventario)",
+          "",
+          "🎯 PATRONES COMUNES:",
+          "• Perfil de usuario",
+          "• Producto en inventario",
+          "• Post en red social",
+          "• Contacto en agenda",
+          "• Transacción bancaria",
         ],
       },
     ],
