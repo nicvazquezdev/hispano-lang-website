@@ -3950,62 +3950,666 @@ intentar {
   conversionTipos: {
     title: "🔄 Conversión de Tipos",
     description:
-      "Funciones integradas para convertir valores entre diferentes tipos de datos: entero(), decimal(), texto(), booleano() y tipo().",
+      "Cuando llenas un formulario web, todo lo que escribes es texto: tu edad '25', tu teléfono '123456789', incluso si marcas una casilla 'verdadero' o 'falso'. Pero para hacer cálculos, validaciones o comparaciones, necesitas convertir ese texto a números o booleanos. Las funciones de conversión son como traductores que transforman datos de un tipo a otro sin cambiar su valor.",
     subsections: [
       {
-        title: "Funciones de Conversión",
-        description: "Convierte valores a tipos específicos.",
-        code: `// entero(valor) - Convierte a número entero
-mostrar entero("42")        // 42
-mostrar entero("3.7")       // 3 (trunca decimales)
-mostrar entero(3.9)         // 3
-mostrar entero(verdadero)   // 1
-mostrar entero(falso)       // 0
+        title: "¿Por Qué Convertir Tipos?",
+        description:
+          "Imagina un formulario de registro en una página web. Tienes un campo para 'Edad'. Escribes '25'. Para la computadora, eso es texto: la letra '2' seguida de la letra '5', no el número veinticinco.\n\nSi intentas hacer cálculos o comparaciones con ese texto, obtienes resultados incorrectos. Necesitas convertir el texto '25' al número 25.",
+        code: `variable edadTexto = "25"
+mostrar "Tipo: " + tipo(edadTexto)
+mostrar "Valor: " + edadTexto
 
-// decimal(valor) - Convierte a número decimal
-mostrar decimal("3.14")     // 3.14
-mostrar decimal("42")       // 42.0
-mostrar decimal(verdadero)  // 1.0
+variable edadNumero = entero(edadTexto)
+mostrar "Tipo: " + tipo(edadNumero)
+mostrar "Valor: " + edadNumero
 
-// texto(valor) - Convierte a cadena de texto
-mostrar texto(123)          // "123"
-mostrar texto(3.14)         // "3.14"
-mostrar texto(verdadero)    // "verdadero"
-mostrar texto([1, 2, 3])    // "[1, 2, 3]"`,
+si edadNumero >= 18 {
+    mostrar "Mayor de edad"
+} sino {
+    mostrar "Menor de edad"
+}
+
+variable precioTexto = "99.99"
+variable precioNumero = decimal(precioTexto)
+variable conIVA = precioNumero * 1.21
+mostrar "Precio con IVA: $" + conIVA`,
+        output:
+          "Tipo: texto\nValor: 25\nTipo: numero\nValor: 25\nMayor de edad\nPrecio con IVA: $120.9879",
         notes: [
-          "entero(valor): Convierte a número entero (trunca decimales)",
-          "decimal(valor): Convierte a número decimal",
-          "texto(valor): Convierte cualquier valor a string",
-          "Los booleanos se convierten a 1/0 o 1.0/0.0",
+          "Los campos de formularios web siempre retornan TEXTO",
+          "Aunque escribas '25', para el programa es texto '25'",
+          "Para hacer cálculos matemáticos necesitas convertir a número",
+          "Para comparaciones numéricas (>, <, >=, <=) necesitas números",
+          "",
+          "Problema común sin conversión:",
+          "• '25' + '5' = '255' (concatenación de texto)",
+          "• 25 + 5 = 30 (suma de números)",
+          "",
+          "La función tipo() te dice qué tipo de dato tienes",
         ],
       },
       {
-        title: "Funciones booleano() y tipo()",
-        description: "Convierte a booleano o retorna el tipo del valor.",
-        code: `// booleano(valor) - Convierte a booleano
-mostrar booleano(1)         // verdadero
-mostrar booleano(0)         // falso
-mostrar booleano(100)       // verdadero
-mostrar booleano("hola")    // verdadero
-mostrar booleano("")        // falso
-mostrar booleano(nulo)      // falso
+        title: "Texto a Número Entero: entero()",
+        description:
+          "La función entero() convierte texto a número entero. Útil para edades, cantidades, años, días, y cualquier número sin decimales que viene de un formulario.",
+        code: `variable edadTexto = "25"
+variable edadNumero = entero(edadTexto)
+mostrar "Edad: " + edadNumero + " años"
 
-// tipo(valor) - Retorna el tipo como string
-mostrar tipo(42)            // "numero"
-mostrar tipo("hola")        // "texto"
-mostrar tipo(verdadero)     // "booleano"
-mostrar tipo([1, 2])        // "arreglo"
-mostrar tipo({a: 1})        // "objeto"
-mostrar tipo(nulo)          // "nulo"
+variable cantidadTexto = "10"
+variable cantidad = entero(cantidadTexto)
+variable total = cantidad * 150
+mostrar "Total: $" + total
 
-// Con clases
-clase Persona { constructor() {} }
-variable p = nuevo Persona()
-mostrar tipo(p)             // "Persona"`,
+variable añoTexto = "2024"
+variable año = entero(añoTexto)
+variable diferencia = 2026 - año
+mostrar "Han pasado " + diferencia + " años"
+
+variable decimalTexto = "3.7"
+variable sinDecimales = entero(decimalTexto)
+mostrar "3.7 truncado: " + sinDecimales
+
+variable numeroYaEntero = 42
+variable sigueEntero = entero(numeroYaEntero)
+mostrar "42 sigue siendo: " + sigueEntero
+
+variable booleanoTrue = entero(verdadero)
+mostrar "verdadero como entero: " + booleanoTrue
+
+variable booleanoFalse = entero(falso)
+mostrar "falso como entero: " + booleanoFalse`,
+        output:
+          "Edad: 25 años\nTotal: $1500\nHan pasado 2 años\n3.7 truncado: 3\n42 sigue siendo: 42\nverdadero como entero: 1\nfalso como entero: 0",
         notes: [
-          "booleano(): 0, '', nulo, indefinido → falso, todo lo demás → verdadero",
-          "tipo(): Retorna el nombre del tipo como texto",
-          "Para instancias de clases, tipo() retorna el nombre de la clase",
+          "entero(texto): Convierte texto a número entero",
+          "entero('25') → 25",
+          "entero('3.7') → 3 (trunca decimales, no redondea)",
+          "entero(3.9) → 3 (elimina decimales)",
+          "",
+          "Conversiones especiales:",
+          "• entero(verdadero) → 1",
+          "• entero(falso) → 0",
+          "• entero(42) → 42 (ya es número, no cambia)",
+          "",
+          "Casos de uso:",
+          "✅ Campo 'Edad' en formulario",
+          "✅ Campo 'Cantidad' en carrito de compras",
+          "✅ Campo 'Año' en fechas",
+          "✅ Cualquier número sin decimales del usuario",
+          "",
+          "⚠️ Si el texto no es un número válido, puede dar error",
+        ],
+      },
+      {
+        title: "Texto a Número Decimal: decimal()",
+        description:
+          "La función decimal() convierte texto a número con decimales. Esencial para precios, medidas, porcentajes, y cualquier valor que necesite precisión decimal.",
+        code: `variable precioTexto = "99.99"
+variable precio = decimal(precioTexto)
+mostrar "Precio: $" + precio
+
+variable alturaTexto = "1.75"
+variable altura = decimal(alturaTexto)
+variable peso = 70
+variable imc = peso / (altura * altura)
+mostrar "IMC: " + imc
+
+variable porcentajeTexto = "15.5"
+variable porcentaje = decimal(porcentajeTexto)
+variable descuento = 1000 * (porcentaje / 100)
+mostrar "Descuento: $" + descuento
+
+variable temperaturaTexto = "36.5"
+variable temperatura = decimal(temperaturaTexto)
+si temperatura > 37.0 {
+    mostrar "Fiebre"
+} sino {
+    mostrar "Temperatura normal"
+}
+
+variable enteroTexto = "42"
+variable comoDeci = decimal(enteroTexto)
+mostrar "42 como decimal: " + comoDeci
+
+variable booleanoTrue = decimal(verdadero)
+mostrar "verdadero como decimal: " + booleanoTrue`,
+        output:
+          "Precio: $99.99\nIMC: 22.857\nDescuento: $155\nTemperatura normal\n42 como decimal: 42.0\nverdadero como decimal: 1.0",
+        notes: [
+          "decimal(texto): Convierte texto a número con decimales",
+          "decimal('99.99') → 99.99",
+          "decimal('42') → 42.0 (agrega .0)",
+          "",
+          "Conversiones especiales:",
+          "• decimal(verdadero) → 1.0",
+          "• decimal(falso) → 0.0",
+          "• decimal(99.99) → 99.99 (ya es decimal, no cambia)",
+          "",
+          "Casos de uso:",
+          "✅ Campo 'Precio' en e-commerce",
+          "✅ Campo 'Altura' o 'Peso' en calculadoras",
+          "✅ Campo 'Porcentaje' en descuentos",
+          "✅ Campo 'Temperatura' en sensores",
+          "✅ Cualquier medida con decimales",
+          "",
+          "💡 Usa decimal() cuando necesites precisión",
+          "💡 Usa entero() cuando los decimales no importen",
+        ],
+      },
+      {
+        title: "Número a Texto: texto()",
+        description:
+          "La función texto() convierte cualquier valor a texto. Fundamental para mostrar resultados, concatenar mensajes, y presentar información al usuario en formularios o pantallas.",
+        code: `variable edad = 25
+variable mensaje = "Tienes " + texto(edad) + " años"
+mostrar mensaje
+
+variable precio = 99.99
+variable etiqueta = "$" + texto(precio)
+mostrar etiqueta
+
+variable cantidad = 10
+variable precio = 150
+variable total = cantidad * precio
+mostrar "Total: $" + texto(total)
+
+variable pi = 3.14159
+variable textoPI = texto(pi)
+mostrar "PI como texto: " + textoPI
+mostrar "Tipo: " + tipo(textoPI)
+
+variable booleano = verdadero
+variable textoBooleano = texto(booleano)
+mostrar "Booleano como texto: " + textoBooleano
+
+variable resultado = 42
+mostrar "El resultado es: " + texto(resultado)`,
+        output:
+          "Tienes 25 años\n$99.99\nTotal: $1500\nPI como texto: 3.14159\nTipo: texto\nBooleano como texto: verdadero\nEl resultado es: 42",
+        notes: [
+          "texto(valor): Convierte cualquier valor a texto",
+          "texto(25) → '25'",
+          "texto(99.99) → '99.99'",
+          "texto(verdadero) → 'verdadero'",
+          "",
+          "¿Por qué convertir a texto?",
+          "• Para concatenar con otros textos",
+          "• Para mostrar en pantalla o formularios",
+          "• Para formatear salidas",
+          "• Para crear mensajes dinámicos",
+          "",
+          "Casos de uso:",
+          "✅ Mostrar resultados de cálculos",
+          "✅ Crear mensajes personalizados",
+          "✅ Formatear precios y cantidades",
+          "✅ Construir etiquetas dinámicas",
+          "✅ Preparar datos para mostrar en UI",
+          "",
+          "💡 Muchas veces HispanoLang convierte automáticamente",
+          "💡 Pero texto() hace la conversión explícita y clara",
+        ],
+      },
+      {
+        title: "Conversión a Booleano: booleano()",
+        description:
+          "La función booleano() convierte valores a verdadero o falso. Útil para checkboxes, switches, validaciones, y decisiones basadas en datos del usuario.",
+        code: `variable numero1 = booleano(1)
+mostrar "booleano(1): " + texto(numero1)
+
+variable numero0 = booleano(0)
+mostrar "booleano(0): " + texto(numero0)
+
+variable numeroPositivo = booleano(100)
+mostrar "booleano(100): " + texto(numeroPositivo)
+
+variable numeroNegativo = booleano(-5)
+mostrar "booleano(-5): " + texto(numeroNegativo)
+
+variable textoLleno = booleano("hola")
+mostrar "booleano('hola'): " + texto(textoLleno)
+
+variable textoVacio = booleano("")
+mostrar "booleano(''): " + texto(textoVacio)
+
+variable acepta = "si"
+variable aceptaBooleano = booleano(acepta)
+si aceptaBooleano {
+    mostrar "Términos aceptados"
+}
+
+variable cantidad = "0"
+variable cantidadNum = entero(cantidad)
+variable hayItems = booleano(cantidadNum)
+si !hayItems {
+    mostrar "Carrito vacío"
+}`,
+        output:
+          "booleano(1): verdadero\nbooleano(0): falso\nbooleano(100): verdadero\nbooleano(-5): verdadero\nbooleano('hola'): verdadero\nbooleano(''): falso\nTérminos aceptados\nCarrito vacío",
+        notes: [
+          "booleano(valor): Convierte valor a verdadero o falso",
+          "",
+          "Valores FALSOS (falsy):",
+          "• booleano(0) → falso",
+          "• booleano('') → falso (texto vacío)",
+          "• booleano(falso) → falso",
+          "",
+          "Valores VERDADEROS (truthy):",
+          "• booleano(1) → verdadero",
+          "• booleano(100) → verdadero (cualquier número != 0)",
+          "• booleano(-5) → verdadero (incluso negativos)",
+          "• booleano('hola') → verdadero (cualquier texto no vacío)",
+          "• booleano(verdadero) → verdadero",
+          "",
+          "Casos de uso:",
+          "✅ Checkbox en formularios ('true'/'false' → booleano)",
+          "✅ Validar si hay contenido (texto != '')",
+          "✅ Validar si hay cantidad (número != 0)",
+          "✅ Convertir respuestas de usuario a booleanos",
+          "",
+          "💡 Regla simple: 0 y '' son falso, todo lo demás es verdadero",
+        ],
+      },
+      {
+        title: "Verificar Tipo: tipo()",
+        description:
+          "La función tipo() te dice qué tipo de dato tienes. Súper útil para debugging, validaciones, y entender qué recibiste de un formulario o API.",
+        code: `variable edad = 25
+mostrar tipo(edad)
+
+variable nombre = "Ana"
+mostrar tipo(nombre)
+
+variable activo = verdadero
+mostrar tipo(activo)
+
+variable precio = 99.99
+mostrar tipo(precio)
+
+variable edadTexto = "25"
+mostrar "Antes: " + tipo(edadTexto)
+variable edadNumero = entero(edadTexto)
+mostrar "Después: " + tipo(edadNumero)
+
+funcion validarEdad(valor) {
+    mostrar "Recibí tipo: " + tipo(valor)
+    
+    si tipo(valor) == "texto" {
+        variable edadNum = entero(valor)
+        mostrar "Convertido a número: " + edadNum
+        retornar edadNum
+    } sino {
+        mostrar "Ya es número: " + valor
+        retornar valor
+    }
+}
+
+variable resultado1 = validarEdad("30")
+variable resultado2 = validarEdad(25)`,
+        output:
+          "numero\ntexto\nbooleano\nnumero\nAntes: texto\nDespués: numero\nRecibí tipo: texto\nConvertido a número: 30\nRecibí tipo: numero\nYa es número: 25",
+        notes: [
+          "tipo(valor): Retorna el tipo como texto",
+          "",
+          "Tipos básicos:",
+          "• tipo(25) → 'numero'",
+          "• tipo('hola') → 'texto'",
+          "• tipo(verdadero) → 'booleano'",
+          "",
+          "Casos de uso:",
+          "✅ Debugging: saber qué tienes",
+          "✅ Validaciones: verificar tipo correcto",
+          "✅ Conversión inteligente: convertir solo si es necesario",
+          "✅ Mensajes de error claros",
+          "",
+          "Patrón común de validación:",
+          "```",
+          "si tipo(valor) == 'texto' {",
+          "    valor = entero(valor)",
+          "}",
+          "```",
+          "",
+          "💡 Combina tipo() con conversiones para código robusto",
+          "💡 Útil cuando no sabes qué tipo recibirás",
+        ],
+      },
+      {
+        title: "Conversiones en Formularios Reales",
+        description:
+          "Ejemplo completo de cómo usar conversiones en un formulario de registro típico: validar datos, convertir tipos, y procesar información del usuario.",
+        code: `mostrar "=== FORMULARIO DE REGISTRO ==="
+
+variable nombreTexto = "Ana García"
+variable edadTexto = "25"
+variable alturaTexto = "1.65"
+variable pesoTexto = "60"
+variable aceptaTerminos = "si"
+
+mostrar "Datos recibidos (todo como texto):"
+mostrar "Nombre: " + nombreTexto + " (" + tipo(nombreTexto) + ")"
+mostrar "Edad: " + edadTexto + " (" + tipo(edadTexto) + ")"
+mostrar "Altura: " + alturaTexto + " (" + tipo(alturaTexto) + ")"
+
+mostrar ""
+mostrar "Convirtiendo datos..."
+
+variable nombre = nombreTexto
+variable edad = entero(edadTexto)
+variable altura = decimal(alturaTexto)
+variable peso = decimal(pesoTexto)
+variable acepta = booleano(aceptaTerminos)
+
+mostrar ""
+mostrar "Datos procesados:"
+mostrar "Nombre: " + nombre + " (" + tipo(nombre) + ")"
+mostrar "Edad: " + texto(edad) + " (" + tipo(edad) + ")"
+mostrar "Altura: " + texto(altura) + "m (" + tipo(altura) + ")"
+
+mostrar ""
+mostrar "Validaciones:"
+
+si edad >= 18 {
+    mostrar "✓ Mayor de edad"
+} sino {
+    mostrar "✗ Menor de edad"
+}
+
+variable imc = peso / (altura * altura)
+mostrar "✓ IMC calculado: " + texto(imc)
+
+si acepta {
+    mostrar "✓ Términos aceptados"
+} sino {
+    mostrar "✗ Debe aceptar términos"
+}
+
+mostrar ""
+mostrar "Registro completado para " + nombre`,
+        output:
+          "=== FORMULARIO DE REGISTRO ===\nDatos recibidos (todo como texto):\nNombre: Ana García (texto)\nEdad: 25 (texto)\nAltura: 1.65 (texto)\n\nConvirtiendo datos...\n\nDatos procesados:\nNombre: Ana García (texto)\nEdad: 25 (numero)\nAltura: 1.65m (numero)\n\nValidaciones:\n✓ Mayor de edad\n✓ IMC calculado: 22.03\n✓ Términos aceptados\n\nRegistro completado para Ana García",
+        notes: [
+          "Flujo típico de formulario:",
+          "",
+          "1️⃣ RECIBIR: Todo llega como texto",
+          "• Campos de texto → texto",
+          "• Campos numéricos → texto",
+          "• Checkboxes → texto 'true'/'false' o 'si'/'no'",
+          "",
+          "2️⃣ CONVERTIR: Según necesites",
+          "• Edad → entero() para comparar",
+          "• Altura/Peso → decimal() para calcular",
+          "• Términos → booleano() para validar",
+          "",
+          "3️⃣ VALIDAR: Con los tipos correctos",
+          "• Comparaciones numéricas (>=, <=)",
+          "• Cálculos matemáticos (IMC, totales)",
+          "• Decisiones booleanas (si/sino)",
+          "",
+          "4️⃣ MOSTRAR: Convertir de vuelta a texto",
+          "• texto() para concatenar mensajes",
+          "• Presentar resultados al usuario",
+          "",
+          "💡 Este patrón se repite en TODA aplicación web",
+        ],
+      },
+      {
+        title: "Validación y Conversión Segura",
+        description:
+          "Cómo manejar conversiones de forma segura, validando antes de convertir para evitar errores cuando el usuario ingresa datos inválidos.",
+        code: `funcion convertirEdadSegura(textoEdad) {
+    mostrar "Intentando convertir: '" + textoEdad + "'"
+    
+    si tipo(textoEdad) != "texto" {
+        mostrar "✗ No es texto, retornando 0"
+        retornar 0
+    }
+    
+    si textoEdad == "" {
+        mostrar "✗ Campo vacío, retornando 0"
+        retornar 0
+    }
+    
+    variable edad = entero(textoEdad)
+    
+    si edad < 0 o edad > 150 {
+        mostrar "✗ Edad inválida, retornando 0"
+        retornar 0
+    }
+    
+    mostrar "✓ Edad válida: " + texto(edad)
+    retornar edad
+}
+
+variable edad1 = convertirEdadSegura("25")
+variable edad2 = convertirEdadSegura("")
+variable edad3 = convertirEdadSegura("200")
+
+mostrar ""
+mostrar "Resultados:"
+mostrar "edad1: " + texto(edad1)
+mostrar "edad2: " + texto(edad2)
+mostrar "edad3: " + texto(edad3)
+
+funcion calcularDescuento(precioTexto, porcentajeTexto) {
+    variable precio = decimal(precioTexto)
+    variable porcentaje = decimal(porcentajeTexto)
+    
+    si precio <= 0 {
+        mostrar "Precio inválido"
+        retornar 0
+    }
+    
+    si porcentaje < 0 o porcentaje > 100 {
+        mostrar "Porcentaje inválido"
+        retornar precio
+    }
+    
+    variable descuento = precio * (porcentaje / 100)
+    variable precioFinal = precio - descuento
+    
+    retornar precioFinal
+}
+
+variable precio = calcularDescuento("1000", "20")
+mostrar "Precio con descuento: $" + texto(precio)`,
+        output:
+          "Intentando convertir: '25'\n✓ Edad válida: 25\nIntentando convertir: ''\n✗ Campo vacío, retornando 0\nIntentando convertir: '200'\n✗ Edad inválida, retornando 0\n\nResultados:\nedad1: 25\nedad2: 0\nedad3: 0\nPrecio con descuento: $800",
+        notes: [
+          "Patrón de conversión segura:",
+          "",
+          "1️⃣ VALIDAR TIPO:",
+          "• Verificar que sea texto con tipo()",
+          "• Si no es texto, manejar el caso",
+          "",
+          "2️⃣ VALIDAR CONTENIDO:",
+          "• Verificar que no esté vacío",
+          "• Verificar que tenga sentido ('edad' no puede ser '')",
+          "",
+          "3️⃣ CONVERTIR:",
+          "• Usar entero() o decimal()",
+          "• Guardar resultado",
+          "",
+          "4️⃣ VALIDAR RESULTADO:",
+          "• Verificar rangos válidos",
+          "• Edad: 0-150",
+          "• Porcentaje: 0-100",
+          "• Precio: > 0",
+          "",
+          "5️⃣ RETORNAR:",
+          "• Valor válido convertido",
+          "• O valor por defecto si es inválido (0, '', etc.)",
+          "",
+          "💡 Siempre valida datos del usuario",
+          "💡 No confíes en que ingresarán datos correctos",
+          "💡 Proporciona valores por defecto razonables",
+        ],
+      },
+      {
+        title: "Casos de Uso Completos",
+        description:
+          "Ejemplos reales de conversión de tipos en diferentes escenarios: calculadora, carrito de compras, y sistema de calificaciones.",
+        code: `mostrar "=== CALCULADORA DE PROPINAS ==="
+variable cuentaTexto = "156.50"
+variable propinaPorcentaje = "15"
+
+variable cuenta = decimal(cuentaTexto)
+variable porcentaje = entero(propinaPorcentaje)
+variable propina = cuenta * (porcentaje / 100)
+variable total = cuenta + propina
+
+mostrar "Cuenta: $" + cuentaTexto
+mostrar "Propina " + propinaPorcentaje + "%: $" + texto(propina)
+mostrar "Total: $" + texto(total)
+
+mostrar ""
+mostrar "=== CARRITO DE COMPRAS ==="
+variable cantidadTexto = "3"
+variable precioTexto = "99.99"
+variable tieneDescuento = "si"
+
+variable cantidad = entero(cantidadTexto)
+variable precio = decimal(precioTexto)
+variable descuento = booleano(tieneDescuento)
+
+variable subtotal = cantidad * precio
+
+si descuento {
+    variable conDescuento = subtotal * 0.85
+    mostrar "Subtotal: $" + texto(subtotal)
+    mostrar "Con descuento 15%: $" + texto(conDescuento)
+} sino {
+    mostrar "Total: $" + texto(subtotal)
+}
+
+mostrar ""
+mostrar "=== SISTEMA DE CALIFICACIONES ==="
+variable nota1Texto = "85"
+variable nota2Texto = "90"
+variable nota3Texto = "78"
+
+variable nota1 = entero(nota1Texto)
+variable nota2 = entero(nota2Texto)
+variable nota3 = entero(nota3Texto)
+
+variable suma = nota1 + nota2 + nota3
+variable promedio = suma / 3
+
+mostrar "Notas: " + nota1Texto + ", " + nota2Texto + ", " + nota3Texto
+mostrar "Promedio: " + texto(promedio)
+
+si promedio >= 90 {
+    mostrar "Calificación: A"
+} sino si promedio >= 80 {
+    mostrar "Calificación: B"
+} sino {
+    mostrar "Calificación: C"
+}`,
+        output:
+          "=== CALCULADORA DE PROPINAS ===\nCuenta: $156.50\nPropina 15%: $23.475\nTotal: $179.975\n\n=== CARRITO DE COMPRAS ===\nSubtotal: $299.97\nCon descuento 15%: $254.9745\n\n=== SISTEMA DE CALIFICACIONES ===\nNotas: 85, 90, 78\nPromedio: 84.333\nCalificación: B",
+        notes: [
+          "Ejemplos completos muestran:",
+          "",
+          "📊 CALCULADORA DE PROPINAS:",
+          "• decimal() para dinero preciso",
+          "• entero() para porcentajes",
+          "• texto() para mostrar resultados",
+          "",
+          "🛒 CARRITO DE COMPRAS:",
+          "• entero() para cantidades",
+          "• decimal() para precios",
+          "• booleano() para flags (descuento sí/no)",
+          "• Cálculos con tipos correctos",
+          "",
+          "📚 SISTEMA DE CALIFICACIONES:",
+          "• entero() para notas",
+          "• Operaciones matemáticas (suma, promedio)",
+          "• Comparaciones numéricas",
+          "• texto() para presentar resultados",
+          "",
+          "Patrón común:",
+          "1. Recibir datos como texto",
+          "2. Convertir al tipo apropiado",
+          "3. Hacer cálculos/validaciones",
+          "4. Convertir a texto para mostrar",
+          "",
+          "💡 Este patrón se repite en TODA aplicación",
+        ],
+      },
+      {
+        title: "Referencia Rápida: Todas las Conversiones",
+        description:
+          "Tabla de referencia completa con todas las funciones de conversión y sus casos de uso.",
+        code: `// TEXTO → NÚMERO
+entero("42")           // → 42
+entero("3.7")          // → 3 (trunca)
+decimal("99.99")       // → 99.99
+decimal("42")          // → 42.0
+
+// NÚMERO → TEXTO
+texto(42)              // → "42"
+texto(99.99)           // → "99.99"
+
+// CUALQUIER → BOOLEANO
+booleano(1)            // → verdadero
+booleano(0)            // → falso
+booleano("hola")       // → verdadero
+booleano("")           // → falso
+
+// VERIFICAR TIPO
+tipo(42)               // → "numero"
+tipo("hola")           // → "texto"
+tipo(verdadero)        // → "booleano"
+
+// CASOS ESPECIALES
+entero(verdadero)      // → 1
+entero(falso)          // → 0
+decimal(verdadero)     // → 1.0
+decimal(falso)         // → 0.0
+texto(verdadero)       // → "verdadero"`,
+        output: "",
+        notes: [
+          "📊 FUNCIONES DE CONVERSIÓN:",
+          "",
+          "🔢 TEXTO → NÚMERO:",
+          "⭐⭐⭐ entero(texto) - Para edades, cantidades, años",
+          "⭐⭐⭐ decimal(texto) - Para precios, medidas, porcentajes",
+          "",
+          "📝 NÚMERO → TEXTO:",
+          "⭐⭐⭐ texto(numero) - Para mostrar, concatenar, formatear",
+          "",
+          "✅ CUALQUIER → BOOLEANO:",
+          "⭐⭐ booleano(valor) - Para checkboxes, validaciones",
+          "",
+          "🔍 VERIFICAR TIPO:",
+          "⭐⭐ tipo(valor) - Para debugging, validaciones",
+          "",
+          "💡 CUÁNDO USAR CADA UNA:",
+          "",
+          "Usa entero() cuando:",
+          "• Campo de edad, cantidad, año",
+          "• No necesitas decimales",
+          "• Vas a hacer comparaciones o conteos",
+          "",
+          "Usa decimal() cuando:",
+          "• Campo de precio, medida, porcentaje",
+          "• Necesitas precisión decimal",
+          "• Vas a hacer cálculos matemáticos",
+          "",
+          "Usa texto() cuando:",
+          "• Necesitas concatenar con otros textos",
+          "• Vas a mostrar en pantalla",
+          "• Necesitas formatear salida",
+          "",
+          "Usa booleano() cuando:",
+          "• Tienes checkbox o switch",
+          "• Necesitas validar si/no",
+          "• Trabajas con flags (activo/inactivo)",
+          "",
+          "Usa tipo() cuando:",
+          "• Estás debuggeando",
+          "• No sabes qué tipo recibirás",
+          "• Necesitas validar antes de convertir",
         ],
       },
     ],
