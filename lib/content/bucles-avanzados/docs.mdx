@@ -1,0 +1,328 @@
+# 🎵 Bucles Avanzados
+
+Los bucles avanzados te permiten trabajar con estructuras más complejas: bucles anidados para tablas y matrices, patrones de iteración especiales, y técnicas para optimizar el recorrido de datos.
+
+## Bucles Anidados: Playlist de Playlists
+
+Puedes poner un bucle dentro de otro bucle. Como tener múltiples playlists y reproducir todas las canciones de cada playlist.
+
+<Code code={`para (variable playlist = 1; playlist <= 3; playlist++) {
+    mostrar "=== PLAYLIST " + playlist + " ==="
+
+    para (variable cancion = 1; cancion <= 4; cancion++) {
+        mostrar "  Canción " + cancion
+    }
+
+    mostrar ""
+}
+
+para (variable album = 1; album <= 2; album++) {
+    mostrar "ÁLBUM " + album
+
+    para (variable track = 1; track <= 3; track++) {
+        mostrar "  Track " + track + " del álbum " + album
+    }
+}`} />
+
+<Output text={`=== PLAYLIST 1 ===
+  Canción 1
+  Canción 2
+  Canción 3
+  Canción 4
+
+=== PLAYLIST 2 ===
+  Canción 1
+  Canción 2
+  Canción 3
+  Canción 4
+
+=== PLAYLIST 3 ===
+  Canción 1
+  Canción 2
+  Canción 3
+  Canción 4
+
+ÁLBUM 1
+  Track 1 del álbum 1
+  Track 2 del álbum 1
+  Track 3 del álbum 1
+ÁLBUM 2
+  Track 1 del álbum 2
+  Track 2 del álbum 2
+  Track 3 del álbum 2`} />
+
+- Bucle externo: se ejecuta pocas veces (playlists)
+- Bucle interno: se ejecuta muchas veces (canciones por playlist)
+- Por cada iteración del externo, el interno se ejecuta COMPLETO
+- Ejemplo: 3 playlists × 4 canciones = 12 reproducciones totales
+- Útil para: tablas, matrices, listas de listas
+
+## Creando Tablas y Grillas
+
+Los bucles anidados son perfectos para crear estructuras en forma de tabla.
+
+<Code code={`mostrar "=== TABLA DE MULTIPLICAR ==="
+mostrar ""
+
+para (variable fila = 1; fila <= 5; fila++) {
+    variable linea = ""
+
+    para (variable columna = 1; columna <= 5; columna++) {
+        variable producto = fila * columna
+        linea = linea + producto + "	"
+    }
+
+    mostrar linea
+}
+
+mostrar ""
+mostrar "=== HORARIO SEMANAL ==="
+mostrar ""
+
+para (variable dia = 1; dia <= 3; dia++) {
+    mostrar "Día " + dia + ":"
+
+    para (variable hora = 9; hora <= 11; hora++) {
+        mostrar "  " + hora + ":00 - Clase"
+    }
+    mostrar ""
+}`} />
+
+<Output text={`=== TABLA DE MULTIPLICAR ===
+
+1	2	3	4	5
+2	4	6	8	10
+3	6	9	12	15
+4	8	12	16	20
+5	10	15	20	25
+
+=== HORARIO SEMANAL ===
+
+Día 1:
+  9:00 - Clase
+  10:00 - Clase
+  11:00 - Clase
+
+Día 2:
+  9:00 - Clase
+  10:00 - Clase
+  11:00 - Clase
+
+Día 3:
+  9:00 - Clase
+  10:00 - Clase
+  11:00 - Clase
+`} />
+
+- El bucle externo controla las filas
+- El bucle interno controla las columnas
+- Puedes construir strings para mostrar toda una fila
+- Útil para tablas de multiplicar, horarios, grillas de datos
+
+## Patrones con Bucles
+
+Los bucles pueden crear patrones visuales interesantes.
+
+<Code code={`mostrar "=== TRIÁNGULO ==="
+
+para (variable fila = 1; fila <= 5; fila++) {
+    variable estrellas = ""
+
+    para (variable col = 1; col <= fila; col++) {
+        estrellas = estrellas + "* "
+    }
+
+    mostrar estrellas
+}
+
+mostrar ""
+mostrar "=== TRIÁNGULO INVERTIDO ==="
+
+para (variable fila = 5; fila >= 1; fila--) {
+    variable estrellas = ""
+
+    para (variable col = 1; col <= fila; col++) {
+        estrellas = estrellas + "* "
+    }
+
+    mostrar estrellas
+}
+
+mostrar ""
+mostrar "=== CUADRADO ==="
+
+para (variable fila = 1; fila <= 4; fila++) {
+    variable linea = ""
+
+    para (variable col = 1; col <= 4; col++) {
+        linea = linea + "# "
+    }
+
+    mostrar linea
+}`} />
+
+<Output text={`=== TRIÁNGULO ===
+*
+* *
+* * *
+* * * *
+* * * * *
+
+=== TRIÁNGULO INVERTIDO ===
+* * * * *
+* * * *
+* * *
+* *
+*
+
+=== CUADRADO ===
+# # # #
+# # # #
+# # # #
+# # # # `} />
+
+- El número de estrellas depende de la fila
+- En el triángulo normal: fila 1 = 1 estrella, fila 5 = 5 estrellas
+- En el invertido: empezamos con 5 y vamos bajando
+- Útil para visualizaciones, arte ASCII, indicadores de progreso
+
+## Búsqueda en Estructuras Anidadas
+
+Buscar dentro de estructuras de múltiples niveles.
+
+<Code code={`// Simular búsqueda en álbumes y tracks
+variable albumObjetivo = 2
+variable trackObjetivo = 3
+variable encontrado = falso
+
+para (variable album = 1; album <= 3; album++) {
+    si encontrado {
+        romper
+    }
+
+    para (variable track = 1; track <= 5; track++) {
+        si album == albumObjetivo y track == trackObjetivo {
+            mostrar "¡Encontrado! Álbum " + album + ", Track " + track
+            encontrado = verdadero
+            romper
+        }
+        mostrar "Buscando en Álbum " + album + ", Track " + track
+    }
+}
+
+si !encontrado {
+    mostrar "No encontrado"
+}`} />
+
+<Output text={`Buscando en Álbum 1, Track 1
+Buscando en Álbum 1, Track 2
+Buscando en Álbum 1, Track 3
+Buscando en Álbum 1, Track 4
+Buscando en Álbum 1, Track 5
+Buscando en Álbum 2, Track 1
+Buscando en Álbum 2, Track 2
+¡Encontrado! Álbum 2, Track 3`} />
+
+- romper solo sale del bucle más interno
+- Necesitas una bandera (encontrado) para salir del externo
+- Verificas la bandera al inicio de cada iteración del externo
+- Patrón común para búsquedas en estructuras complejas
+
+## Acumuladores y Contadores
+
+Usar variables para acumular resultados mientras recorres datos.
+
+<Code code={`variable sumaTotal = 0
+variable contador = 0
+variable maximo = 0
+
+para (variable i = 1; i <= 10; i++) {
+    variable numero = i * 5
+
+    sumaTotal = sumaTotal + numero
+    contador++
+
+    si numero > maximo {
+        maximo = numero
+    }
+
+    mostrar "Número: " + numero + " | Suma: " + sumaTotal
+}
+
+mostrar ""
+mostrar "=== ESTADÍSTICAS ==="
+mostrar "Total de números: " + contador
+mostrar "Suma total: " + sumaTotal
+mostrar "Promedio: " + (sumaTotal / contador)
+mostrar "Máximo: " + maximo`} />
+
+<Output text={`Número: 5 | Suma: 5
+Número: 10 | Suma: 15
+Número: 15 | Suma: 30
+Número: 20 | Suma: 50
+Número: 25 | Suma: 75
+Número: 30 | Suma: 105
+Número: 35 | Suma: 140
+Número: 40 | Suma: 180
+Número: 45 | Suma: 225
+Número: 50 | Suma: 275
+
+=== ESTADÍSTICAS ===
+Total de números: 10
+Suma total: 275
+Promedio: 27.5
+Máximo: 50`} />
+
+- sumaTotal: acumula la suma de todos los valores
+- contador: cuenta cuántos elementos procesamos
+- maximo: guarda el valor más grande encontrado
+- Dividir suma/contador da el promedio
+- Patrón muy útil para estadísticas
+
+## Generación de Combinaciones
+
+Generar todas las combinaciones posibles de elementos.
+
+<Code code={`mostrar "=== COMBINACIONES DE 2 DADOS ==="
+
+variable combinaciones = 0
+
+para (variable dado1 = 1; dado1 <= 6; dado1++) {
+    para (variable dado2 = 1; dado2 <= 6; dado2++) {
+        variable suma = dado1 + dado2
+
+        si suma == 7 {
+            mostrar "Dado 1: " + dado1 + " + Dado 2: " + dado2 + " = 7"
+            combinaciones++
+        }
+    }
+}
+
+mostrar ""
+mostrar "Total de combinaciones que suman 7: " + combinaciones`} />
+
+<Output text={`=== COMBINACIONES DE 2 DADOS ===
+Dado 1: 1 + Dado 2: 6 = 7
+Dado 1: 2 + Dado 2: 5 = 7
+Dado 1: 3 + Dado 2: 4 = 7
+Dado 1: 4 + Dado 2: 3 = 7
+Dado 1: 5 + Dado 2: 2 = 7
+Dado 1: 6 + Dado 2: 1 = 7
+
+Total de combinaciones que suman 7: 6`} />
+
+- Bucles anidados generan todas las combinaciones
+- 6 × 6 = 36 combinaciones totales
+- Filtramos las que suman 7
+- Útil para probabilidades, análisis de datos
+
+## Consejos y Buenas Prácticas
+
+Recomendaciones para trabajar con bucles avanzados.
+
+- No anides más de 3 niveles (se vuelve confuso y lento)
+- Usa nombres descriptivos para las variables de cada bucle
+- Si la lógica es muy compleja, considera usar funciones
+- Cuidado con la eficiencia: bucles anidados multiplican iteraciones
+- Usa romper y banderas para salir eficientemente
+- Siempre verifica que tus bucles terminen (no infinitos)

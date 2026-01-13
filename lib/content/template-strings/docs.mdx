@@ -1,0 +1,247 @@
+# 📝 Template Strings
+
+Los template strings son como los mensajes automáticos de WhatsApp o emails: tienes una plantilla con espacios en blanco que se llenan automáticamente. En vez de concatenar con muchos +, escribes un texto con variables insertadas directamente.
+
+## ¿Qué son los Template Strings?
+
+Imagina que escribes un mensaje automático: 'Hola [NOMBRE], tu saldo es [SALDO]'. Los template strings funcionan así: tienes un texto con espacios que se llenan automáticamente con valores.
+
+<Syntax>backtick Texto con variable interpolada backtick</Syntax>
+
+<Code code={`variable nombre = "María"
+variable edad = 25
+
+// Forma tradicional con +
+mostrar "Hola, me llamo " + nombre + " y tengo " + edad + " años"
+
+// Con template strings
+mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\``} />
+
+<Output text={`Hola, me llamo María y tengo 25 años
+Hola, me llamo María y tengo 25 años`} />
+
+- Template strings usan backticks en lugar de comillas
+- Para insertar variables usas la sintaxis de interpolación
+- Es más fácil de leer que usar muchos + y comillas
+- El resultado es exactamente el mismo, pero el código es más limpio
+- Los backticks están en la tecla al lado del 1, arriba del Tab
+
+## Insertando Variables
+
+Puedes poner todas las variables que quieras dentro del texto. Es como llenar los espacios en blanco de una plantilla.
+
+<Code code={`variable producto = "Pizza"
+variable precio = 850
+variable cantidad = 2
+
+mostrar \`Producto: \${producto}\`
+mostrar \`Precio unitario: $\${precio}\`
+mostrar \`Cantidad: \${cantidad}\`
+
+variable cliente = "Juan Pérez"
+variable direccion = "Av. Corrientes 1234"
+variable telefono = "1234-5678"
+
+mostrar \`Cliente: \${cliente}
+Dirección: \${direccion}
+Teléfono: \${telefono}\``} />
+
+<Output text={`Producto: Pizza
+Precio unitario: $850
+Cantidad: 2
+Cliente: Juan Pérez
+Dirección: Av. Corrientes 1234
+Teléfono: 1234-5678`} />
+
+- Cada variable interpolada se reemplaza automáticamente con su valor
+- Puedes tener tantas variables como necesites en el mismo texto
+- Los espacios y saltos de línea dentro del template se mantienen
+
+## Comparación: Antes vs Ahora
+
+Veamos la diferencia entre concatenar con + (la forma vieja) y usar template strings (la forma nueva y más fácil).
+
+<Code code={`variable nombre = "Ana"
+variable ciudad = "Buenos Aires"
+variable edad = 28
+
+// Forma vieja con +
+mostrar "Hola, soy " + nombre + ", vivo en " + ciudad + " y tengo " + edad + " años."
+
+// Forma nueva con template strings
+mostrar \`Hola, soy \${nombre}, vivo en \${ciudad} y tengo \${edad} años.\`
+
+variable producto = "Laptop"
+variable marca = "Dell"
+variable precio = 50000
+
+// Forma vieja
+mostrar "El producto " + producto + " marca " + marca + " cuesta $" + precio
+
+// Forma nueva
+mostrar \`El producto \${producto} marca \${marca} cuesta $\${precio}\``} />
+
+<Output text={`Hola, soy Ana, vivo en Buenos Aires y tengo 28 años.
+Hola, soy Ana, vivo en Buenos Aires y tengo 28 años.
+El producto Laptop marca Dell cuesta $50000
+El producto Laptop marca Dell cuesta $50000`} />
+
+- Con +: muchas comillas, muchos símbolos, fácil olvidar espacios
+- Con template strings: todo junto, más natural, como escribir normalmente
+- Template strings son especialmente mejores cuando tienes muchas variables
+- Es menos probable cometer errores (olvidar espacios, comillas mal cerradas)
+
+## Hacer Cálculos Dentro
+
+Dentro de la interpolación no solo puedes poner variables, también puedes hacer cálculos, usar métodos, o cualquier operación.
+
+<Code code={`variable precio = 100
+variable cantidad = 3
+variable descuento = 15
+
+mostrar \`Precio unitario: $\${precio}\`
+mostrar \`Cantidad: \${cantidad}\`
+mostrar \`Subtotal: $\${precio * cantidad}\`
+mostrar \`Descuento: $\${descuento}\`
+mostrar \`Total final: $\${precio * cantidad - descuento}\`
+
+variable nombre = "juan pérez"
+mostrar \`Bienvenido \${nombre.mayusculas()}\`
+
+variable email = "  MARIA@EMAIL.COM  "
+mostrar \`Email registrado: \${email.recortar().minusculas()}\``} />
+
+<Output text={`Precio unitario: $100
+Cantidad: 3
+Subtotal: $300
+Descuento: $15
+Total final: $285
+Bienvenido JUAN PÉREZ
+Email registrado: maria@email.com`} />
+
+- Puedes hacer matemática dentro de la interpolación
+- Puedes usar métodos de strings dentro de la interpolación
+- Puedes encadenar métodos para transformar valores
+- Todo lo que está dentro de la interpolación se evalúa primero, luego se inserta en el texto
+
+## Mensajes de Múltiples Líneas
+
+Los template strings pueden tener saltos de línea naturales. Perfecto para recibos, emails, mensajes largos.
+
+<Code code={`variable cliente = "María González"
+variable fecha = "12/01/2026"
+variable producto = "Zapatillas Nike"
+variable cantidad = 2
+variable precioUnitario = 15000
+variable total = cantidad * precioUnitario
+
+variable recibo = \`
+═══════════════════════════
+         RECIBO DE COMPRA
+═══════════════════════════
+
+Cliente: \${cliente}
+Fecha: \${fecha}
+
+Producto: \${producto}
+Cantidad: \${cantidad}
+Precio unitario: $\${precioUnitario}
+
+───────────────────────────
+TOTAL A PAGAR: $\${total}
+═══════════════════════════
+\`
+
+mostrar recibo`} />
+
+<Output text={`
+═══════════════════════════
+         RECIBO DE COMPRA
+═══════════════════════════
+
+Cliente: María González
+Fecha: 12/01/2026
+
+Producto: Zapatillas Nike
+Cantidad: 2
+Precio unitario: $15000
+
+───────────────────────────
+TOTAL A PAGAR: $30000
+═══════════════════════════`} />
+
+- Los saltos de línea dentro del template se mantienen tal cual
+- Perfecto para recibos, tickets, emails formateados
+- Puedes hacer diseños con caracteres ASCII
+- Todo el formato visual se preserva exactamente como lo escribiste
+
+## Casos Prácticos
+
+Situaciones reales donde los template strings hacen tu código más limpio y fácil de mantener.
+
+<Code code={`// Notificación de red social
+variable nombreUsuario = "ana_dev"
+variable seguidoresNuevos = 47
+mostrar \`¡\${nombreUsuario}! Tienes \${seguidoresNuevos} seguidores nuevos\`
+
+// Mensaje bancario
+variable remitente = "Banco Nacional"
+variable saldo = 15000
+variable ultimoMovimiento = 2500
+mostrar \`\${remitente}: Tu saldo actual es $\${saldo}. Último movimiento: -$\${ultimoMovimiento}\`
+
+// Progreso de curso
+variable curso = "HispanoLang"
+variable leccionActual = 5
+variable leccionesTotales = 20
+variable porcentaje = (leccionActual / leccionesTotales) * 100
+mostrar \`Curso: \${curso} - Progreso: \${leccionActual}/\${leccionesTotales} (\${porcentaje}%)\`
+
+// Información de archivo
+variable nombreArchivo = "documento"
+variable extension = "pdf"
+variable tamanio = 2.5
+mostrar \`Archivo: \${nombreArchivo}.\${extension} - Tamaño: \${tamanio}MB\``} />
+
+<Output text={`¡ana_dev! Tienes 47 seguidores nuevos
+Banco Nacional: Tu saldo actual es $15000. Último movimiento: -$2500
+Curso: HispanoLang - Progreso: 5/20 (25%)
+Archivo: documento.pdf - Tamaño: 2.5MB`} />
+
+- Notificaciones de apps: más fácil personalizar mensajes
+- Mensajes bancarios/financieros: insertar montos dinámicamente
+- Progreso de cursos/tareas: calcular porcentajes en el mensaje
+- Información de archivos: combinar nombre, extensión, tamaño
+- Template strings hacen que estos casos sean mucho más simples de escribir
+
+## ¿Cuándo Usar Template Strings?
+
+Guía práctica para decidir cuándo usar template strings vs concatenación tradicional.
+
+<Code code={`variable nombre = "Juan"
+
+// Para una sola variable, ambos están OK
+mostrar "Hola " + nombre
+mostrar \`Hola \${nombre}\`
+
+variable producto = "Laptop"
+variable marca = "Dell"
+variable precio = 45000
+variable stock = 5
+
+// Con muchas variables, template strings es mejor
+mostrar "Producto: " + producto + ", Marca: " + marca + ", Precio: $" + precio + ", Stock: " + stock
+
+mostrar \`Producto: \${producto}, Marca: \${marca}, Precio: $\${precio}, Stock: \${stock}\``} />
+
+<Output text={`Hola Juan
+Hola Juan
+Producto: Laptop, Marca: Dell, Precio: $45000, Stock: 5
+Producto: Laptop, Marca: Dell, Precio: $45000, Stock: 5`} />
+
+- Usa template strings cuando: tienes 2+ variables para insertar
+- Usa template strings cuando: necesitas hacer cálculos en el texto
+- Usa template strings cuando: el mensaje tiene múltiples líneas
+- Usa template strings cuando: usas métodos de strings en el mensaje
+- Concatenación simple (solo 1 variable) está OK: 'Hola ' + nombre
+- En general: template strings son más modernos y recomendados

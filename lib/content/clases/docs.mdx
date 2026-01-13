@@ -1,0 +1,198 @@
+# 🏗️ Clases
+
+Las clases son plantillas para crear objetos con propiedades y métodos. Permiten programación orientada a objetos en HispanoLang.
+
+## Definición de Clases
+
+Define clases usando la palabra 'clase' con un constructor y métodos.
+
+<Syntax>clase NombreClase con constructor y métodos</Syntax>
+
+<Code code={`clase Persona {
+    constructor(nombre, edad) {
+        este.nombre = nombre
+        este.edad = edad
+    }
+
+    saludar() {
+        retornar \`Hola, soy \${este.nombre}\`
+    }
+
+    cumplirAnios() {
+        este.edad = este.edad + 1
+        mostrar \`\${este.nombre} ahora tiene \${este.edad} años\`
+    }
+}
+
+variable juan = nuevo Persona("Juan", 25)
+mostrar juan.saludar()
+juan.cumplirAnios()`} />
+
+<Output text={`Hola, soy Juan
+Juan ahora tiene 26 años`} />
+
+- clase NombreClase con llaves - Define una clase
+- constructor(params) - Inicializa la instancia
+- este.propiedad - Accede a propiedades de la instancia
+- Los métodos se definen sin la palabra 'funcion'
+
+## Instanciación con nuevo
+
+Crea instancias de clases usando la palabra 'nuevo'.
+
+<Code code={`clase Persona {
+    constructor(nombre, edad) {
+        este.nombre = nombre
+        este.edad = edad
+    }
+
+    saludar() {
+        retornar \`Hola, soy \${este.nombre}\`
+    }
+}
+
+variable persona = nuevo Persona("Juan", 25)
+
+mostrar persona.nombre
+mostrar persona.edad
+mostrar persona.saludar()
+
+// Múltiples instancias
+variable persona2 = nuevo Persona("Ana", 30)
+mostrar persona2.nombre
+mostrar persona2.saludar()`} />
+
+<Output text={`Juan
+25
+Hola, soy Juan
+Ana
+Hola, soy Ana`} />
+
+- nuevo Clase(args) - Crea una nueva instancia
+- Cada instancia tiene sus propias propiedades
+- Los métodos se comparten entre instancias
+- tipo(instancia) retorna el nombre de la clase
+
+## Propiedades y Métodos
+
+Las clases pueden tener múltiples propiedades y métodos para encapsular comportamiento.
+
+<Code code={`clase CuentaBancaria {
+    constructor(titular, saldoInicial) {
+        este.titular = titular
+        este.saldo = saldoInicial
+        este.transacciones = []
+    }
+
+    depositar(cantidad) {
+        este.saldo = este.saldo + cantidad
+        este.transacciones.agregar({
+            tipo: "deposito",
+            cantidad: cantidad
+        })
+        mostrar "Depositado: $" + texto(cantidad)
+    }
+
+    retirar(cantidad) {
+        si cantidad > este.saldo {
+            mostrar "Fondos insuficientes"
+            retornar falso
+        }
+        este.saldo = este.saldo - cantidad
+        este.transacciones.agregar({
+            tipo: "retiro",
+            cantidad: cantidad
+        })
+        mostrar "Retirado: $" + texto(cantidad)
+        retornar verdadero
+    }
+
+    verSaldo() {
+        mostrar "Saldo de " + este.titular + ": $" + texto(este.saldo)
+    }
+}
+
+variable cuenta = nuevo CuentaBancaria("María", 1000)
+cuenta.verSaldo()
+cuenta.depositar(500)
+cuenta.retirar(200)
+cuenta.verSaldo()`} />
+
+<Output text={`Saldo de María: $1000
+Depositado: $500
+Retirado: $200
+Saldo de María: $1300`} />
+
+- Las propiedades guardan el estado del objeto
+- Los métodos definen el comportamiento
+- este.propiedad accede al estado interno
+- Los métodos pueden modificar propiedades
+
+## Ejemplo Práctico: Sistema de Productos
+
+<Code code={`clase Producto {
+    constructor(nombre, precio, stock) {
+        este.nombre = nombre
+        este.precio = precio
+        este.stock = stock
+    }
+
+    vender(cantidad) {
+        si cantidad > este.stock {
+            mostrar "Stock insuficiente de " + este.nombre
+            retornar falso
+        }
+        este.stock = este.stock - cantidad
+        variable total = este.precio * cantidad
+        mostrar "Vendido: " + texto(cantidad) + " " + este.nombre + " = $" + texto(total)
+        retornar verdadero
+    }
+
+    reabastecer(cantidad) {
+        este.stock = este.stock + cantidad
+        mostrar "Reabastecido: " + este.nombre + " ahora tiene " + texto(este.stock) + " unidades"
+    }
+
+    mostrarInfo() {
+        mostrar "---"
+        mostrar "Producto: " + este.nombre
+        mostrar "Precio: $" + texto(este.precio)
+        mostrar "Stock: " + texto(este.stock)
+    }
+}
+
+variable mouse = nuevo Producto("Mouse Gamer", 150, 10)
+variable teclado = nuevo Producto("Teclado Mecánico", 300, 5)
+
+mouse.mostrarInfo()
+teclado.mostrarInfo()
+
+mostrar ""
+mouse.vender(3)
+teclado.vender(2)
+mouse.reabastecer(5)
+mouse.mostrarInfo()`} />
+
+<Output text={`---
+Producto: Mouse Gamer
+Precio: $150
+Stock: 10
+---
+Producto: Teclado Mecánico
+Precio: $300
+Stock: 5
+
+Vendido: 3 Mouse Gamer = $450
+Vendido: 2 Teclado Mecánico = $600
+Reabastecido: Mouse Gamer ahora tiene 12 unidades
+---
+Producto: Mouse Gamer
+Precio: $150
+Stock: 12`} />
+
+Resumen de clases:
+- clase NombreClase { } - Define una clase
+- constructor() - Inicializa propiedades
+- este.propiedad - Accede a propiedades
+- nuevo Clase() - Crea instancia
+- Los métodos encapsulan comportamiento

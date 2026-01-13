@@ -1,0 +1,262 @@
+# ➕ Operadores
+
+Los operadores son como las mecánicas de un videojuego: sumas puntos, restas vidas, comparas scores, verificas si cumples requisitos para pasar de nivel. Son símbolos que te permiten hacer operaciones con valores.
+
+## Operadores Aritméticos: La Calculadora del Juego
+
+Los operadores aritméticos son como la calculadora interna del juego que suma puntos, resta vidas, multiplica bonificaciones y calcula daño.
+
+<Syntax>a + b, a - b, a * b, a / b, a % b</Syntax>
+
+<Code code={`variable puntos = 100
+variable bonus = 50
+variable vidas = 3
+
+variable puntosNuevos = puntos + bonus
+mostrar "Puntos totales: " + puntosNuevos
+
+variable vidasPerdidas = vidas - 1
+mostrar "Vidas restantes: " + vidasPerdidas
+
+variable multiplicador = 2
+variable puntosConMultiplicador = puntos * multiplicador
+mostrar "Puntos con multiplicador x2: " + puntosConMultiplicador
+
+variable mitadPuntos = puntos / 2
+mostrar "Mitad de puntos: " + mitadPuntos
+
+variable resto = 17 % 5
+mostrar "Resto de 17 dividido 5: " + resto`} />
+
+<Output text={`Puntos totales: 150
+Vidas restantes: 2
+Puntos con multiplicador x2: 200
+Mitad de puntos: 50
+Resto de 17 dividido 5: 2`} />
+
+- \+ (suma): Sumar puntos, bonus, experiencia
+- \- (resta): Restar vidas, energía, munición
+- \* (multiplicación): Aplicar multiplicadores, bonificaciones
+- / (división): Calcular promedios, dividir recursos
+- % (módulo): Obtener el resto de una división (útil para ciclos, turnos)
+
+## Operadores de Asignación Compuesta: Acumulando Stats
+
+Cuando subes de nivel, tus stats se acumulan. Los operadores compuestos son atajos para actualizar valores: en vez de escribir puntos = puntos + 100, escribes puntos += 100.
+
+<Code code={`variable puntos = 100
+mostrar "Puntos iniciales: " + puntos
+
+puntos += 50
+mostrar "Después de conseguir moneda: " + puntos
+
+puntos += 30
+mostrar "Después de derrotar enemigo: " + puntos
+
+variable vidas = 5
+vidas -= 2
+mostrar "Vidas después de recibir daño: " + vidas
+
+variable experiencia = 100
+experiencia *= 2
+mostrar "Experiencia con boost x2: " + experiencia
+
+variable energia = 80
+energia /= 2
+mostrar "Energía después de habilidad especial: " + energia`} />
+
+<Output text={`Puntos iniciales: 100
+Después de conseguir moneda: 150
+Después de derrotar enemigo: 180
+Vidas después de recibir daño: 3
+Experiencia con boost x2: 200
+Energía después de habilidad especial: 40`} />
+
+- Sumar y asignar: acumula puntos directamente
+- Restar y asignar: quita vidas directamente
+- Multiplicar y asignar: duplica o triplica valores
+- Dividir y asignar: reduce valores a la mitad
+- Módulo y asignar: obtiene el resto de una división
+
+## Operadores de Comparación: ¿Quién Ganó?
+
+Los operadores de comparación sirven para comparar valores: ¿tengo más puntos que el récord? ¿me quedan suficientes vidas? ¿es mi nivel mayor o igual a 10? Siempre retornan verdadero o falso.
+
+<Code code={`variable miScore = 1500
+variable recordAnterior = 1200
+variable vidasActuales = 3
+variable vidasMinimas = 1
+variable nivel = 10
+
+mostrar miScore > recordAnterior
+mostrar vidasActuales < vidasMinimas
+mostrar nivel >= 10
+mostrar nivel <= 5
+mostrar miScore == recordAnterior
+mostrar miScore != recordAnterior`} />
+
+<Output text={`verdadero
+falso
+verdadero
+falso
+falso
+verdadero`} />
+
+- Mayor que: ¿miScore es mayor que el récord?
+- Menor que: ¿tengo menos vidas que el mínimo?
+- Mayor o igual: ¿llegué al nivel 10 o más?
+- Menor o igual: ¿estoy en nivel 5 o menos?
+- Igual: ¿mi score es exactamente igual al récord?
+- Diferente: ¿mi score es diferente al récord?
+- Estos operadores retornan verdadero o falso, se usan en condicionales
+
+## Operadores Lógicos: Requisitos para Desbloquear
+
+En los juegos a veces necesitas cumplir múltiples requisitos: nivel 10 Y 500 monedas para comprar un item. O necesitas nivel 5 O tener la llave especial. Los operadores lógicos combinan condiciones.
+
+<Code code={`variable nivel = 12
+variable monedas = 600
+variable tieneBonus = verdadero
+variable tieneLlave = falso
+
+variable puedeComprarEspada = nivel >= 10 y monedas >= 500
+mostrar "¿Puede comprar espada? " + puedeComprarEspada
+
+variable puedeEntrarMazmorra = nivel >= 15 o tieneLlave
+mostrar "¿Puede entrar a mazmorra? " + puedeEntrarMazmorra
+
+variable noTieneBonus = !tieneBonus
+mostrar "¿NO tiene bonus? " + noTieneBonus
+
+variable activarPowerUp = nivel > 10 y monedas > 100 y tieneBonus
+mostrar "¿Activar power-up? " + activarPowerUp`} />
+
+<Output text={`¿Puede comprar espada? verdadero
+¿Puede entrar a mazmorra? falso
+¿NO tiene bonus? falso
+¿Activar power-up? verdadero`} />
+
+- y (AND): Ambas condiciones deben ser verdaderas. Ejemplo: nivel >= 10 Y monedas >= 500
+- o (OR): Al menos una condición debe ser verdadera. Ejemplo: nivel >= 15 O tieneLlave
+- ! (NOT): Invierte el valor. !verdadero = falso, !falso = verdadero
+- Se evalúan de izquierda a derecha
+- Usa paréntesis para agrupar: (nivel > 5 y monedas > 100) o tieneLlave
+
+## Operadores de Incremento/Decremento: Contadores Rápidos
+
+Cuando subes de nivel, derrotas un enemigo, o recoges un item, necesitas sumar 1. Los operadores ++ y -- son atajos para incrementar o decrementar en 1.
+
+<Code code={`variable enemigosDerrrotados = 0
+variable vidas = 5
+variable nivel = 1
+
+enemigosDerrrotados++
+mostrar "Enemigos derrotados: " + enemigosDerrrotados
+
+enemigosDerrrotados++
+mostrar "Enemigos derrotados: " + enemigosDerrrotados
+
+vidas--
+mostrar "Vidas restantes: " + vidas
+
+nivel++
+mostrar "Nivel actual: " + nivel
+
+variable combo = 10
+combo++
+combo++
+combo++
+mostrar "Combo: " + combo`} />
+
+<Output text={`Enemigos derrotados: 1
+Enemigos derrotados: 2
+Vidas restantes: 4
+Nivel actual: 2
+Combo: 13`} />
+
+- ++ (incremento): Suma 1 a la variable. contador++ es igual a contador = contador + 1
+- -- (decremento): Resta 1 a la variable. vidas-- es igual a vidas = vidas - 1
+- Muy útil para contadores: enemigos derrotados, vidas, nivel, combo
+- Más corto y claro que escribir la versión completa
+
+## Precedencia: Orden de Operaciones
+
+Como en matemática, las operaciones tienen un orden: primero multiplicación y división, luego suma y resta. Usa paréntesis para controlar el orden.
+
+<Code code={`variable puntos = 10 + 5 * 2
+mostrar "10 + 5 * 2 = " + puntos
+
+variable puntosConParentesis = (10 + 5) * 2
+mostrar "(10 + 5) * 2 = " + puntosConParentesis
+
+variable danioFinal = 50 - 10 / 2
+mostrar "50 - 10 / 2 = " + danioFinal
+
+variable danioConParentesis = (50 - 10) / 2
+mostrar "(50 - 10) / 2 = " + danioConParentesis
+
+variable calcComplejo = (100 + 50) * 2 - 25
+mostrar "(100 + 50) * 2 - 25 = " + calcComplejo`} />
+
+<Output text={`10 + 5 * 2 = 20
+(10 + 5) * 2 = 30
+50 - 10 / 2 = 45
+(50 - 10) / 2 = 20
+(100 + 50) * 2 - 25 = 275`} />
+
+- Orden de precedencia (como en matemática):
+- 1. Paréntesis ( )
+- 2. Multiplicación * y División /
+- 3. Suma + y Resta -
+- Ejemplo: 10 + 5 * 2 = 10 + 10 = 20 (primero 5*2, luego +10)
+- Usa paréntesis para cambiar el orden: (10 + 5) * 2 = 15 * 2 = 30
+- Si hay duda, usa paréntesis para que sea claro
+
+## Combinando Todo: Sistema de Puntuación
+
+Veamos un ejemplo completo que combina todos los operadores en un sistema de puntuación de videojuego.
+
+<Code code={`variable puntos = 0
+variable vidas = 3
+variable nivel = 1
+variable multiplicador = 1
+
+puntos += 100
+mostrar "Derrotaste un enemigo: +" + puntos + " puntos"
+
+puntos += 50
+mostrar "Recogiste una moneda: " + puntos + " puntos totales"
+
+vidas--
+mostrar "Recibiste daño: " + vidas + " vidas restantes"
+
+multiplicador++
+mostrar "¡Combo! Multiplicador x" + multiplicador
+
+puntos *= multiplicador
+mostrar "Puntos con multiplicador: " + puntos
+
+variable tieneVidasSuficientes = vidas >= 1
+variable puntosParaSiguienteNivel = 200
+variable puedeAvanzar = puntos >= puntosParaSiguienteNivel y tieneVidasSuficientes
+
+mostrar "¿Puede avanzar de nivel? " + puedeAvanzar
+
+variable puntosFinales = puntos + (vidas * 10)
+mostrar "Puntos finales (bonus por vidas): " + puntosFinales`} />
+
+<Output text={`Derrotaste un enemigo: +100 puntos
+Recogiste una moneda: 150 puntos totales
+Recibiste daño: 2 vidas restantes
+¡Combo! Multiplicador x2
+Puntos con multiplicador: 300
+¿Puede avanzar de nivel? verdadero
+Puntos finales (bonus por vidas): 320`} />
+
+Este ejemplo muestra operadores en acción:
+- Aritméticos: sumar puntos, multiplicar bonus
+- Asignación: +=, *=, ++, --
+- Comparación: >=, verificar requisitos
+- Lógicos: y, combinar múltiples condiciones
+- Precedencia: (vidas * 10) primero, luego suma
+- Así funcionan los sistemas de videojuegos reales

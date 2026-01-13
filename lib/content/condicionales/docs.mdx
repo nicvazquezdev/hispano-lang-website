@@ -1,0 +1,317 @@
+# 🤔 Condicionales
+
+Los condicionales son como las reglas de calificación en la escuela: SI tu nota es mayor o igual a 90, obtienes una A. SI es mayor o igual a 70, una B. SINO, repruebas. Los condicionales permiten que tu programa tome decisiones basadas en condiciones.
+
+## Estructura si: Tomar Decisiones
+
+La estructura 'si' ejecuta código solo cuando se cumple una condición. Como cuando el profesor dice: 'Si tu nota es 90 o más, tienes una A'.
+
+<Syntax>si condicion ... código ...</Syntax>
+
+<Code code={`variable nota = 95
+
+si nota >= 90 {
+    mostrar "¡Excelente! Tienes una A"
+}
+
+variable asistencia = 80
+
+si asistencia >= 75 {
+    mostrar "Cumples con la asistencia mínima"
+    mostrar "Puedes presentar el examen final"
+}
+
+variable tareaEntregada = verdadero
+
+si tareaEntregada {
+    mostrar "Tarea registrada correctamente"
+}`} />
+
+<Output text={`¡Excelente! Tienes una A
+Cumples con la asistencia mínima
+Puedes presentar el examen final
+Tarea registrada correctamente`} />
+
+- La condición debe evaluar a verdadero o falso
+- Si la condición es verdadera, se ejecuta el código dentro de las llaves {}
+- Si la condición es falsa, se salta todo el bloque
+- Las llaves {} son obligatorias, incluso para una sola línea
+- Puedes poner múltiples líneas de código dentro del bloque
+
+## Estructura si-sino: Dos Caminos
+
+A veces necesitas hacer algo cuando la condición es verdadera, y algo diferente cuando es falsa. Como: 'Si aprobaste, felicitaciones. Sino, debes recursar'.
+
+<Syntax>si condicion ... código ... sino ... código ...</Syntax>
+
+<Code code={`variable nota = 65
+
+si nota >= 70 {
+    mostrar "¡Aprobaste! Felicitaciones"
+    mostrar "Pasa a la siguiente materia"
+} sino {
+    mostrar "No aprobaste"
+    mostrar "Debes recursar la materia"
+}
+
+variable asistencia = 60
+variable minimoAsistencia = 75
+
+si asistencia >= minimoAsistencia {
+    mostrar "Asistencia suficiente"
+} sino {
+    mostrar "Asistencia insuficiente"
+    mostrar "No puedes rendir el examen"
+}`} />
+
+<Output text={`No aprobaste
+Debes recursar la materia
+Asistencia insuficiente
+No puedes rendir el examen`} />
+
+- Exactamente UNO de los dos bloques se ejecuta, nunca ambos
+- Si la condición es verdadera → ejecuta el bloque 'si'
+- Si la condición es falsa → ejecuta el bloque 'sino'
+- Útil cuando tienes dos caminos mutuamente excluyentes
+- Piensa en 'sino' como 'en cualquier otro caso'
+
+## Estructura si-sino si: Múltiples Rangos
+
+Cuando tienes múltiples rangos o categorías, usas 'si-sino si'. Como el sistema de calificaciones: A para 90 o más, B para 80-89, C para 70-79, F para menos de 70.
+
+<Syntax>si condicion1 ... sino si condicion2 ... sino ...</Syntax>
+
+<Code code={`variable nota = 85
+
+si nota >= 90 {
+    mostrar "Calificación: A - Excelente"
+} sino si nota >= 80 {
+    mostrar "Calificación: B - Muy Bueno"
+} sino si nota >= 70 {
+    mostrar "Calificación: C - Bueno"
+} sino si nota >= 60 {
+    mostrar "Calificación: D - Suficiente"
+} sino {
+    mostrar "Calificación: F - Reprobado"
+}
+
+variable promedio = 92
+
+si promedio >= 95 {
+    mostrar "Honor Roll - Mención de Honor"
+} sino si promedio >= 85 {
+    mostrar "Cuadro de Honor"
+} sino si promedio >= 70 {
+    mostrar "Aprobado"
+} sino {
+    mostrar "Necesita mejorar"
+}`} />
+
+<Output text={`Calificación: B - Muy Bueno
+Cuadro de Honor`} />
+
+- Se evalúan las condiciones en orden, de arriba hacia abajo
+- Se ejecuta el PRIMER bloque cuya condición sea verdadera
+- Una vez que se ejecuta un bloque, se salta el resto
+- El bloque 'sino' final es opcional (caso por defecto)
+- Útil para rangos numéricos o múltiples categorías
+- Importante: el orden importa. Pon las condiciones más específicas primero
+
+## Condicionales Anidados: Decisiones Dentro de Decisiones
+
+Puedes poner condicionales dentro de otros condicionales. Como: 'Si aprobaste, ENTONCES si tu nota es mayor a 95, obtienes beca'.
+
+<Code code={`variable nota = 88
+variable asistencia = 90
+variable entregaTrabajos = verdadero
+
+si nota >= 70 {
+    mostrar "¡Aprobaste la materia!"
+
+    si nota >= 90 {
+        mostrar "Calificación sobresaliente"
+
+        si asistencia >= 90 {
+            mostrar "¡Eres candidato a beca!"
+        }
+    } sino si nota >= 80 {
+        mostrar "Muy buen desempeño"
+    }
+} sino {
+    mostrar "Reprobaste"
+
+    si entregaTrabajos {
+        mostrar "Puedes hacer un trabajo de recuperación"
+    } sino {
+        mostrar "Debes recursar la materia completa"
+    }
+}`} />
+
+<Output text={`¡Aprobaste la materia!
+Muy buen desempeño`} />
+
+- Puedes anidar 'si' dentro de otros 'si'
+- Cada nivel de anidamiento verifica una condición adicional
+- Mantén buena indentación para que sea legible
+- No anides demasiado: más de 3 niveles se vuelve confuso
+- A veces es mejor usar operadores lógicos (y, o) que anidar
+
+## Usando Operadores en Condiciones
+
+Puedes usar operadores de comparación y operadores lógicos (y, o, !) para crear condiciones más complejas.
+
+<Code code={`variable notaExamen = 85
+variable notaTrabajos = 90
+variable asistencia = 95
+
+si notaExamen >= 70 y notaTrabajos >= 70 {
+    mostrar "Aprobaste ambas partes"
+}
+
+si notaExamen >= 90 o notaTrabajos >= 90 {
+    mostrar "Tienes al menos una nota excelente"
+}
+
+variable entregaTarde = falso
+
+si !entregaTarde {
+    mostrar "Entrega a tiempo - sin penalización"
+}
+
+si notaExamen >= 80 y notaTrabajos >= 80 y asistencia >= 90 {
+    mostrar "¡Estudiante destacado!"
+}
+
+variable notaFinal = (notaExamen + notaTrabajos) / 2
+
+si notaFinal >= 70 y asistencia >= 75 {
+    mostrar "Cumples todos los requisitos para aprobar"
+} sino {
+    mostrar "No cumples los requisitos mínimos"
+}`} />
+
+<Output text={`Aprobaste ambas partes
+Tienes al menos una nota excelente
+Entrega a tiempo - sin penalización
+¡Estudiante destacado!
+Cumples todos los requisitos para aprobar`} />
+
+- Operadores de comparación: mayor, menor, igual, diferente
+- Operador 'y': Ambas condiciones deben ser verdaderas
+- Operador 'o': Al menos una condición debe ser verdadera
+- Operador '!': Invierte verdadero ↔ falso
+- Puedes combinar múltiples operadores
+- Usa paréntesis para agrupar condiciones complejas
+
+## Sistema Completo de Calificaciones
+
+Veamos un ejemplo completo que combina todo: calcular la nota final, determinar si aprueba, asignar letra de calificación, y verificar elegibilidad para honores.
+
+<Code code={`variable notaExamen1 = 85
+variable notaExamen2 = 90
+variable notaTrabajos = 88
+variable asistencia = 92
+variable participacion = 95
+
+variable promedioExamenes = (notaExamen1 + notaExamen2) / 2
+variable notaFinal = (promedioExamenes * 0.5) + (notaTrabajos * 0.3) + (participacion * 0.2)
+
+mostrar "=== REPORTE DE CALIFICACIONES ==="
+mostrar "Promedio exámenes: " + promedioExamenes
+mostrar "Trabajos: " + notaTrabajos
+mostrar "Participación: " + participacion
+mostrar "Nota final: " + notaFinal
+mostrar ""
+
+si notaFinal >= 70 y asistencia >= 75 {
+    mostrar "Estado: APROBADO"
+    mostrar ""
+
+    si notaFinal >= 90 {
+        mostrar "Calificación: A - Excelente"
+
+        si asistencia >= 90 y participacion >= 90 {
+            mostrar "*** MENCIÓN DE HONOR ***"
+        }
+    } sino si notaFinal >= 80 {
+        mostrar "Calificación: B - Muy Bueno"
+
+        si asistencia >= 90 {
+            mostrar "Elegible para Cuadro de Honor"
+        }
+    } sino {
+        mostrar "Calificación: C - Bueno"
+    }
+} sino {
+    mostrar "Estado: REPROBADO"
+    mostrar ""
+
+    si notaFinal >= 60 {
+        mostrar "Puedes presentar examen de recuperación"
+    } sino si asistencia < 75 {
+        mostrar "Asistencia insuficiente"
+        mostrar "Debes recursar la materia"
+    } sino {
+        mostrar "Debes recursar la materia"
+    }
+}`} />
+
+<Output text={`=== REPORTE DE CALIFICACIONES ===
+Promedio exámenes: 87.5
+Trabajos: 88
+Participación: 95
+Nota final: 89.5
+
+Estado: APROBADO
+
+Calificación: B - Muy Bueno
+Elegible para Cuadro de Honor`} />
+
+Este sistema completo incluye:
+- Cálculo de promedios ponderados
+- Verificación de requisitos (nota Y asistencia)
+- Asignación de calificación por rangos (A, B, C)
+- Condicionales anidados para honores
+- Manejo de casos de reprobación
+- Uso de operadores lógicos (y)
+- Así funcionan los sistemas de calificaciones reales
+
+## Consejos y Buenas Prácticas
+
+Recomendaciones para escribir condicionales claros y efectivos.
+
+<Code code={`variable nota = 85
+
+// Forma clara y organizada
+si nota >= 90 {
+    mostrar "Excelente"
+} sino si nota >= 70 {
+    mostrar "Aprobado"
+} sino {
+    mostrar "Reprobado"
+}
+
+// Usa variables con nombres descriptivos
+variable aprobado = nota >= 70
+si aprobado {
+    mostrar "Has aprobado"
+}
+
+// Usa constantes para valores fijos
+variable notaMinima = 70
+si nota >= notaMinima {
+    mostrar "Cumple el mínimo"
+}`} />
+
+<Output text={`Aprobado
+Has aprobado
+Cumple el mínimo`} />
+
+- Usa nombres de variables descriptivos: notaMinima, aprobado
+- Guarda condiciones complejas en variables para claridad
+- Ordena condiciones de mayor a menor en rangos numéricos
+- Mantén la indentación consistente
+- Usa constantes para valores que no cambian (ej: NOTA_MINIMA = 70)
+- Evita anidar más de 3 niveles
+- Evita condiciones muy largas (usa variables intermedias)
+- Si tienes muchos 'sino si', considera usar 'elegir' más adelante

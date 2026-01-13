@@ -1,0 +1,305 @@
+# 🔢 Métodos Numéricos
+
+Así como los productos del supermercado tienen etiquetas con información (precio, peso, fecha de vencimiento), los números en HispanoLang tienen métodos incorporados que te dan información y permiten transformarlos.
+
+## Verificar Paridad: ¿Par o Impar?
+
+Como clasificar productos en estantes pares e impares, puedes verificar si un número es par o impar.
+
+<Syntax>numero.esPar(), numero.esImpar()</Syntax>
+
+<Code code={`variable numero = 42
+mostrar numero + " es par: " + numero.esPar()
+mostrar numero + " es impar: " + numero.esImpar()
+
+variable otro = 17
+mostrar otro + " es par: " + otro.esPar()
+mostrar otro + " es impar: " + otro.esImpar()
+
+// Clasificar números
+para (variable i = 1; i <= 6; i++) {
+    si i.esPar() {
+        mostrar i + " → Par"
+    } sino {
+        mostrar i + " → Impar"
+    }
+}`} />
+
+<Output text={`42 es par: verdadero
+42 es impar: falso
+17 es par: falso
+17 es impar: verdadero
+1 → Impar
+2 → Par
+3 → Impar
+4 → Par
+5 → Impar
+6 → Par`} />
+
+- .esPar(): Retorna verdadero si el número es divisible por 2
+- .esImpar(): Retorna verdadero si NO es divisible por 2
+- Útil para alternar colores, clasificar, validar
+
+## Verificar Signo: Positivo, Negativo, Cero
+
+Como las etiquetas de temperatura que indican si es caliente (+) o frío (-), puedes verificar el signo de un número.
+
+<Syntax>numero.esPositivo(), numero.esNegativo(), numero.esCero()</Syntax>
+
+<Code code={`variable temperatura = 25
+mostrar temperatura + "°C es positivo: " + temperatura.esPositivo()
+
+variable saldo = -150
+mostrar "Saldo $" + saldo + " es negativo: " + saldo.esNegativo()
+
+variable balance = 0
+mostrar "Balance " + balance + " es cero: " + balance.esCero()
+
+// Validar datos
+variable numeros = [10, -5, 0, 8, -3]
+para (variable i = 0; i < 5; i++) {
+    variable n = numeros[i]
+    si n.esPositivo() {
+        mostrar n + " → Ganancia"
+    } sino si n.esNegativo() {
+        mostrar n + " → Pérdida"
+    } sino {
+        mostrar n + " → Neutro"
+    }
+}`} />
+
+<Output text={`25°C es positivo: verdadero
+Saldo $-150 es negativo: verdadero
+Balance 0 es cero: verdadero
+10 → Ganancia
+-5 → Pérdida
+0 → Neutro
+8 → Ganancia
+-3 → Pérdida`} />
+
+- .esPositivo(): Verdadero si el número es mayor que 0
+- .esNegativo(): Verdadero si el número es menor que 0
+- .esCero(): Verdadero si el número es exactamente 0
+- Útil para validar saldos, temperaturas, resultados
+
+## Convertir a Texto
+
+Como las etiquetas de precio que muestran "$99.99", puedes convertir números a texto para mostrarlos formateados.
+
+<Syntax>numero.aTexto()</Syntax>
+
+<Code code={`variable precio = 1500
+mostrar "Precio: $" + precio.aTexto()
+
+variable cantidad = 25
+variable mensaje = "Hay " + cantidad.aTexto() + " productos"
+mostrar mensaje
+
+// Formatear para mostrar
+variable total = 1234.56
+mostrar "Total: $" + total.aTexto()
+
+// Concatenar con información
+variable stock = 42
+mostrar "Stock disponible: " + stock.aTexto() + " unidades"
+
+// En una lista
+variable precios = [100, 200, 300]
+para (variable i = 0; i < 3; i++) {
+    mostrar "Item " + (i + 1).aTexto() + ": $" + precios[i].aTexto()
+}`} />
+
+<Output text={`Precio: $1500
+Hay 25 productos
+Total: $1234.56
+Stock disponible: 42 unidades
+Item 1: $100
+Item 2: $200
+Item 3: $300`} />
+
+- .aTexto(): Convierte el número a su representación textual
+- Útil para construir mensajes, formatear salidas
+- Funciona con enteros y decimales
+- Equivalente a texto(numero)
+
+## Verificar si es Entero
+
+Como distinguir entre productos vendidos por unidad (enteros) o por peso (decimales).
+
+<Syntax>numero.esEntero()</Syntax>
+
+<Code code={`variable cantidad = 5
+mostrar cantidad + " es entero: " + cantidad.esEntero()
+
+variable precio = 99.99
+mostrar precio + " es entero: " + precio.esEntero()
+
+variable exacto = 100.0
+mostrar exacto + " es entero: " + exacto.esEntero()
+
+// Validar entrada
+variable valores = [10, 5.5, 3, 7.25, 8]
+para (variable i = 0; i < 5; i++) {
+    variable v = valores[i]
+    si v.esEntero() {
+        mostrar v + " → Cantidad válida"
+    } sino {
+        mostrar v + " → Redondear a " + redondear(v)
+    }
+}`} />
+
+<Output text={`5 es entero: verdadero
+99.99 es entero: falso
+100.0 es entero: verdadero
+10 → Cantidad válida
+5.5 → Redondear a 6
+3 → Cantidad válida
+7.25 → Redondear a 7
+8 → Cantidad válida`} />
+
+- .esEntero(): Verdadero si no tiene parte decimal
+- 5.0 se considera entero (la parte decimal es 0)
+- 5.1 NO es entero
+- Útil para validar cantidades, índices, identificadores
+
+## Valor Absoluto como Método
+
+Obtener la magnitud de un número sin importar el signo.
+
+<Syntax>numero.absoluto()</Syntax>
+
+<Code code={`variable positivo = 25
+mostrar "Absoluto de " + positivo + ": " + positivo.absoluto()
+
+variable negativo = -25
+mostrar "Absoluto de " + negativo + ": " + negativo.absoluto()
+
+// Calcular diferencia
+variable temp1 = 15
+variable temp2 = 28
+variable diferencia = (temp1 - temp2).absoluto()
+mostrar "Diferencia de temperatura: " + diferencia + "°C"
+
+// Distancia entre puntos
+variable punto1 = 50
+variable punto2 = 80
+variable distancia = (punto1 - punto2).absoluto()
+mostrar "Distancia: " + distancia + " metros"`} />
+
+<Output text={`Absoluto de 25: 25
+Absoluto de -25: 25
+Diferencia de temperatura: 13°C
+Distancia: 30 metros`} />
+
+- .absoluto(): Retorna el valor sin signo
+- Equivalente a valorAbsoluto(numero)
+- Números positivos quedan igual
+- Números negativos se vuelven positivos
+
+## Redondeo como Métodos
+
+Redondear números usando métodos en lugar de funciones.
+
+<Code code={`variable precio = 99.99
+
+mostrar "Original: $" + precio
+mostrar "Redondeado: $" + precio.redondear()
+mostrar "Techo: $" + precio.techo()
+mostrar "Piso: $" + precio.piso()
+
+// Calcular totales
+variable subtotal = 123.45
+variable total = subtotal.redondear()
+mostrar "Subtotal: $" + subtotal + " → Total: $" + total
+
+// Cantidades
+variable cantidad = 3.7
+mostrar "Necesitas al menos " + cantidad.techo() + " unidades"
+mostrar "Tienes completas " + cantidad.piso() + " unidades"`} />
+
+<Output text={`Original: $99.99
+Redondeado: $100
+Techo: $100
+Piso: $99
+Subtotal: $123.45 → Total: $123
+Necesitas al menos 4 unidades
+Tienes completas 3 unidades`} />
+
+- .redondear(): Al entero más cercano
+- .techo(): Siempre hacia arriba
+- .piso(): Siempre hacia abajo
+- Equivalentes a las funciones redondear(), techo(), piso()
+
+## Caso Práctico: Sistema de Inventario
+
+Ejemplo completo usando métodos numéricos.
+
+<Code code={`mostrar "=== SISTEMA DE INVENTARIO ==="
+
+variable productos = [
+    ["Laptop", 1500, 5],
+    ["Mouse", 50, 25],
+    ["Teclado", 150, 12],
+    ["Monitor", 800, 3]
+]
+
+variable totalInventario = 0
+
+para (variable i = 0; i < 4; i++) {
+    variable nombre = productos[i][0]
+    variable precio = productos[i][1]
+    variable stock = productos[i][2]
+
+    variable subtotal = precio * stock
+    totalInventario = totalInventario + subtotal
+
+    mostrar "---"
+    mostrar "Producto: " + nombre
+    mostrar "Precio: $" + precio.aTexto()
+    mostrar "Stock: " + stock.aTexto() + " unidades"
+    mostrar "Valor: $" + subtotal.aTexto()
+
+    si stock.esImpar() {
+        mostrar "  (Stock impar - verificar)"
+    }
+}
+
+mostrar ""
+mostrar "=== RESUMEN ==="
+mostrar "Valor total del inventario: $" + totalInventario.aTexto()`} />
+
+<Output text={`=== SISTEMA DE INVENTARIO ===
+---
+Producto: Laptop
+Precio: $1500
+Stock: 5 unidades
+Valor: $7500
+  (Stock impar - verificar)
+---
+Producto: Mouse
+Precio: $50
+Stock: 25 unidades
+Valor: $1250
+  (Stock impar - verificar)
+---
+Producto: Teclado
+Precio: $150
+Stock: 12 unidades
+Valor: $1800
+---
+Producto: Monitor
+Precio: $800
+Stock: 3 unidades
+Valor: $2400
+  (Stock impar - verificar)
+
+=== RESUMEN ===
+Valor total del inventario: $12950`} />
+
+Resumen de métodos numéricos:
+- .esPar() / .esImpar(): Verificar paridad
+- .esPositivo() / .esNegativo() / .esCero(): Verificar signo
+- .aTexto(): Convertir a texto
+- .esEntero(): Verificar si es número entero
+- .absoluto(): Valor sin signo
+- .redondear() / .techo() / .piso(): Redondeo

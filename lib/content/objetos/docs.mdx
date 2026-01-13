@@ -1,0 +1,478 @@
+# 🗂️ Objetos
+
+Imagina tu perfil de Instagram o Facebook: tienes nombre, usuario, bio, cantidad de seguidores, foto de perfil... Son varios datos relacionados que describen QUIÉN eres. En vez de tener variables separadas (nombre, usuario, bio, seguidores), usas UN objeto que agrupa todo. Los objetos son perfectos para representar entidades con múltiples propiedades usando pares clave-valor, como tu perfil digital.
+
+## ¿Qué son los Objetos?
+
+Tu perfil de Instagram tiene campos: nombre, usuario, bio, seguidores, seguidos, verificado. No es una lista de valores aleatorios, cada dato tiene un nombre específico.
+
+Los objetos agrupan datos relacionados con nombres (claves) que los identifican.
+
+<Syntax>variable objeto = clave: valor, clave2: valor2</Syntax>
+
+<Code code={`variable perfil = {
+    nombre: "Juan Pérez",
+    usuario: "@juanperez",
+    bio: "Desarrollador",
+    seguidores: 1500,
+    seguidos: 300,
+    verificado: falso
+}
+
+mostrar perfil
+
+variable producto = {
+    nombre: "Mouse Gamer",
+    precio: 150,
+    marca: "Logitech",
+    stock: 25
+}
+
+mostrar producto
+
+variable vacio = {}
+mostrar "Perfil vacío: " + texto(vacio)`} />
+
+<Output text={`{ nombre: "Juan Pérez", usuario: "@juanperez", bio: "Desarrollador", seguidores: 1500, seguidos: 300, verificado: falso }
+{ nombre: "Mouse Gamer", precio: 150, marca: "Logitech", stock: 25 }
+Perfil vacío: {}`} />
+
+- Los objetos se crean con llaves
+- Contienen pares clave:valor separados por comas
+- Las claves (nombres) identifican cada valor
+- Los valores pueden ser cualquier tipo
+- Un objeto vacío es válido
+
+## Acceder a Propiedades
+
+Como cuando abres tu perfil y ves tu nombre, tu bio, tus seguidores... Usas la notación de punto (objeto.propiedad) para acceder a cada campo.
+
+<Code code={`variable perfil = {
+    nombre: "Ana García",
+    usuario: "@anagarcia",
+    seguidores: 2500,
+    seguidos: 180,
+    verificado: verdadero
+}
+
+mostrar "Nombre: " + perfil.nombre
+mostrar "Usuario: " + perfil.usuario
+mostrar "Seguidores: " + texto(perfil.seguidores)
+mostrar "Seguidos: " + texto(perfil.seguidos)
+mostrar "Verificado: " + texto(perfil.verificado)
+
+variable producto = {
+    nombre: "Teclado",
+    precio: 300,
+    stock: 15
+}
+
+mostrar ""
+mostrar "Producto: " + producto.nombre
+mostrar "Precio: $" + texto(producto.precio)
+mostrar "Stock: " + texto(producto.stock) + " unidades"`} />
+
+<Output text={`Nombre: Ana García
+Usuario: @anagarcia
+Seguidores: 2500
+Seguidos: 180
+Verificado: verdadero
+
+Producto: Teclado
+Precio: $300
+Stock: 15 unidades`} />
+
+- Acceso con punto: objeto.propiedad
+- perfil.nombre → 'Ana García'
+- perfil.seguidores → 2500
+- Acceder a propiedad inexistente → indefinido
+
+## Modificar Propiedades
+
+Como cuando editas tu bio, cambias tu foto de perfil, o actualizas tu nombre. Puedes modificar propiedades existentes o agregar nuevas.
+
+<Code code={`variable perfil = {
+    nombre: "Carlos López",
+    usuario: "@carlos",
+    seguidores: 500
+}
+
+mostrar "Perfil original: " + texto(perfil)
+
+perfil.seguidores = 600
+mostrar "Después de ganar seguidores: " + texto(perfil.seguidores)
+
+perfil.nombre = "Carlos López Pérez"
+mostrar "Nombre actualizado: " + perfil.nombre
+
+perfil.bio = "Fotógrafo profesional"
+mostrar "Bio agregada: " + perfil.bio
+
+perfil.verificado = verdadero
+perfil.ciudad = "Buenos Aires"
+
+mostrar ""
+mostrar "Perfil completo actualizado:"
+mostrar "Nombre: " + perfil.nombre
+mostrar "Usuario: " + perfil.usuario
+mostrar "Bio: " + perfil.bio
+mostrar "Seguidores: " + texto(perfil.seguidores)
+mostrar "Verificado: " + texto(perfil.verificado)
+mostrar "Ciudad: " + perfil.ciudad`} />
+
+<Output text={`Perfil original: { nombre: "Carlos López", usuario: "@carlos", seguidores: 500 }
+Después de ganar seguidores: 600
+Nombre actualizado: Carlos López Pérez
+Bio agregada: Fotógrafo profesional
+
+Perfil completo actualizado:
+Nombre: Carlos López Pérez
+Usuario: @carlos
+Bio: Fotógrafo profesional
+Seguidores: 600
+Verificado: verdadero
+Ciudad: Buenos Aires`} />
+
+- Modificar existente: objeto.propiedad = nuevoValor
+- Agregar nueva: objeto.nuevaPropiedad = valor
+- Los objetos son dinámicos (pueden crecer)
+- Si existe → modifica el valor
+- Si no existe → crea la propiedad
+
+## Objetos vs Listas
+
+¿Lista de seguidores o perfil de usuario? Entender cuándo usar listas y cuándo usar objetos es fundamental.
+
+<Code code={`mostrar "=== LISTA: COLECCIÓN ORDENADA ==="
+variable seguidores = ["@ana", "@pedro", "@luis", "@maria"]
+mostrar "Seguidores: " + texto(seguidores)
+mostrar "Primero: " + seguidores[0]
+mostrar "Segundo: " + seguidores[1]
+mostrar "Total: " + texto(seguidores.longitud())
+
+mostrar ""
+mostrar "=== OBJETO: DATOS ESTRUCTURADOS ==="
+variable perfil = {
+    nombre: "Juan Pérez",
+    usuario: "@juan",
+    seguidores: 1500,
+    seguidos: 300,
+    verificado: falso
+}
+
+mostrar "Nombre: " + perfil.nombre
+mostrar "Usuario: " + perfil.usuario
+mostrar "Seguidores: " + texto(perfil.seguidores)
+
+mostrar ""
+mostrar "=== COMBINADOS ==="
+variable perfilCompleto = {
+    nombre: "Ana García",
+    usuario: "@ana",
+    posts: ["Foto1", "Foto2", "Foto3"],
+    seguidores: 2500
+}
+
+mostrar "Usuario: " + perfilCompleto.usuario
+mostrar "Posts: " + texto(perfilCompleto.posts)
+mostrar "Primer post: " + perfilCompleto.posts[0]`} />
+
+<Output text={`=== LISTA: COLECCIÓN ORDENADA ===
+Seguidores: ["@ana", "@pedro", "@luis", "@maria"]
+Primero: @ana
+Segundo: @pedro
+Total: 4
+
+=== OBJETO: DATOS ESTRUCTURADOS ===
+Nombre: Juan Pérez
+Usuario: @juan
+Seguidores: 1500
+
+=== COMBINADOS ===
+Usuario: @ana
+Posts: ["Foto1", "Foto2", "Foto3"]
+Primer post: Foto1`} />
+
+USA LISTAS cuando:
+- Colección de elementos similares
+- El orden importa
+- Acceso por posición (índice)
+- Ejemplos: lista de seguidores, posts, comentarios
+
+USA OBJETOS cuando:
+- Datos con nombres específicos
+- Representar una entidad
+- Acceso por nombre de propiedad
+- Ejemplos: perfil de usuario, producto, configuración
+
+## Objetos Anidados
+
+Como cuando tu perfil tiene una sección 'Dirección' con calle, ciudad, país... Un objeto puede contener otros objetos, creando estructura jerárquica.
+
+<Code code={`variable perfil = {
+    nombre: "María González",
+    usuario: "@maria",
+    direccion: {
+        calle: "Av. Principal 123",
+        ciudad: "Madrid",
+        pais: "España",
+        codigoPostal: "28001"
+    },
+    verificado: verdadero
+}
+
+mostrar "Nombre: " + perfil.nombre
+mostrar "Ciudad: " + perfil.direccion.ciudad
+mostrar "País: " + perfil.direccion.pais
+mostrar "Código postal: " + perfil.direccion.codigoPostal
+
+mostrar ""
+mostrar "=== PRODUCTO CON ESPECIFICACIONES ==="
+variable producto = {
+    nombre: "Laptop",
+    precio: 50000,
+    especificaciones: {
+        procesador: "Intel i7",
+        ram: "16GB",
+        almacenamiento: "512GB SSD",
+        pantalla: "15.6 pulgadas"
+    },
+    stock: 10
+}
+
+mostrar "Producto: " + producto.nombre
+mostrar "Precio: $" + texto(producto.precio)
+mostrar "Procesador: " + producto.especificaciones.procesador
+mostrar "RAM: " + producto.especificaciones.ram
+mostrar "Pantalla: " + producto.especificaciones.pantalla`} />
+
+<Output text={`Nombre: María González
+Ciudad: Madrid
+País: España
+Código postal: 28001
+
+=== PRODUCTO CON ESPECIFICACIONES ===
+Producto: Laptop
+Precio: $50000
+Procesador: Intel i7
+RAM: 16GB
+Pantalla: 15.6 pulgadas`} />
+
+- Objetos anidados: objetos dentro de objetos
+- Acceso multinivel: objeto.sub.propiedad
+- perfil.direccion.ciudad → 'Madrid'
+- Puedes anidar cuantos niveles necesites
+
+## Lista de Objetos
+
+El patrón más común: una lista de objetos. Como tu feed de Instagram: cada post es un objeto con autor, imagen, likes, comentarios...
+
+<Code code={`variable usuarios = [
+    {
+        nombre: "Ana García",
+        usuario: "@ana",
+        seguidores: 2500,
+        verificado: verdadero
+    },
+    {
+        nombre: "Pedro López",
+        usuario: "@pedro",
+        seguidores: 800,
+        verificado: falso
+    },
+    {
+        nombre: "Luis Martínez",
+        usuario: "@luis",
+        seguidores: 3200,
+        verificado: verdadero
+    }
+]
+
+mostrar "=== TODOS LOS USUARIOS ==="
+usuarios.recorrer(funcion(usuario, i) {
+    mostrar (i + 1).aTexto() + ". " + usuario.nombre + " (" + usuario.usuario + ")"
+    mostrar "   Seguidores: " + texto(usuario.seguidores)
+})
+
+mostrar ""
+mostrar "=== VERIFICADOS ==="
+variable verificados = usuarios.filtrar(funcion(u) {
+    retornar u.verificado
+})
+mostrar "Usuarios verificados: " + texto(verificados.longitud())
+
+mostrar ""
+mostrar "=== INFLUENCERS (>1000) ==="
+variable influencers = usuarios.filtrar(funcion(u) {
+    retornar u.seguidores > 1000
+})
+
+influencers.recorrer(funcion(inf) {
+    mostrar inf.nombre + ": " + texto(inf.seguidores) + " seguidores"
+})`} />
+
+<Output text={`=== TODOS LOS USUARIOS ===
+1. Ana García (@ana)
+   Seguidores: 2500
+2. Pedro López (@pedro)
+   Seguidores: 800
+3. Luis Martínez (@luis)
+   Seguidores: 3200
+
+=== VERIFICADOS ===
+Usuarios verificados: 2
+
+=== INFLUENCERS (>1000) ===
+Ana García: 2500 seguidores
+Luis Martínez: 3200 seguidores`} />
+
+- Lista de objetos: patrón fundamental
+- Cada elemento es un objeto completo
+- usuarios[0] → primer objeto completo
+- usuarios[0].nombre → propiedad del primer objeto
+- Métodos de lista funcionan: .recorrer(), .filtrar(), .mapear()
+
+## Funciones con Objetos
+
+Como cuando compartes un perfil o envías tus datos a una función. Los objetos se pasan completos como argumentos.
+
+<Code code={`funcion mostrarPerfil(usuario) {
+    mostrar "=== PERFIL ==="
+    mostrar "Nombre: " + usuario.nombre
+    mostrar "Usuario: " + usuario.usuario
+    mostrar "Seguidores: " + texto(usuario.seguidores)
+    mostrar "Verificado: " + (usuario.verificado ? "✓" : "✗")
+}
+
+variable ana = {
+    nombre: "Ana García",
+    usuario: "@ana",
+    seguidores: 2500,
+    verificado: verdadero
+}
+
+mostrarPerfil(ana)
+
+mostrar ""
+funcion agregarSeguidores(usuario, cantidad) {
+    usuario.seguidores = usuario.seguidores + cantidad
+    mostrar usuario.nombre + " ahora tiene " + texto(usuario.seguidores) + " seguidores"
+}
+
+agregarSeguidores(ana, 100)
+agregarSeguidores(ana, 50)
+
+mostrar ""
+funcion crearPerfil(nombre, usuario) {
+    retornar {
+        nombre: nombre,
+        usuario: usuario,
+        seguidores: 0,
+        seguidos: 0,
+        verificado: falso
+    }
+}
+
+variable nuevoPerfil = crearPerfil("Pedro López", "@pedro")
+mostrarPerfil(nuevoPerfil)`} />
+
+<Output text={`=== PERFIL ===
+Nombre: Ana García
+Usuario: @ana
+Seguidores: 2500
+Verificado: ✓
+
+Ana García ahora tiene 2600 seguidores
+Ana García ahora tiene 2650 seguidores
+
+=== PERFIL ===
+Nombre: Pedro López
+Usuario: @pedro
+Seguidores: 0
+Verificado: ✗`} />
+
+- Pasar objetos a funciones: funcion(usuario)
+- Los objetos se pasan por referencia
+- Modificaciones afectan el original
+- Retornar objetos: retornar con llaves
+
+## Transformar Lista de Objetos
+
+Combina objetos con métodos de listas para operaciones poderosas: extraer nombres, calcular totales, filtrar por criterio...
+
+<Code code={`variable productos = [
+    { nombre: "Mouse", precio: 150, stock: 25 },
+    { nombre: "Teclado", precio: 300, stock: 15 },
+    { nombre: "Monitor", precio: 2000, stock: 8 },
+    { nombre: "WebCam", precio: 500, stock: 12 }
+]
+
+mostrar "=== NOMBRES DE PRODUCTOS ==="
+variable nombres = productos.mapear(funcion(p) {
+    retornar p.nombre
+})
+mostrar nombres.unir(", ")
+
+mostrar ""
+mostrar "=== PRODUCTOS DISPONIBLES (stock > 10) ==="
+variable disponibles = productos.filtrar(funcion(p) {
+    retornar p.stock > 10
+})
+
+disponibles.recorrer(funcion(p) {
+    mostrar p.nombre + ": " + texto(p.stock) + " unidades"
+})
+
+mostrar ""
+mostrar "=== VALOR TOTAL INVENTARIO ==="
+variable valorTotal = productos.reducir(funcion(acc, p) {
+    retornar acc + (p.precio * p.stock)
+}, 0)
+
+mostrar "Valor total: $" + texto(valorTotal)
+
+mostrar ""
+mostrar "=== APLICAR DESCUENTO 10% ==="
+variable conDescuento = productos.mapear(funcion(p) {
+    retornar {
+        nombre: p.nombre,
+        precioOriginal: p.precio,
+        precioFinal: p.precio * 0.9,
+        stock: p.stock
+    }
+})
+
+conDescuento.recorrer(funcion(p) {
+    mostrar p.nombre + ": $" + texto(p.precioOriginal) + " → $" + texto(p.precioFinal)
+})`} />
+
+<Output text={`=== NOMBRES DE PRODUCTOS ===
+Mouse, Teclado, Monitor, WebCam
+
+=== PRODUCTOS DISPONIBLES (stock > 10) ===
+Mouse: 25 unidades
+Teclado: 15 unidades
+WebCam: 12 unidades
+
+=== VALOR TOTAL INVENTARIO ===
+Valor total: $24950
+
+=== APLICAR DESCUENTO 10% ===
+Mouse: $150 → $135
+Teclado: $300 → $270
+Monitor: $2000 → $1800
+WebCam: $500 → $450`} />
+
+Operaciones comunes con lista de objetos:
+- .mapear(p => p.nombre) → lista de solo nombres
+- .filtrar(p => p.stock > 10) → solo productos con stock
+- .reducir((acc, p) => acc + p.precio, 0) → suma total
+- Combina filtrar → mapear → reducir para pipelines poderosos
+
+Resumen de objetos:
+- Crear: objeto con clave: valor
+- Acceder: objeto.propiedad
+- Modificar: objeto.propiedad = valor
+- Agregar: objeto.nuevaProp = valor
+- Anidados: objeto.sub.propiedad
+- Lista de objetos: arreglo de objetos

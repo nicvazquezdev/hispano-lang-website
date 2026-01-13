@@ -1,0 +1,310 @@
+# 🎮 Control de Flujo en Bucles
+
+El control de flujo en bucles te permite decidir qué pasa dentro de cada repetición: puedes saltar una iteración, detener el bucle completamente, o ejecutar código diferente según condiciones. Es como tener botones de "siguiente", "pausa" y "detener" en tu reproductor de música.
+
+## romper: Detener la Reproducción
+
+A veces necesitas detener un bucle antes de que termine naturalmente. Como cuando encuentras la canción que buscabas y ya no necesitas seguir buscando. Para eso existe 'romper'.
+
+<Syntax>romper</Syntax>
+
+<Code code={`para (variable i = 1; i <= 10; i++) {
+    si i == 5 {
+        mostrar "¡Encontré mi canción favorita!"
+        romper
+    }
+    mostrar "Revisando canción " + i
+}
+
+mostrar "Búsqueda terminada"
+
+variable cancion = 1
+variable encontrada = falso
+
+mientras cancion <= 20 {
+    mostrar "Buscando en canción " + cancion
+
+    si cancion == 7 {
+        mostrar "¡Ahí está!"
+        encontrada = verdadero
+        romper
+    }
+
+    cancion++
+}
+
+mostrar "Canción encontrada: " + encontrada`} />
+
+<Output text={`Revisando canción 1
+Revisando canción 2
+Revisando canción 3
+Revisando canción 4
+¡Encontré mi canción favorita!
+Búsqueda terminada
+Buscando en canción 1
+Buscando en canción 2
+Buscando en canción 3
+Buscando en canción 4
+Buscando en canción 5
+Buscando en canción 6
+Buscando en canción 7
+¡Ahí está!
+Canción encontrada: verdadero`} />
+
+- 'romper' detiene el bucle INMEDIATAMENTE
+- Sale del bucle y continúa con el código después
+- Útil para búsquedas: cuando encuentras lo que buscas, dejas de buscar
+- También útil para salir de bucles cuando algo sale mal
+- No abuses: si siempre usas 'romper', tal vez el bucle está mal diseñado
+
+## continuar: Saltar a la Siguiente Canción
+
+A veces quieres saltarte una repetición y continuar con la siguiente. Como cuando una canción no te gusta y la saltas. Para eso existe 'continuar'.
+
+<Syntax>continuar</Syntax>
+
+<Code code={`para (variable i = 1; i <= 5; i++) {
+    si i == 3 {
+        mostrar "Saltando canción " + i
+        continuar
+    }
+    mostrar "Reproduciendo canción " + i
+}
+
+variable cancion = 0
+
+mientras cancion < 8 {
+    cancion++
+
+    si cancion == 2 o cancion == 5 {
+        mostrar "Anuncio publicitario - Saltando"
+        continuar
+    }
+
+    mostrar "Canción " + cancion
+}`} />
+
+<Output text={`Reproduciendo canción 1
+Reproduciendo canción 2
+Saltando canción 3
+Reproduciendo canción 4
+Reproduciendo canción 5
+Canción 1
+Anuncio publicitario - Saltando
+Canción 3
+Canción 4
+Anuncio publicitario - Saltando
+Canción 6
+Canción 7
+Canción 8`} />
+
+- 'continuar' salta el resto del código en esa repetición
+- Va directamente a la siguiente iteración del bucle
+- En 'para': ejecuta el incremento y verifica la condición
+- En 'mientras': vuelve a verificar la condición
+- Útil para filtrar: 'si no cumple X, continuar'
+- Evita anidar muchos 'si': en vez de 'si... si... si...', usa 'si no... continuar'
+
+## Diferencia entre romper y continuar
+
+Es importante entender cuándo usar cada uno. 'romper' sale del bucle completamente, 'continuar' solo salta la iteración actual.
+
+<Code code={`mostrar "=== Ejemplo con ROMPER ==="
+para (variable i = 1; i <= 5; i++) {
+    si i == 3 {
+        romper
+    }
+    mostrar "Número: " + i
+}
+mostrar "Bucle terminado"
+
+mostrar ""
+mostrar "=== Ejemplo con CONTINUAR ==="
+para (variable i = 1; i <= 5; i++) {
+    si i == 3 {
+        continuar
+    }
+    mostrar "Número: " + i
+}
+mostrar "Bucle terminado"`} />
+
+<Output text={`=== Ejemplo con ROMPER ===
+Número: 1
+Número: 2
+Bucle terminado
+
+=== Ejemplo con CONTINUAR ===
+Número: 1
+Número: 2
+Número: 4
+Número: 5
+Bucle terminado`} />
+
+- romper: El bucle se detiene en el 3 y no llega al 4 ni al 5
+- continuar: El bucle salta el 3 pero continúa con 4 y 5
+- Usa romper cuando quieres SALIR completamente del bucle
+- Usa continuar cuando quieres SALTAR solo esa iteración
+
+## Uso con Condicionales
+
+Puedes combinar romper y continuar con condicionales para crear lógica más compleja.
+
+<Code code={`variable totalCanciones = 10
+variable cancionActual = 1
+variable reproducidas = 0
+variable saltadas = 0
+
+mientras cancionActual <= totalCanciones {
+    mostrar "Canción " + cancionActual
+
+    // Saltar canciones 3 y 7
+    si cancionActual == 3 o cancionActual == 7 {
+        mostrar "  Saltando (no me gusta)"
+        saltadas++
+        cancionActual++
+        continuar
+    }
+
+    reproducidas++
+    cancionActual++
+
+    // Parar después de 5 reproducidas
+    si reproducidas >= 5 {
+        mostrar ""
+        mostrar "Ya reproduje 5 canciones, suficiente"
+        romper
+    }
+}
+
+mostrar ""
+mostrar "=== ESTADÍSTICAS ==="
+mostrar "Reproducidas: " + reproducidas
+mostrar "Saltadas: " + saltadas`} />
+
+<Output text={`Canción 1
+Canción 2
+Canción 3
+  Saltando (no me gusta)
+Canción 4
+Canción 5
+Canción 6
+
+Ya reproduje 5 canciones, suficiente
+
+=== ESTADÍSTICAS ===
+Reproducidas: 5
+Saltadas: 1`} />
+
+- Usa continuar para filtrar elementos no deseados
+- Usa romper para establecer límites o condiciones de salida
+- Combinados, te dan control total sobre el flujo del bucle
+- Mantén contadores para saber qué pasó durante el bucle
+
+## Búsqueda con romper
+
+Un caso de uso muy común es buscar un elemento y detenerse cuando lo encuentras.
+
+<Code code={`variable numeros = "2, 4, 6, 8, 10, 12, 14, 16, 18, 20"
+variable buscado = 12
+variable encontrado = falso
+variable posicion = 0
+
+para (variable i = 1; i <= 10; i++) {
+    variable actual = i * 2
+    mostrar "Revisando: " + actual
+
+    si actual == buscado {
+        mostrar "¡Encontrado en posición " + i + "!"
+        encontrado = verdadero
+        posicion = i
+        romper
+    }
+}
+
+si encontrado {
+    mostrar "El número " + buscado + " está en la posición " + posicion
+} sino {
+    mostrar "El número " + buscado + " no fue encontrado"
+}`} />
+
+<Output text={`Revisando: 2
+Revisando: 4
+Revisando: 6
+Revisando: 8
+Revisando: 10
+Revisando: 12
+¡Encontrado en posición 6!
+El número 12 está en la posición 6`} />
+
+- El bucle se detiene apenas encuentra el elemento
+- No sigue revisando innecesariamente
+- Más eficiente que revisar todos los elementos
+- Útil para búsquedas en listas, validaciones, etc.
+
+## Filtrado con continuar
+
+Otro caso común es procesar solo elementos que cumplan ciertos criterios.
+
+<Code code={`mostrar "=== NÚMEROS PARES DEL 1 AL 10 ==="
+
+para (variable i = 1; i <= 10; i++) {
+    // Si es impar, saltarlo
+    si i % 2 != 0 {
+        continuar
+    }
+    mostrar i
+}
+
+mostrar ""
+mostrar "=== PROCESANDO SOLO VÁLIDOS ==="
+
+para (variable nota = 1; nota <= 10; nota++) {
+    // Saltar notas muy bajas
+    si nota < 4 {
+        mostrar "Nota " + nota + ": Muy baja, ignorando"
+        continuar
+    }
+
+    // Saltar notas perfectas (ya procesadas)
+    si nota == 10 {
+        mostrar "Nota " + nota + ": Perfecta, ya procesada"
+        continuar
+    }
+
+    mostrar "Procesando nota: " + nota
+}`} />
+
+<Output text={`=== NÚMEROS PARES DEL 1 AL 10 ===
+2
+4
+6
+8
+10
+
+=== PROCESANDO SOLO VÁLIDOS ===
+Nota 1: Muy baja, ignorando
+Nota 2: Muy baja, ignorando
+Nota 3: Muy baja, ignorando
+Procesando nota: 4
+Procesando nota: 5
+Procesando nota: 6
+Procesando nota: 7
+Procesando nota: 8
+Procesando nota: 9
+Nota 10: Perfecta, ya procesada`} />
+
+- continuar es perfecto para filtrar datos
+- Evita anidar muchos condicionales
+- Código más limpio: "si no es válido, continuar"
+- Procesa solo lo que necesitas
+
+## Consejos y Buenas Prácticas
+
+Recomendaciones para usar control de flujo de forma efectiva.
+
+- No abuses de romper y continuar, úsalos cuando realmente simplifiquen el código
+- Si tienes muchos romper/continuar, considera reestructurar tu lógica
+- romper es ideal para búsquedas y límites
+- continuar es ideal para filtrado y validación
+- Siempre comenta POR QUÉ usas romper o continuar cuando no es obvio
+- Usa variables como 'encontrado' para comunicar el resultado fuera del bucle

@@ -1,0 +1,199 @@
+# 🔤 Métodos de Strings
+
+Los métodos de strings son como las herramientas de edición en Microsoft Word: contar caracteres, cambiar a mayúsculas, buscar y reemplazar texto. Cada texto tiene estas herramientas incorporadas que puedes usar.
+
+## Contar Caracteres
+
+Como el contador de palabras y caracteres que aparece abajo a la izquierda en Word. Te dice cuántos caracteres tiene tu texto.
+
+<Syntax>texto.longitud()</Syntax>
+
+<Code code={`variable titulo = "Mi Documento Importante"
+variable parrafo = "Este es un párrafo de ejemplo para contar caracteres."
+
+mostrar "El título tiene " + titulo.longitud() + " caracteres"
+mostrar "El párrafo tiene " + parrafo.longitud() + " caracteres"
+
+variable tweet = "Hola mundo"
+variable limite = 280
+variable restantes = limite - tweet.longitud()
+mostrar "Te quedan " + restantes + " caracteres"`} />
+
+<Output text={`El título tiene 23 caracteres
+El párrafo tiene 54 caracteres
+Te quedan 270 caracteres`} />
+
+- .longitud() retorna la cantidad de caracteres del texto
+- Los espacios cuentan como caracteres
+- Útil para límites de caracteres (Twitter, SMS, formularios)
+- El método se escribe con paréntesis: .longitud()
+
+## Cambiar Mayúsculas y Minúsculas
+
+Como el botón 'Aa' en Word que cambia el texto a mayúsculas o minúsculas. Muy útil para títulos o para normalizar texto.
+
+<Code code={`variable titulo = "mi documento importante"
+variable grito = "no me gusta esto"
+variable email = "USUARIO@EMAIL.COM"
+
+mostrar titulo.mayusculas()
+mostrar grito.mayusculas()
+mostrar email.minusculas()
+
+variable nombre = "JUAN PÉREZ"
+variable nombreNormalizado = nombre.minusculas()
+mostrar "Hola, " + nombreNormalizado`} />
+
+<Output text={`MI DOCUMENTO IMPORTANTE
+NO ME GUSTA ESTO
+usuario@email.com
+Hola, juan pérez`} />
+
+- .mayusculas() convierte todo el texto a MAYÚSCULAS
+- .minusculas() convierte todo el texto a minúsculas
+- El texto original NO cambia, se crea uno nuevo
+- Útil para normalizar emails, usernames, comparaciones
+
+## Limpiar Espacios Extra
+
+Cuando copias texto de internet y pegas en Word, a veces trae espacios extra al inicio o al final. El método .recortar() los elimina automáticamente.
+
+<Code code={`variable textoCopiado = "   Hola mundo   "
+variable emailPegado = "  juan@email.com  "
+variable nombreConEspacios = "    María    "
+
+mostrar "Con espacios: '" + textoCopiado + "'"
+mostrar "Sin espacios: '" + textoCopiado.recortar() + "'"
+
+mostrar emailPegado.recortar()
+mostrar nombreConEspacios.recortar()`} />
+
+<Output text={`Con espacios: '   Hola mundo   '
+Sin espacios: 'Hola mundo'
+juan@email.com
+María`} />
+
+- .recortar() elimina espacios al inicio y al final del texto
+- NO elimina espacios del medio, solo de los bordes
+- Muy útil cuando el usuario copia/pega información
+- Los espacios normales entre palabras se mantienen
+
+## Buscar en el Texto
+
+Como usar Ctrl+F en Word para buscar una palabra. Puedes verificar si un texto contiene algo, si empieza con algo, o si termina con algo.
+
+<Code code={`variable documento = "Introducción a la Programación en HispanoLang"
+variable email = "usuario@gmail.com"
+variable archivo = "reporte_final.pdf"
+
+mostrar documento.incluye("Programación")
+mostrar documento.incluye("Python")
+
+mostrar email.incluye("@")
+mostrar email.terminaCon(".com")
+mostrar email.empiezaCon("usuario")
+
+mostrar archivo.terminaCon(".pdf")
+mostrar archivo.terminaCon(".docx")`} />
+
+<Output text={`verdadero
+falso
+verdadero
+verdadero
+verdadero
+verdadero
+falso`} />
+
+- .incluye(texto) verifica si contiene ese texto → retorna verdadero o falso
+- .empiezaCon(texto) verifica si comienza con ese texto
+- .terminaCon(texto) verifica si termina con ese texto
+- La búsqueda distingue mayúsculas: 'Hola' ≠ 'hola'
+- Útil para validar: emails tienen @, archivos terminan en .pdf, etc.
+
+## Buscar y Reemplazar
+
+Como la función Ctrl+H 'Buscar y Reemplazar' en Word. Encuentra todas las veces que aparece una palabra y la cambia por otra.
+
+<Code code={`variable documento = "Hola mundo, mundo feliz"
+variable correccion = "El perro es un aninal muy leal"
+variable telefono = "123-456-7890"
+
+mostrar documento.reemplazar("mundo", "universo")
+
+mostrar correccion.reemplazar("aninal", "animal")
+
+mostrar telefono.reemplazar("-", "")
+
+variable texto = "Me gusta Python. Python es genial."
+mostrar texto.reemplazar("Python", "HispanoLang")`} />
+
+<Output text={`Hola universo, universo feliz
+El perro es un animal muy leal
+1234567890
+Me gusta HispanoLang. HispanoLang es genial.`} />
+
+- .reemplazar(buscar, reemplazo) cambia TODAS las apariciones
+- Si la palabra aparece 5 veces, las cambia las 5 veces
+- El texto original NO cambia, se crea uno nuevo
+- Si no encuentra la palabra, retorna el texto original sin cambios
+- La búsqueda distingue mayúsculas: 'Hola' ≠ 'hola'
+
+## Combinando Herramientas
+
+Como cuando en Word usas varias herramientas seguidas: primero quitas espacios, luego cambias a minúsculas, luego buscas y reemplazas. En programación puedes encadenar métodos.
+
+<Code code={`variable emailSucio = "  USUARIO@EMAIL.COM  "
+variable emailLimpio = emailSucio.recortar().minusculas()
+mostrar emailLimpio
+
+variable titulo = "   MI DOCUMENTO IMPORTANTE   "
+variable tituloFormateado = titulo.recortar().minusculas()
+mostrar tituloFormateado
+
+variable texto = "  Hola MUNDO  "
+variable procesado = texto.recortar().mayusculas().reemplazar("MUNDO", "AMIGO")
+mostrar procesado`} />
+
+<Output text={`usuario@email.com
+mi documento importante
+HOLA AMIGO`} />
+
+- Puedes usar varios métodos seguidos, uno tras otro
+- Se ejecutan de izquierda a derecha, en orden
+- Cada método crea un nuevo texto que el siguiente método usa
+- Ejemplo: .recortar() quita espacios, luego .minusculas() convierte a minúsculas
+- Es como una cadena de ediciones en Word
+
+## Casos Prácticos
+
+Situaciones reales donde estos métodos son útiles, como limpiar datos que copias de internet o preparar texto para guardar.
+
+<Code code={`variable nombreUsuario = "  MARIA_DEV  "
+variable usuarioLimpio = nombreUsuario.recortar().minusculas()
+mostrar "Usuario: " + usuarioLimpio
+
+variable emailFormulario = "Juan@Email.COM"
+variable emailNormalizado = emailFormulario.minusculas()
+mostrar "Email guardado: " + emailNormalizado
+
+variable busqueda = "Cómo hacer pizza casera"
+mostrar "Buscando: " + busqueda
+mostrar "Longitud: " + busqueda.longitud() + " caracteres"
+
+variable textoImportado = "   Este texto tiene espacios extra   "
+variable textoCorregido = textoImportado.recortar()
+mostrar "Antes: '" + textoImportado + "'"
+mostrar "Después: '" + textoCorregido + "'"`} />
+
+<Output text={`Usuario: maria_dev
+Email guardado: juan@email.com
+Buscando: Cómo hacer pizza casera
+Longitud: 25 caracteres
+Antes: '   Este texto tiene espacios extra   '
+Después: 'Este texto tiene espacios extra'`} />
+
+- Limpia datos antes de guardarlos: quita espacios, normaliza mayúsculas
+- Valida formatos: emails deben tener @, archivos deben terminar en extensión
+- Procesa búsquedas: convierte a minúsculas para que 'Pizza' = 'pizza'
+- Corrige errores comunes: reemplaza palabras mal escritas
+- Formatea texto: prepara para mostrar o guardar en base de datos

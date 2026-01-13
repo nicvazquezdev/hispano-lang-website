@@ -1,0 +1,293 @@
+# ➡️ Funciones Flecha
+
+Las funciones flecha son como las abreviaturas en WhatsApp: en vez de escribir 'también', escribes 'tmb'. En vez de escribir 'qué', escribes 'q'. Mismo significado, menos caracteres. Las funciones flecha son una forma más corta de escribir funciones: mismo resultado, menos código.
+
+## ¿Qué son las Funciones Flecha?
+
+Cuando chateás por WhatsApp, usas abreviaturas: 'tmb' = 'también', 'xq' = 'porque', 'q' = 'qué'. Entiendes perfectamente el mensaje, pero con menos caracteres.
+
+Las funciones flecha son lo mismo: una forma abreviada de escribir funciones.
+
+<Code code={`// Función normal
+funcion doble(x) {
+    retornar x * 2
+}
+
+// Función flecha - mismo resultado, menos código
+variable doble = x => x * 2
+
+mostrar doble(5)
+mostrar doble(10)
+
+// Otro ejemplo
+funcion sumar(a, b) {
+    retornar a + b
+}
+
+// Versión flecha
+variable sumar = (a, b) => a + b
+
+mostrar sumar(3, 7)
+mostrar sumar(10, 20)`} />
+
+<Output text={`10
+20
+10
+30`} />
+
+- Función normal: funcion nombre(params) ... retornar valor ...
+- Función flecha: variable nombre = params => valor
+- Mismo resultado, sintaxis más corta
+- La flecha => es como decir 'devuelve' o 'resulta en'
+- Se llaman 'arrow functions' en inglés (funciones flecha)
+
+## Sintaxis: Versión Corta vs Larga
+
+Como en WhatsApp puedes escribir 'Hola, ¿cómo estás?' (formal) o 'Hola, q tal?' (casual), las funciones flecha tienen sintaxis flexible según cuántos parámetros tengas.
+
+<Syntax>variable nombre = parametros => expresion</Syntax>
+
+<Code code={`// Sin parámetros: ()
+variable saludar = () => "Hola!"
+mostrar saludar()
+
+// UN parámetro: sin paréntesis
+variable duplicar = x => x * 2
+mostrar duplicar(4)
+
+// DOS+ parámetros: con paréntesis
+variable sumar = (a, b) => a + b
+mostrar sumar(5, 3)
+
+// Cualquier expresión
+variable calcularIVA = precio => precio * 1.21
+mostrar calcularIVA(100)`} />
+
+<Output text={`Hola!
+8
+8
+121`} />
+
+- Sin parámetros: () => resultado
+- UN parámetro: x => resultado (sin paréntesis)
+- DOS+ parámetros: (a, b) => resultado (con paréntesis)
+- Si es una sola expresión, el retorno es automático
+- No necesitas escribir 'retornar' cuando es una línea
+
+## Comparación: Normal vs Flecha
+
+Veamos lado a lado la diferencia entre escribir funciones normales (mensaje completo) y funciones flecha (mensaje abreviado).
+
+<Code code={`// Normal: 3 líneas
+funcion triple(numero) {
+    retornar numero * 3
+}
+
+// Flecha: 1 línea
+variable triple = numero => numero * 3
+
+mostrar triple(5)
+
+// Normal
+funcion esPar(n) {
+    retornar n % 2 == 0
+}
+
+// Flecha
+variable esPar = n => n % 2 == 0
+
+mostrar esPar(4)
+mostrar esPar(7)
+
+// Normal
+funcion formatearPrecio(precio) {
+    retornar "$" + precio
+}
+
+// Flecha
+variable formatearPrecio = precio => "$" + precio
+
+mostrar formatearPrecio(150)`} />
+
+<Output text={`15
+verdadero
+falso
+$150`} />
+
+- Función normal: 3 líneas (funcion, retornar, cierre)
+- Función flecha: 1 línea (todo junto)
+- Ambas hacen exactamente lo mismo
+- Flecha es más rápida de escribir
+- Usa la que prefieras, ambas funcionan igual
+
+## Retorno Implícito
+
+Cuando tu mensaje es corto ('ok', 'si', 'dale'), no necesitas explicaciones largas. Las funciones flecha de una línea retornan automáticamente, sin escribir 'retornar'.
+
+<Code code={`variable cuadrado = x => x * x
+mostrar cuadrado(5)
+mostrar cuadrado(8)
+
+variable mayorDeEdad = edad => edad >= 18
+mostrar mayorDeEdad(15)
+mostrar mayorDeEdad(21)
+
+variable concatenar = (a, b) => a + " " + b
+mostrar concatenar("Hola", "Mundo")
+
+variable descuento = precio => precio * 0.8
+mostrar descuento(100)`} />
+
+<Output text={`25
+64
+falso
+verdadero
+Hola Mundo
+80`} />
+
+- Si la función es UNA sola expresión → retorno automático
+- No necesitas escribir 'retornar'
+- No necesitas llaves (llaves)
+- Sintaxis: parametro => expresion
+- La expresión se evalúa y se retorna automáticamente
+
+## Retorno Explícito: Múltiples Líneas
+
+A veces necesitas escribir un mensaje más largo con varias oraciones. Para funciones con múltiples líneas de código, usas llaves (llaves) y debes escribir 'retornar' explícitamente.
+
+<Code code={`variable calcularDescuento = (precio, porcentaje) => {
+    variable descuento = precio * porcentaje / 100
+    variable precioFinal = precio - descuento
+    retornar precioFinal
+}
+
+mostrar calcularDescuento(1000, 20)
+
+variable saludarPersona = nombre => {
+    variable saludo = "Hola " + nombre
+    variable mensaje = saludo + ", ¿cómo estás?"
+    retornar mensaje
+}
+
+mostrar saludarPersona("Ana")
+
+variable calcularTotal = (precio, cantidad, iva) => {
+    variable subtotal = precio * cantidad
+    variable conIVA = subtotal * (1 + iva)
+    retornar conIVA
+}
+
+mostrar calcularTotal(100, 3, 0.21)`} />
+
+<Output text={`800
+Hola Ana, ¿cómo estás?
+363`} />
+
+- Si necesitas MÚLTIPLES líneas → usa llaves (llaves)
+- Con llaves, DEBES escribir 'retornar' explícitamente
+- Sintaxis: parametro => ... codigo; retornar valor ...
+- Útil cuando la lógica es más compleja
+- Puedes tener variables intermedias, condicionales, etc.
+
+## Con Condicionales
+
+Como cuando respondes diferente según quien te escriba, las funciones flecha pueden tener lógica condicional.
+
+<Code code={`variable calificar = nota => {
+    si nota >= 90 {
+        retornar "Excelente"
+    } sino si nota >= 70 {
+        retornar "Aprobado"
+    } sino {
+        retornar "Reprobado"
+    }
+}
+
+mostrar calificar(95)
+mostrar calificar(75)
+mostrar calificar(50)
+
+variable tipoDescuento = cantidad => {
+    si cantidad >= 100 {
+        retornar 0.30
+    } sino si cantidad >= 50 {
+        retornar 0.20
+    } sino {
+        retornar 0.10
+    }
+}
+
+mostrar "Descuento: " + (tipoDescuento(120) * 100) + "%"
+mostrar "Descuento: " + (tipoDescuento(60) * 100) + "%"`} />
+
+<Output text={`Excelente
+Aprobado
+Reprobado
+Descuento: 30%
+Descuento: 20%`} />
+
+- Funciones flecha pueden tener condicionales
+- Necesitas llaves (llaves) para múltiples líneas
+- Cada rama del condicional puede retornar valores diferentes
+- Útil para validaciones, cálculos condicionales, clasificaciones
+- Recuerda: con llaves, 'retornar' es obligatorio
+
+## Casos Prácticos: Calculadoras y Conversiones
+
+Las funciones flecha brillan por su simplicidad en calculadoras rápidas y conversiones de unidades.
+
+<Code code={`// Conversiones de temperatura
+variable celsiusAFahrenheit = c => (c * 9 / 5) + 32
+variable fahrenheitACelsius = f => (f - 32) * 5 / 9
+
+mostrar "100°C = " + celsiusAFahrenheit(100) + "°F"
+mostrar "212°F = " + fahrenheitACelsius(212) + "°C"
+
+// Conversiones de distancia
+variable kmAMillas = km => km * 0.621371
+variable millasAKm = mi => mi / 0.621371
+
+mostrar "10km = " + kmAMillas(10) + " millas"
+mostrar "10mi = " + millasAKm(10) + " km"
+
+// Calculadoras financieras
+variable calcularPropina = (total, porcentaje) => total * (porcentaje / 100)
+
+mostrar "Propina 15%: $" + calcularPropina(500, 15)
+mostrar "Propina 20%: $" + calcularPropina(500, 20)
+
+variable calcularCuotas = (monto, cuotas) => monto / cuotas
+
+mostrar "12 cuotas de: $" + calcularCuotas(1200, 12)`} />
+
+<Output text={`100°C = 212°F
+212°F = 100°C
+10km = 6.21371 millas
+10mi = 16.0934 km
+Propina 15%: $75
+Propina 20%: $100
+12 cuotas de: $100`} />
+
+- Funciones flecha perfectas para conversiones simples
+- Calculadoras de una línea
+- Fácil de leer: la fórmula es visible
+- Útil para transformaciones matemáticas
+- Se pueden reutilizar en cualquier parte
+
+## ¿Cuándo Usar Flecha vs Normal?
+
+Como elegir entre escribir un mensaje completo formal o uno casual abreviado, hay situaciones donde conviene cada tipo de función.
+
+Usa función FLECHA cuando:
+- La función es simple (1-2 líneas)
+- Solo hace un cálculo o transformación
+- Es una función auxiliar rápida
+- Ejemplo: conversiones, validaciones, cálculos
+
+Usa función NORMAL cuando:
+- La función es compleja (5+ líneas)
+- Tiene múltiples pasos o lógica
+- Muestra mensajes o tiene efectos secundarios
+- Necesitas que sea más descriptiva
+
+Regla simple: ¿Es una operación rápida? → Flecha. ¿Es un proceso complejo? → Normal.

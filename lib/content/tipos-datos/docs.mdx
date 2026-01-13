@@ -1,0 +1,202 @@
+# 🔢 Tipos de Datos
+
+Cuando llenás un formulario online (Netflix, Gmail, Instagram), cada campo pide un tipo diferente de información: tu nombre es texto, tu edad es un número, 'acepto términos' es sí o no. En programación, estos son los tipos de datos.
+
+## Texto (Strings)
+
+El texto se usa para palabras, frases, nombres, direcciones, emails. Todo lo que escribirías con letras en un formulario. En programación, el texto siempre va entre comillas.
+
+<Syntax>variable nombre = "valor entre comillas"</Syntax>
+
+<Code code={`variable nombreUsuario = "maria_dev"
+variable email = "maria@gmail.com"
+variable ciudad = "Buenos Aires"
+variable mensaje = "Hola, ¿cómo estás?"
+
+mostrar nombreUsuario
+mostrar email
+mostrar ciudad`} />
+
+<Output text={`maria_dev
+maria@gmail.com
+Buenos Aires`} />
+
+- El texto SIEMPRE va entre comillas: "así" o 'así'
+- Puedes usar comillas dobles " " o simples ' ', pero sé consistente
+- Si tu texto tiene comillas, usa el otro tipo: 'Ella dijo "hola"'
+- Los espacios dentro de las comillas cuentan: "hola" no es igual a "hola "
+- El texto puede estar vacío: "" (comillas sin nada adentro)
+
+## Uniendo Texto (Concatenación)
+
+Puedes unir varios pedazos de texto usando el símbolo +. Es como armar una oración juntando palabras.
+
+<Code code={`variable nombre = "María"
+variable apellido = "González"
+
+variable nombreCompleto = nombre + " " + apellido
+mostrar nombreCompleto
+
+variable edad = 28
+variable presentacion = "Hola, soy " + nombre + " y tengo " + edad + " años"
+mostrar presentacion
+
+variable calle = "Av. Corrientes"
+variable numero = 1234
+variable direccion = calle + " " + numero
+mostrar direccion`} />
+
+<Output text={`María González
+Hola, soy María y tengo 28 años
+Av. Corrientes 1234`} />
+
+- Usa el símbolo + para unir texto
+- No olvides los espacios: nombre + apellido da "MaríaGonzález" (sin espacio)
+- Agrega espacios así: nombre + " " + apellido
+- Cuando unes texto con números, el número se convierte automáticamente a texto
+- Puedes unir tantos pedazos como quieras: texto1 + texto2 + texto3
+
+## Números
+
+Los números se usan para cantidades, precios, edades, teléfonos. Cualquier cosa que cuentes o con la que hagas cálculos. Los números NO llevan comillas.
+
+<Syntax>variable edad = 25</Syntax>
+
+<Code code={`variable edad = 28
+variable codigoPostal = 1414
+variable precio = 999
+variable temperatura = -5
+variable precioConDecimales = 99.50
+
+mostrar edad
+mostrar precio
+mostrar precioConDecimales
+
+variable suma = 10 + 5
+variable resta = 20 - 8
+variable multiplicacion = 4 * 3
+variable division = 100 / 2
+
+mostrar suma
+mostrar division`} />
+
+<Output text={`28
+999
+99.5
+15
+50`} />
+
+- Los números NO llevan comillas: edad = 25 (no edad = "25")
+- Pueden ser positivos o negativos: 10, -5
+- Para decimales usa punto (.), no coma: 99.50 (no 99,50)
+- Puedes hacer operaciones: +, -, *, /
+- Mezclar enteros y decimales funciona: 10 + 5.5 = 15.5
+
+## Booleanos (Verdadero o Falso)
+
+Los booleanos son como los checkbox en un formulario: están marcados o no marcados, sí o no, verdadero o falso. Solo tienen dos valores posibles.
+
+<Syntax>variable activo = verdadero</Syntax>
+
+<Code code={`variable aceptoTerminos = verdadero
+variable recibirOfertas = falso
+variable esMayorDeEdad = verdadero
+variable cuentaVerificada = falso
+
+mostrar aceptoTerminos
+mostrar recibirOfertas
+mostrar esMayorDeEdad`} />
+
+<Output text={`verdadero
+falso
+verdadero`} />
+
+- Solo hay dos valores: verdadero o falso
+- NO llevan comillas: verdadero (no "verdadero")
+- Se usan para estados de sí/no: activo/inactivo, marcado/no marcado
+- Muy útiles para checkbox: aceptó términos (verdadero/falso)
+- En HispanoLang se escriben en español: verdadero y falso
+
+## Valores Especiales: nulo e indefinido
+
+A veces un campo en un formulario es opcional (como teléfono secundario). Puede estar vacío a propósito (nulo) o ni siquiera existir (indefinido).
+
+<Code code={`variable nombreUsuario = "juan_perez"
+variable email = "juan@email.com"
+variable telefonoOpcional = nulo
+variable apellidoMaterno = nulo
+
+mostrar nombreUsuario
+mostrar email
+mostrar telefonoOpcional
+mostrar apellidoMaterno
+
+variable edad = 30
+variable direccionNoIngresada = indefinido`} />
+
+<Output text={`juan_perez
+juan@email.com
+nulo
+nulo`} />
+
+- nulo significa: este campo existe pero está vacío a propósito
+- indefinido significa: este campo ni siquiera fue creado/asignado
+- NO llevan comillas: nulo (no "nulo")
+- nulo es diferente de 0, "" (texto vacío), o falso
+- Usa nulo para campos opcionales que el usuario dejó en blanco
+
+## ¿Qué Tipo de Dato Usar?
+
+Guía rápida para decidir qué tipo usar según lo que necesites guardar.
+
+<Code code={`variable nombre = "Ana"
+variable apellido = "García"
+variable edad = 25
+variable email = "ana@email.com"
+variable saldoCuenta = 1500.75
+variable aceptoTerminos = verdadero
+variable recibirNotificaciones = falso
+variable telefonoSecundario = nulo
+variable apodo = nulo
+
+mostrar "Nombre: " + nombre + " " + apellido
+mostrar "Edad: " + edad
+mostrar "Saldo: $" + saldoCuenta
+mostrar "Acepto términos: " + aceptoTerminos`} />
+
+<Output text={`Nombre: Ana García
+Edad: 25
+Saldo: $1500.75
+Acepto términos: verdadero`} />
+
+- Texto: nombres, emails, direcciones, mensajes → entre comillas
+- Número: edad, precio, cantidad, teléfono → sin comillas
+- Booleano: checkbox, estados sí/no, activado/desactivado → verdadero o falso
+- nulo: campos opcionales dejados vacíos → nulo
+- Si no estás seguro: ¿tiene letras? → texto. ¿solo números? → número. ¿sí/no? → booleano
+
+## Errores Comunes
+
+Errores típicos al elegir tipos de datos y cómo evitarlos.
+
+<Code code={`variable edadCorrecta = 25
+variable edadIncorrecta = "25"
+
+variable precioTotal = 100 + 50
+mostrar precioTotal
+
+variable precioTexto = "100" + "50"
+mostrar precioTexto
+
+variable mensaje = "Tengo " + 25 + " años"
+mostrar mensaje`} />
+
+<Output text={`150
+10050
+Tengo 25 años`} />
+
+- No pongas números entre comillas si vas a hacer cálculos: "25" es texto, 25 es número
+- "100" + "50" da "10050" (une texto), no 150
+- 100 + 50 da 150 (suma números)
+- Mezclar es OK: "Tengo " + 25 se convierte automáticamente a texto
+- Si un número está entre comillas, se comporta como texto, no como número

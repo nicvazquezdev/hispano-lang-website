@@ -1,0 +1,244 @@
+# 🌳 Herencia
+
+La herencia permite crear clases basadas en otras clases existentes. La clase hija hereda propiedades y métodos de la clase padre.
+
+## Extender Clases
+
+Usa 'extiende' para heredar de otra clase y 'super' para llamar al constructor padre.
+
+<Syntax>clase Hija extiende Padre con constructor que llama super</Syntax>
+
+<Code code={`clase Animal {
+    constructor(nombre) {
+        este.nombre = nombre
+    }
+
+    hablar() {
+        retornar \`\${este.nombre} hace un sonido\`
+    }
+}
+
+clase Perro extiende Animal {
+    constructor(nombre, raza) {
+        super(nombre)    // Llama al constructor de Animal
+        este.raza = raza
+    }
+
+    hablar() {
+        retornar \`\${este.nombre} dice: ¡Guau!\`
+    }
+
+    describir() {
+        retornar \`\${este.nombre} es un \${este.raza}\`
+    }
+}
+
+variable perro = nuevo Perro("Max", "Labrador")
+mostrar perro.hablar()
+mostrar perro.describir()`} />
+
+<Output text={`Max dice: ¡Guau!
+Max es un Labrador`} />
+
+- clase Hija extiende Padre - Define herencia
+- super(args) - Llama al constructor del padre
+- La clase hija hereda todas las propiedades y métodos
+- Puedes sobrescribir métodos del padre
+
+## Polimorfismo
+
+Diferentes clases pueden tener el mismo método pero comportarse diferente.
+
+<Code code={`clase Figura {
+    constructor(nombre) {
+        este.nombre = nombre
+    }
+
+    calcularArea() {
+        retornar 0
+    }
+}
+
+clase Rectangulo extiende Figura {
+    constructor(ancho, alto) {
+        super("Rectángulo")
+        este.ancho = ancho
+        este.alto = alto
+    }
+
+    calcularArea() {
+        retornar este.ancho * este.alto
+    }
+}
+
+clase Circulo extiende Figura {
+    constructor(radio) {
+        super("Círculo")
+        este.radio = radio
+    }
+
+    calcularArea() {
+        retornar 3.14159 * este.radio * este.radio
+    }
+}
+
+variable rect = nuevo Rectangulo(10, 5)
+variable circ = nuevo Circulo(7)
+
+mostrar rect.nombre + ": " + texto(rect.calcularArea())
+mostrar circ.nombre + ": " + texto(circ.calcularArea())`} />
+
+<Output text={`Rectángulo: 50
+Círculo: 153.93791`} />
+
+- Cada clase implementa el método a su manera
+- El mismo método funciona diferente según la clase
+- Permite código más flexible y reutilizable
+
+## Ejemplo Práctico: Sistema de Empleados
+
+<Code code={`clase Empleado {
+    constructor(nombre, salarioBase) {
+        este.nombre = nombre
+        este.salarioBase = salarioBase
+    }
+
+    calcularSalario() {
+        retornar este.salarioBase
+    }
+
+    mostrarInfo() {
+        mostrar "Empleado: " + este.nombre
+        mostrar "Salario: $" + texto(este.calcularSalario())
+    }
+}
+
+clase Gerente extiende Empleado {
+    constructor(nombre, salarioBase, bono) {
+        super(nombre, salarioBase)
+        este.bono = bono
+    }
+
+    calcularSalario() {
+        retornar este.salarioBase + este.bono
+    }
+
+    mostrarInfo() {
+        mostrar "Gerente: " + este.nombre
+        mostrar "Salario base: $" + texto(este.salarioBase)
+        mostrar "Bono: $" + texto(este.bono)
+        mostrar "Total: $" + texto(este.calcularSalario())
+    }
+}
+
+clase Vendedor extiende Empleado {
+    constructor(nombre, salarioBase, comision, ventas) {
+        super(nombre, salarioBase)
+        este.comision = comision
+        este.ventas = ventas
+    }
+
+    calcularSalario() {
+        retornar este.salarioBase + (este.ventas * este.comision)
+    }
+
+    mostrarInfo() {
+        mostrar "Vendedor: " + este.nombre
+        mostrar "Salario base: $" + texto(este.salarioBase)
+        mostrar "Ventas: $" + texto(este.ventas)
+        mostrar "Comisión: " + texto(este.comision * 100) + "%"
+        mostrar "Total: $" + texto(este.calcularSalario())
+    }
+}
+
+mostrar "=== NÓMINA ==="
+mostrar ""
+
+variable emp = nuevo Empleado("Juan", 2000)
+emp.mostrarInfo()
+
+mostrar ""
+
+variable ger = nuevo Gerente("Ana", 3000, 1000)
+ger.mostrarInfo()
+
+mostrar ""
+
+variable ven = nuevo Vendedor("Pedro", 1500, 0.10, 5000)
+ven.mostrarInfo()`} />
+
+<Output text={`=== NÓMINA ===
+
+Empleado: Juan
+Salario: $2000
+
+Gerente: Ana
+Salario base: $3000
+Bono: $1000
+Total: $4000
+
+Vendedor: Pedro
+Salario base: $1500
+Ventas: $5000
+Comisión: 10%
+Total: $2000`} />
+
+## Trabajando con Listas de Objetos Heredados
+
+<Code code={`clase Vehiculo {
+    constructor(marca, modelo) {
+        este.marca = marca
+        este.modelo = modelo
+    }
+
+    describir() {
+        retornar este.marca + " " + este.modelo
+    }
+}
+
+clase Auto extiende Vehiculo {
+    constructor(marca, modelo, puertas) {
+        super(marca, modelo)
+        este.puertas = puertas
+    }
+
+    describir() {
+        retornar "Auto: " + este.marca + " " + este.modelo + " (" + texto(este.puertas) + " puertas)"
+    }
+}
+
+clase Moto extiende Vehiculo {
+    constructor(marca, modelo, cilindrada) {
+        super(marca, modelo)
+        este.cilindrada = cilindrada
+    }
+
+    describir() {
+        retornar "Moto: " + este.marca + " " + este.modelo + " (" + texto(este.cilindrada) + "cc)"
+    }
+}
+
+variable vehiculos = [
+    nuevo Auto("Toyota", "Corolla", 4),
+    nuevo Moto("Honda", "CBR", 600),
+    nuevo Auto("Ford", "Mustang", 2),
+    nuevo Moto("Yamaha", "R1", 1000)
+]
+
+mostrar "=== INVENTARIO DE VEHÍCULOS ==="
+vehiculos.recorrer(funcion(v, i) {
+    mostrar (i + 1).aTexto() + ". " + v.describir()
+})`} />
+
+<Output text={`=== INVENTARIO DE VEHÍCULOS ===
+1. Auto: Toyota Corolla (4 puertas)
+2. Moto: Honda CBR (600cc)
+3. Auto: Ford Mustang (2 puertas)
+4. Moto: Yamaha R1 (1000cc)`} />
+
+Resumen de herencia:
+- extiende - Heredar de una clase padre
+- super() - Llamar constructor del padre
+- Sobrescribir métodos para comportamiento especializado
+- Polimorfismo permite tratar objetos de forma uniforme
+- tipo(instancia) retorna la clase específica

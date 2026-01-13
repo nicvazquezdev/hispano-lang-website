@@ -1,0 +1,203 @@
+# 🛡️ Manejo de Errores
+
+La estructura intentar-capturar permite manejar errores de forma controlada sin que el programa se detenga abruptamente.
+
+## Estructura intentar-capturar
+
+Ejecuta código que puede fallar y captura el error si ocurre.
+
+<Syntax>intentar {`{ /* código */ }`} capturar (error) {`{ /* manejar error */ }`}</Syntax>
+
+<Code code={`intentar {
+    variable x = 10 / 0
+    mostrar "Esto podría no ejecutarse"
+} capturar (error) {
+    mostrar "Error capturado: " + error
+}
+
+mostrar "El programa continúa normalmente"`} />
+
+<Output text={`Error capturado: División entre cero
+El programa continúa normalmente`} />
+
+- El bloque 'intentar' contiene código que podría generar error
+- Si ocurre un error, se ejecuta el bloque 'capturar'
+- El parámetro 'error' contiene información del error
+- Si no hay error, el bloque 'capturar' se salta
+- El programa continúa después del bloque intentar-capturar
+
+## Errores Comunes
+
+Ejemplos de situaciones que generan errores y cómo manejarlos.
+
+<Code code={`// División entre cero
+mostrar "=== División entre cero ==="
+intentar {
+    variable resultado = 10 / 0
+    mostrar "Resultado: " + texto(resultado)
+} capturar (error) {
+    mostrar "Error: No se puede dividir entre cero"
+}
+
+mostrar ""
+
+// Acceso a índice inválido
+mostrar "=== Acceso a índice inválido ==="
+variable lista = [1, 2, 3]
+intentar {
+    mostrar lista[10]
+} capturar (error) {
+    mostrar "Error: Índice fuera de rango"
+}
+
+mostrar ""
+
+// Propiedad de valor nulo
+mostrar "=== Propiedad de nulo ==="
+variable objeto = nulo
+intentar {
+    mostrar objeto.nombre
+} capturar (error) {
+    mostrar "Error: No se puede acceder a propiedades de nulo"
+}`} />
+
+<Output text={`=== División entre cero ===
+Error: No se puede dividir entre cero
+
+=== Acceso a índice inválido ===
+Error: Índice fuera de rango
+
+=== Propiedad de nulo ===
+Error: No se puede acceder a propiedades de nulo`} />
+
+- División entre cero genera error
+- Acceder a índices fuera de rango en listas
+- Acceder a propiedades de valores nulos o indefinidos
+- Llamar funciones con parámetros incorrectos
+
+## Uso Práctico: Validación de Datos
+
+<Code code={`funcion dividirSeguro(a, b) {
+    intentar {
+        si b == 0 {
+            // Forzar un error
+            variable error = 1 / 0
+        }
+        retornar a / b
+    } capturar (error) {
+        mostrar "Advertencia: División inválida"
+        retornar 0
+    }
+}
+
+mostrar "10 / 2 = " + texto(dividirSeguro(10, 2))
+mostrar "10 / 0 = " + texto(dividirSeguro(10, 0))
+mostrar "15 / 3 = " + texto(dividirSeguro(15, 3))`} />
+
+<Output text={`10 / 2 = 5
+Advertencia: División inválida
+10 / 0 = 0
+15 / 3 = 5`} />
+
+## Validar Entrada de Usuario
+
+<Code code={`funcion procesarEdad(edadTexto) {
+    intentar {
+        variable edad = entero(edadTexto)
+
+        si edad < 0 o edad > 150 {
+            // Edad fuera de rango válido
+            mostrar "Error: Edad fuera de rango válido"
+            retornar nulo
+        }
+
+        retornar edad
+    } capturar (error) {
+        mostrar "Error: No es un número válido"
+        retornar nulo
+    }
+}
+
+mostrar "=== PROCESANDO EDADES ==="
+variable edad1 = procesarEdad("25")
+mostrar "Edad 1: " + texto(edad1)
+
+variable edad2 = procesarEdad("abc")
+mostrar "Edad 2: " + texto(edad2)
+
+variable edad3 = procesarEdad("200")
+mostrar "Edad 3: " + texto(edad3)`} />
+
+<Output text={`=== PROCESANDO EDADES ===
+Edad 1: 25
+Error: No es un número válido
+Edad 2: nulo
+Error: Edad fuera de rango válido
+Edad 3: nulo`} />
+
+## Ejemplo Completo: Sistema de Compras
+
+<Code code={`clase CarritoCompras {
+    constructor() {
+        este.items = []
+    }
+
+    agregarItem(nombre, precio, cantidad) {
+        intentar {
+            si precio <= 0 {
+                mostrar "Error: Precio debe ser positivo"
+                retornar falso
+            }
+            si cantidad <= 0 {
+                mostrar "Error: Cantidad debe ser positiva"
+                retornar falso
+            }
+
+            este.items.agregar({
+                nombre: nombre,
+                precio: precio,
+                cantidad: cantidad
+            })
+            mostrar "Agregado: " + nombre
+            retornar verdadero
+        } capturar (error) {
+            mostrar "Error al agregar item: " + error
+            retornar falso
+        }
+    }
+
+    calcularTotal() {
+        intentar {
+            variable total = este.items.reducir(funcion(acc, item) {
+                retornar acc + (item.precio * item.cantidad)
+            }, 0)
+            retornar total
+        } capturar (error) {
+            mostrar "Error al calcular total"
+            retornar 0
+        }
+    }
+}
+
+variable carrito = nuevo CarritoCompras()
+carrito.agregarItem("Mouse", 150, 2)
+carrito.agregarItem("Teclado", 300, 1)
+carrito.agregarItem("Monitor", -100, 1)  // Precio inválido
+carrito.agregarItem("WebCam", 500, 0)    // Cantidad inválida
+
+mostrar ""
+mostrar "Total del carrito: $" + texto(carrito.calcularTotal())`} />
+
+<Output text={`Agregado: Mouse
+Agregado: Teclado
+Error: Precio debe ser positivo
+Error: Cantidad debe ser positiva
+
+Total del carrito: $600`} />
+
+Resumen de manejo de errores:
+- intentar { } - Código que puede fallar
+- capturar (error) { } - Manejo del error
+- El programa no se detiene si hay error
+- Útil para validaciones y operaciones riesgosas
+- Siempre proporciona mensajes claros al usuario

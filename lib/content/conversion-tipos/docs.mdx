@@ -1,0 +1,300 @@
+# 🔄 Conversión de Tipos
+
+Cuando llenas un formulario web, escribes tu edad como texto "25", pero el programa necesita el número 25 para hacer cálculos. La conversión de tipos transforma datos de un tipo a otro: texto a número, número a texto, texto a booleano.
+
+## Texto a Número Entero
+
+Cuando recibes datos de un formulario, vienen como texto. Para hacer cálculos matemáticos, necesitas convertirlos a números.
+
+<Syntax>entero(texto)</Syntax>
+
+<Code code={`variable edadTexto = "25"
+variable edadNumero = entero(edadTexto)
+
+mostrar "Edad como texto: " + edadTexto
+mostrar "Edad como número: " + edadNumero
+mostrar "Edad + 5: " + (edadNumero + 5)
+
+// Del formulario
+variable cantidadFormulario = "10"
+variable cantidad = entero(cantidadFormulario)
+variable precioUnitario = 100
+variable total = cantidad * precioUnitario
+mostrar "Cantidad: " + cantidad
+mostrar "Total: $" + total
+
+// Ignora decimales
+variable precioTexto = "99.99"
+variable precioEntero = entero(precioTexto)
+mostrar "Precio redondeado: $" + precioEntero`} />
+
+<Output text={`Edad como texto: 25
+Edad como número: 25
+Edad + 5: 30
+Cantidad: 10
+Total: $1000
+Precio redondeado: $99`} />
+
+- entero(texto): Convierte texto a número entero
+- Si el texto tiene decimales, los ignora (trunca)
+- Si el texto no es un número válido, retorna 0
+- Útil para datos de formularios, input de usuario
+
+## Texto a Número Decimal
+
+Cuando necesitas conservar los decimales, usa la conversión a decimal en lugar de entero.
+
+<Syntax>decimal(texto)</Syntax>
+
+<Code code={`variable precioTexto = "99.99"
+variable precioNumero = decimal(precioTexto)
+
+mostrar "Precio como texto: " + precioTexto
+mostrar "Precio como número: " + precioNumero
+
+variable cantidad = 3
+variable subtotal = precioNumero * cantidad
+mostrar "Subtotal (3 items): $" + subtotal
+
+// Porcentaje
+variable porcentajeTexto = "15.5"
+variable porcentaje = decimal(porcentajeTexto)
+variable descuento = 100 * (porcentaje / 100)
+mostrar "Descuento " + porcentaje + "%: $" + descuento
+
+// Temperatura
+variable tempTexto = "36.6"
+variable temperatura = decimal(tempTexto)
+mostrar "Temperatura: " + temperatura + "°C"`} />
+
+<Output text={`Precio como texto: 99.99
+Precio como número: 99.99
+Subtotal (3 items): $299.97
+Descuento 15.5%: $15.5
+Temperatura: 36.6°C`} />
+
+- decimal(texto): Convierte texto a número con decimales
+- Conserva la precisión decimal
+- Usa punto (.) como separador decimal
+- Útil para precios, porcentajes, medidas precisas
+
+## Número a Texto
+
+A veces necesitas mostrar números formateados o concatenarlos con texto de forma controlada.
+
+<Syntax>texto(valor)</Syntax>
+
+<Code code={`variable precio = 1500
+variable precioTexto = texto(precio)
+mostrar "Precio: $" + precioTexto
+
+variable cantidad = 25
+variable mensaje = "Tienes " + texto(cantidad) + " items"
+mostrar mensaje
+
+// Formatear números
+variable total = 1234.56
+mostrar "Total: $" + texto(total)
+
+// Con decimales
+variable porcentaje = 15.5
+mostrar "Descuento: " + texto(porcentaje) + "%"
+
+// Booleano a texto
+variable activo = verdadero
+mostrar "Estado: " + texto(activo)`} />
+
+<Output text={`Precio: $1500
+Tienes 25 items
+Total: $1234.56
+Descuento: 15.5%
+Estado: verdadero`} />
+
+- texto(valor): Convierte cualquier valor a texto
+- Funciona con números, booleanos, listas, objetos
+- Útil para construir mensajes, formatear salidas
+- El texto se puede concatenar fácilmente
+
+## Texto a Booleano
+
+Convertir respuestas como "si", "verdadero", "1" a valores booleanos reales.
+
+<Code code={`variable respuesta1 = "verdadero"
+variable respuesta2 = "falso"
+variable respuesta3 = "si"
+variable respuesta4 = "no"
+
+mostrar "verdadero → " + texto(booleano(respuesta1))
+mostrar "falso → " + texto(booleano(respuesta2))
+
+// Validación de checkbox
+variable aceptoTerminos = "verdadero"
+si booleano(aceptoTerminos) {
+    mostrar "Términos aceptados"
+}
+
+// Valor del formulario
+variable recibirOfertas = "falso"
+si !booleano(recibirOfertas) {
+    mostrar "No recibirás ofertas"
+}`} />
+
+<Output text={`verdadero → verdadero
+falso → falso
+Términos aceptados
+No recibirás ofertas`} />
+
+- booleano(texto): Convierte texto a verdadero/falso
+- "verdadero", "true", "1", "si" → verdadero
+- "falso", "false", "0", "no" → falso
+- Útil para procesar respuestas de formularios
+
+## Verificar Tipo de Dato
+
+Antes de convertir, a veces necesitas saber qué tipo de dato tienes.
+
+<Syntax>tipoDe(valor)</Syntax>
+
+<Code code={`variable numero = 42
+variable texto = "hola"
+variable booleano = verdadero
+variable lista = [1, 2, 3]
+variable nulo = nulo
+
+mostrar "42 es: " + tipoDe(numero)
+mostrar "'hola' es: " + tipoDe(texto)
+mostrar "verdadero es: " + tipoDe(booleano)
+mostrar "[1,2,3] es: " + tipoDe(lista)
+mostrar "nulo es: " + tipoDe(nulo)
+
+// Validar antes de convertir
+variable dato = "25"
+si tipoDe(dato) == "texto" {
+    variable num = entero(dato)
+    mostrar "Convertido: " + num
+}`} />
+
+<Output text={`42 es: numero
+'hola' es: texto
+verdadero es: booleano
+[1,2,3] es: lista
+nulo es: nulo
+Convertido: 25`} />
+
+- tipoDe(valor): Retorna el tipo como texto
+- Tipos posibles: "numero", "texto", "booleano", "lista", "objeto", "nulo", "indefinido"
+- Útil para validar datos antes de procesarlos
+- Evita errores de conversión
+
+## Conversión Automática
+
+HispanoLang a veces convierte tipos automáticamente, especialmente al concatenar.
+
+<Code code={`// Concatenación automática
+variable edad = 25
+mostrar "Tengo " + edad + " años"  // número a texto automático
+
+variable precio = 99.99
+mostrar "Precio: $" + precio  // decimal a texto automático
+
+// Operaciones
+variable textoNumero = "10"
+mostrar textoNumero + 5        // "105" (concatenación)
+mostrar entero(textoNumero) + 5  // 15 (suma)
+
+// Comparación
+variable cantidadTexto = "100"
+variable cantidadNumero = 100
+mostrar cantidadTexto == cantidadNumero  // falso (tipos diferentes)`} />
+
+<Output text={`Tengo 25 años
+Precio: $99.99
+105
+15
+falso`} />
+
+- Al concatenar con +, números se convierten a texto
+- Para operaciones matemáticas, convierte explícitamente
+- Las comparaciones NO convierten automáticamente
+- "100" == 100 es falso (texto vs número)
+
+## Manejo de Errores en Conversión
+
+Qué pasa cuando la conversión no es posible.
+
+<Code code={`// Texto inválido a número
+variable textoInvalido = "abc"
+variable resultado = entero(textoInvalido)
+mostrar "entero('abc') = " + resultado  // 0 o error
+
+// Texto vacío
+variable vacio = ""
+variable resultadoVacio = entero(vacio)
+mostrar "entero('') = " + resultadoVacio
+
+// Texto con espacios
+variable conEspacios = "  42  "
+variable limpio = entero(conEspacios.recortar())
+mostrar "entero('  42  '.recortar()) = " + limpio
+
+// Validación segura
+variable input = "25"
+si input.longitud() > 0 {
+    variable num = entero(input)
+    mostrar "Número válido: " + num
+}`} />
+
+<Output text={`entero('abc') = 0
+entero('') = 0
+entero('  42  '.recortar()) = 42
+Número válido: 25`} />
+
+- Texto inválido → retorna 0 o valor por defecto
+- Siempre valida la entrada antes de convertir
+- Usa .recortar() para limpiar espacios
+- Verifica longitud para evitar vacíos
+
+## Caso Práctico: Formulario de Registro
+
+Ejemplo completo procesando datos de un formulario.
+
+<Code code={`mostrar "=== PROCESANDO FORMULARIO ==="
+
+// Datos del formulario (vienen como texto)
+variable nombreForm = "  María García  "
+variable edadForm = "25"
+variable precioForm = "99.99"
+variable aceptaTerminosForm = "verdadero"
+
+// Limpiar y convertir
+variable nombre = nombreForm.recortar()
+variable edad = entero(edadForm)
+variable precio = decimal(precioForm)
+variable aceptaTerminos = booleano(aceptaTerminosForm)
+
+// Validar
+si edad >= 18 y aceptaTerminos {
+    mostrar "Registro válido"
+    mostrar "Nombre: " + nombre
+    mostrar "Edad: " + edad
+    mostrar "Precio: $" + precio
+
+    variable total = precio * 1.21
+    mostrar "Total con IVA: $" + texto(total)
+} sino {
+    mostrar "Registro inválido"
+}`} />
+
+<Output text={`=== PROCESANDO FORMULARIO ===
+Registro válido
+Nombre: María García
+Edad: 25
+Precio: $99.99
+Total con IVA: $120.9879`} />
+
+Resumen de conversiones:
+- entero(texto): Texto → Número entero
+- decimal(texto): Texto → Número decimal
+- texto(valor): Cualquier valor → Texto
+- booleano(texto): Texto → Verdadero/Falso
+- tipoDe(valor): Obtener el tipo de un valor

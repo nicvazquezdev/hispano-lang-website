@@ -1,0 +1,113 @@
+# 💬 Comentarios
+
+Los comentarios son notas que escribís en tu código para vos mismo o para otros programadores. El programa los ignora completamente, como si no existieran. Son como las anotaciones que hacés en una receta de cocina: 'no te olvides de precalentar' o 'esta parte es importante'.
+
+## ¿Qué son los Comentarios?
+
+Imagina que estás escribiendo tu receta favorita. Querés dejar notas como 'batir durante 5 minutos' o 'el secreto está en la temperatura'. Los comentarios en programación funcionan igual: son notas en tu código que ayudan a entender qué hace y por qué.
+
+<Syntax>// Tu nota aquí</Syntax>
+
+<Code code={`// RECETA: Pizza Casera
+// Tiempo total: 45 minutos
+
+constante TEMPERATURA_HORNO = 220  // Grados centígrados
+constante TIEMPO_HORNEADO = 15     // Minutos
+
+variable pizzasHechas = 0
+
+mostrar "Pizzas hechas: " + pizzasHechas  // Contador de producción`} />
+
+<Output text={`Pizzas hechas: 0`} />
+
+- Los comentarios empiezan con dos barras: //
+- Todo lo que escribas después de // es ignorado por el programa
+- Puedes poner comentarios en su propia línea o al final de una línea de código
+- Son solo para humanos, el programa no los lee ni los ejecuta
+
+## ¿Para qué sirven?
+
+Los comentarios tienen tres usos principales: explicar tu código (como tips en una receta), dejar recordatorios importantes, y desactivar pasos temporalmente sin borrarlos.
+
+<Code code={`// RECETA: Torta de Chocolate
+// Porciones: 8
+
+constante HARINA_GRAMOS = 200
+constante AZUCAR_GRAMOS = 150
+constante HUEVOS = 3
+
+variable pasoActual = 1
+
+// PASO 1: Mezclar ingredientes secos
+mostrar "Paso " + pasoActual + ": Tamizar harina"
+pasoActual = pasoActual + 1
+
+// PASO 2: Agregar ingredientes húmedos
+mostrar "Paso " + pasoActual + ": Batir huevos"
+pasoActual = pasoActual + 1
+
+// Para hacer: Agregar paso de decoración
+// Para hacer: Calcular calorías totales`} />
+
+<Output text={`Paso 1: Tamizar harina
+Paso 2: Batir huevos`} />
+
+- Explica pasos importantes o complejos de tu receta/código
+- Usa TODO: para dejar recordatorios de cosas pendientes
+- Organiza tu código con comentarios como títulos de secciones
+- Documenta cantidades, tiempos o decisiones importantes
+
+## Desactivar Código Temporalmente
+
+A veces querés probar tu receta sin ciertos ingredientes o pasos. En vez de borrar esas líneas, podés 'comentarlas' para desactivarlas temporalmente.
+
+<Code code={`// RECETA: Panqueques
+constante HARINA = 200
+constante LECHE = 300
+constante HUEVOS = 2
+
+variable panquequesHechos = 0
+
+// mostrar "Debug: harina = " + HARINA
+// mostrar "Debug: leche = " + LECHE
+
+panquequesHechos = 5
+mostrar "Panqueques listos: " + panquequesHechos
+
+// variable azucar = 50  // Desactivado: versión sin azúcar`} />
+
+<Output text={`Panqueques listos: 5`} />
+
+- Comentar líneas es útil para probar diferentes versiones de tu código
+- Puedes desactivar ingredientes/pasos sin borrarlos, por si los necesitas después
+- Es más seguro que borrar: siempre podés 'des-comentar' sacando las //
+- Útil para debug: desactiva líneas para encontrar dónde está el problema
+
+## Buenas Prácticas
+
+Como en una buena receta, tus comentarios deben agregar información útil, no repetir lo obvio. Aquí hay ejemplos de comentarios buenos y malos.
+
+<Code code={`// MAL: Comentario obvio que no agrega valor
+variable huevos = 3  // Declaramos variable huevos con valor 3
+
+// BIEN: Explica el por qué o da contexto útil
+variable huevos = 3  // 3 huevos para receta de 8 porciones
+
+// MAL: Repite exactamente lo que el código hace
+temperatura = temperatura + 10  // Sumamos 10 a temperatura
+
+// BIEN: Explica la razón o el contexto
+temperatura = temperatura + 10  // Ajuste para horno de gas
+
+// BIEN: Documenta decisiones o tips importantes
+constante TEMPERATURA_HORNO = 180
+// 180°C es ideal para esta receta: más alto quema los bordes,
+// más bajo deja el centro crudo. Probado múltiples veces.
+
+variable tiempoReposo = 30  // IMPORTANTE: No saltear este paso`} />
+
+- Explica el 'POR QUÉ', no el 'QUÉ' (el código ya muestra el qué)
+- Evita comentarios obvios: 'variable x = 5 // asignamos 5 a x' no ayuda
+- Documenta tips importantes: temperaturas críticas, tiempos exactos, trucos
+- Si el código es claro por sí mismo, no necesita comentario
+- Mantén los comentarios actualizados: si cambias el código, actualiza el comentario

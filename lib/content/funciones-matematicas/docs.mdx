@@ -1,0 +1,282 @@
+# 🔢 Funciones Matemáticas
+
+Las funciones matemáticas son como los botones de una calculadora científica: tienes botones para redondear, para generar números aleatorios, para calcular raíces cuadradas, senos y cosenos. En HispanoLang tienes todas estas funciones listas para usar.
+
+## Redondeo: Ajustar Decimales
+
+Los tres amigos del redondeo: redondear (al más cercano), techo (siempre arriba), piso (siempre abajo). Como las funciones de tu calculadora para manejar decimales.
+
+<Syntax>redondear(numero), techo(numero), piso(numero)</Syntax>
+
+<Code code={`// Redondear: al más cercano
+mostrar redondear(3.2)  // → 3
+mostrar redondear(3.7)  // → 4
+mostrar redondear(3.5)  // → 4
+
+// Techo: siempre hacia arriba
+mostrar techo(3.1)      // → 4
+mostrar techo(3.9)      // → 4
+mostrar techo(3.0)      // → 3
+
+// Piso: siempre hacia abajo
+mostrar piso(3.1)       // → 3
+mostrar piso(3.9)       // → 3
+mostrar piso(3.0)       // → 3
+
+// Uso práctico: precios
+variable precio = 99.99
+mostrar "Precio redondeado: $" + redondear(precio)`} />
+
+<Output text={`3
+4
+4
+4
+4
+3
+3
+3
+3
+Precio redondeado: $100`} />
+
+- redondear(): Al entero más cercano (.5 o más sube, menos de .5 baja)
+- techo(): Siempre hacia el entero superior (ceiling)
+- piso(): Siempre hacia el entero inferior (floor)
+- Útil para precios, cantidades, cálculos financieros
+
+## Números Aleatorios
+
+Como los dados en un juego, aleatorio() genera números impredecibles. Perfecto para juegos, sorteos, simulaciones, y efectos de variación.
+
+<Syntax>aleatorio(), aleatorio(max), aleatorio(min, max)</Syntax>
+
+<Code code={`// Aleatorio entre 0 y 1
+variable random = aleatorio()
+mostrar "Aleatorio (0-1): " + random
+
+// Aleatorio entre 0 y un máximo
+variable dado = piso(aleatorio(1, 7))
+mostrar "Dado (1-6): " + dado
+
+// Aleatorio entre dos valores
+variable temperatura = aleatorio(15, 30)
+mostrar "Temperatura: " + redondear(temperatura) + "°C"
+
+// Descuento aleatorio
+variable descuento = redondear(aleatorio(10, 50))
+mostrar "Descuento sorpresa: " + descuento + "%"`} />
+
+<Output text={`Aleatorio (0-1): 0.7234
+Dado (1-6): 4
+Temperatura: 23°C
+Descuento sorpresa: 35%`} />
+
+- aleatorio(): Número decimal entre 0 y 1
+- aleatorio(max): Entre 0 y max
+- aleatorio(min, max): Entre min y max
+- Usa piso() o redondear() para obtener enteros
+
+## Potencias y Raíces
+
+El botón x² de la calculadora para elevar números, y √ para sacar raíces. Útil para áreas, volúmenes, distancias, y cálculos geométricos.
+
+<Syntax>potencia(base, exponente), raiz(numero)</Syntax>
+
+<Code code={`// Potencias
+mostrar "5² = " + potencia(5, 2)
+mostrar "3³ = " + potencia(3, 3)
+mostrar "2⁸ = " + potencia(2, 8)
+
+// Raíces
+mostrar "√16 = " + raiz(16)
+mostrar "√25 = " + raiz(25)
+
+// Área de cuadrado
+variable lado = 7
+variable area = potencia(lado, 2)
+mostrar "Área de cuadrado 7x7: " + area + " m²"
+
+// Teorema de Pitágoras
+variable hipotenusa = raiz(potencia(3, 2) + potencia(4, 2))
+mostrar "Hipotenusa de triángulo 3-4: " + hipotenusa`} />
+
+<Output text={`5² = 25
+3³ = 27
+2⁸ = 256
+√16 = 4
+√25 = 5
+Área de cuadrado 7x7: 49 m²
+Hipotenusa de triángulo 3-4: 5`} />
+
+- potencia(base, exponente): Eleva base a exponente
+- raiz(n): Raíz cuadrada de n (√n)
+- Útil para áreas, volúmenes, distancias, interés compuesto
+
+## Valor Absoluto
+
+El botón |x| o abs en la calculadora. Convierte cualquier número en su versión positiva. Útil para distancias, diferencias, y cuando el signo no importa.
+
+<Syntax>valorAbsoluto(numero)</Syntax>
+
+<Code code={`mostrar "Absoluto de 10: " + valorAbsoluto(10)
+mostrar "Absoluto de -10: " + valorAbsoluto(-10)
+mostrar "Absoluto de 0: " + valorAbsoluto(0)
+
+// Diferencia de temperatura
+variable temp1 = 25
+variable temp2 = 15
+variable diferencia = valorAbsoluto(temp1 - temp2)
+mostrar "Diferencia de temperatura: " + diferencia + "°C"
+
+// Distancia entre puntos
+variable posicion1 = 50
+variable posicion2 = 30
+variable distancia = valorAbsoluto(posicion1 - posicion2)
+mostrar "Distancia entre puntos: " + distancia + " unidades"`} />
+
+<Output text={`Absoluto de 10: 10
+Absoluto de -10: 10
+Absoluto de 0: 0
+Diferencia de temperatura: 10°C
+Distancia entre puntos: 20 unidades`} />
+
+- valorAbsoluto(n): Retorna el valor sin signo
+- Números positivos → quedan igual
+- Números negativos → se vuelven positivos
+- Útil para calcular distancias (siempre positivas)
+
+## Máximo, Mínimo, Suma, Promedio
+
+Funciones de agregación que operan sobre múltiples números. Como calcular la nota más alta, el producto más barato, el total de gastos, o el promedio de ventas.
+
+<Code code={`variable precios = maximo(100, 250, 180, 320)
+mostrar "Precio más alto: $" + precios
+
+variable barato = minimo(100, 250, 180, 320)
+mostrar "Precio más bajo: $" + barato
+
+variable notas = suma(85, 90, 78, 92)
+mostrar "Suma de notas: " + notas
+
+variable promedioNotas = promedio(85, 90, 78, 92)
+mostrar "Promedio de notas: " + promedioNotas
+
+// Análisis de ventas
+variable mejorVenta = maximo(1500, 2300, 1800, 2100)
+mostrar "Mejor día de ventas: $" + mejorVenta
+
+variable gastosMensuales = suma(500, 300, 150, 200, 400)
+mostrar "Gastos totales: $" + gastosMensuales`} />
+
+<Output text={`Precio más alto: $320
+Precio más bajo: $100
+Suma de notas: 345
+Promedio de notas: 86.25
+Mejor día de ventas: $2300
+Gastos totales: $1550`} />
+
+- maximo(...): Retorna el número más grande
+- minimo(...): Retorna el número más pequeño
+- suma(...): Retorna la suma de todos
+- promedio(...): Retorna el promedio aritmético
+- Todas aceptan múltiples argumentos
+
+## Trigonometría
+
+Los botones sin, cos, tan de la calculadora científica. Útiles para cálculos con ángulos, rotaciones, movimientos circulares, y geometría avanzada.
+
+<Code code={`mostrar "seno(0°) = " + seno(0)
+mostrar "coseno(0°) = " + coseno(0)
+mostrar "seno(90°) = " + seno(90)
+mostrar "coseno(90°) = " + coseno(90)
+mostrar "tangente(45°) = " + tangente(45)
+
+// Calcular altura con ángulo
+variable distancia = 100
+variable angulo = 30
+variable altura = distancia * seno(angulo)
+mostrar "Altura del edificio: " + redondear(altura) + "m"
+
+// Posición en círculo
+variable radio = 10
+variable anguloCirc = 45
+variable x = radio * coseno(anguloCirc)
+variable y = radio * seno(anguloCirc)
+mostrar "Posición en círculo: (" + redondear(x) + ", " + redondear(y) + ")"`} />
+
+<Output text={`seno(0°) = 0
+coseno(0°) = 1
+seno(90°) = 1
+coseno(90°) = 0
+tangente(45°) = 1
+Altura del edificio: 50m
+Posición en círculo: (7, 7)`} />
+
+- seno(angulo): Calcula el seno del ángulo
+- coseno(angulo): Calcula el coseno del ángulo
+- tangente(angulo): Calcula la tangente del ángulo
+- Los ángulos se miden en GRADOS (0-360), no radianes
+- Útil para cálculos con ángulos, movimiento circular, rotaciones
+
+## Casos de Uso Prácticos
+
+Ejemplos completos de cómo usar estas funciones en situaciones reales.
+
+<Code code={`mostrar "=== CALCULADORA DE PROPINAS ==="
+variable cuenta = 156.50
+variable propina15 = cuenta * 0.15
+variable total15 = redondear(cuenta + propina15)
+mostrar "Cuenta: $" + cuenta
+mostrar "Con propina 15%: $" + total15
+
+mostrar ""
+mostrar "=== SIMULADOR DE DADO ==="
+variable dado1 = piso(aleatorio(1, 7))
+variable dado2 = piso(aleatorio(1, 7))
+mostrar "Dado 1: " + dado1
+mostrar "Dado 2: " + dado2
+mostrar "Suma: " + (dado1 + dado2)
+
+mostrar ""
+mostrar "=== ANÁLISIS DE GASTOS ==="
+variable gastos = suma(500, 300, 150, 450, 200)
+variable promGasto = promedio(500, 300, 150, 450, 200)
+variable mayorGasto = maximo(500, 300, 150, 450, 200)
+mostrar "Total gastado: $" + gastos
+mostrar "Gasto promedio: $" + promGasto
+mostrar "Mayor gasto: $" + mayorGasto
+
+mostrar ""
+mostrar "=== SISTEMA DE DESCUENTOS ==="
+variable precioOriginal = 1000
+variable descuento = redondear(aleatorio(10, 41))
+variable ahorro = precioOriginal * descuento / 100
+variable precioFinal = redondear(precioOriginal - ahorro)
+mostrar "Precio: $" + precioOriginal
+mostrar "Descuento sorpresa: " + descuento + "%"
+mostrar "Pagas: $" + precioFinal`} />
+
+<Output text={`=== CALCULADORA DE PROPINAS ===
+Cuenta: $156.5
+Con propina 15%: $180
+
+=== SIMULADOR DE DADO ===
+Dado 1: 4
+Dado 2: 6
+Suma: 10
+
+=== ANÁLISIS DE GASTOS ===
+Total gastado: $1600
+Gasto promedio: $320
+Mayor gasto: $500
+
+=== SISTEMA DE DESCUENTOS ===
+Precio: $1000
+Descuento sorpresa: 27%
+Pagas: $730`} />
+
+Funciones más útiles para principiantes:
+- redondear(), techo(), piso() - Esenciales
+- aleatorio() - Muy útil y divertido
+- maximo(), minimo(), suma(), promedio() - Análisis básico
+- potencia(), raiz() - Cálculos comunes
+- valorAbsoluto() - Distancias y diferencias

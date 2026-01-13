@@ -1,0 +1,318 @@
+# 🔄 Bucles
+
+Los bucles son como reproducir una playlist: repites canciones una y otra vez. En programación, los bucles te permiten repetir código sin tener que escribirlo múltiples veces. Imagina tener que escribir 'reproducir canción' 100 veces... ¡imposible! Los bucles lo hacen automáticamente.
+
+## ¿Qué son los Bucles?
+
+Imagina que tienes una playlist con 50 canciones. En vez de escribir 50 veces 'reproducir canción 1', 'reproducir canción 2', etc., el reproductor usa un bucle: repite la acción de reproducir para cada canción.
+
+<Code code={`// Sin bucles (tedioso y repetitivo)
+mostrar "Canción 1"
+mostrar "Canción 2"
+mostrar "Canción 3"
+mostrar "Canción 4"
+mostrar "Canción 5"
+
+// Con bucles (limpio y automático)
+para (variable cancion = 1; cancion <= 5; cancion++) {
+    mostrar "Canción " + cancion
+}`} />
+
+<Output text={`Canción 1
+Canción 2
+Canción 3
+Canción 4
+Canción 5
+Canción 1
+Canción 2
+Canción 3
+Canción 4
+Canción 5`} />
+
+- Sin bucles: tienes que escribir el código repetido muchas veces
+- Con bucles: escribes el código una vez y se repite automáticamente
+- Los bucles son fundamentales: listas, menús, búsquedas, cálculos repetitivos
+- Hay dos tipos principales: 'mientras' (while) y 'para' (for)
+- Los bucles ahorran tiempo, evitan errores y hacen el código más limpio
+
+## Bucle mientras: Reproduce Mientras Haya Canciones
+
+El bucle 'mientras' repite código MIENTRAS una condición sea verdadera. Como un reproductor que sigue reproduciendo MIENTRAS queden canciones en la playlist.
+
+<Syntax>mientras condicion ... código ...</Syntax>
+
+<Code code={`variable cancionActual = 1
+variable totalCanciones = 5
+
+mientras cancionActual <= totalCanciones {
+    mostrar "Reproduciendo canción " + cancionActual
+    cancionActual++
+}
+
+mostrar "Playlist terminada"
+
+variable energia = 100
+
+mientras energia > 0 {
+    mostrar "Bailando... Energía: " + energia
+    energia = energia - 20
+}
+
+mostrar "Sin energía, a descansar"`} />
+
+<Output text={`Reproduciendo canción 1
+Reproduciendo canción 2
+Reproduciendo canción 3
+Reproduciendo canción 4
+Reproduciendo canción 5
+Playlist terminada
+Bailando... Energía: 100
+Bailando... Energía: 80
+Bailando... Energía: 60
+Bailando... Energía: 40
+Bailando... Energía: 20
+Sin energía, a descansar`} />
+
+- mientras evalúa la condición ANTES de cada repetición
+- Si la condición es verdadera → ejecuta el código
+- Si la condición es falsa → sale del bucle
+- IMPORTANTE: Asegúrate que la condición se vuelva falsa en algún momento
+- Si no, tendrás un bucle infinito (nunca termina)
+
+## Bucle para: Número Conocido de Repeticiones
+
+El bucle 'para' es perfecto cuando sabes exactamente cuántas veces quieres repetir algo. Como cuando la playlist tiene 10 canciones y quieres reproducirlas todas.
+
+<Syntax>para (inicialización; condición; actualización) ... código ...</Syntax>
+
+<Code code={`// Reproduce 5 canciones
+para (variable i = 1; i <= 5; i++) {
+    mostrar "Canción " + i
+}
+
+mostrar "---"
+
+// Cuenta regresiva para el drop
+para (variable segundos = 5; segundos >= 1; segundos--) {
+    mostrar segundos + "..."
+}
+mostrar "¡DROP!"
+
+mostrar "---"
+
+// Reproduce las primeras 3 canciones
+para (variable cancion = 1; cancion <= 3; cancion++) {
+    mostrar "Reproduciendo track " + cancion
+}`} />
+
+<Output text={`Canción 1
+Canción 2
+Canción 3
+Canción 4
+Canción 5
+---
+5...
+4...
+3...
+2...
+1...
+¡DROP!
+---
+Reproduciendo track 1
+Reproduciendo track 2
+Reproduciendo track 3`} />
+
+- El bucle 'para' tiene 3 partes separadas por punto y coma:
+- 1. Inicialización: crear variable contador (empieza en 1)
+- 2. Condición: mientras contador sea menor o igual a 5
+- 3. Actualización: incrementar contador después de cada vuelta
+- Más compacto que 'mientras' cuando conoces el número de repeticiones
+- La variable del bucle existe solo dentro del bucle
+
+## Bucles Infinitos: El Error Más Común
+
+Un bucle infinito es como una canción en repeat que NUNCA para. El programa se queda atascado para siempre. Esto pasa cuando la condición nunca se vuelve falsa.
+
+<Code code={`// EJEMPLO CORRECTO - El bucle termina
+variable contador = 1
+
+mientras contador <= 5 {
+    mostrar "Reproduciendo " + contador
+    contador++  // IMPORTANTE: incrementamos el contador
+}
+
+mostrar "Playlist terminada"
+
+// EJEMPLO DE BUCLE INFINITO (NO HACER):
+// variable cancion = 1
+// mientras cancion <= 5 {
+//     mostrar "Canción " + cancion
+//     // Falta cancion++ - el bucle NUNCA termina
+// }`} />
+
+<Output text={`Reproduciendo 1
+Reproduciendo 2
+Reproduciendo 3
+Reproduciendo 4
+Reproduciendo 5
+Playlist terminada`} />
+
+- REGLA: Siempre modifica la variable de la condición dentro del bucle
+- Si la condición nunca cambia, el bucle nunca termina
+- Síntomas de bucle infinito: el programa se cuelga, no responde
+- Solución: asegúrate de que algo dentro del bucle cambie la condición
+
+## Casos de Uso: Reproductor de Música
+
+Veamos ejemplos prácticos de bucles en un contexto de reproductor de música.
+
+<Code code={`// Mostrar playlist
+variable totalCanciones = 5
+mostrar "=== MI PLAYLIST ==="
+
+para (variable i = 1; i <= totalCanciones; i++) {
+    mostrar i + ". Canción " + i
+}
+
+mostrar ""
+
+// Reproducir todas
+variable cancionActual = 1
+
+mientras cancionActual <= 3 {
+    mostrar "Reproduciendo: Canción " + cancionActual
+    cancionActual++
+}
+
+mostrar ""
+mostrar "Reproducción completada"
+
+// Mostrar progreso
+mostrar ""
+mostrar "=== PROGRESO ==="
+para (variable progreso = 0; progreso <= 100; progreso += 25) {
+    mostrar progreso + "% completado"
+}`} />
+
+<Output text={`=== MI PLAYLIST ===
+1. Canción 1
+2. Canción 2
+3. Canción 3
+4. Canción 4
+5. Canción 5
+
+Reproduciendo: Canción 1
+Reproduciendo: Canción 2
+Reproduciendo: Canción 3
+
+Reproducción completada
+
+=== PROGRESO ===
+0% completado
+25% completado
+50% completado
+75% completado
+100% completado`} />
+
+- Los bucles son perfectos para recorrer listas de elementos
+- Puedes usar incrementos diferentes para saltar de 25 en 25
+- Combina bucles con condicionales para lógica más compleja
+- El contador puede ir hacia adelante o hacia atrás
+
+## Bucles Anidados: Listas Dentro de Listas
+
+A veces necesitas bucles dentro de bucles. Como un reproductor que tiene álbumes, y cada álbum tiene canciones.
+
+<Code code={`// 3 álbumes, cada uno con 2 canciones
+para (variable album = 1; album <= 3; album++) {
+    mostrar "=== Álbum " + album + " ==="
+
+    para (variable cancion = 1; cancion <= 2; cancion++) {
+        mostrar "  Canción " + cancion
+    }
+}
+
+mostrar ""
+mostrar "=== TABLA DE HORARIOS ==="
+
+// Tabla de horarios: 3 días, 2 clases por día
+para (variable dia = 1; dia <= 3; dia++) {
+    mostrar "Día " + dia + ":"
+
+    para (variable clase = 1; clase <= 2; clase++) {
+        mostrar "  - Clase " + clase
+    }
+}`} />
+
+<Output text={`=== Álbum 1 ===
+  Canción 1
+  Canción 2
+=== Álbum 2 ===
+  Canción 1
+  Canción 2
+=== Álbum 3 ===
+  Canción 1
+  Canción 2
+
+=== TABLA DE HORARIOS ===
+Día 1:
+  - Clase 1
+  - Clase 2
+Día 2:
+  - Clase 1
+  - Clase 2
+Día 3:
+  - Clase 1
+  - Clase 2`} />
+
+- El bucle externo controla los álbumes/días
+- El bucle interno se ejecuta completo por cada vuelta del externo
+- Usa indentación clara para que sea legible
+- No anides más de 2-3 niveles (se vuelve confuso)
+- Los bucles anidados son útiles para tablas, grillas, matrices
+
+## ¿Cuándo Usar Cada Tipo de Bucle?
+
+Guía para elegir entre 'mientras' y 'para'.
+
+<Code code={`// PARA: Cuando sabes cuántas veces repetir
+mostrar "Ejemplo con PARA:"
+para (variable i = 1; i <= 3; i++) {
+    mostrar "Repetición " + i
+}
+
+mostrar ""
+
+// MIENTRAS: Cuando depende de una condición
+mostrar "Ejemplo con MIENTRAS:"
+variable energia = 100
+
+mientras energia > 50 {
+    mostrar "Energía: " + energia
+    energia -= 20
+}
+
+mostrar "Energía baja, descansar"`} />
+
+<Output text={`Ejemplo con PARA:
+Repetición 1
+Repetición 2
+Repetición 3
+
+Ejemplo con MIENTRAS:
+Energía: 100
+Energía: 80
+Energía: 60
+Energía baja, descansar`} />
+
+Usa 'para' cuando:
+- Sabes exactamente cuántas repeticiones necesitas
+- Recorres una lista de elementos con índice
+- Necesitas un contador (1, 2, 3...)
+- Ejemplo: reproducir 10 canciones, mostrar 5 items
+
+Usa 'mientras' cuando:
+- No sabes cuántas repeticiones necesitas
+- Dependes de una condición externa (input, energía, etc.)
+- Esperas que algo cambie (un valor llegue a 0)
+- Ejemplo: reproducir mientras haya energía, esperar hasta que el usuario responda
