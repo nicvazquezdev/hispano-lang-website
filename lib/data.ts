@@ -4617,50 +4617,441 @@ texto(verdadero)       // → "verdadero"`,
   metodosNumericos: {
     title: "🔢 Métodos Numéricos",
     description:
-      "Los números tienen métodos que se pueden llamar directamente para verificar propiedades o convertir a texto.",
+      "Imagina que cada número tiene etiquetas como los productos del supermercado: 'PAR', 'IMPAR', 'POSITIVO', 'NEGATIVO'. Los métodos numéricos son como leer esas etiquetas. En vez de hacer cálculos para saber si un número es par (n % 2 == 0), simplemente preguntas: ¿tienes la etiqueta 'PAR'? El número te responde: verdadero o falso.",
     subsections: [
       {
-        title: "Métodos de Verificación",
-        description: "Verifica propiedades de números.",
-        code: `variable n = 42
+        title: "¿Qué son los Métodos Numéricos?",
+        description:
+          "En el supermercado, cada producto tiene etiquetas: 'ORGÁNICO', 'SIN GLUTEN', 'VEGANO'. No necesitas analizar el producto para saber sus características, solo lees la etiqueta.\n\nLos números son igual: tienen métodos (como etiquetas) que te dicen sus características sin que tengas que hacer cálculos.",
+        code: `variable numero = 42
 
-mostrar n.esPar()        // verdadero
-mostrar n.esImpar()      // falso
-mostrar n.esPositivo()   // verdadero
-mostrar n.esNegativo()   // falso
+mostrar "¿Es par?: " + texto(numero.esPar())
+mostrar "¿Es impar?: " + texto(numero.esImpar())
+mostrar "¿Es positivo?: " + texto(numero.esPositivo())
+mostrar "¿Es negativo?: " + texto(numero.esNegativo())
 
-// Con literales (requieren paréntesis)
-mostrar (7).esImpar()       // verdadero
-mostrar (8).esPar()         // verdadero
-mostrar (-5).esNegativo()   // verdadero
-mostrar (0).esPositivo()    // falso (cero no es positivo)
-mostrar (0).esNegativo()    // falso (cero no es negativo)`,
+variable edad = 25
+si edad.esImpar() {
+    mostrar "Edad impar: " + edad.aTexto()
+}
+
+variable temperatura = -5
+si temperatura.esNegativo() {
+    mostrar "Temperatura bajo cero"
+}`,
+        output:
+          "¿Es par?: verdadero\n¿Es impar?: falso\n¿Es positivo?: verdadero\n¿Es negativo?: falso\nEdad impar: 25\nTemperatura bajo cero",
         notes: [
-          ".esPar(): Verdadero si es divisible por 2",
-          ".esImpar(): Verdadero si no es divisible por 2",
-          ".esPositivo(): Verdadero si es mayor que 0",
-          ".esNegativo(): Verdadero si es menor que 0",
-          "El cero no es positivo ni negativo",
+          "Los métodos se llaman con punto: numero.metodo()",
+          "Son como etiquetas que el número ya tiene",
+          "No necesitas hacer cálculos manualmente",
+          "Más legible: n.esPar() vs n % 2 == 0",
+          "",
+          "Métodos disponibles:",
+          "• .esPar() - ¿Es divisible por 2?",
+          "• .esImpar() - ¿No es divisible por 2?",
+          "• .esPositivo() - ¿Es mayor que 0?",
+          "• .esNegativo() - ¿Es menor que 0?",
+          "• .aTexto() - Convertir a texto",
         ],
       },
       {
-        title: "Conversión a Texto",
-        description: "Convierte números a su representación en texto.",
-        code: `variable precio = 99.99
-mostrar precio.aTexto()     // "99.99"
+        title: "Par e Impar: Alternancia y Turnos",
+        description:
+          "Los números pares e impares se alternan como los asientos de un avión: A-B-A-B. Útil para turnos, filas alternas, días alternos, y cualquier patrón que se repite cada 2.",
+        code: `variable numero = 8
+mostrar "8 es par: " + texto(numero.esPar())
+mostrar "8 es impar: " + texto(numero.esImpar())
 
-// Con literales
-mostrar (42).aTexto()       // "42"
-mostrar (3.14).aTexto()     // "3.14"
+variable n = 7
+mostrar "7 es par: " + texto(n.esPar())
+mostrar "7 es impar: " + texto(n.esImpar())
 
-// Uso práctico
-variable puntos = 1500
-variable mensaje = "Has ganado " + puntos.aTexto() + " puntos"
-mostrar mensaje`,
+variable cero = 0
+mostrar "0 es par: " + texto(cero.esPar())
+
+mostrar ""
+mostrar "=== SISTEMA DE TURNOS ==="
+para (variable i = 1; i <= 6; i = i + 1) {
+    si i.esImpar() {
+        mostrar "Turno " + i.aTexto() + ": Equipo A"
+    } sino {
+        mostrar "Turno " + i.aTexto() + ": Equipo B"
+    }
+}
+
+mostrar ""
+mostrar "=== ASIENTOS DE CINE ==="
+variable asiento = 5
+si asiento.esImpar() {
+    mostrar "Asiento " + asiento.aTexto() + ": Lado izquierdo"
+} sino {
+    mostrar "Asiento " + asiento.aTexto() + ": Lado derecho"
+}`,
+        output:
+          "8 es par: verdadero\n8 es impar: falso\n7 es par: falso\n7 es impar: verdadero\n0 es par: verdadero\n\n=== SISTEMA DE TURNOS ===\nTurno 1: Equipo A\nTurno 2: Equipo B\nTurno 3: Equipo A\nTurno 4: Equipo B\nTurno 5: Equipo A\nTurno 6: Equipo B\n\n=== ASIENTOS DE CINE ===\nAsiento 5: Lado izquierdo",
         notes: [
-          ".aTexto(): Convierte el número a cadena de texto",
-          "Útil para formateo y concatenación",
-          "Con literales numéricos usar paréntesis: (número).método()",
+          ".esPar(): Verdadero si el número es divisible por 2",
+          ".esImpar(): Verdadero si NO es divisible por 2",
+          "",
+          "Casos de uso:",
+          "✅ Turnos alternos (Equipo A, Equipo B, ...)",
+          "✅ Filas pares/impares en estadios",
+          "✅ Asientos en cine/avión",
+          "✅ Días alternos (riego, medicamento)",
+          "✅ Patrones de diseño (colores alternos)",
+          "",
+          "Dato curioso:",
+          "• El 0 es par (divisible por 2)",
+          "• Números negativos: -2 es par, -3 es impar",
+          "",
+          "Alternativa manual:",
+          "numero.esPar() ≈ numero % 2 == 0",
+          "numero.esImpar() ≈ numero % 2 != 0",
+          "¿Cuál es más legible? 😉",
+        ],
+      },
+      {
+        title: "Positivo y Negativo: Temperatura y Finanzas",
+        description:
+          "Como el termómetro: números sobre cero (positivos) y bajo cero (negativos). O como el banco: saldo positivo (tienes dinero) y saldo negativo (debes dinero).",
+        code: `variable temperatura = 25
+mostrar "25°C es positivo: " + texto(temperatura.esPositivo())
+mostrar "25°C es negativo: " + texto(temperatura.esNegativo())
+
+variable bajo = -10
+mostrar "-10°C es positivo: " + texto(bajo.esPositivo())
+mostrar "-10°C es negativo: " + texto(bajo.esNegativo())
+
+variable cero = 0
+mostrar "0 es positivo: " + texto(cero.esPositivo())
+mostrar "0 es negativo: " + texto(cero.esNegativo())
+
+mostrar ""
+mostrar "=== TEMPERATURA ==="
+variable temp = -5
+si temp.esNegativo() {
+    mostrar "¡Alerta! Temperatura bajo cero: " + temp.aTexto() + "°C"
+} sino si temp.esPositivo() {
+    mostrar "Temperatura normal: " + temp.aTexto() + "°C"
+} sino {
+    mostrar "Temperatura en punto de congelación: 0°C"
+}
+
+mostrar ""
+mostrar "=== SALDO BANCARIO ==="
+variable saldo = -150
+si saldo.esNegativo() {
+    mostrar "Saldo negativo: $" + saldo.aTexto()
+    mostrar "Debes: $" + texto(valorAbsoluto(saldo))
+} sino si saldo.esPositivo() {
+    mostrar "Saldo positivo: $" + saldo.aTexto()
+} sino {
+    mostrar "Saldo en cero"
+}`,
+        output:
+          "25°C es positivo: verdadero\n25°C es negativo: falso\n-10°C es positivo: falso\n-10°C es negativo: verdadero\n0 es positivo: falso\n0 es negativo: falso\n\n=== TEMPERATURA ===\n¡Alerta! Temperatura bajo cero: -5°C\n\n=== SALDO BANCARIO ===\nSaldo negativo: $-150\nDebes: $150",
+        notes: [
+          ".esPositivo(): Verdadero si número > 0",
+          ".esNegativo(): Verdadero si número < 0",
+          "",
+          "⚠️ IMPORTANTE: El cero NO es positivo NI negativo",
+          "• 0.esPositivo() → falso",
+          "• 0.esNegativo() → falso",
+          "• El cero es neutral",
+          "",
+          "Casos de uso:",
+          "✅ Temperatura (bajo cero, sobre cero)",
+          "✅ Saldo bancario (deuda, crédito)",
+          "✅ Altitud (bajo nivel del mar, sobre nivel del mar)",
+          "✅ Coordenadas (positivas, negativas)",
+          "✅ Ganancias/Pérdidas en finanzas",
+          "",
+          "Alternativa manual:",
+          "numero.esPositivo() ≈ numero > 0",
+          "numero.esNegativo() ≈ numero < 0",
+          "",
+          "💡 Combina con valorAbsoluto() para mostrar magnitud sin signo",
+        ],
+      },
+      {
+        title: "Conversión a Texto: aTexto()",
+        description:
+          "Como poner la etiqueta de precio en un producto: convertir el número a su representación en texto para mostrarlo en pantalla o concatenarlo con mensajes.",
+        code: `variable precio = 99.99
+mostrar "Precio: $" + precio.aTexto()
+
+variable puntos = 1500
+mostrar "Puntos: " + puntos.aTexto()
+
+variable edad = 25
+variable mensaje = "Tienes " + edad.aTexto() + " años"
+mostrar mensaje
+
+mostrar ""
+mostrar "=== CON LITERALES ==="
+mostrar (42).aTexto()
+mostrar (3.14).aTexto()
+mostrar (-10).aTexto()
+
+mostrar ""
+mostrar "=== FORMATEO DE PRECIOS ==="
+variable producto1 = 150
+variable producto2 = 200
+variable producto3 = 99.99
+
+mostrar "Producto 1: $" + producto1.aTexto()
+mostrar "Producto 2: $" + producto2.aTexto()
+mostrar "Producto 3: $" + producto3.aTexto()
+
+variable total = producto1 + producto2 + producto3
+mostrar "Total: $" + total.aTexto()`,
+        output:
+          "Precio: $99.99\nPuntos: 1500\nTienes 25 años\n\n=== CON LITERALES ===\n42\n3.14\n-10\n\n=== FORMATEO DE PRECIOS ===\nProducto 1: $150\nProducto 2: $200\nProducto 3: $99.99\nTotal: $449.99",
+        notes: [
+          ".aTexto(): Convierte número a cadena de texto",
+          "numero.aTexto() ≈ texto(numero)",
+          "",
+          "Con literales numéricos, usa paréntesis:",
+          "• (42).aTexto() ✅",
+          "• 42.aTexto() ❌ (error de sintaxis)",
+          "",
+          "Casos de uso:",
+          "✅ Formatear precios para mostrar",
+          "✅ Concatenar números en mensajes",
+          "✅ Crear etiquetas dinámicas",
+          "✅ Construir strings con datos numéricos",
+          "",
+          "Diferencia con texto():",
+          "• numero.aTexto() - método del número",
+          "• texto(numero) - función global",
+          "• Ambos hacen lo mismo",
+          "• Usa el que prefieras",
+          "",
+          "💡 .aTexto() es más 'orientado a objetos'",
+          "💡 texto() es más 'funcional'",
+          "💡 Ambos son válidos y equivalentes",
+        ],
+      },
+      {
+        title: "Métodos vs Funciones: ¿Cuándo Usar Cada Uno?",
+        description:
+          "Tienes dos formas de hacer lo mismo: métodos (numero.metodo()) y funciones/operadores. ¿Cuál elegir? Depende de legibilidad y preferencia.",
+        code: `variable n = 8
+
+mostrar "=== PAR: DOS FORMAS ==="
+mostrar "Con método: " + texto(n.esPar())
+mostrar "Con operador: " + texto(n % 2 == 0)
+
+mostrar ""
+mostrar "=== IMPAR: DOS FORMAS ==="
+mostrar "Con método: " + texto(n.esImpar())
+mostrar "Con operador: " + texto(n % 2 != 0)
+
+mostrar ""
+mostrar "=== POSITIVO: DOS FORMAS ==="
+variable temp = 25
+mostrar "Con método: " + texto(temp.esPositivo())
+mostrar "Con comparación: " + texto(temp > 0)
+
+mostrar ""
+mostrar "=== A TEXTO: DOS FORMAS ==="
+variable precio = 99.99
+mostrar "Con método: " + precio.aTexto()
+mostrar "Con función: " + texto(precio)
+
+mostrar ""
+mostrar "=== LEGIBILIDAD ==="
+variable edad = 25
+
+si edad.esImpar() {
+    mostrar "✓ edad.esImpar() - Más legible"
+}
+
+si edad % 2 != 0 {
+    mostrar "✓ edad % 2 != 0 - Más técnico"
+}`,
+        output:
+          "=== PAR: DOS FORMAS ===\nCon método: verdadero\nCon operador: verdadero\n\n=== IMPAR: DOS FORMAS ===\nCon método: falso\nCon operador: falso\n\n=== POSITIVO: DOS FORMAS ===\nCon método: verdadero\nCon comparación: verdadero\n\n=== A TEXTO: DOS FORMAS ===\nCon método: 99.99\nCon función: 99.99\n\n=== LEGIBILIDAD ===\n✓ edad.esImpar() - Más legible\n✓ edad % 2 != 0 - Más técnico",
+        notes: [
+          "Equivalencias:",
+          "",
+          "n.esPar() ≈ n % 2 == 0",
+          "n.esImpar() ≈ n % 2 != 0",
+          "n.esPositivo() ≈ n > 0",
+          "n.esNegativo() ≈ n < 0",
+          "n.aTexto() ≈ texto(n)",
+          "",
+          "Ventajas de MÉTODOS (.esPar(), etc):",
+          "✅ Más legible en español",
+          "✅ Intención más clara",
+          "✅ Menos propenso a errores",
+          "✅ Mejor para principiantes",
+          "",
+          "Ventajas de OPERADORES (%, >, <, etc):",
+          "✅ Más conciso",
+          "✅ Universal en todos los lenguajes",
+          "✅ Ligeramente más rápido",
+          "✅ Preferido por programadores experimentados",
+          "",
+          "¿Cuál usar?",
+          "💡 Para código legible: métodos",
+          "💡 Para código compacto: operadores",
+          "💡 En proyectos educativos: métodos",
+          "💡 En proyectos profesionales: lo que prefiera el equipo",
+          "",
+          "Ambos son correctos. Elige según contexto.",
+        ],
+      },
+      {
+        title: "Casos de Uso Prácticos",
+        description:
+          "Ejemplos completos de cómo usar métodos numéricos en situaciones reales: sistema de turnos, validación de temperatura, y formateo de datos.",
+        code: `mostrar "=== SISTEMA DE TURNOS (PAR/IMPAR) ==="
+variable turno = 1
+para (variable i = 1; i <= 8; i = i + 1) {
+    si i.esImpar() {
+        mostrar "Día " + i.aTexto() + ": Regar plantas (días impares)"
+    } sino {
+        mostrar "Día " + i.aTexto() + ": Descanso"
+    }
+}
+
+mostrar ""
+mostrar "=== VALIDACIÓN DE TEMPERATURA ==="
+variable temperaturas = [-5, 0, 15, 25, 30]
+
+para (variable i = 0; i < 5; i = i + 1) {
+    variable temp = temperaturas[i]
+    
+    si temp.esNegativo() {
+        mostrar temp.aTexto() + "°C: ❄️ Bajo cero - Precaución"
+    } sino si temp.esPositivo() y temp < 20 {
+        mostrar temp.aTexto() + "°C: 🌤️ Fresco"
+    } sino si temp.esPositivo() {
+        mostrar temp.aTexto() + "°C: ☀️ Cálido"
+    } sino {
+        mostrar temp.aTexto() + "°C: 🧊 Punto de congelación"
+    }
+}
+
+mostrar ""
+mostrar "=== FORMATEO DE DATOS ==="
+variable ventas = [1500, 2300, 1800, 2100, 1900]
+variable total = 0
+
+para (variable i = 0; i < 5; i = i + 1) {
+    total = total + ventas[i]
+    variable dia = i + 1
+    mostrar "Día " + dia.aTexto() + ": $" + ventas[i].aTexto()
+}
+
+variable promedio = total / 5
+mostrar ""
+mostrar "Total: $" + total.aTexto()
+mostrar "Promedio: $" + promedio.aTexto()`,
+        output:
+          "=== SISTEMA DE TURNOS (PAR/IMPAR) ===\nDía 1: Regar plantas (días impares)\nDía 2: Descanso\nDía 3: Regar plantas (días impares)\nDía 4: Descanso\nDía 5: Regar plantas (días impares)\nDía 6: Descanso\nDía 7: Regar plantas (días impares)\nDía 8: Descanso\n\n=== VALIDACIÓN DE TEMPERATURA ===\n-5°C: ❄️ Bajo cero - Precaución\n0°C: 🧊 Punto de congelación\n15°C: 🌤️ Fresco\n25°C: ☀️ Cálido\n30°C: ☀️ Cálido\n\n=== FORMATEO DE DATOS ===\nDía 1: $1500\nDía 2: $2300\nDía 3: $1800\nDía 4: $2100\nDía 5: $1900\n\nTotal: $9600\nPromedio: $1920",
+        notes: [
+          "Ejemplos reales de métodos numéricos:",
+          "",
+          "🔄 SISTEMA DE TURNOS:",
+          "• .esImpar() para días alternos",
+          "• Útil para: riego, medicamentos, turnos",
+          "• Patrón A-B-A-B automático",
+          "",
+          "🌡️ VALIDACIÓN DE TEMPERATURA:",
+          "• .esNegativo() para bajo cero",
+          "• .esPositivo() para sobre cero",
+          "• Cero como caso especial",
+          "",
+          "💰 FORMATEO DE DATOS:",
+          "• .aTexto() para mostrar precios",
+          "• Crear mensajes legibles",
+          "• Formatear reportes",
+          "",
+          "Patrón común:",
+          "1. Verificar con .esPar(), .esPositivo(), etc.",
+          "2. Tomar decisión basada en resultado",
+          "3. Formatear output con .aTexto()",
+          "",
+          "💡 Combina métodos para código limpio y expresivo",
+        ],
+      },
+      {
+        title: "Referencia Rápida: Todos los Métodos",
+        description:
+          "Tabla de referencia completa con todos los métodos numéricos disponibles en HispanoLang.",
+        code: `variable n = 42
+
+n.esPar()           // verdadero
+n.esImpar()         // falso
+n.esPositivo()      // verdadero
+n.esNegativo()      // falso
+n.aTexto()          // "42"
+
+variable m = -7
+
+m.esPar()           // falso
+m.esImpar()         // verdadero
+m.esPositivo()      // falso
+m.esNegativo()      // verdadero
+m.aTexto()          // "-7"
+
+variable cero = 0
+
+cero.esPar()        // verdadero
+cero.esImpar()      // falso
+cero.esPositivo()   // falso
+cero.esNegativo()   // falso
+cero.aTexto()       // "0"
+
+(100).esPar()       // verdadero (literal con paréntesis)
+(3.14).aTexto()     // "3.14" (literal con paréntesis)`,
+        output: "",
+        notes: [
+          "📊 TODOS LOS MÉTODOS NUMÉRICOS:",
+          "",
+          "🔢 VERIFICACIÓN:",
+          "⭐⭐⭐ .esPar() - ¿Divisible por 2?",
+          "⭐⭐⭐ .esImpar() - ¿No divisible por 2?",
+          "⭐⭐⭐ .esPositivo() - ¿Mayor que 0?",
+          "⭐⭐⭐ .esNegativo() - ¿Menor que 0?",
+          "",
+          "📝 CONVERSIÓN:",
+          "⭐⭐⭐ .aTexto() - Convertir a texto",
+          "",
+          "💡 CUÁNDO USAR:",
+          "",
+          ".esPar() / .esImpar():",
+          "• Turnos alternos",
+          "• Filas pares/impares",
+          "• Días alternos",
+          "• Patrones alternantes",
+          "",
+          ".esPositivo() / .esNegativo():",
+          "• Validar temperaturas",
+          "• Validar saldos bancarios",
+          "• Verificar ganancias/pérdidas",
+          "• Coordenadas y posiciones",
+          "",
+          ".aTexto():",
+          "• Formatear precios",
+          "• Crear mensajes",
+          "• Concatenar con texto",
+          "• Mostrar en pantalla",
+          "",
+          "⚠️ CASOS ESPECIALES:",
+          "• El 0 es par",
+          "• El 0 NO es positivo ni negativo",
+          "• Literales necesitan paréntesis: (42).esPar()",
+          "",
+          "🔗 EQUIVALENCIAS:",
+          "n.esPar() ≈ n % 2 == 0",
+          "n.esImpar() ≈ n % 2 != 0",
+          "n.esPositivo() ≈ n > 0",
+          "n.esNegativo() ≈ n < 0",
+          "n.aTexto() ≈ texto(n)",
         ],
       },
     ],
