@@ -9,32 +9,21 @@ Como clasificar productos en estantes pares e impares, puedes verificar si un n�
 <Syntax>numero.esPar(), numero.esImpar()</Syntax>
 
 <Code code={`variable numero = 42
-mostrar numero + " es par: " + numero.esPar()
-mostrar numero + " es impar: " + numero.esImpar()
+mostrar numero + " es par: " + numero.esPar() // 42 es par: verdadero
+mostrar numero + " es impar: " + numero.esImpar() // 42 es impar: falso
 
 variable otro = 17
-mostrar otro + " es par: " + otro.esPar()
-mostrar otro + " es impar: " + otro.esImpar()
+mostrar otro + " es par: " + otro.esPar() // 17 es par: falso
+mostrar otro + " es impar: " + otro.esImpar() // 17 es impar: verdadero
 
 // Clasificar números
 para (variable i = 1; i <= 6; i++) {
     si i.esPar() {
-        mostrar i + " → Par"
+        mostrar i + " → Par" // 2 → Par, 4 → Par, 6 → Par
     } sino {
-        mostrar i + " → Impar"
+        mostrar i + " → Impar" // 1 → Impar, 3 → Impar, 5 → Impar
     }
 }`} />
-
-<Output text={`42 es par: verdadero
-42 es impar: falso
-17 es par: falso
-17 es impar: verdadero
-1 → Impar
-2 → Par
-3 → Impar
-4 → Par
-5 → Impar
-6 → Par`} />
 
 - .esPar(): Retorna verdadero si el número es divisible por 2
 - .esImpar(): Retorna verdadero si NO es divisible por 2
@@ -47,35 +36,26 @@ Como las etiquetas de temperatura que indican si es caliente (+) o frío (-), pu
 <Syntax>numero.esPositivo(), numero.esNegativo(), numero.esCero()</Syntax>
 
 <Code code={`variable temperatura = 25
-mostrar temperatura + "°C es positivo: " + temperatura.esPositivo()
+mostrar temperatura + "°C es positivo: " + temperatura.esPositivo() // 25°C es positivo: verdadero
 
 variable saldo = -150
-mostrar "Saldo $" + saldo + " es negativo: " + saldo.esNegativo()
+mostrar "Saldo $" + saldo + " es negativo: " + saldo.esNegativo() // Saldo $-150 es negativo: verdadero
 
 variable balance = 0
-mostrar "Balance " + balance + " es cero: " + balance.esCero()
+mostrar "Balance " + balance + " es cero: " + balance.esCero() // Balance 0 es cero: verdadero
 
 // Validar datos
 variable numeros = [10, -5, 0, 8, -3]
 para (variable i = 0; i < 5; i++) {
     variable n = numeros[i]
     si n.esPositivo() {
-        mostrar n + " → Ganancia"
+        mostrar n + " → Ganancia" // 10 → Ganancia, 8 → Ganancia
     } sino si n.esNegativo() {
-        mostrar n + " → Pérdida"
+        mostrar n + " → Pérdida" // -5 → Pérdida, -3 → Pérdida
     } sino {
-        mostrar n + " → Neutro"
+        mostrar n + " → Neutro" // 0 → Neutro
     }
 }`} />
-
-<Output text={`25°C es positivo: verdadero
-Saldo $-150 es negativo: verdadero
-Balance 0 es cero: verdadero
-10 → Ganancia
--5 → Pérdida
-0 → Neutro
-8 → Ganancia
--3 → Pérdida`} />
 
 - .esPositivo(): Verdadero si el número es mayor que 0
 - .esNegativo(): Verdadero si el número es menor que 0
@@ -89,33 +69,25 @@ Como las etiquetas de precio que muestran "$99.99", puedes convertir números a 
 <Syntax>numero.aTexto()</Syntax>
 
 <Code code={`variable precio = 1500
-mostrar "Precio: $" + precio.aTexto()
+mostrar "Precio: $" + precio.aTexto() // Precio: $1500
 
 variable cantidad = 25
 variable mensaje = "Hay " + cantidad.aTexto() + " productos"
-mostrar mensaje
+mostrar mensaje // Hay 25 productos
 
 // Formatear para mostrar
 variable total = 1234.56
-mostrar "Total: $" + total.aTexto()
+mostrar "Total: $" + total.aTexto() // Total: $1234.56
 
 // Concatenar con información
 variable stock = 42
-mostrar "Stock disponible: " + stock.aTexto() + " unidades"
+mostrar "Stock disponible: " + stock.aTexto() + " unidades" // Stock disponible: 42 unidades
 
 // En una lista
 variable precios = [100, 200, 300]
 para (variable i = 0; i < 3; i++) {
-    mostrar "Item " + (i + 1).aTexto() + ": $" + precios[i].aTexto()
+    mostrar "Item " + (i + 1).aTexto() + ": $" + precios[i].aTexto() // Item 1: $100, Item 2: $200, Item 3: $300
 }`} />
-
-<Output text={`Precio: $1500
-Hay 25 productos
-Total: $1234.56
-Stock disponible: 42 unidades
-Item 1: $100
-Item 2: $200
-Item 3: $300`} />
 
 - .aTexto(): Convierte el número a su representación textual
 - Útil para construir mensajes, formatear salidas
@@ -129,33 +101,24 @@ Como distinguir entre productos vendidos por unidad (enteros) o por peso (decima
 <Syntax>numero.esEntero()</Syntax>
 
 <Code code={`variable cantidad = 5
-mostrar cantidad + " es entero: " + cantidad.esEntero()
+mostrar cantidad + " es entero: " + cantidad.esEntero() // 5 es entero: verdadero
 
 variable precio = 99.99
-mostrar precio + " es entero: " + precio.esEntero()
+mostrar precio + " es entero: " + precio.esEntero() // 99.99 es entero: falso
 
 variable exacto = 100.0
-mostrar exacto + " es entero: " + exacto.esEntero()
+mostrar exacto + " es entero: " + exacto.esEntero() // 100.0 es entero: verdadero
 
 // Validar entrada
 variable valores = [10, 5.5, 3, 7.25, 8]
 para (variable i = 0; i < 5; i++) {
     variable v = valores[i]
     si v.esEntero() {
-        mostrar v + " → Cantidad válida"
+        mostrar v + " → Cantidad válida" // 10 → Cantidad válida, 3 → Cantidad válida, 8 → Cantidad válida
     } sino {
-        mostrar v + " → Redondear a " + redondear(v)
+        mostrar v + " → Redondear a " + redondear(v) // 5.5 → Redondear a 6, 7.25 → Redondear a 7
     }
 }`} />
-
-<Output text={`5 es entero: verdadero
-99.99 es entero: falso
-100.0 es entero: verdadero
-10 → Cantidad válida
-5.5 → Redondear a 6
-3 → Cantidad válida
-7.25 → Redondear a 7
-8 → Cantidad válida`} />
 
 - .esEntero(): Verdadero si no tiene parte decimal
 - 5.0 se considera entero (la parte decimal es 0)
@@ -169,27 +132,22 @@ Obtener la magnitud de un número sin importar el signo.
 <Syntax>numero.absoluto()</Syntax>
 
 <Code code={`variable positivo = 25
-mostrar "Absoluto de " + positivo + ": " + positivo.absoluto()
+mostrar "Absoluto de " + positivo + ": " + positivo.absoluto() // Absoluto de 25: 25
 
 variable negativo = -25
-mostrar "Absoluto de " + negativo + ": " + negativo.absoluto()
+mostrar "Absoluto de " + negativo + ": " + negativo.absoluto() // Absoluto de -25: 25
 
 // Calcular diferencia
 variable temp1 = 15
 variable temp2 = 28
 variable diferencia = (temp1 - temp2).absoluto()
-mostrar "Diferencia de temperatura: " + diferencia + "°C"
+mostrar "Diferencia de temperatura: " + diferencia + "°C" // Diferencia de temperatura: 13°C
 
 // Distancia entre puntos
 variable punto1 = 50
 variable punto2 = 80
 variable distancia = (punto1 - punto2).absoluto()
-mostrar "Distancia: " + distancia + " metros"`} />
-
-<Output text={`Absoluto de 25: 25
-Absoluto de -25: 25
-Diferencia de temperatura: 13°C
-Distancia: 30 metros`} />
+mostrar "Distancia: " + distancia + " metros" // Distancia: 30 metros`} />
 
 - .absoluto(): Retorna el valor sin signo
 - Equivalente a valorAbsoluto(numero)
@@ -202,28 +160,20 @@ Redondear números usando métodos en lugar de funciones.
 
 <Code code={`variable precio = 99.99
 
-mostrar "Original: $" + precio
-mostrar "Redondeado: $" + precio.redondear()
-mostrar "Techo: $" + precio.techo()
-mostrar "Piso: $" + precio.piso()
+mostrar "Original: $" + precio // Original: $99.99
+mostrar "Redondeado: $" + precio.redondear() // Redondeado: $100
+mostrar "Techo: $" + precio.techo() // Techo: $100
+mostrar "Piso: $" + precio.piso() // Piso: $99
 
 // Calcular totales
 variable subtotal = 123.45
 variable total = subtotal.redondear()
-mostrar "Subtotal: $" + subtotal + " → Total: $" + total
+mostrar "Subtotal: $" + subtotal + " → Total: $" + total // Subtotal: $123.45 → Total: $123
 
 // Cantidades
 variable cantidad = 3.7
-mostrar "Necesitas al menos " + cantidad.techo() + " unidades"
-mostrar "Tienes completas " + cantidad.piso() + " unidades"`} />
-
-<Output text={`Original: $99.99
-Redondeado: $100
-Techo: $100
-Piso: $99
-Subtotal: $123.45 → Total: $123
-Necesitas al menos 4 unidades
-Tienes completas 3 unidades`} />
+mostrar "Necesitas al menos " + cantidad.techo() + " unidades" // Necesitas al menos 4 unidades
+mostrar "Tienes completas " + cantidad.piso() + " unidades" // Tienes completas 3 unidades`} />
 
 - .redondear(): Al entero más cercano
 - .techo(): Siempre hacia arriba
@@ -234,7 +184,7 @@ Tienes completas 3 unidades`} />
 
 Ejemplo completo usando métodos numéricos.
 
-<Code code={`mostrar "=== SISTEMA DE INVENTARIO ==="
+<Code code={`mostrar "=== SISTEMA DE INVENTARIO ===" // === SISTEMA DE INVENTARIO ===
 
 variable productos = [
     ["Laptop", 1500, 5],
@@ -253,48 +203,20 @@ para (variable i = 0; i < 4; i++) {
     variable subtotal = precio * stock
     totalInventario = totalInventario + subtotal
 
-    mostrar "---"
-    mostrar "Producto: " + nombre
-    mostrar "Precio: $" + precio.aTexto()
-    mostrar "Stock: " + stock.aTexto() + " unidades"
-    mostrar "Valor: $" + subtotal.aTexto()
+    mostrar "---" // ---
+    mostrar "Producto: " + nombre // Producto: Laptop, Producto: Mouse, Producto: Teclado, Producto: Monitor
+    mostrar "Precio: $" + precio.aTexto() // Precio: $1500, Precio: $50, Precio: $150, Precio: $800
+    mostrar "Stock: " + stock.aTexto() + " unidades" // Stock: 5 unidades, Stock: 25 unidades, Stock: 12 unidades, Stock: 3 unidades
+    mostrar "Valor: $" + subtotal.aTexto() // Valor: $7500, Valor: $1250, Valor: $1800, Valor: $2400
 
     si stock.esImpar() {
-        mostrar "  (Stock impar - verificar)"
+        mostrar "  (Stock impar - verificar)" // (Stock impar - verificar) para Laptop, Mouse, Monitor
     }
 }
 
-mostrar ""
-mostrar "=== RESUMEN ==="
-mostrar "Valor total del inventario: $" + totalInventario.aTexto()`} />
-
-<Output text={`=== SISTEMA DE INVENTARIO ===
----
-Producto: Laptop
-Precio: $1500
-Stock: 5 unidades
-Valor: $7500
-  (Stock impar - verificar)
----
-Producto: Mouse
-Precio: $50
-Stock: 25 unidades
-Valor: $1250
-  (Stock impar - verificar)
----
-Producto: Teclado
-Precio: $150
-Stock: 12 unidades
-Valor: $1800
----
-Producto: Monitor
-Precio: $800
-Stock: 3 unidades
-Valor: $2400
-  (Stock impar - verificar)
-
-=== RESUMEN ===
-Valor total del inventario: $12950`} />
+mostrar "" // (linea vacia)
+mostrar "=== RESUMEN ===" // === RESUMEN ===
+mostrar "Valor total del inventario: $" + totalInventario.aTexto() // Valor total del inventario: $12950`} />
 
 Resumen de métodos numéricos:
 - .esPar() / .esImpar(): Verificar paridad

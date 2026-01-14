@@ -19,7 +19,7 @@ Los objetos agrupan datos relacionados con nombres (claves) que los identifican.
     verificado: falso
 }
 
-mostrar perfil
+mostrar perfil // { nombre: "Juan Pérez", usuario: "@juanperez", bio: "Desarrollador", seguidores: 1500, seguidos: 300, verificado: falso }
 
 variable producto = {
     nombre: "Mouse Gamer",
@@ -28,14 +28,10 @@ variable producto = {
     stock: 25
 }
 
-mostrar producto
+mostrar producto // { nombre: "Mouse Gamer", precio: 150, marca: "Logitech", stock: 25 }
 
 variable vacio = {}
-mostrar "Perfil vacío: " + texto(vacio)`} />
-
-<Output text={`{ nombre: "Juan Pérez", usuario: "@juanperez", bio: "Desarrollador", seguidores: 1500, seguidos: 300, verificado: falso }
-{ nombre: "Mouse Gamer", precio: 150, marca: "Logitech", stock: 25 }
-Perfil vacío: {}`} />
+mostrar "Perfil vacío: " + texto(vacio) // Perfil vacío: {}`} />
 
 - Los objetos se crean con llaves
 - Contienen pares clave:valor separados por comas
@@ -55,11 +51,11 @@ Como cuando abres tu perfil y ves tu nombre, tu bio, tus seguidores... Usas la n
     verificado: verdadero
 }
 
-mostrar "Nombre: " + perfil.nombre
-mostrar "Usuario: " + perfil.usuario
-mostrar "Seguidores: " + texto(perfil.seguidores)
-mostrar "Seguidos: " + texto(perfil.seguidos)
-mostrar "Verificado: " + texto(perfil.verificado)
+mostrar "Nombre: " + perfil.nombre // Nombre: Ana García
+mostrar "Usuario: " + perfil.usuario // Usuario: @anagarcia
+mostrar "Seguidores: " + texto(perfil.seguidores) // Seguidores: 2500
+mostrar "Seguidos: " + texto(perfil.seguidos) // Seguidos: 180
+mostrar "Verificado: " + texto(perfil.verificado) // Verificado: verdadero
 
 variable producto = {
     nombre: "Teclado",
@@ -67,20 +63,10 @@ variable producto = {
     stock: 15
 }
 
-mostrar ""
-mostrar "Producto: " + producto.nombre
-mostrar "Precio: $" + texto(producto.precio)
-mostrar "Stock: " + texto(producto.stock) + " unidades"`} />
-
-<Output text={`Nombre: Ana García
-Usuario: @anagarcia
-Seguidores: 2500
-Seguidos: 180
-Verificado: verdadero
-
-Producto: Teclado
-Precio: $300
-Stock: 15 unidades`} />
+mostrar "" //
+mostrar "Producto: " + producto.nombre // Producto: Teclado
+mostrar "Precio: $" + texto(producto.precio) // Precio: $300
+mostrar "Stock: " + texto(producto.stock) + " unidades" // Stock: 15 unidades`} />
 
 - Acceso con punto: objeto.propiedad
 - perfil.nombre → 'Ana García'
@@ -97,41 +83,28 @@ Como cuando editas tu bio, cambias tu foto de perfil, o actualizas tu nombre. Pu
     seguidores: 500
 }
 
-mostrar "Perfil original: " + texto(perfil)
+mostrar "Perfil original: " + texto(perfil) // Perfil original: { nombre: "Carlos López", usuario: "@carlos", seguidores: 500 }
 
 perfil.seguidores = 600
-mostrar "Después de ganar seguidores: " + texto(perfil.seguidores)
+mostrar "Después de ganar seguidores: " + texto(perfil.seguidores) // Después de ganar seguidores: 600
 
 perfil.nombre = "Carlos López Pérez"
-mostrar "Nombre actualizado: " + perfil.nombre
+mostrar "Nombre actualizado: " + perfil.nombre // Nombre actualizado: Carlos López Pérez
 
 perfil.bio = "Fotógrafo profesional"
-mostrar "Bio agregada: " + perfil.bio
+mostrar "Bio agregada: " + perfil.bio // Bio agregada: Fotógrafo profesional
 
 perfil.verificado = verdadero
 perfil.ciudad = "Buenos Aires"
 
-mostrar ""
-mostrar "Perfil completo actualizado:"
-mostrar "Nombre: " + perfil.nombre
-mostrar "Usuario: " + perfil.usuario
-mostrar "Bio: " + perfil.bio
-mostrar "Seguidores: " + texto(perfil.seguidores)
-mostrar "Verificado: " + texto(perfil.verificado)
-mostrar "Ciudad: " + perfil.ciudad`} />
-
-<Output text={`Perfil original: { nombre: "Carlos López", usuario: "@carlos", seguidores: 500 }
-Después de ganar seguidores: 600
-Nombre actualizado: Carlos López Pérez
-Bio agregada: Fotógrafo profesional
-
-Perfil completo actualizado:
-Nombre: Carlos López Pérez
-Usuario: @carlos
-Bio: Fotógrafo profesional
-Seguidores: 600
-Verificado: verdadero
-Ciudad: Buenos Aires`} />
+mostrar "" //
+mostrar "Perfil completo actualizado:" // Perfil completo actualizado:
+mostrar "Nombre: " + perfil.nombre // Nombre: Carlos López Pérez
+mostrar "Usuario: " + perfil.usuario // Usuario: @carlos
+mostrar "Bio: " + perfil.bio // Bio: Fotógrafo profesional
+mostrar "Seguidores: " + texto(perfil.seguidores) // Seguidores: 600
+mostrar "Verificado: " + texto(perfil.verificado) // Verificado: verdadero
+mostrar "Ciudad: " + perfil.ciudad // Ciudad: Buenos Aires`} />
 
 - Modificar existente: objeto.propiedad = nuevoValor
 - Agregar nueva: objeto.nuevaPropiedad = valor
@@ -143,15 +116,15 @@ Ciudad: Buenos Aires`} />
 
 ¿Lista de seguidores o perfil de usuario? Entender cuándo usar listas y cuándo usar objetos es fundamental.
 
-<Code code={`mostrar "=== LISTA: COLECCIÓN ORDENADA ==="
+<Code code={`mostrar "=== LISTA: COLECCIÓN ORDENADA ===" // === LISTA: COLECCIÓN ORDENADA ===
 variable seguidores = ["@ana", "@pedro", "@luis", "@maria"]
-mostrar "Seguidores: " + texto(seguidores)
-mostrar "Primero: " + seguidores[0]
-mostrar "Segundo: " + seguidores[1]
-mostrar "Total: " + texto(seguidores.longitud())
+mostrar "Seguidores: " + texto(seguidores) // Seguidores: ["@ana", "@pedro", "@luis", "@maria"]
+mostrar "Primero: " + seguidores[0] // Primero: @ana
+mostrar "Segundo: " + seguidores[1] // Segundo: @pedro
+mostrar "Total: " + texto(seguidores.longitud()) // Total: 4
 
-mostrar ""
-mostrar "=== OBJETO: DATOS ESTRUCTURADOS ==="
+mostrar "" //
+mostrar "=== OBJETO: DATOS ESTRUCTURADOS ===" // === OBJETO: DATOS ESTRUCTURADOS ===
 variable perfil = {
     nombre: "Juan Pérez",
     usuario: "@juan",
@@ -160,12 +133,12 @@ variable perfil = {
     verificado: falso
 }
 
-mostrar "Nombre: " + perfil.nombre
-mostrar "Usuario: " + perfil.usuario
-mostrar "Seguidores: " + texto(perfil.seguidores)
+mostrar "Nombre: " + perfil.nombre // Nombre: Juan Pérez
+mostrar "Usuario: " + perfil.usuario // Usuario: @juan
+mostrar "Seguidores: " + texto(perfil.seguidores) // Seguidores: 1500
 
-mostrar ""
-mostrar "=== COMBINADOS ==="
+mostrar "" //
+mostrar "=== COMBINADOS ===" // === COMBINADOS ===
 variable perfilCompleto = {
     nombre: "Ana García",
     usuario: "@ana",
@@ -173,25 +146,9 @@ variable perfilCompleto = {
     seguidores: 2500
 }
 
-mostrar "Usuario: " + perfilCompleto.usuario
-mostrar "Posts: " + texto(perfilCompleto.posts)
-mostrar "Primer post: " + perfilCompleto.posts[0]`} />
-
-<Output text={`=== LISTA: COLECCIÓN ORDENADA ===
-Seguidores: ["@ana", "@pedro", "@luis", "@maria"]
-Primero: @ana
-Segundo: @pedro
-Total: 4
-
-=== OBJETO: DATOS ESTRUCTURADOS ===
-Nombre: Juan Pérez
-Usuario: @juan
-Seguidores: 1500
-
-=== COMBINADOS ===
-Usuario: @ana
-Posts: ["Foto1", "Foto2", "Foto3"]
-Primer post: Foto1`} />
+mostrar "Usuario: " + perfilCompleto.usuario // Usuario: @ana
+mostrar "Posts: " + texto(perfilCompleto.posts) // Posts: ["Foto1", "Foto2", "Foto3"]
+mostrar "Primer post: " + perfilCompleto.posts[0] // Primer post: Foto1`} />
 
 USA LISTAS cuando:
 - Colección de elementos similares
@@ -221,13 +178,13 @@ Como cuando tu perfil tiene una sección 'Dirección' con calle, ciudad, país..
     verificado: verdadero
 }
 
-mostrar "Nombre: " + perfil.nombre
-mostrar "Ciudad: " + perfil.direccion.ciudad
-mostrar "País: " + perfil.direccion.pais
-mostrar "Código postal: " + perfil.direccion.codigoPostal
+mostrar "Nombre: " + perfil.nombre // Nombre: María González
+mostrar "Ciudad: " + perfil.direccion.ciudad // Ciudad: Madrid
+mostrar "País: " + perfil.direccion.pais // País: España
+mostrar "Código postal: " + perfil.direccion.codigoPostal // Código postal: 28001
 
-mostrar ""
-mostrar "=== PRODUCTO CON ESPECIFICACIONES ==="
+mostrar "" //
+mostrar "=== PRODUCTO CON ESPECIFICACIONES ===" // === PRODUCTO CON ESPECIFICACIONES ===
 variable producto = {
     nombre: "Laptop",
     precio: 50000,
@@ -240,23 +197,11 @@ variable producto = {
     stock: 10
 }
 
-mostrar "Producto: " + producto.nombre
-mostrar "Precio: $" + texto(producto.precio)
-mostrar "Procesador: " + producto.especificaciones.procesador
-mostrar "RAM: " + producto.especificaciones.ram
-mostrar "Pantalla: " + producto.especificaciones.pantalla`} />
-
-<Output text={`Nombre: María González
-Ciudad: Madrid
-País: España
-Código postal: 28001
-
-=== PRODUCTO CON ESPECIFICACIONES ===
-Producto: Laptop
-Precio: $50000
-Procesador: Intel i7
-RAM: 16GB
-Pantalla: 15.6 pulgadas`} />
+mostrar "Producto: " + producto.nombre // Producto: Laptop
+mostrar "Precio: $" + texto(producto.precio) // Precio: $50000
+mostrar "Procesador: " + producto.especificaciones.procesador // Procesador: Intel i7
+mostrar "RAM: " + producto.especificaciones.ram // RAM: 16GB
+mostrar "Pantalla: " + producto.especificaciones.pantalla // Pantalla: 15.6 pulgadas`} />
 
 - Objetos anidados: objetos dentro de objetos
 - Acceso multinivel: objeto.sub.propiedad
@@ -288,43 +233,28 @@ El patrón más común: una lista de objetos. Como tu feed de Instagram: cada po
     }
 ]
 
-mostrar "=== TODOS LOS USUARIOS ==="
+mostrar "=== TODOS LOS USUARIOS ===" // === TODOS LOS USUARIOS ===
 usuarios.recorrer(funcion(usuario, i) {
-    mostrar (i + 1).aTexto() + ". " + usuario.nombre + " (" + usuario.usuario + ")"
-    mostrar "   Seguidores: " + texto(usuario.seguidores)
+    mostrar (i + 1).aTexto() + ". " + usuario.nombre + " (" + usuario.usuario + ")" // 1. Ana García (@ana), 2. Pedro López (@pedro), 3. Luis Martínez (@luis)
+    mostrar "   Seguidores: " + texto(usuario.seguidores) //    Seguidores: 2500,    Seguidores: 800,    Seguidores: 3200
 })
 
-mostrar ""
-mostrar "=== VERIFICADOS ==="
+mostrar "" //
+mostrar "=== VERIFICADOS ===" // === VERIFICADOS ===
 variable verificados = usuarios.filtrar(funcion(u) {
     retornar u.verificado
 })
-mostrar "Usuarios verificados: " + texto(verificados.longitud())
+mostrar "Usuarios verificados: " + texto(verificados.longitud()) // Usuarios verificados: 2
 
-mostrar ""
-mostrar "=== INFLUENCERS (>1000) ==="
+mostrar "" //
+mostrar "=== INFLUENCERS (>1000) ===" // === INFLUENCERS (>1000) ===
 variable influencers = usuarios.filtrar(funcion(u) {
     retornar u.seguidores > 1000
 })
 
 influencers.recorrer(funcion(inf) {
-    mostrar inf.nombre + ": " + texto(inf.seguidores) + " seguidores"
+    mostrar inf.nombre + ": " + texto(inf.seguidores) + " seguidores" // Ana García: 2500 seguidores, Luis Martínez: 3200 seguidores
 })`} />
-
-<Output text={`=== TODOS LOS USUARIOS ===
-1. Ana García (@ana)
-   Seguidores: 2500
-2. Pedro López (@pedro)
-   Seguidores: 800
-3. Luis Martínez (@luis)
-   Seguidores: 3200
-
-=== VERIFICADOS ===
-Usuarios verificados: 2
-
-=== INFLUENCERS (>1000) ===
-Ana García: 2500 seguidores
-Luis Martínez: 3200 seguidores`} />
 
 - Lista de objetos: patrón fundamental
 - Cada elemento es un objeto completo
@@ -351,18 +281,18 @@ variable ana = {
     verificado: verdadero
 }
 
-mostrarPerfil(ana)
+mostrarPerfil(ana) // === PERFIL ===, Nombre: Ana García, Usuario: @ana, Seguidores: 2500, Verificado: ✓
 
-mostrar ""
+mostrar "" //
 funcion agregarSeguidores(usuario, cantidad) {
     usuario.seguidores = usuario.seguidores + cantidad
     mostrar usuario.nombre + " ahora tiene " + texto(usuario.seguidores) + " seguidores"
 }
 
-agregarSeguidores(ana, 100)
-agregarSeguidores(ana, 50)
+agregarSeguidores(ana, 100) // Ana García ahora tiene 2600 seguidores
+agregarSeguidores(ana, 50) // Ana García ahora tiene 2650 seguidores
 
-mostrar ""
+mostrar "" //
 funcion crearPerfil(nombre, usuario) {
     retornar {
         nombre: nombre,
@@ -374,22 +304,7 @@ funcion crearPerfil(nombre, usuario) {
 }
 
 variable nuevoPerfil = crearPerfil("Pedro López", "@pedro")
-mostrarPerfil(nuevoPerfil)`} />
-
-<Output text={`=== PERFIL ===
-Nombre: Ana García
-Usuario: @ana
-Seguidores: 2500
-Verificado: ✓
-
-Ana García ahora tiene 2600 seguidores
-Ana García ahora tiene 2650 seguidores
-
-=== PERFIL ===
-Nombre: Pedro López
-Usuario: @pedro
-Seguidores: 0
-Verificado: ✗`} />
+mostrarPerfil(nuevoPerfil) // === PERFIL ===, Nombre: Pedro López, Usuario: @pedro, Seguidores: 0, Verificado: ✗`} />
 
 - Pasar objetos a funciones: funcion(usuario)
 - Los objetos se pasan por referencia
@@ -407,32 +322,32 @@ Combina objetos con métodos de listas para operaciones poderosas: extraer nombr
     { nombre: "WebCam", precio: 500, stock: 12 }
 ]
 
-mostrar "=== NOMBRES DE PRODUCTOS ==="
+mostrar "=== NOMBRES DE PRODUCTOS ===" // === NOMBRES DE PRODUCTOS ===
 variable nombres = productos.mapear(funcion(p) {
     retornar p.nombre
 })
-mostrar nombres.unir(", ")
+mostrar nombres.unir(", ") // Mouse, Teclado, Monitor, WebCam
 
-mostrar ""
-mostrar "=== PRODUCTOS DISPONIBLES (stock > 10) ==="
+mostrar "" //
+mostrar "=== PRODUCTOS DISPONIBLES (stock > 10) ===" // === PRODUCTOS DISPONIBLES (stock > 10) ===
 variable disponibles = productos.filtrar(funcion(p) {
     retornar p.stock > 10
 })
 
 disponibles.recorrer(funcion(p) {
-    mostrar p.nombre + ": " + texto(p.stock) + " unidades"
+    mostrar p.nombre + ": " + texto(p.stock) + " unidades" // Mouse: 25 unidades, Teclado: 15 unidades, WebCam: 12 unidades
 })
 
-mostrar ""
-mostrar "=== VALOR TOTAL INVENTARIO ==="
+mostrar "" //
+mostrar "=== VALOR TOTAL INVENTARIO ===" // === VALOR TOTAL INVENTARIO ===
 variable valorTotal = productos.reducir(funcion(acc, p) {
     retornar acc + (p.precio * p.stock)
 }, 0)
 
-mostrar "Valor total: $" + texto(valorTotal)
+mostrar "Valor total: $" + texto(valorTotal) // Valor total: $24950
 
-mostrar ""
-mostrar "=== APLICAR DESCUENTO 10% ==="
+mostrar "" //
+mostrar "=== APLICAR DESCUENTO 10% ===" // === APLICAR DESCUENTO 10% ===
 variable conDescuento = productos.mapear(funcion(p) {
     retornar {
         nombre: p.nombre,
@@ -443,25 +358,8 @@ variable conDescuento = productos.mapear(funcion(p) {
 })
 
 conDescuento.recorrer(funcion(p) {
-    mostrar p.nombre + ": $" + texto(p.precioOriginal) + " → $" + texto(p.precioFinal)
+    mostrar p.nombre + ": $" + texto(p.precioOriginal) + " → $" + texto(p.precioFinal) // Mouse: $150 → $135, Teclado: $300 → $270, Monitor: $2000 → $1800, WebCam: $500 → $450
 })`} />
-
-<Output text={`=== NOMBRES DE PRODUCTOS ===
-Mouse, Teclado, Monitor, WebCam
-
-=== PRODUCTOS DISPONIBLES (stock > 10) ===
-Mouse: 25 unidades
-Teclado: 15 unidades
-WebCam: 12 unidades
-
-=== VALOR TOTAL INVENTARIO ===
-Valor total: $24950
-
-=== APLICAR DESCUENTO 10% ===
-Mouse: $150 → $135
-Teclado: $300 → $270
-Monitor: $2000 → $1800
-WebCam: $500 → $450`} />
 
 Operaciones comunes con lista de objetos:
 - .mapear(p => p.nombre) → lista de solo nombres

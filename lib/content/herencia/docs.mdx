@@ -34,11 +34,8 @@ clase Perro extiende Animal {
 }
 
 variable perro = nuevo Perro("Max", "Labrador")
-mostrar perro.hablar()
-mostrar perro.describir()`} />
-
-<Output text={`Max dice: ¡Guau!
-Max es un Labrador`} />
+mostrar perro.hablar()     // Max dice: ¡Guau!
+mostrar perro.describir()  // Max es un Labrador`} />
 
 - clase Hija extiende Padre - Define herencia
 - super(args) - Llama al constructor del padre
@@ -85,11 +82,8 @@ clase Circulo extiende Figura {
 variable rect = nuevo Rectangulo(10, 5)
 variable circ = nuevo Circulo(7)
 
-mostrar rect.nombre + ": " + texto(rect.calcularArea())
-mostrar circ.nombre + ": " + texto(circ.calcularArea())`} />
-
-<Output text={`Rectángulo: 50
-Círculo: 153.93791`} />
+mostrar rect.nombre + ": " + texto(rect.calcularArea())  // Rectángulo: 50
+mostrar circ.nombre + ": " + texto(circ.calcularArea())  // Círculo: 153.93791`} />
 
 - Cada clase implementa el método a su manera
 - El mismo método funciona diferente según la clase
@@ -165,23 +159,23 @@ ger.mostrarInfo()
 mostrar ""
 
 variable ven = nuevo Vendedor("Pedro", 1500, 0.10, 5000)
-ven.mostrarInfo()`} />
-
-<Output text={`=== NÓMINA ===
-
-Empleado: Juan
-Salario: $2000
-
-Gerente: Ana
-Salario base: $3000
-Bono: $1000
-Total: $4000
-
-Vendedor: Pedro
-Salario base: $1500
-Ventas: $5000
-Comisión: 10%
-Total: $2000`} />
+ven.mostrarInfo()
+// Salida:
+// === NÓMINA ===
+//
+// Empleado: Juan
+// Salario: $2000
+//
+// Gerente: Ana
+// Salario base: $3000
+// Bono: $1000
+// Total: $4000
+//
+// Vendedor: Pedro
+// Salario base: $1500
+// Ventas: $5000
+// Comisión: 10%
+// Total: $2000`} />
 
 ## Trabajando con Listas de Objetos Heredados
 
@@ -228,13 +222,13 @@ variable vehiculos = [
 mostrar "=== INVENTARIO DE VEHÍCULOS ==="
 vehiculos.recorrer(funcion(v, i) {
     mostrar (i + 1).aTexto() + ". " + v.describir()
-})`} />
-
-<Output text={`=== INVENTARIO DE VEHÍCULOS ===
-1. Auto: Toyota Corolla (4 puertas)
-2. Moto: Honda CBR (600cc)
-3. Auto: Ford Mustang (2 puertas)
-4. Moto: Yamaha R1 (1000cc)`} />
+})
+// Salida:
+// === INVENTARIO DE VEHÍCULOS ===
+// 1. Auto: Toyota Corolla (4 puertas)
+// 2. Moto: Honda CBR (600cc)
+// 3. Auto: Ford Mustang (2 puertas)
+// 4. Moto: Yamaha R1 (1000cc)`} />
 
 Resumen de herencia:
 - extiende - Heredar de una clase padre

@@ -13,13 +13,9 @@ variable email = "maria@gmail.com"
 variable ciudad = "Buenos Aires"
 variable mensaje = "Hola, ¿cómo estás?"
 
-mostrar nombreUsuario
-mostrar email
-mostrar ciudad`} />
-
-<Output text={`maria_dev
-maria@gmail.com
-Buenos Aires`} />
+mostrar nombreUsuario  // maria_dev
+mostrar email  // maria@gmail.com
+mostrar ciudad  // Buenos Aires`} />
 
 - El texto SIEMPRE va entre comillas: "así" o 'así'
 - Puedes usar comillas dobles " " o simples ' ', pero sé consistente
@@ -35,20 +31,16 @@ Puedes unir varios pedazos de texto usando el símbolo +. Es como armar una orac
 variable apellido = "González"
 
 variable nombreCompleto = nombre + " " + apellido
-mostrar nombreCompleto
+mostrar nombreCompleto  // María González
 
 variable edad = 28
 variable presentacion = "Hola, soy " + nombre + " y tengo " + edad + " años"
-mostrar presentacion
+mostrar presentacion  // Hola, soy María y tengo 28 años
 
 variable calle = "Av. Corrientes"
 variable numero = 1234
 variable direccion = calle + " " + numero
-mostrar direccion`} />
-
-<Output text={`María González
-Hola, soy María y tengo 28 años
-Av. Corrientes 1234`} />
+mostrar direccion  // Av. Corrientes 1234`} />
 
 - Usa el símbolo + para unir texto
 - No olvides los espacios: nombre + apellido da "MaríaGonzález" (sin espacio)
@@ -68,23 +60,17 @@ variable precio = 999
 variable temperatura = -5
 variable precioConDecimales = 99.50
 
-mostrar edad
-mostrar precio
-mostrar precioConDecimales
+mostrar edad  // 28
+mostrar precio  // 999
+mostrar precioConDecimales  // 99.5
 
 variable suma = 10 + 5
 variable resta = 20 - 8
 variable multiplicacion = 4 * 3
 variable division = 100 / 2
 
-mostrar suma
-mostrar division`} />
-
-<Output text={`28
-999
-99.5
-15
-50`} />
+mostrar suma  // 15
+mostrar division  // 50`} />
 
 - Los números NO llevan comillas: edad = 25 (no edad = "25")
 - Pueden ser positivos o negativos: 10, -5
@@ -103,13 +89,9 @@ variable recibirOfertas = falso
 variable esMayorDeEdad = verdadero
 variable cuentaVerificada = falso
 
-mostrar aceptoTerminos
-mostrar recibirOfertas
-mostrar esMayorDeEdad`} />
-
-<Output text={`verdadero
-falso
-verdadero`} />
+mostrar aceptoTerminos  // verdadero
+mostrar recibirOfertas  // falso
+mostrar esMayorDeEdad  // verdadero`} />
 
 - Solo hay dos valores: verdadero o falso
 - NO llevan comillas: verdadero (no "verdadero")
@@ -126,18 +108,13 @@ variable email = "juan@email.com"
 variable telefonoOpcional = nulo
 variable apellidoMaterno = nulo
 
-mostrar nombreUsuario
-mostrar email
-mostrar telefonoOpcional
-mostrar apellidoMaterno
+mostrar nombreUsuario  // juan_perez
+mostrar email  // juan@email.com
+mostrar telefonoOpcional  // nulo
+mostrar apellidoMaterno  // nulo
 
 variable edad = 30
 variable direccionNoIngresada = indefinido`} />
-
-<Output text={`juan_perez
-juan@email.com
-nulo
-nulo`} />
 
 - nulo significa: este campo existe pero está vacío a propósito
 - indefinido significa: este campo ni siquiera fue creado/asignado
@@ -159,15 +136,10 @@ variable recibirNotificaciones = falso
 variable telefonoSecundario = nulo
 variable apodo = nulo
 
-mostrar "Nombre: " + nombre + " " + apellido
-mostrar "Edad: " + edad
-mostrar "Saldo: $" + saldoCuenta
-mostrar "Acepto términos: " + aceptoTerminos`} />
-
-<Output text={`Nombre: Ana García
-Edad: 25
-Saldo: $1500.75
-Acepto términos: verdadero`} />
+mostrar "Nombre: " + nombre + " " + apellido  // Nombre: Ana García
+mostrar "Edad: " + edad  // Edad: 25
+mostrar "Saldo: $" + saldoCuenta  // Saldo: $1500.75
+mostrar "Acepto términos: " + aceptoTerminos  // Acepto términos: verdadero`} />
 
 - Texto: nombres, emails, direcciones, mensajes → entre comillas
 - Número: edad, precio, cantidad, teléfono → sin comillas
@@ -183,17 +155,13 @@ Errores típicos al elegir tipos de datos y cómo evitarlos.
 variable edadIncorrecta = "25"
 
 variable precioTotal = 100 + 50
-mostrar precioTotal
+mostrar precioTotal  // 150
 
 variable precioTexto = "100" + "50"
-mostrar precioTexto
+mostrar precioTexto  // 10050
 
 variable mensaje = "Tengo " + 25 + " años"
-mostrar mensaje`} />
-
-<Output text={`150
-10050
-Tengo 25 años`} />
+mostrar mensaje  // Tengo 25 años`} />
 
 - No pongas números entre comillas si vas a hacer cálculos: "25" es texto, 25 es número
 - "100" + "50" da "10050" (une texto), no 150

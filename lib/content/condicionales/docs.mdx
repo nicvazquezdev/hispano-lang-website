@@ -11,26 +11,21 @@ La estructura 'si' ejecuta código solo cuando se cumple una condición. Como cu
 <Code code={`variable nota = 95
 
 si nota >= 90 {
-    mostrar "¡Excelente! Tienes una A"
+    mostrar "¡Excelente! Tienes una A" // ¡Excelente! Tienes una A
 }
 
 variable asistencia = 80
 
 si asistencia >= 75 {
-    mostrar "Cumples con la asistencia mínima"
-    mostrar "Puedes presentar el examen final"
+    mostrar "Cumples con la asistencia mínima" // Cumples con la asistencia mínima
+    mostrar "Puedes presentar el examen final" // Puedes presentar el examen final
 }
 
 variable tareaEntregada = verdadero
 
 si tareaEntregada {
-    mostrar "Tarea registrada correctamente"
+    mostrar "Tarea registrada correctamente" // Tarea registrada correctamente
 }`} />
-
-<Output text={`¡Excelente! Tienes una A
-Cumples con la asistencia mínima
-Puedes presentar el examen final
-Tarea registrada correctamente`} />
 
 - La condición debe evaluar a verdadero o falso
 - Si la condición es verdadera, se ejecuta el código dentro de las llaves {}
@@ -50,8 +45,8 @@ si nota >= 70 {
     mostrar "¡Aprobaste! Felicitaciones"
     mostrar "Pasa a la siguiente materia"
 } sino {
-    mostrar "No aprobaste"
-    mostrar "Debes recursar la materia"
+    mostrar "No aprobaste" // No aprobaste
+    mostrar "Debes recursar la materia" // Debes recursar la materia
 }
 
 variable asistencia = 60
@@ -60,14 +55,9 @@ variable minimoAsistencia = 75
 si asistencia >= minimoAsistencia {
     mostrar "Asistencia suficiente"
 } sino {
-    mostrar "Asistencia insuficiente"
-    mostrar "No puedes rendir el examen"
+    mostrar "Asistencia insuficiente" // Asistencia insuficiente
+    mostrar "No puedes rendir el examen" // No puedes rendir el examen
 }`} />
-
-<Output text={`No aprobaste
-Debes recursar la materia
-Asistencia insuficiente
-No puedes rendir el examen`} />
 
 - Exactamente UNO de los dos bloques se ejecuta, nunca ambos
 - Si la condición es verdadera → ejecuta el bloque 'si'
@@ -86,7 +76,7 @@ Cuando tienes múltiples rangos o categorías, usas 'si-sino si'. Como el sistem
 si nota >= 90 {
     mostrar "Calificación: A - Excelente"
 } sino si nota >= 80 {
-    mostrar "Calificación: B - Muy Bueno"
+    mostrar "Calificación: B - Muy Bueno" // Calificación: B - Muy Bueno
 } sino si nota >= 70 {
     mostrar "Calificación: C - Bueno"
 } sino si nota >= 60 {
@@ -100,15 +90,12 @@ variable promedio = 92
 si promedio >= 95 {
     mostrar "Honor Roll - Mención de Honor"
 } sino si promedio >= 85 {
-    mostrar "Cuadro de Honor"
+    mostrar "Cuadro de Honor" // Cuadro de Honor
 } sino si promedio >= 70 {
     mostrar "Aprobado"
 } sino {
     mostrar "Necesita mejorar"
 }`} />
-
-<Output text={`Calificación: B - Muy Bueno
-Cuadro de Honor`} />
 
 - Se evalúan las condiciones en orden, de arriba hacia abajo
 - Se ejecuta el PRIMER bloque cuya condición sea verdadera
@@ -126,7 +113,7 @@ variable asistencia = 90
 variable entregaTrabajos = verdadero
 
 si nota >= 70 {
-    mostrar "¡Aprobaste la materia!"
+    mostrar "¡Aprobaste la materia!" // ¡Aprobaste la materia!
 
     si nota >= 90 {
         mostrar "Calificación sobresaliente"
@@ -135,7 +122,7 @@ si nota >= 70 {
             mostrar "¡Eres candidato a beca!"
         }
     } sino si nota >= 80 {
-        mostrar "Muy buen desempeño"
+        mostrar "Muy buen desempeño" // Muy buen desempeño
     }
 } sino {
     mostrar "Reprobaste"
@@ -146,9 +133,6 @@ si nota >= 70 {
         mostrar "Debes recursar la materia completa"
     }
 }`} />
-
-<Output text={`¡Aprobaste la materia!
-Muy buen desempeño`} />
 
 - Puedes anidar 'si' dentro de otros 'si'
 - Cada nivel de anidamiento verifica una condición adicional
@@ -165,36 +149,30 @@ variable notaTrabajos = 90
 variable asistencia = 95
 
 si notaExamen >= 70 y notaTrabajos >= 70 {
-    mostrar "Aprobaste ambas partes"
+    mostrar "Aprobaste ambas partes" // Aprobaste ambas partes
 }
 
 si notaExamen >= 90 o notaTrabajos >= 90 {
-    mostrar "Tienes al menos una nota excelente"
+    mostrar "Tienes al menos una nota excelente" // Tienes al menos una nota excelente
 }
 
 variable entregaTarde = falso
 
 si !entregaTarde {
-    mostrar "Entrega a tiempo - sin penalización"
+    mostrar "Entrega a tiempo - sin penalización" // Entrega a tiempo - sin penalización
 }
 
 si notaExamen >= 80 y notaTrabajos >= 80 y asistencia >= 90 {
-    mostrar "¡Estudiante destacado!"
+    mostrar "¡Estudiante destacado!" // ¡Estudiante destacado!
 }
 
 variable notaFinal = (notaExamen + notaTrabajos) / 2
 
 si notaFinal >= 70 y asistencia >= 75 {
-    mostrar "Cumples todos los requisitos para aprobar"
+    mostrar "Cumples todos los requisitos para aprobar" // Cumples todos los requisitos para aprobar
 } sino {
     mostrar "No cumples los requisitos mínimos"
 }`} />
-
-<Output text={`Aprobaste ambas partes
-Tienes al menos una nota excelente
-Entrega a tiempo - sin penalización
-¡Estudiante destacado!
-Cumples todos los requisitos para aprobar`} />
 
 - Operadores de comparación: mayor, menor, igual, diferente
 - Operador 'y': Ambas condiciones deben ser verdaderas
@@ -216,16 +194,16 @@ variable participacion = 95
 variable promedioExamenes = (notaExamen1 + notaExamen2) / 2
 variable notaFinal = (promedioExamenes * 0.5) + (notaTrabajos * 0.3) + (participacion * 0.2)
 
-mostrar "=== REPORTE DE CALIFICACIONES ==="
-mostrar "Promedio exámenes: " + promedioExamenes
-mostrar "Trabajos: " + notaTrabajos
-mostrar "Participación: " + participacion
-mostrar "Nota final: " + notaFinal
-mostrar ""
+mostrar "=== REPORTE DE CALIFICACIONES ===" // === REPORTE DE CALIFICACIONES ===
+mostrar "Promedio exámenes: " + promedioExamenes // Promedio exámenes: 87.5
+mostrar "Trabajos: " + notaTrabajos // Trabajos: 88
+mostrar "Participación: " + participacion // Participación: 95
+mostrar "Nota final: " + notaFinal // Nota final: 89.5
+mostrar "" //
 
 si notaFinal >= 70 y asistencia >= 75 {
-    mostrar "Estado: APROBADO"
-    mostrar ""
+    mostrar "Estado: APROBADO" // Estado: APROBADO
+    mostrar "" //
 
     si notaFinal >= 90 {
         mostrar "Calificación: A - Excelente"
@@ -234,10 +212,10 @@ si notaFinal >= 70 y asistencia >= 75 {
             mostrar "*** MENCIÓN DE HONOR ***"
         }
     } sino si notaFinal >= 80 {
-        mostrar "Calificación: B - Muy Bueno"
+        mostrar "Calificación: B - Muy Bueno" // Calificación: B - Muy Bueno
 
         si asistencia >= 90 {
-            mostrar "Elegible para Cuadro de Honor"
+            mostrar "Elegible para Cuadro de Honor" // Elegible para Cuadro de Honor
         }
     } sino {
         mostrar "Calificación: C - Bueno"
@@ -255,17 +233,6 @@ si notaFinal >= 70 y asistencia >= 75 {
         mostrar "Debes recursar la materia"
     }
 }`} />
-
-<Output text={`=== REPORTE DE CALIFICACIONES ===
-Promedio exámenes: 87.5
-Trabajos: 88
-Participación: 95
-Nota final: 89.5
-
-Estado: APROBADO
-
-Calificación: B - Muy Bueno
-Elegible para Cuadro de Honor`} />
 
 Este sistema completo incluye:
 - Cálculo de promedios ponderados
@@ -286,7 +253,7 @@ Recomendaciones para escribir condicionales claros y efectivos.
 si nota >= 90 {
     mostrar "Excelente"
 } sino si nota >= 70 {
-    mostrar "Aprobado"
+    mostrar "Aprobado" // Aprobado
 } sino {
     mostrar "Reprobado"
 }
@@ -294,18 +261,14 @@ si nota >= 90 {
 // Usa variables con nombres descriptivos
 variable aprobado = nota >= 70
 si aprobado {
-    mostrar "Has aprobado"
+    mostrar "Has aprobado" // Has aprobado
 }
 
 // Usa constantes para valores fijos
 variable notaMinima = 70
 si nota >= notaMinima {
-    mostrar "Cumple el mínimo"
+    mostrar "Cumple el mínimo" // Cumple el mínimo
 }`} />
-
-<Output text={`Aprobado
-Has aprobado
-Cumple el mínimo`} />
 
 - Usa nombres de variables descriptivos: notaMinima, aprobado
 - Guarda condiciones complejas en variables para claridad

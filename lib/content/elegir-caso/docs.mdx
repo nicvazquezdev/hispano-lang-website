@@ -14,7 +14,7 @@ elegir (opcionMenu) {
     caso 1:
         mostrar "Milanesa con puré"
     caso 2:
-        mostrar "Pizza de muzzarella"
+        mostrar "Pizza de muzzarella" // Pizza de muzzarella
     caso 3:
         mostrar "Ensalada César"
     caso 4:
@@ -22,8 +22,6 @@ elegir (opcionMenu) {
     pordefecto:
         mostrar "Opción no disponible"
 }`} />
-
-<Output text={`Pizza de muzzarella`} />
 
 - elegir (variable) evalúa el valor de la variable
 - Compara ese valor con cada 'caso'
@@ -43,7 +41,7 @@ si dia == 1 {
 } sino si dia == 2 {
     mostrar "Martes"
 } sino si dia == 3 {
-    mostrar "Miércoles"
+    mostrar "Miércoles" // Miércoles
 } sino si dia == 4 {
     mostrar "Jueves"
 } sino si dia == 5 {
@@ -59,7 +57,7 @@ elegir (dia) {
     caso 2:
         mostrar "Martes"
     caso 3:
-        mostrar "Miércoles"
+        mostrar "Miércoles" // Miércoles
     caso 4:
         mostrar "Jueves"
     caso 5:
@@ -67,9 +65,6 @@ elegir (dia) {
     pordefecto:
         mostrar "Fin de semana"
 }`} />
-
-<Output text={`Miércoles
-Miércoles`} />
 
 - Ambos hacen exactamente lo mismo
 - Con si-sino si: repetimos 'dia ==' muchas veces
@@ -85,7 +80,7 @@ Un uso común es mostrar información según el día. Como el horario escolar qu
 
 elegir (diaSemana) {
     caso 1:
-        mostrar "Lunes - Matemática, Historia, Educación Física"
+        mostrar "Lunes - Matemática, Historia, Educación Física" // Lunes - Matemática, Historia, Educación Física
     caso 2:
         mostrar "Martes - Lengua, Ciencias, Arte"
     caso 3:
@@ -112,13 +107,10 @@ elegir (mesActual) {
     caso 3:
         mostrar "Marzo - Inicio de clases"
     caso 12:
-        mostrar "Diciembre - Fin de año escolar"
+        mostrar "Diciembre - Fin de año escolar" // Diciembre - Fin de año escolar
     pordefecto:
         mostrar "Mes regular de clases"
 }`} />
-
-<Output text={`Lunes - Matemática, Historia, Educación Física
-Diciembre - Fin de año escolar`} />
 
 - Cada caso representa una opción diferente
 - Los números deben coincidir exactamente: caso 1 solo coincide con 1
@@ -137,8 +129,8 @@ elegir (calificacion) {
         mostrar "Excelente - 90 a 100 puntos"
         mostrar "¡Felicitaciones!"
     caso "B":
-        mostrar "Muy Bueno - 80 a 89 puntos"
-        mostrar "Buen trabajo"
+        mostrar "Muy Bueno - 80 a 89 puntos" // Muy Bueno - 80 a 89 puntos
+        mostrar "Buen trabajo" // Buen trabajo
     caso "C":
         mostrar "Bueno - 70 a 79 puntos"
         mostrar "Aprobado"
@@ -151,9 +143,6 @@ elegir (calificacion) {
     pordefecto:
         mostrar "Calificación inválida"
 }`} />
-
-<Output text={`Muy Bueno - 80 a 89 puntos
-Buen trabajo`} />
 
 - Los strings (texto) deben ir entre comillas: caso "A"
 - La comparación distingue mayúsculas: "A" ≠ "a"
@@ -179,10 +168,10 @@ elegir (materiaElegida) {
         mostrar "Profesor: Carlos Ruiz"
         mostrar "Materiales: Instrumento propio"
     caso "Deportes":
-        mostrar "=== MATERIA: DEPORTES ==="
-        mostrar "Horario: Lunes, Miércoles y Viernes 15:00-17:00"
-        mostrar "Profesor: Ana Martínez"
-        mostrar "Materiales: Ropa deportiva, zapatillas"
+        mostrar "=== MATERIA: DEPORTES ===" // === MATERIA: DEPORTES ===
+        mostrar "Horario: Lunes, Miércoles y Viernes 15:00-17:00" // Horario: Lunes, Miércoles y Viernes 15:00-17:00
+        mostrar "Profesor: Ana Martínez" // Profesor: Ana Martínez
+        mostrar "Materiales: Ropa deportiva, zapatillas" // Materiales: Ropa deportiva, zapatillas
     caso "Teatro":
         mostrar "=== MATERIA: TEATRO ==="
         mostrar "Horario: Jueves 14:00-17:00"
@@ -192,11 +181,6 @@ elegir (materiaElegida) {
         mostrar "Materia no disponible"
         mostrar "Opciones: Arte, Música, Deportes, Teatro"
 }`} />
-
-<Output text={`=== MATERIA: DEPORTES ===
-Horario: Lunes, Miércoles y Viernes 15:00-17:00
-Profesor: Ana Martínez
-Materiales: Ropa deportiva, zapatillas`} />
 
 - Cada caso puede tener múltiples líneas de código
 - Es como un menú interactivo: seleccionas una opción y obtienes info
@@ -215,7 +199,7 @@ elegir (opcion) {
     caso 1:
         mostrar "Opción A"
     caso 2:
-        mostrar "Opción B"
+        mostrar "Opción B" // Opción B
     caso 3:
         mostrar "Opción C"
 }
@@ -226,13 +210,10 @@ variable nota = 85
 si nota >= 90 {
     mostrar "A"
 } sino si nota >= 80 {
-    mostrar "B"
+    mostrar "B" // B
 } sino si nota >= 70 {
     mostrar "C"
 }`} />
-
-<Output text={`Opción B
-B`} />
 
 Usa elegir/caso cuando:
 - Comparas UNA variable contra valores EXACTOS (==)
@@ -254,8 +235,8 @@ Ejemplo completo que muestra cómo usar elegir/caso en un contexto real: un sele
 
 <Code code={`variable nivelSeleccionado = 2
 
-mostrar "=== SELECTOR DE DIFICULTAD DE EXAMEN ==="
-mostrar ""
+mostrar "=== SELECTOR DE DIFICULTAD DE EXAMEN ===" // === SELECTOR DE DIFICULTAD DE EXAMEN ===
+mostrar "" //
 
 elegir (nivelSeleccionado) {
     caso 1:
@@ -265,11 +246,11 @@ elegir (nivelSeleccionado) {
         mostrar "Temas: Conceptos fundamentales"
         mostrar "Puntaje mínimo: 70 puntos"
     caso 2:
-        mostrar "NIVEL INTERMEDIO"
-        mostrar "Duración: 90 minutos"
-        mostrar "Preguntas: 30"
-        mostrar "Temas: Aplicación de conceptos"
-        mostrar "Puntaje mínimo: 75 puntos"
+        mostrar "NIVEL INTERMEDIO" // NIVEL INTERMEDIO
+        mostrar "Duración: 90 minutos" // Duración: 90 minutos
+        mostrar "Preguntas: 30" // Preguntas: 30
+        mostrar "Temas: Aplicación de conceptos" // Temas: Aplicación de conceptos
+        mostrar "Puntaje mínimo: 75 puntos" // Puntaje mínimo: 75 puntos
     caso 3:
         mostrar "NIVEL AVANZADO"
         mostrar "Duración: 120 minutos"
@@ -287,18 +268,8 @@ elegir (nivelSeleccionado) {
         mostrar "Por favor selecciona: 1, 2, 3 o 4"
 }
 
-mostrar ""
-mostrar "Examen configurado correctamente"`} />
-
-<Output text={`=== SELECTOR DE DIFICULTAD DE EXAMEN ===
-
-NIVEL INTERMEDIO
-Duración: 90 minutos
-Preguntas: 30
-Temas: Aplicación de conceptos
-Puntaje mínimo: 75 puntos
-
-Examen configurado correctamente`} />
+mostrar "" //
+mostrar "Examen configurado correctamente" // Examen configurado correctamente`} />
 
 - Sistema organizado con información clara por nivel
 - Cada caso muestra múltiples datos relacionados

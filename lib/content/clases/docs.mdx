@@ -25,11 +25,8 @@ Define clases usando la palabra 'clase' con un constructor y métodos.
 }
 
 variable juan = nuevo Persona("Juan", 25)
-mostrar juan.saludar()
-juan.cumplirAnios()`} />
-
-<Output text={`Hola, soy Juan
-Juan ahora tiene 26 años`} />
+mostrar juan.saludar() // Hola, soy Juan
+juan.cumplirAnios() // Juan ahora tiene 26 años`} />
 
 - clase NombreClase con llaves - Define una clase
 - constructor(params) - Inicializa la instancia
@@ -53,20 +50,14 @@ Crea instancias de clases usando la palabra 'nuevo'.
 
 variable persona = nuevo Persona("Juan", 25)
 
-mostrar persona.nombre
-mostrar persona.edad
-mostrar persona.saludar()
+mostrar persona.nombre // Juan
+mostrar persona.edad // 25
+mostrar persona.saludar() // Hola, soy Juan
 
 // Múltiples instancias
 variable persona2 = nuevo Persona("Ana", 30)
-mostrar persona2.nombre
-mostrar persona2.saludar()`} />
-
-<Output text={`Juan
-25
-Hola, soy Juan
-Ana
-Hola, soy Ana`} />
+mostrar persona2.nombre // Ana
+mostrar persona2.saludar() // Hola, soy Ana`} />
 
 - nuevo Clase(args) - Crea una nueva instancia
 - Cada instancia tiene sus propias propiedades
@@ -113,15 +104,10 @@ Las clases pueden tener múltiples propiedades y métodos para encapsular compor
 }
 
 variable cuenta = nuevo CuentaBancaria("María", 1000)
-cuenta.verSaldo()
-cuenta.depositar(500)
-cuenta.retirar(200)
-cuenta.verSaldo()`} />
-
-<Output text={`Saldo de María: $1000
-Depositado: $500
-Retirado: $200
-Saldo de María: $1300`} />
+cuenta.verSaldo() // Saldo de María: $1000
+cuenta.depositar(500) // Depositado: $500
+cuenta.retirar(200) // Retirado: $200
+cuenta.verSaldo() // Saldo de María: $1300`} />
 
 - Las propiedades guardan el estado del objeto
 - Los métodos definen el comportamiento
@@ -164,31 +150,14 @@ Saldo de María: $1300`} />
 variable mouse = nuevo Producto("Mouse Gamer", 150, 10)
 variable teclado = nuevo Producto("Teclado Mecánico", 300, 5)
 
-mouse.mostrarInfo()
-teclado.mostrarInfo()
+mouse.mostrarInfo() // ---, Producto: Mouse Gamer, Precio: $150, Stock: 10
+teclado.mostrarInfo() // ---, Producto: Teclado Mecánico, Precio: $300, Stock: 5
 
 mostrar ""
-mouse.vender(3)
-teclado.vender(2)
-mouse.reabastecer(5)
-mouse.mostrarInfo()`} />
-
-<Output text={`---
-Producto: Mouse Gamer
-Precio: $150
-Stock: 10
----
-Producto: Teclado Mecánico
-Precio: $300
-Stock: 5
-
-Vendido: 3 Mouse Gamer = $450
-Vendido: 2 Teclado Mecánico = $600
-Reabastecido: Mouse Gamer ahora tiene 12 unidades
----
-Producto: Mouse Gamer
-Precio: $150
-Stock: 12`} />
+mouse.vender(3) // Vendido: 3 Mouse Gamer = $450
+teclado.vender(2) // Vendido: 2 Teclado Mecánico = $600
+mouse.reabastecer(5) // Reabastecido: Mouse Gamer ahora tiene 12 unidades
+mouse.mostrarInfo() // ---, Producto: Mouse Gamer, Precio: $150, Stock: 12`} />
 
 Resumen de clases:
 - clase NombreClase { } - Define una clase

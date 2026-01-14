@@ -7,27 +7,16 @@ Los bucles son como reproducir una playlist: repites canciones una y otra vez. E
 Imagina que tienes una playlist con 50 canciones. En vez de escribir 50 veces 'reproducir canción 1', 'reproducir canción 2', etc., el reproductor usa un bucle: repite la acción de reproducir para cada canción.
 
 <Code code={`// Sin bucles (tedioso y repetitivo)
-mostrar "Canción 1"
-mostrar "Canción 2"
-mostrar "Canción 3"
-mostrar "Canción 4"
-mostrar "Canción 5"
+mostrar "Canción 1" // Canción 1
+mostrar "Canción 2" // Canción 2
+mostrar "Canción 3" // Canción 3
+mostrar "Canción 4" // Canción 4
+mostrar "Canción 5" // Canción 5
 
 // Con bucles (limpio y automático)
 para (variable cancion = 1; cancion <= 5; cancion++) {
-    mostrar "Canción " + cancion
+    mostrar "Canción " + cancion // Canción 1, Canción 2, Canción 3, Canción 4, Canción 5
 }`} />
-
-<Output text={`Canción 1
-Canción 2
-Canción 3
-Canción 4
-Canción 5
-Canción 1
-Canción 2
-Canción 3
-Canción 4
-Canción 5`} />
 
 - Sin bucles: tienes que escribir el código repetido muchas veces
 - Con bucles: escribes el código una vez y se repite automáticamente
@@ -45,33 +34,20 @@ El bucle 'mientras' repite código MIENTRAS una condición sea verdadera. Como u
 variable totalCanciones = 5
 
 mientras cancionActual <= totalCanciones {
-    mostrar "Reproduciendo canción " + cancionActual
+    mostrar "Reproduciendo canción " + cancionActual // Reproduciendo canción 1, 2, 3, 4, 5
     cancionActual++
 }
 
-mostrar "Playlist terminada"
+mostrar "Playlist terminada" // Playlist terminada
 
 variable energia = 100
 
 mientras energia > 0 {
-    mostrar "Bailando... Energía: " + energia
+    mostrar "Bailando... Energía: " + energia // Bailando... Energía: 100, 80, 60, 40, 20
     energia = energia - 20
 }
 
-mostrar "Sin energía, a descansar"`} />
-
-<Output text={`Reproduciendo canción 1
-Reproduciendo canción 2
-Reproduciendo canción 3
-Reproduciendo canción 4
-Reproduciendo canción 5
-Playlist terminada
-Bailando... Energía: 100
-Bailando... Energía: 80
-Bailando... Energía: 60
-Bailando... Energía: 40
-Bailando... Energía: 20
-Sin energía, a descansar`} />
+mostrar "Sin energía, a descansar" // Sin energía, a descansar`} />
 
 - mientras evalúa la condición ANTES de cada repetición
 - Si la condición es verdadera → ejecuta el código
@@ -87,40 +63,23 @@ El bucle 'para' es perfecto cuando sabes exactamente cuántas veces quieres repe
 
 <Code code={`// Reproduce 5 canciones
 para (variable i = 1; i <= 5; i++) {
-    mostrar "Canción " + i
+    mostrar "Canción " + i // Canción 1, Canción 2, Canción 3, Canción 4, Canción 5
 }
 
-mostrar "---"
+mostrar "---" // ---
 
 // Cuenta regresiva para el drop
 para (variable segundos = 5; segundos >= 1; segundos--) {
-    mostrar segundos + "..."
+    mostrar segundos + "..." // 5..., 4..., 3..., 2..., 1...
 }
-mostrar "¡DROP!"
+mostrar "¡DROP!" // ¡DROP!
 
-mostrar "---"
+mostrar "---" // ---
 
 // Reproduce las primeras 3 canciones
 para (variable cancion = 1; cancion <= 3; cancion++) {
-    mostrar "Reproduciendo track " + cancion
+    mostrar "Reproduciendo track " + cancion // Reproduciendo track 1, 2, 3
 }`} />
-
-<Output text={`Canción 1
-Canción 2
-Canción 3
-Canción 4
-Canción 5
----
-5...
-4...
-3...
-2...
-1...
-¡DROP!
----
-Reproduciendo track 1
-Reproduciendo track 2
-Reproduciendo track 3`} />
 
 - El bucle 'para' tiene 3 partes separadas por punto y coma:
 - 1. Inicialización: crear variable contador (empieza en 1)
@@ -137,11 +96,11 @@ Un bucle infinito es como una canción en repeat que NUNCA para. El programa se 
 variable contador = 1
 
 mientras contador <= 5 {
-    mostrar "Reproduciendo " + contador
+    mostrar "Reproduciendo " + contador // Reproduciendo 1, 2, 3, 4, 5
     contador++  // IMPORTANTE: incrementamos el contador
 }
 
-mostrar "Playlist terminada"
+mostrar "Playlist terminada" // Playlist terminada
 
 // EJEMPLO DE BUCLE INFINITO (NO HACER):
 // variable cancion = 1
@@ -149,13 +108,6 @@ mostrar "Playlist terminada"
 //     mostrar "Canción " + cancion
 //     // Falta cancion++ - el bucle NUNCA termina
 // }`} />
-
-<Output text={`Reproduciendo 1
-Reproduciendo 2
-Reproduciendo 3
-Reproduciendo 4
-Reproduciendo 5
-Playlist terminada`} />
 
 - REGLA: Siempre modifica la variable de la condición dentro del bucle
 - Si la condición nunca cambia, el bucle nunca termina
@@ -168,10 +120,10 @@ Veamos ejemplos prácticos de bucles en un contexto de reproductor de música.
 
 <Code code={`// Mostrar playlist
 variable totalCanciones = 5
-mostrar "=== MI PLAYLIST ==="
+mostrar "=== MI PLAYLIST ===" // === MI PLAYLIST ===
 
 para (variable i = 1; i <= totalCanciones; i++) {
-    mostrar i + ". Canción " + i
+    mostrar i + ". Canción " + i // 1. Canción 1, 2. Canción 2, 3. Canción 3, 4. Canción 4, 5. Canción 5
 }
 
 mostrar ""
@@ -180,39 +132,19 @@ mostrar ""
 variable cancionActual = 1
 
 mientras cancionActual <= 3 {
-    mostrar "Reproduciendo: Canción " + cancionActual
+    mostrar "Reproduciendo: Canción " + cancionActual // Reproduciendo: Canción 1, 2, 3
     cancionActual++
 }
 
 mostrar ""
-mostrar "Reproducción completada"
+mostrar "Reproducción completada" // Reproducción completada
 
 // Mostrar progreso
 mostrar ""
-mostrar "=== PROGRESO ==="
+mostrar "=== PROGRESO ===" // === PROGRESO ===
 para (variable progreso = 0; progreso <= 100; progreso += 25) {
-    mostrar progreso + "% completado"
+    mostrar progreso + "% completado" // 0% completado, 25% completado, 50% completado, 75% completado, 100% completado
 }`} />
-
-<Output text={`=== MI PLAYLIST ===
-1. Canción 1
-2. Canción 2
-3. Canción 3
-4. Canción 4
-5. Canción 5
-
-Reproduciendo: Canción 1
-Reproduciendo: Canción 2
-Reproduciendo: Canción 3
-
-Reproducción completada
-
-=== PROGRESO ===
-0% completado
-25% completado
-50% completado
-75% completado
-100% completado`} />
 
 - Los bucles son perfectos para recorrer listas de elementos
 - Puedes usar incrementos diferentes para saltar de 25 en 25
@@ -225,45 +157,24 @@ A veces necesitas bucles dentro de bucles. Como un reproductor que tiene álbume
 
 <Code code={`// 3 álbumes, cada uno con 2 canciones
 para (variable album = 1; album <= 3; album++) {
-    mostrar "=== Álbum " + album + " ==="
+    mostrar "=== Álbum " + album + " ===" // === Álbum 1 ===, === Álbum 2 ===, === Álbum 3 ===
 
     para (variable cancion = 1; cancion <= 2; cancion++) {
-        mostrar "  Canción " + cancion
+        mostrar "  Canción " + cancion // Canción 1, Canción 2 (por cada álbum)
     }
 }
 
 mostrar ""
-mostrar "=== TABLA DE HORARIOS ==="
+mostrar "=== TABLA DE HORARIOS ===" // === TABLA DE HORARIOS ===
 
 // Tabla de horarios: 3 días, 2 clases por día
 para (variable dia = 1; dia <= 3; dia++) {
-    mostrar "Día " + dia + ":"
+    mostrar "Día " + dia + ":" // Día 1:, Día 2:, Día 3:
 
     para (variable clase = 1; clase <= 2; clase++) {
-        mostrar "  - Clase " + clase
+        mostrar "  - Clase " + clase // - Clase 1, - Clase 2 (por cada día)
     }
 }`} />
-
-<Output text={`=== Álbum 1 ===
-  Canción 1
-  Canción 2
-=== Álbum 2 ===
-  Canción 1
-  Canción 2
-=== Álbum 3 ===
-  Canción 1
-  Canción 2
-
-=== TABLA DE HORARIOS ===
-Día 1:
-  - Clase 1
-  - Clase 2
-Día 2:
-  - Clase 1
-  - Clase 2
-Día 3:
-  - Clase 1
-  - Clase 2`} />
 
 - El bucle externo controla los álbumes/días
 - El bucle interno se ejecuta completo por cada vuelta del externo
@@ -276,34 +187,23 @@ Día 3:
 Guía para elegir entre 'mientras' y 'para'.
 
 <Code code={`// PARA: Cuando sabes cuántas veces repetir
-mostrar "Ejemplo con PARA:"
+mostrar "Ejemplo con PARA:" // Ejemplo con PARA:
 para (variable i = 1; i <= 3; i++) {
-    mostrar "Repetición " + i
+    mostrar "Repetición " + i // Repetición 1, Repetición 2, Repetición 3
 }
 
 mostrar ""
 
 // MIENTRAS: Cuando depende de una condición
-mostrar "Ejemplo con MIENTRAS:"
+mostrar "Ejemplo con MIENTRAS:" // Ejemplo con MIENTRAS:
 variable energia = 100
 
 mientras energia > 50 {
-    mostrar "Energía: " + energia
+    mostrar "Energía: " + energia // Energía: 100, Energía: 80, Energía: 60
     energia -= 20
 }
 
-mostrar "Energía baja, descansar"`} />
-
-<Output text={`Ejemplo con PARA:
-Repetición 1
-Repetición 2
-Repetición 3
-
-Ejemplo con MIENTRAS:
-Energía: 100
-Energía: 80
-Energía: 60
-Energía baja, descansar`} />
+mostrar "Energía baja, descansar" // Energía baja, descansar`} />
 
 Usa 'para' cuando:
 - Sabes exactamente cuántas repeticiones necesitas

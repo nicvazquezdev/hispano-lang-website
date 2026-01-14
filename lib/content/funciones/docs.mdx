@@ -9,13 +9,13 @@ Imagina que cada vez que quieras calentar algo, tuvieras que conectar cables, aj
 Las funciones son lo mismo: encapsulan código que usarás muchas veces.
 
 <Code code={`// Sin funciones: repetimos código
-mostrar "Calentando pizza..."
-mostrar "Tiempo: 2 minutos"
-mostrar "Listo!"
+mostrar "Calentando pizza..." // Calentando pizza...
+mostrar "Tiempo: 2 minutos" // Tiempo: 2 minutos
+mostrar "Listo!" // Listo!
 
-mostrar "Calentando sopa..."
-mostrar "Tiempo: 3 minutos"
-mostrar "Listo!"
+mostrar "Calentando sopa..." // Calentando sopa...
+mostrar "Tiempo: 3 minutos" // Tiempo: 3 minutos
+mostrar "Listo!" // Listo!
 
 // Con funciones: código reutilizable
 funcion calentar(comida, minutos) {
@@ -24,21 +24,8 @@ funcion calentar(comida, minutos) {
     mostrar "Listo!"
 }
 
-calentar("pizza", 2)
-calentar("sopa", 3)`} />
-
-<Output text={`Calentando pizza...
-Tiempo: 2 minutos
-Listo!
-Calentando sopa...
-Tiempo: 3 minutos
-Listo!
-Calentando pizza...
-Tiempo: 2 minutos
-Listo!
-Calentando sopa...
-Tiempo: 3 minutos
-Listo!`} />
+calentar("pizza", 2) // Calentando pizza... / Tiempo: 2 minutos / Listo!
+calentar("sopa", 3) // Calentando sopa... / Tiempo: 3 minutos / Listo!`} />
 
 - Sin funciones: repites el mismo código una y otra vez
 - Con funciones: escribes el código una vez y lo usas múltiples veces
@@ -60,7 +47,7 @@ Para crear una función usas la palabra 'funcion', le das un nombre, y defines q
 }
 
 // Llamamos la función
-tostarPan()
+tostarPan() // Tostando pan... / Temperatura: Alta / Tiempo: 3 minutos / ¡Pan tostado listo!
 
 funcion licuarFrutas() {
     mostrar "Licuando frutas..."
@@ -69,19 +56,8 @@ funcion licuarFrutas() {
 }
 
 // Podemos llamarla múltiples veces
-licuarFrutas()
-licuarFrutas()`} />
-
-<Output text={`Tostando pan...
-Temperatura: Alta
-Tiempo: 3 minutos
-¡Pan tostado listo!
-Licuando frutas...
-Velocidad: Máxima
-¡Smoothie listo!
-Licuando frutas...
-Velocidad: Máxima
-¡Smoothie listo!`} />
+licuarFrutas() // Licuando frutas... / Velocidad: Máxima / ¡Smoothie listo!
+licuarFrutas() // Licuando frutas... / Velocidad: Máxima / ¡Smoothie listo!`} />
 
 - Declaración: funcion nombreFuncion() con bloque de código
 - El nombre debe ser descriptivo (tostar, calentar, mezclar)
@@ -102,9 +78,9 @@ El microondas tiene configuración: tiempo, potencia. La tostadora tiene nivel d
     mostrar "¡Listo!"
 }
 
-calentar("pizza", 2, "Alta")
-calentar("leche", 1, "Media")
-calentar("arroz", 5, "Alta")
+calentar("pizza", 2, "Alta") // Calentando pizza / Tiempo: 2 minutos / Potencia: Alta / ¡Listo!
+calentar("leche", 1, "Media") // Calentando leche / Tiempo: 1 minutos / Potencia: Media / ¡Listo!
+calentar("arroz", 5, "Alta") // Calentando arroz / Tiempo: 5 minutos / Potencia: Alta / ¡Listo!
 
 funcion tostar(alimento, nivel) {
     mostrar "Tostando " + alimento
@@ -112,27 +88,8 @@ funcion tostar(alimento, nivel) {
     mostrar "¡Tostado perfecto!"
 }
 
-tostar("pan", 3)
-tostar("bagel", 5)`} />
-
-<Output text={`Calentando pizza
-Tiempo: 2 minutos
-Potencia: Alta
-¡Listo!
-Calentando leche
-Tiempo: 1 minutos
-Potencia: Media
-¡Listo!
-Calentando arroz
-Tiempo: 5 minutos
-Potencia: Alta
-¡Listo!
-Tostando pan
-Nivel: 3
-¡Tostado perfecto!
-Tostando bagel
-Nivel: 5
-¡Tostado perfecto!`} />
+tostar("pan", 3) // Tostando pan / Nivel: 3 / ¡Tostado perfecto!
+tostar("bagel", 5) // Tostando bagel / Nivel: 5 / ¡Tostado perfecto!`} />
 
 - Parámetros = configuración del electrodoméstico
 - Van entre paréntesis, separados por comas: (tiempo, potencia)
@@ -152,10 +109,10 @@ Cuando usas la licuadora, no solo hace ruido: te da un smoothie. Las funciones p
 }
 
 variable tiempo1 = calcularTiempoMicroondas(500)
-mostrar "Para 500g necesitas: " + tiempo1 + " minutos"
+mostrar "Para 500g necesitas: " + tiempo1 + " minutos" // Para 500g necesitas: 5 minutos
 
 variable tiempo2 = calcularTiempoMicroondas(300)
-mostrar "Para 300g necesitas: " + tiempo2 + " minutos"
+mostrar "Para 300g necesitas: " + tiempo2 + " minutos" // Para 300g necesitas: 3 minutos
 
 funcion licuar(fruta1, fruta2) {
     variable smoothie = fruta1 + " con " + fruta2
@@ -163,15 +120,10 @@ funcion licuar(fruta1, fruta2) {
 }
 
 variable bebida = licuar("frutilla", "banana")
-mostrar "Tu smoothie: " + bebida
+mostrar "Tu smoothie: " + bebida // Tu smoothie: frutilla con banana
 
 variable otraBebida = licuar("mango", "naranja")
-mostrar "Tu smoothie: " + otraBebida`} />
-
-<Output text={`Para 500g necesitas: 5 minutos
-Para 300g necesitas: 3 minutos
-Tu smoothie: frutilla con banana
-Tu smoothie: mango con naranja`} />
+mostrar "Tu smoothie: " + otraBebida // Tu smoothie: mango con naranja`} />
 
 - 'retornar' devuelve un valor desde la función
 - Puedes guardar el resultado en una variable
@@ -190,7 +142,7 @@ funcion lavarPlatos(cantidad) {
     mostrar "¡Platos limpios!"
 }
 
-lavarPlatos(10)
+lavarPlatos(10) // Lavando 10 platos... / Ciclo: Normal / ¡Platos limpios!
 
 // Función CON retorno: te da algo
 funcion hacerCafe(tipo) {
@@ -199,10 +151,10 @@ funcion hacerCafe(tipo) {
 }
 
 variable miCafe = hacerCafe("Americano")
-mostrar miCafe
+mostrar miCafe // Café Americano listo
 
 variable tuCafe = hacerCafe("Cappuccino")
-mostrar tuCafe
+mostrar tuCafe // Café Cappuccino listo
 
 // Puedes usar el retorno en cálculos
 funcion calcularCalorias(porcion) {
@@ -211,14 +163,7 @@ funcion calcularCalorias(porcion) {
 }
 
 variable totalCalorias = calcularCalorias(2) + calcularCalorias(3)
-mostrar "Total de calorías: " + totalCalorias`} />
-
-<Output text={`Lavando 10 platos...
-Ciclo: Normal
-¡Platos limpios!
-Café Americano listo
-Café Cappuccino listo
-Total de calorías: 750`} />
+mostrar "Total de calorías: " + totalCalorias // Total de calorías: 750`} />
 
 - Función sin retorno: hace una acción (mostrar, modificar)
 - Función con retorno: produce un resultado que puedes usar
@@ -239,21 +184,15 @@ funcion calentar(comida) {
     mostrar "Calentando: " + comida
 }
 
-calentar("sopa")
-mostrar "Afuera: " + temperaturaExterna + "°C"
+calentar("sopa") // Dentro del microondas: 100°C / Temperatura externa: 25°C / Calentando: sopa
+mostrar "Afuera: " + temperaturaExterna + "°C" // Afuera: 25°C
 
 funcion cocinar() {
     variable platoPrincipal = "Pasta"  // Solo existe aquí
     mostrar "Cocinando: " + platoPrincipal
 }
 
-cocinar()`} />
-
-<Output text={`Dentro del microondas: 100°C
-Temperatura externa: 25°C
-Calentando: sopa
-Afuera: 25°C
-Cocinando: Pasta`} />
+cocinar() // Cocinando: Pasta`} />
 
 - Variables DENTRO de función = locales (solo existen dentro)
 - Variables FUERA de función = globales (se ven en todas partes)
@@ -266,7 +205,7 @@ Cocinando: Pasta`} />
 A veces una receta usa varios electrodomésticos: primero la licuadora, luego el microondas. Las funciones pueden llamar a otras funciones.
 
 <Code code={`funcion picar(ingrediente) {
-    mostrar "Picando " + ingrediente
+    mostrar "Picando " + ingrediente // Picando cebolla / Picando zanahoria
     retornar ingrediente + " picado"
 }
 
@@ -279,14 +218,14 @@ funcion prepararSopa() {
     variable cebolla = picar("cebolla")
     variable zanahoria = picar("zanahoria")
 
-    mostrar "Agregando agua y sal"
+    mostrar "Agregando agua y sal" // Agregando agua y sal
 
-    variable resultado = cocinar("sopa", 10)
+    variable resultado = cocinar("sopa", 10) // Cocinando sopa por 10 minutos
     retornar resultado
 }
 
 variable sopa = prepararSopa()
-mostrar "Resultado: " + sopa
+mostrar "Resultado: " + sopa // Resultado: sopa cocido
 
 funcion calcularPorciones(personas) {
     retornar personas * 250
@@ -294,20 +233,12 @@ funcion calcularPorciones(personas) {
 
 funcion cocinarArroz(personas) {
     variable gramos = calcularPorciones(personas)
-    mostrar "Cocinando " + gramos + "g de arroz"
+    mostrar "Cocinando " + gramos + "g de arroz" // Cocinando 1000g de arroz
     retornar "Arroz para " + personas + " personas"
 }
 
 variable plato = cocinarArroz(4)
-mostrar plato`} />
-
-<Output text={`Picando cebolla
-Picando zanahoria
-Agregando agua y sal
-Cocinando sopa por 10 minutos
-Resultado: sopa cocido
-Cocinando 1000g de arroz
-Arroz para 4 personas`} />
+mostrar plato // Arroz para 4 personas`} />
 
 - Las funciones pueden llamar a otras funciones
 - Esto se llama 'composición' o 'modularidad'

@@ -19,7 +19,6 @@ export default function LeccionesPage() {
       <main className="relative z-10 pt-20">
         <Section
           background="light"
-          badge={{ emoji: "🎓", text: "Aprende Programando" }}
           title="Lecciones Interactivas de"
           titleGradient=" HispanoLang"
           description="Tutoriales paso a paso con ejemplos en vivo. Desde básico hasta avanzado."

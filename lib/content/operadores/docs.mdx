@@ -13,26 +13,20 @@ variable bonus = 50
 variable vidas = 3
 
 variable puntosNuevos = puntos + bonus
-mostrar "Puntos totales: " + puntosNuevos
+mostrar "Puntos totales: " + puntosNuevos  // Puntos totales: 150
 
 variable vidasPerdidas = vidas - 1
-mostrar "Vidas restantes: " + vidasPerdidas
+mostrar "Vidas restantes: " + vidasPerdidas  // Vidas restantes: 2
 
 variable multiplicador = 2
 variable puntosConMultiplicador = puntos * multiplicador
-mostrar "Puntos con multiplicador x2: " + puntosConMultiplicador
+mostrar "Puntos con multiplicador x2: " + puntosConMultiplicador  // Puntos con multiplicador x2: 200
 
 variable mitadPuntos = puntos / 2
-mostrar "Mitad de puntos: " + mitadPuntos
+mostrar "Mitad de puntos: " + mitadPuntos  // Mitad de puntos: 50
 
 variable resto = 17 % 5
-mostrar "Resto de 17 dividido 5: " + resto`} />
-
-<Output text={`Puntos totales: 150
-Vidas restantes: 2
-Puntos con multiplicador x2: 200
-Mitad de puntos: 50
-Resto de 17 dividido 5: 2`} />
+mostrar "Resto de 17 dividido 5: " + resto  // Resto de 17 dividido 5: 2`} />
 
 - \+ (suma): Sumar puntos, bonus, experiencia
 - \- (resta): Restar vidas, energía, munición
@@ -45,32 +39,25 @@ Resto de 17 dividido 5: 2`} />
 Cuando subes de nivel, tus stats se acumulan. Los operadores compuestos son atajos para actualizar valores: en vez de escribir puntos = puntos + 100, escribes puntos += 100.
 
 <Code code={`variable puntos = 100
-mostrar "Puntos iniciales: " + puntos
+mostrar "Puntos iniciales: " + puntos  // Puntos iniciales: 100
 
 puntos += 50
-mostrar "Después de conseguir moneda: " + puntos
+mostrar "Después de conseguir moneda: " + puntos  // Después de conseguir moneda: 150
 
 puntos += 30
-mostrar "Después de derrotar enemigo: " + puntos
+mostrar "Después de derrotar enemigo: " + puntos  // Después de derrotar enemigo: 180
 
 variable vidas = 5
 vidas -= 2
-mostrar "Vidas después de recibir daño: " + vidas
+mostrar "Vidas después de recibir daño: " + vidas  // Vidas después de recibir daño: 3
 
 variable experiencia = 100
 experiencia *= 2
-mostrar "Experiencia con boost x2: " + experiencia
+mostrar "Experiencia con boost x2: " + experiencia  // Experiencia con boost x2: 200
 
 variable energia = 80
 energia /= 2
-mostrar "Energía después de habilidad especial: " + energia`} />
-
-<Output text={`Puntos iniciales: 100
-Después de conseguir moneda: 150
-Después de derrotar enemigo: 180
-Vidas después de recibir daño: 3
-Experiencia con boost x2: 200
-Energía después de habilidad especial: 40`} />
+mostrar "Energía después de habilidad especial: " + energia  // Energía después de habilidad especial: 40`} />
 
 - Sumar y asignar: acumula puntos directamente
 - Restar y asignar: quita vidas directamente
@@ -88,19 +75,12 @@ variable vidasActuales = 3
 variable vidasMinimas = 1
 variable nivel = 10
 
-mostrar miScore > recordAnterior
-mostrar vidasActuales < vidasMinimas
-mostrar nivel >= 10
-mostrar nivel <= 5
-mostrar miScore == recordAnterior
-mostrar miScore != recordAnterior`} />
-
-<Output text={`verdadero
-falso
-verdadero
-falso
-falso
-verdadero`} />
+mostrar miScore > recordAnterior  // verdadero
+mostrar vidasActuales < vidasMinimas  // falso
+mostrar nivel >= 10  // verdadero
+mostrar nivel <= 5  // falso
+mostrar miScore == recordAnterior  // falso
+mostrar miScore != recordAnterior  // verdadero`} />
 
 - Mayor que: ¿miScore es mayor que el récord?
 - Menor que: ¿tengo menos vidas que el mínimo?
@@ -120,21 +100,16 @@ variable tieneBonus = verdadero
 variable tieneLlave = falso
 
 variable puedeComprarEspada = nivel >= 10 y monedas >= 500
-mostrar "¿Puede comprar espada? " + puedeComprarEspada
+mostrar "¿Puede comprar espada? " + puedeComprarEspada  // ¿Puede comprar espada? verdadero
 
 variable puedeEntrarMazmorra = nivel >= 15 o tieneLlave
-mostrar "¿Puede entrar a mazmorra? " + puedeEntrarMazmorra
+mostrar "¿Puede entrar a mazmorra? " + puedeEntrarMazmorra  // ¿Puede entrar a mazmorra? falso
 
 variable noTieneBonus = !tieneBonus
-mostrar "¿NO tiene bonus? " + noTieneBonus
+mostrar "¿NO tiene bonus? " + noTieneBonus  // ¿NO tiene bonus? falso
 
 variable activarPowerUp = nivel > 10 y monedas > 100 y tieneBonus
-mostrar "¿Activar power-up? " + activarPowerUp`} />
-
-<Output text={`¿Puede comprar espada? verdadero
-¿Puede entrar a mazmorra? falso
-¿NO tiene bonus? falso
-¿Activar power-up? verdadero`} />
+mostrar "¿Activar power-up? " + activarPowerUp  // ¿Activar power-up? verdadero`} />
 
 - y (AND): Ambas condiciones deben ser verdaderas. Ejemplo: nivel >= 10 Y monedas >= 500
 - o (OR): Al menos una condición debe ser verdadera. Ejemplo: nivel >= 15 O tieneLlave
@@ -151,28 +126,22 @@ variable vidas = 5
 variable nivel = 1
 
 enemigosDerrrotados++
-mostrar "Enemigos derrotados: " + enemigosDerrrotados
+mostrar "Enemigos derrotados: " + enemigosDerrrotados  // Enemigos derrotados: 1
 
 enemigosDerrrotados++
-mostrar "Enemigos derrotados: " + enemigosDerrrotados
+mostrar "Enemigos derrotados: " + enemigosDerrrotados  // Enemigos derrotados: 2
 
 vidas--
-mostrar "Vidas restantes: " + vidas
+mostrar "Vidas restantes: " + vidas  // Vidas restantes: 4
 
 nivel++
-mostrar "Nivel actual: " + nivel
+mostrar "Nivel actual: " + nivel  // Nivel actual: 2
 
 variable combo = 10
 combo++
 combo++
 combo++
-mostrar "Combo: " + combo`} />
-
-<Output text={`Enemigos derrotados: 1
-Enemigos derrotados: 2
-Vidas restantes: 4
-Nivel actual: 2
-Combo: 13`} />
+mostrar "Combo: " + combo  // Combo: 13`} />
 
 - ++ (incremento): Suma 1 a la variable. contador++ es igual a contador = contador + 1
 - -- (decremento): Resta 1 a la variable. vidas-- es igual a vidas = vidas - 1
@@ -184,25 +153,19 @@ Combo: 13`} />
 Como en matemática, las operaciones tienen un orden: primero multiplicación y división, luego suma y resta. Usa paréntesis para controlar el orden.
 
 <Code code={`variable puntos = 10 + 5 * 2
-mostrar "10 + 5 * 2 = " + puntos
+mostrar "10 + 5 * 2 = " + puntos  // 10 + 5 * 2 = 20
 
 variable puntosConParentesis = (10 + 5) * 2
-mostrar "(10 + 5) * 2 = " + puntosConParentesis
+mostrar "(10 + 5) * 2 = " + puntosConParentesis  // (10 + 5) * 2 = 30
 
 variable danioFinal = 50 - 10 / 2
-mostrar "50 - 10 / 2 = " + danioFinal
+mostrar "50 - 10 / 2 = " + danioFinal  // 50 - 10 / 2 = 45
 
 variable danioConParentesis = (50 - 10) / 2
-mostrar "(50 - 10) / 2 = " + danioConParentesis
+mostrar "(50 - 10) / 2 = " + danioConParentesis  // (50 - 10) / 2 = 20
 
 variable calcComplejo = (100 + 50) * 2 - 25
-mostrar "(100 + 50) * 2 - 25 = " + calcComplejo`} />
-
-<Output text={`10 + 5 * 2 = 20
-(10 + 5) * 2 = 30
-50 - 10 / 2 = 45
-(50 - 10) / 2 = 20
-(100 + 50) * 2 - 25 = 275`} />
+mostrar "(100 + 50) * 2 - 25 = " + calcComplejo  // (100 + 50) * 2 - 25 = 275`} />
 
 - Orden de precedencia (como en matemática):
 - 1. Paréntesis ( )
@@ -222,36 +185,28 @@ variable nivel = 1
 variable multiplicador = 1
 
 puntos += 100
-mostrar "Derrotaste un enemigo: +" + puntos + " puntos"
+mostrar "Derrotaste un enemigo: +" + puntos + " puntos"  // Derrotaste un enemigo: +100 puntos
 
 puntos += 50
-mostrar "Recogiste una moneda: " + puntos + " puntos totales"
+mostrar "Recogiste una moneda: " + puntos + " puntos totales"  // Recogiste una moneda: 150 puntos totales
 
 vidas--
-mostrar "Recibiste daño: " + vidas + " vidas restantes"
+mostrar "Recibiste daño: " + vidas + " vidas restantes"  // Recibiste daño: 2 vidas restantes
 
 multiplicador++
-mostrar "¡Combo! Multiplicador x" + multiplicador
+mostrar "¡Combo! Multiplicador x" + multiplicador  // ¡Combo! Multiplicador x2
 
 puntos *= multiplicador
-mostrar "Puntos con multiplicador: " + puntos
+mostrar "Puntos con multiplicador: " + puntos  // Puntos con multiplicador: 300
 
 variable tieneVidasSuficientes = vidas >= 1
 variable puntosParaSiguienteNivel = 200
 variable puedeAvanzar = puntos >= puntosParaSiguienteNivel y tieneVidasSuficientes
 
-mostrar "¿Puede avanzar de nivel? " + puedeAvanzar
+mostrar "¿Puede avanzar de nivel? " + puedeAvanzar  // ¿Puede avanzar de nivel? verdadero
 
 variable puntosFinales = puntos + (vidas * 10)
-mostrar "Puntos finales (bonus por vidas): " + puntosFinales`} />
-
-<Output text={`Derrotaste un enemigo: +100 puntos
-Recogiste una moneda: 150 puntos totales
-Recibiste daño: 2 vidas restantes
-¡Combo! Multiplicador x2
-Puntos con multiplicador: 300
-¿Puede avanzar de nivel? verdadero
-Puntos finales (bonus por vidas): 320`} />
+mostrar "Puntos finales (bonus por vidas): " + puntosFinales  // Puntos finales (bonus por vidas): 320`} />
 
 Este ejemplo muestra operadores en acción:
 - Aritméticos: sumar puntos, multiplicar bonus

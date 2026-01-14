@@ -12,13 +12,10 @@ Imagina que escribes un mensaje automático: 'Hola [NOMBRE], tu saldo es [SALDO]
 variable edad = 25
 
 // Forma tradicional con +
-mostrar "Hola, me llamo " + nombre + " y tengo " + edad + " años"
+mostrar "Hola, me llamo " + nombre + " y tengo " + edad + " años"  // Hola, me llamo María y tengo 25 años
 
 // Con template strings
-mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\``} />
-
-<Output text={`Hola, me llamo María y tengo 25 años
-Hola, me llamo María y tengo 25 años`} />
+mostrar \`Hola, me llamo \${nombre} y tengo \${edad} años\`  // Hola, me llamo María y tengo 25 años`} />
 
 - Template strings usan backticks en lugar de comillas
 - Para insertar variables usas la sintaxis de interpolación
@@ -34,9 +31,9 @@ Puedes poner todas las variables que quieras dentro del texto. Es como llenar lo
 variable precio = 850
 variable cantidad = 2
 
-mostrar \`Producto: \${producto}\`
-mostrar \`Precio unitario: $\${precio}\`
-mostrar \`Cantidad: \${cantidad}\`
+mostrar \`Producto: \${producto}\`  // Producto: Pizza
+mostrar \`Precio unitario: $\${precio}\`  // Precio unitario: $850
+mostrar \`Cantidad: \${cantidad}\`  // Cantidad: 2
 
 variable cliente = "Juan Pérez"
 variable direccion = "Av. Corrientes 1234"
@@ -44,14 +41,11 @@ variable telefono = "1234-5678"
 
 mostrar \`Cliente: \${cliente}
 Dirección: \${direccion}
-Teléfono: \${telefono}\``} />
-
-<Output text={`Producto: Pizza
-Precio unitario: $850
-Cantidad: 2
-Cliente: Juan Pérez
-Dirección: Av. Corrientes 1234
-Teléfono: 1234-5678`} />
+Teléfono: \${telefono}\`
+// Output del mostrar anterior:
+// Cliente: Juan Pérez
+// Dirección: Av. Corrientes 1234
+// Teléfono: 1234-5678`} />
 
 - Cada variable interpolada se reemplaza automáticamente con su valor
 - Puedes tener tantas variables como necesites en el mismo texto
@@ -66,25 +60,20 @@ variable ciudad = "Buenos Aires"
 variable edad = 28
 
 // Forma vieja con +
-mostrar "Hola, soy " + nombre + ", vivo en " + ciudad + " y tengo " + edad + " años."
+mostrar "Hola, soy " + nombre + ", vivo en " + ciudad + " y tengo " + edad + " años."  // Hola, soy Ana, vivo en Buenos Aires y tengo 28 años.
 
 // Forma nueva con template strings
-mostrar \`Hola, soy \${nombre}, vivo en \${ciudad} y tengo \${edad} años.\`
+mostrar \`Hola, soy \${nombre}, vivo en \${ciudad} y tengo \${edad} años.\`  // Hola, soy Ana, vivo en Buenos Aires y tengo 28 años.
 
 variable producto = "Laptop"
 variable marca = "Dell"
 variable precio = 50000
 
 // Forma vieja
-mostrar "El producto " + producto + " marca " + marca + " cuesta $" + precio
+mostrar "El producto " + producto + " marca " + marca + " cuesta $" + precio  // El producto Laptop marca Dell cuesta $50000
 
 // Forma nueva
-mostrar \`El producto \${producto} marca \${marca} cuesta $\${precio}\``} />
-
-<Output text={`Hola, soy Ana, vivo en Buenos Aires y tengo 28 años.
-Hola, soy Ana, vivo en Buenos Aires y tengo 28 años.
-El producto Laptop marca Dell cuesta $50000
-El producto Laptop marca Dell cuesta $50000`} />
+mostrar \`El producto \${producto} marca \${marca} cuesta $\${precio}\`  // El producto Laptop marca Dell cuesta $50000`} />
 
 - Con +: muchas comillas, muchos símbolos, fácil olvidar espacios
 - Con template strings: todo junto, más natural, como escribir normalmente
@@ -99,25 +88,17 @@ Dentro de la interpolación no solo puedes poner variables, también puedes hace
 variable cantidad = 3
 variable descuento = 15
 
-mostrar \`Precio unitario: $\${precio}\`
-mostrar \`Cantidad: \${cantidad}\`
-mostrar \`Subtotal: $\${precio * cantidad}\`
-mostrar \`Descuento: $\${descuento}\`
-mostrar \`Total final: $\${precio * cantidad - descuento}\`
+mostrar \`Precio unitario: $\${precio}\`  // Precio unitario: $100
+mostrar \`Cantidad: \${cantidad}\`  // Cantidad: 3
+mostrar \`Subtotal: $\${precio * cantidad}\`  // Subtotal: $300
+mostrar \`Descuento: $\${descuento}\`  // Descuento: $15
+mostrar \`Total final: $\${precio * cantidad - descuento}\`  // Total final: $285
 
 variable nombre = "juan pérez"
-mostrar \`Bienvenido \${nombre.mayusculas()}\`
+mostrar \`Bienvenido \${nombre.mayusculas()}\`  // Bienvenido JUAN PÉREZ
 
 variable email = "  MARIA@EMAIL.COM  "
-mostrar \`Email registrado: \${email.recortar().minusculas()}\``} />
-
-<Output text={`Precio unitario: $100
-Cantidad: 3
-Subtotal: $300
-Descuento: $15
-Total final: $285
-Bienvenido JUAN PÉREZ
-Email registrado: maria@email.com`} />
+mostrar \`Email registrado: \${email.recortar().minusculas()}\`  // Email registrado: maria@email.com`} />
 
 - Puedes hacer matemática dentro de la interpolación
 - Puedes usar métodos de strings dentro de la interpolación
@@ -152,23 +133,22 @@ TOTAL A PAGAR: $\${total}
 ═══════════════════════════
 \`
 
-mostrar recibo`} />
-
-<Output text={`
-═══════════════════════════
-         RECIBO DE COMPRA
-═══════════════════════════
-
-Cliente: María González
-Fecha: 12/01/2026
-
-Producto: Zapatillas Nike
-Cantidad: 2
-Precio unitario: $15000
-
-───────────────────────────
-TOTAL A PAGAR: $30000
-═══════════════════════════`} />
+mostrar recibo
+// Output:
+// ═══════════════════════════
+//          RECIBO DE COMPRA
+// ═══════════════════════════
+//
+// Cliente: María González
+// Fecha: 12/01/2026
+//
+// Producto: Zapatillas Nike
+// Cantidad: 2
+// Precio unitario: $15000
+//
+// ───────────────────────────
+// TOTAL A PAGAR: $30000
+// ═══════════════════════════`} />
 
 - Los saltos de línea dentro del template se mantienen tal cual
 - Perfecto para recibos, tickets, emails formateados
@@ -182,31 +162,26 @@ Situaciones reales donde los template strings hacen tu código más limpio y fá
 <Code code={`// Notificación de red social
 variable nombreUsuario = "ana_dev"
 variable seguidoresNuevos = 47
-mostrar \`¡\${nombreUsuario}! Tienes \${seguidoresNuevos} seguidores nuevos\`
+mostrar \`¡\${nombreUsuario}! Tienes \${seguidoresNuevos} seguidores nuevos\`  // ¡ana_dev! Tienes 47 seguidores nuevos
 
 // Mensaje bancario
 variable remitente = "Banco Nacional"
 variable saldo = 15000
 variable ultimoMovimiento = 2500
-mostrar \`\${remitente}: Tu saldo actual es $\${saldo}. Último movimiento: -$\${ultimoMovimiento}\`
+mostrar \`\${remitente}: Tu saldo actual es $\${saldo}. Último movimiento: -$\${ultimoMovimiento}\`  // Banco Nacional: Tu saldo actual es $15000. Último movimiento: -$2500
 
 // Progreso de curso
 variable curso = "HispanoLang"
 variable leccionActual = 5
 variable leccionesTotales = 20
 variable porcentaje = (leccionActual / leccionesTotales) * 100
-mostrar \`Curso: \${curso} - Progreso: \${leccionActual}/\${leccionesTotales} (\${porcentaje}%)\`
+mostrar \`Curso: \${curso} - Progreso: \${leccionActual}/\${leccionesTotales} (\${porcentaje}%)\`  // Curso: HispanoLang - Progreso: 5/20 (25%)
 
 // Información de archivo
 variable nombreArchivo = "documento"
 variable extension = "pdf"
 variable tamanio = 2.5
-mostrar \`Archivo: \${nombreArchivo}.\${extension} - Tamaño: \${tamanio}MB\``} />
-
-<Output text={`¡ana_dev! Tienes 47 seguidores nuevos
-Banco Nacional: Tu saldo actual es $15000. Último movimiento: -$2500
-Curso: HispanoLang - Progreso: 5/20 (25%)
-Archivo: documento.pdf - Tamaño: 2.5MB`} />
+mostrar \`Archivo: \${nombreArchivo}.\${extension} - Tamaño: \${tamanio}MB\`  // Archivo: documento.pdf - Tamaño: 2.5MB`} />
 
 - Notificaciones de apps: más fácil personalizar mensajes
 - Mensajes bancarios/financieros: insertar montos dinámicamente
@@ -221,8 +196,8 @@ Guía práctica para decidir cuándo usar template strings vs concatenación tra
 <Code code={`variable nombre = "Juan"
 
 // Para una sola variable, ambos están OK
-mostrar "Hola " + nombre
-mostrar \`Hola \${nombre}\`
+mostrar "Hola " + nombre  // Hola Juan
+mostrar \`Hola \${nombre}\`  // Hola Juan
 
 variable producto = "Laptop"
 variable marca = "Dell"
@@ -230,14 +205,9 @@ variable precio = 45000
 variable stock = 5
 
 // Con muchas variables, template strings es mejor
-mostrar "Producto: " + producto + ", Marca: " + marca + ", Precio: $" + precio + ", Stock: " + stock
+mostrar "Producto: " + producto + ", Marca: " + marca + ", Precio: $" + precio + ", Stock: " + stock  // Producto: Laptop, Marca: Dell, Precio: $45000, Stock: 5
 
-mostrar \`Producto: \${producto}, Marca: \${marca}, Precio: $\${precio}, Stock: \${stock}\``} />
-
-<Output text={`Hola Juan
-Hola Juan
-Producto: Laptop, Marca: Dell, Precio: $45000, Stock: 5
-Producto: Laptop, Marca: Dell, Precio: $45000, Stock: 5`} />
+mostrar \`Producto: \${producto}, Marca: \${marca}, Precio: $\${precio}, Stock: \${stock}\`  // Producto: Laptop, Marca: Dell, Precio: $45000, Stock: 5`} />
 
 - Usa template strings cuando: tienes 2+ variables para insertar
 - Usa template strings cuando: necesitas hacer cálculos en el texto

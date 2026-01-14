@@ -10,22 +10,22 @@ A veces necesitas detener un bucle antes de que termine naturalmente. Como cuand
 
 <Code code={`para (variable i = 1; i <= 10; i++) {
     si i == 5 {
-        mostrar "¡Encontré mi canción favorita!"
+        mostrar "¡Encontré mi canción favorita!" // ¡Encontré mi canción favorita!
         romper
     }
-    mostrar "Revisando canción " + i
+    mostrar "Revisando canción " + i // Revisando canción 1, 2, 3, 4
 }
 
-mostrar "Búsqueda terminada"
+mostrar "Búsqueda terminada" // Búsqueda terminada
 
 variable cancion = 1
 variable encontrada = falso
 
 mientras cancion <= 20 {
-    mostrar "Buscando en canción " + cancion
+    mostrar "Buscando en canción " + cancion // Buscando en canción 1, 2, 3, 4, 5, 6, 7
 
     si cancion == 7 {
-        mostrar "¡Ahí está!"
+        mostrar "¡Ahí está!" // ¡Ahí está!
         encontrada = verdadero
         romper
     }
@@ -33,23 +33,7 @@ mientras cancion <= 20 {
     cancion++
 }
 
-mostrar "Canción encontrada: " + encontrada`} />
-
-<Output text={`Revisando canción 1
-Revisando canción 2
-Revisando canción 3
-Revisando canción 4
-¡Encontré mi canción favorita!
-Búsqueda terminada
-Buscando en canción 1
-Buscando en canción 2
-Buscando en canción 3
-Buscando en canción 4
-Buscando en canción 5
-Buscando en canción 6
-Buscando en canción 7
-¡Ahí está!
-Canción encontrada: verdadero`} />
+mostrar "Canción encontrada: " + encontrada // Canción encontrada: verdadero`} />
 
 - 'romper' detiene el bucle INMEDIATAMENTE
 - Sale del bucle y continúa con el código después
@@ -65,10 +49,10 @@ A veces quieres saltarte una repetición y continuar con la siguiente. Como cuan
 
 <Code code={`para (variable i = 1; i <= 5; i++) {
     si i == 3 {
-        mostrar "Saltando canción " + i
+        mostrar "Saltando canción " + i // Saltando canción 3
         continuar
     }
-    mostrar "Reproduciendo canción " + i
+    mostrar "Reproduciendo canción " + i // Reproduciendo canción 1, 2, 4, 5
 }
 
 variable cancion = 0
@@ -77,26 +61,12 @@ mientras cancion < 8 {
     cancion++
 
     si cancion == 2 o cancion == 5 {
-        mostrar "Anuncio publicitario - Saltando"
+        mostrar "Anuncio publicitario - Saltando" // Anuncio publicitario - Saltando (en 2 y 5)
         continuar
     }
 
-    mostrar "Canción " + cancion
+    mostrar "Canción " + cancion // Canción 1, 3, 4, 6, 7, 8
 }`} />
-
-<Output text={`Reproduciendo canción 1
-Reproduciendo canción 2
-Saltando canción 3
-Reproduciendo canción 4
-Reproduciendo canción 5
-Canción 1
-Anuncio publicitario - Saltando
-Canción 3
-Canción 4
-Anuncio publicitario - Saltando
-Canción 6
-Canción 7
-Canción 8`} />
 
 - 'continuar' salta el resto del código en esa repetición
 - Va directamente a la siguiente iteración del bucle
@@ -109,36 +79,24 @@ Canción 8`} />
 
 Es importante entender cuándo usar cada uno. 'romper' sale del bucle completamente, 'continuar' solo salta la iteración actual.
 
-<Code code={`mostrar "=== Ejemplo con ROMPER ==="
+<Code code={`mostrar "=== Ejemplo con ROMPER ===" // === Ejemplo con ROMPER ===
 para (variable i = 1; i <= 5; i++) {
     si i == 3 {
         romper
     }
-    mostrar "Número: " + i
+    mostrar "Número: " + i // Número: 1, 2
 }
-mostrar "Bucle terminado"
+mostrar "Bucle terminado" // Bucle terminado
 
-mostrar ""
-mostrar "=== Ejemplo con CONTINUAR ==="
+mostrar "" // (línea vacía)
+mostrar "=== Ejemplo con CONTINUAR ===" // === Ejemplo con CONTINUAR ===
 para (variable i = 1; i <= 5; i++) {
     si i == 3 {
         continuar
     }
-    mostrar "Número: " + i
+    mostrar "Número: " + i // Número: 1, 2, 4, 5
 }
-mostrar "Bucle terminado"`} />
-
-<Output text={`=== Ejemplo con ROMPER ===
-Número: 1
-Número: 2
-Bucle terminado
-
-=== Ejemplo con CONTINUAR ===
-Número: 1
-Número: 2
-Número: 4
-Número: 5
-Bucle terminado`} />
+mostrar "Bucle terminado" // Bucle terminado`} />
 
 - romper: El bucle se detiene en el 3 y no llega al 4 ni al 5
 - continuar: El bucle salta el 3 pero continúa con 4 y 5
@@ -155,11 +113,11 @@ variable reproducidas = 0
 variable saltadas = 0
 
 mientras cancionActual <= totalCanciones {
-    mostrar "Canción " + cancionActual
+    mostrar "Canción " + cancionActual // Canción 1, 2, 3, 4, 5, 6
 
     // Saltar canciones 3 y 7
     si cancionActual == 3 o cancionActual == 7 {
-        mostrar "  Saltando (no me gusta)"
+        mostrar "  Saltando (no me gusta)" //   Saltando (no me gusta)
         saltadas++
         cancionActual++
         continuar
@@ -170,30 +128,16 @@ mientras cancionActual <= totalCanciones {
 
     // Parar después de 5 reproducidas
     si reproducidas >= 5 {
-        mostrar ""
-        mostrar "Ya reproduje 5 canciones, suficiente"
+        mostrar "" // (línea vacía)
+        mostrar "Ya reproduje 5 canciones, suficiente" // Ya reproduje 5 canciones, suficiente
         romper
     }
 }
 
-mostrar ""
-mostrar "=== ESTADÍSTICAS ==="
-mostrar "Reproducidas: " + reproducidas
-mostrar "Saltadas: " + saltadas`} />
-
-<Output text={`Canción 1
-Canción 2
-Canción 3
-  Saltando (no me gusta)
-Canción 4
-Canción 5
-Canción 6
-
-Ya reproduje 5 canciones, suficiente
-
-=== ESTADÍSTICAS ===
-Reproducidas: 5
-Saltadas: 1`} />
+mostrar "" // (línea vacía)
+mostrar "=== ESTADÍSTICAS ===" // === ESTADÍSTICAS ===
+mostrar "Reproducidas: " + reproducidas // Reproducidas: 5
+mostrar "Saltadas: " + saltadas // Saltadas: 1`} />
 
 - Usa continuar para filtrar elementos no deseados
 - Usa romper para establecer límites o condiciones de salida
@@ -211,10 +155,10 @@ variable posicion = 0
 
 para (variable i = 1; i <= 10; i++) {
     variable actual = i * 2
-    mostrar "Revisando: " + actual
+    mostrar "Revisando: " + actual // Revisando: 2, 4, 6, 8, 10, 12
 
     si actual == buscado {
-        mostrar "¡Encontrado en posición " + i + "!"
+        mostrar "¡Encontrado en posición " + i + "!" // ¡Encontrado en posición 6!
         encontrado = verdadero
         posicion = i
         romper
@@ -222,19 +166,10 @@ para (variable i = 1; i <= 10; i++) {
 }
 
 si encontrado {
-    mostrar "El número " + buscado + " está en la posición " + posicion
+    mostrar "El número " + buscado + " está en la posición " + posicion // El número 12 está en la posición 6
 } sino {
     mostrar "El número " + buscado + " no fue encontrado"
 }`} />
-
-<Output text={`Revisando: 2
-Revisando: 4
-Revisando: 6
-Revisando: 8
-Revisando: 10
-Revisando: 12
-¡Encontrado en posición 6!
-El número 12 está en la posición 6`} />
 
 - El bucle se detiene apenas encuentra el elemento
 - No sigue revisando innecesariamente
@@ -245,53 +180,34 @@ El número 12 está en la posición 6`} />
 
 Otro caso común es procesar solo elementos que cumplan ciertos criterios.
 
-<Code code={`mostrar "=== NÚMEROS PARES DEL 1 AL 10 ==="
+<Code code={`mostrar "=== NÚMEROS PARES DEL 1 AL 10 ===" // === NÚMEROS PARES DEL 1 AL 10 ===
 
 para (variable i = 1; i <= 10; i++) {
     // Si es impar, saltarlo
     si i % 2 != 0 {
         continuar
     }
-    mostrar i
+    mostrar i // 2, 4, 6, 8, 10
 }
 
-mostrar ""
-mostrar "=== PROCESANDO SOLO VÁLIDOS ==="
+mostrar "" // (línea vacía)
+mostrar "=== PROCESANDO SOLO VÁLIDOS ===" // === PROCESANDO SOLO VÁLIDOS ===
 
 para (variable nota = 1; nota <= 10; nota++) {
     // Saltar notas muy bajas
     si nota < 4 {
-        mostrar "Nota " + nota + ": Muy baja, ignorando"
+        mostrar "Nota " + nota + ": Muy baja, ignorando" // Nota 1, 2, 3: Muy baja, ignorando
         continuar
     }
 
     // Saltar notas perfectas (ya procesadas)
     si nota == 10 {
-        mostrar "Nota " + nota + ": Perfecta, ya procesada"
+        mostrar "Nota " + nota + ": Perfecta, ya procesada" // Nota 10: Perfecta, ya procesada
         continuar
     }
 
-    mostrar "Procesando nota: " + nota
+    mostrar "Procesando nota: " + nota // Procesando nota: 4, 5, 6, 7, 8, 9
 }`} />
-
-<Output text={`=== NÚMEROS PARES DEL 1 AL 10 ===
-2
-4
-6
-8
-10
-
-=== PROCESANDO SOLO VÁLIDOS ===
-Nota 1: Muy baja, ignorando
-Nota 2: Muy baja, ignorando
-Nota 3: Muy baja, ignorando
-Procesando nota: 4
-Procesando nota: 5
-Procesando nota: 6
-Procesando nota: 7
-Procesando nota: 8
-Procesando nota: 9
-Nota 10: Perfecta, ya procesada`} />
 
 - continuar es perfecto para filtrar datos
 - Evita anidar muchos condicionales

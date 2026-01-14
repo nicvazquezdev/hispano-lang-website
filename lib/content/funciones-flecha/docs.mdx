@@ -16,8 +16,8 @@ funcion doble(x) {
 // Función flecha - mismo resultado, menos código
 variable doble = x => x * 2
 
-mostrar doble(5)
-mostrar doble(10)
+mostrar doble(5) // 10
+mostrar doble(10) // 20
 
 // Otro ejemplo
 funcion sumar(a, b) {
@@ -27,13 +27,8 @@ funcion sumar(a, b) {
 // Versión flecha
 variable sumar = (a, b) => a + b
 
-mostrar sumar(3, 7)
-mostrar sumar(10, 20)`} />
-
-<Output text={`10
-20
-10
-30`} />
+mostrar sumar(3, 7) // 10
+mostrar sumar(10, 20) // 30`} />
 
 - Función normal: funcion nombre(params) ... retornar valor ...
 - Función flecha: variable nombre = params => valor
@@ -49,24 +44,19 @@ Como en WhatsApp puedes escribir 'Hola, ¿cómo estás?' (formal) o 'Hola, q tal
 
 <Code code={`// Sin parámetros: ()
 variable saludar = () => "Hola!"
-mostrar saludar()
+mostrar saludar() // Hola!
 
 // UN parámetro: sin paréntesis
 variable duplicar = x => x * 2
-mostrar duplicar(4)
+mostrar duplicar(4) // 8
 
 // DOS+ parámetros: con paréntesis
 variable sumar = (a, b) => a + b
-mostrar sumar(5, 3)
+mostrar sumar(5, 3) // 8
 
 // Cualquier expresión
 variable calcularIVA = precio => precio * 1.21
-mostrar calcularIVA(100)`} />
-
-<Output text={`Hola!
-8
-8
-121`} />
+mostrar calcularIVA(100) // 121`} />
 
 - Sin parámetros: () => resultado
 - UN parámetro: x => resultado (sin paréntesis)
@@ -86,7 +76,7 @@ funcion triple(numero) {
 // Flecha: 1 línea
 variable triple = numero => numero * 3
 
-mostrar triple(5)
+mostrar triple(5) // 15
 
 // Normal
 funcion esPar(n) {
@@ -96,8 +86,8 @@ funcion esPar(n) {
 // Flecha
 variable esPar = n => n % 2 == 0
 
-mostrar esPar(4)
-mostrar esPar(7)
+mostrar esPar(4) // verdadero
+mostrar esPar(7) // falso
 
 // Normal
 funcion formatearPrecio(precio) {
@@ -107,12 +97,7 @@ funcion formatearPrecio(precio) {
 // Flecha
 variable formatearPrecio = precio => "$" + precio
 
-mostrar formatearPrecio(150)`} />
-
-<Output text={`15
-verdadero
-falso
-$150`} />
+mostrar formatearPrecio(150) // $150`} />
 
 - Función normal: 3 líneas (funcion, retornar, cierre)
 - Función flecha: 1 línea (todo junto)
@@ -125,25 +110,18 @@ $150`} />
 Cuando tu mensaje es corto ('ok', 'si', 'dale'), no necesitas explicaciones largas. Las funciones flecha de una línea retornan automáticamente, sin escribir 'retornar'.
 
 <Code code={`variable cuadrado = x => x * x
-mostrar cuadrado(5)
-mostrar cuadrado(8)
+mostrar cuadrado(5) // 25
+mostrar cuadrado(8) // 64
 
 variable mayorDeEdad = edad => edad >= 18
-mostrar mayorDeEdad(15)
-mostrar mayorDeEdad(21)
+mostrar mayorDeEdad(15) // falso
+mostrar mayorDeEdad(21) // verdadero
 
 variable concatenar = (a, b) => a + " " + b
-mostrar concatenar("Hola", "Mundo")
+mostrar concatenar("Hola", "Mundo") // Hola Mundo
 
 variable descuento = precio => precio * 0.8
-mostrar descuento(100)`} />
-
-<Output text={`25
-64
-falso
-verdadero
-Hola Mundo
-80`} />
+mostrar descuento(100) // 80`} />
 
 - Si la función es UNA sola expresión → retorno automático
 - No necesitas escribir 'retornar'
@@ -161,7 +139,7 @@ A veces necesitas escribir un mensaje más largo con varias oraciones. Para func
     retornar precioFinal
 }
 
-mostrar calcularDescuento(1000, 20)
+mostrar calcularDescuento(1000, 20) // 800
 
 variable saludarPersona = nombre => {
     variable saludo = "Hola " + nombre
@@ -169,7 +147,7 @@ variable saludarPersona = nombre => {
     retornar mensaje
 }
 
-mostrar saludarPersona("Ana")
+mostrar saludarPersona("Ana") // Hola Ana, ¿cómo estás?
 
 variable calcularTotal = (precio, cantidad, iva) => {
     variable subtotal = precio * cantidad
@@ -177,11 +155,7 @@ variable calcularTotal = (precio, cantidad, iva) => {
     retornar conIVA
 }
 
-mostrar calcularTotal(100, 3, 0.21)`} />
-
-<Output text={`800
-Hola Ana, ¿cómo estás?
-363`} />
+mostrar calcularTotal(100, 3, 0.21) // 363`} />
 
 - Si necesitas MÚLTIPLES líneas → usa llaves (llaves)
 - Con llaves, DEBES escribir 'retornar' explícitamente
@@ -203,9 +177,9 @@ Como cuando respondes diferente según quien te escriba, las funciones flecha pu
     }
 }
 
-mostrar calificar(95)
-mostrar calificar(75)
-mostrar calificar(50)
+mostrar calificar(95) // Excelente
+mostrar calificar(75) // Aprobado
+mostrar calificar(50) // Reprobado
 
 variable tipoDescuento = cantidad => {
     si cantidad >= 100 {
@@ -217,14 +191,8 @@ variable tipoDescuento = cantidad => {
     }
 }
 
-mostrar "Descuento: " + (tipoDescuento(120) * 100) + "%"
-mostrar "Descuento: " + (tipoDescuento(60) * 100) + "%"`} />
-
-<Output text={`Excelente
-Aprobado
-Reprobado
-Descuento: 30%
-Descuento: 20%`} />
+mostrar "Descuento: " + (tipoDescuento(120) * 100) + "%" // Descuento: 30%
+mostrar "Descuento: " + (tipoDescuento(60) * 100) + "%" // Descuento: 20%`} />
 
 - Funciones flecha pueden tener condicionales
 - Necesitas llaves (llaves) para múltiples líneas
@@ -240,33 +208,25 @@ Las funciones flecha brillan por su simplicidad en calculadoras rápidas y conve
 variable celsiusAFahrenheit = c => (c * 9 / 5) + 32
 variable fahrenheitACelsius = f => (f - 32) * 5 / 9
 
-mostrar "100°C = " + celsiusAFahrenheit(100) + "°F"
-mostrar "212°F = " + fahrenheitACelsius(212) + "°C"
+mostrar "100°C = " + celsiusAFahrenheit(100) + "°F" // 100°C = 212°F
+mostrar "212°F = " + fahrenheitACelsius(212) + "°C" // 212°F = 100°C
 
 // Conversiones de distancia
 variable kmAMillas = km => km * 0.621371
 variable millasAKm = mi => mi / 0.621371
 
-mostrar "10km = " + kmAMillas(10) + " millas"
-mostrar "10mi = " + millasAKm(10) + " km"
+mostrar "10km = " + kmAMillas(10) + " millas" // 10km = 6.21371 millas
+mostrar "10mi = " + millasAKm(10) + " km" // 10mi = 16.0934 km
 
 // Calculadoras financieras
 variable calcularPropina = (total, porcentaje) => total * (porcentaje / 100)
 
-mostrar "Propina 15%: $" + calcularPropina(500, 15)
-mostrar "Propina 20%: $" + calcularPropina(500, 20)
+mostrar "Propina 15%: $" + calcularPropina(500, 15) // Propina 15%: $75
+mostrar "Propina 20%: $" + calcularPropina(500, 20) // Propina 20%: $100
 
 variable calcularCuotas = (monto, cuotas) => monto / cuotas
 
-mostrar "12 cuotas de: $" + calcularCuotas(1200, 12)`} />
-
-<Output text={`100°C = 212°F
-212°F = 100°C
-10km = 6.21371 millas
-10mi = 16.0934 km
-Propina 15%: $75
-Propina 20%: $100
-12 cuotas de: $100`} />
+mostrar "12 cuotas de: $" + calcularCuotas(1200, 12) // 12 cuotas de: $100`} />
 
 - Funciones flecha perfectas para conversiones simples
 - Calculadoras de una línea

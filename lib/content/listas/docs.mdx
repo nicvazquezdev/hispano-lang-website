@@ -9,25 +9,19 @@ Cuando vas al supermercado, haces una lista: 'leche, pan, huevos, manzanas'. En 
 <Syntax>variable lista = [elemento1, elemento2, elemento3, ...]</Syntax>
 
 <Code code={`variable compras = ["leche", "pan", "huevos", "manzanas"]
-mostrar compras
+mostrar compras // ["leche", "pan", "huevos", "manzanas"]
 
 variable numeros = [1, 2, 3, 4, 5]
-mostrar numeros
+mostrar numeros // [1, 2, 3, 4, 5]
 
 variable mixto = [1, "hola", verdadero, 3.14]
-mostrar mixto
+mostrar mixto // [1, "hola", verdadero, 3.14]
 
 variable vacia = []
-mostrar "Lista vacía: " + texto(vacia)
+mostrar "Lista vacía: " + texto(vacia) // Lista vacía: []
 
 variable unoSolo = ["único item"]
-mostrar unoSolo`} />
-
-<Output text={`["leche", "pan", "huevos", "manzanas"]
-[1, 2, 3, 4, 5]
-[1, "hola", verdadero, 3.14]
-Lista vacía: []
-["único item"]`} />
+mostrar unoSolo // ["único item"]`} />
 
 - Las listas se crean con corchetes: []
 - Los elementos se separan con comas
@@ -41,27 +35,18 @@ Tu lista tiene posiciones numeradas: el primer item es posición 0, el segundo e
 
 <Code code={`variable compras = ["leche", "pan", "huevos", "manzanas", "queso"]
 
-mostrar "Item 0 (primero): " + compras[0]
-mostrar "Item 1 (segundo): " + compras[1]
-mostrar "Item 2 (tercero): " + compras[2]
-mostrar "Item 3 (cuarto): " + compras[3]
-mostrar "Item 4 (quinto): " + compras[4]
+mostrar "Item 0 (primero): " + compras[0] // Item 0 (primero): leche
+mostrar "Item 1 (segundo): " + compras[1] // Item 1 (segundo): pan
+mostrar "Item 2 (tercero): " + compras[2] // Item 2 (tercero): huevos
+mostrar "Item 3 (cuarto): " + compras[3] // Item 3 (cuarto): manzanas
+mostrar "Item 4 (quinto): " + compras[4] // Item 4 (quinto): queso
 
 variable notas = [85, 90, 78, 92, 88]
-mostrar "Primera nota: " + texto(notas[0])
-mostrar "Segunda nota: " + texto(notas[1])
+mostrar "Primera nota: " + texto(notas[0]) // Primera nota: 85
+mostrar "Segunda nota: " + texto(notas[1]) // Segunda nota: 90
 
 variable primerItem = compras[0]
-mostrar "Primer item de la lista: " + primerItem`} />
-
-<Output text={`Item 0 (primero): leche
-Item 1 (segundo): pan
-Item 2 (tercero): huevos
-Item 3 (cuarto): manzanas
-Item 4 (quinto): queso
-Primera nota: 85
-Segunda nota: 90
-Primer item de la lista: leche`} />
+mostrar "Primer item de la lista: " + primerItem // Primer item de la lista: leche`} />
 
 - Acceso con corchetes: lista[indice]
 - Los índices empiezan en 0, no en 1
@@ -74,27 +59,21 @@ Primer item de la lista: leche`} />
 Como cuando tachas un item de tu lista y escribes otro, puedes cambiar elementos usando su índice.
 
 <Code code={`variable compras = ["leche", "pan", "huevos"]
-mostrar "Lista original: " + texto(compras)
+mostrar "Lista original: " + texto(compras) // Lista original: ["leche", "pan", "huevos"]
 
 compras[1] = "pan integral"
-mostrar "Después de cambiar: " + texto(compras)
+mostrar "Después de cambiar: " + texto(compras) // Después de cambiar: ["leche", "pan integral", "huevos"]
 
 variable notas = [85, 90, 78]
-mostrar "Notas originales: " + texto(notas)
+mostrar "Notas originales: " + texto(notas) // Notas originales: [85, 90, 78]
 
 notas[2] = 80
-mostrar "Después de corregir: " + texto(notas)
+mostrar "Después de corregir: " + texto(notas) // Después de corregir: [85, 90, 80]
 
 variable tareas = ["Estudiar", "Comprar", "Cocinar"]
 tareas[0] = "Estudiar matemáticas"
 tareas[2] = "Cocinar pasta"
-mostrar "Tareas actualizadas: " + texto(tareas)`} />
-
-<Output text={`Lista original: ["leche", "pan", "huevos"]
-Después de cambiar: ["leche", "pan integral", "huevos"]
-Notas originales: [85, 90, 78]
-Después de corregir: [85, 90, 80]
-Tareas actualizadas: ["Estudiar matemáticas", "Comprar", "Cocinar pasta"]`} />
+mostrar "Tareas actualizadas: " + texto(tareas) // Tareas actualizadas: ["Estudiar matemáticas", "Comprar", "Cocinar pasta"]`} />
 
 - Modificar: lista[indice] = nuevoValor
 - El índice debe existir en la lista
@@ -107,27 +86,18 @@ Tareas actualizadas: ["Estudiar matemáticas", "Comprar", "Cocinar pasta"]`} />
 
 <Code code={`variable compras = ["leche", "pan", "huevos", "manzanas", "queso"]
 
-mostrar "Cantidad de items: " + texto(compras.longitud())
-mostrar "Primer item: " + compras.primero()
-mostrar "Último item: " + compras.ultimo()
+mostrar "Cantidad de items: " + texto(compras.longitud()) // Cantidad de items: 5
+mostrar "Primer item: " + compras.primero() // Primer item: leche
+mostrar "Último item: " + compras.ultimo() // Último item: queso
 
 variable vacia = []
-mostrar "Lista vacía tiene: " + texto(vacia.longitud()) + " items"
+mostrar "Lista vacía tiene: " + texto(vacia.longitud()) + " items" // Lista vacía tiene: 0 items
 
 variable unoSolo = ["único"]
-mostrar "Una lista con 1 item:"
-mostrar "Longitud: " + texto(unoSolo.longitud())
-mostrar "Primero: " + unoSolo.primero()
-mostrar "Último: " + unoSolo.ultimo()`} />
-
-<Output text={`Cantidad de items: 5
-Primer item: leche
-Último item: queso
-Lista vacía tiene: 0 items
-Una lista con 1 item:
-Longitud: 1
-Primero: único
-Último: único`} />
+mostrar "Una lista con 1 item:" // Una lista con 1 item:
+mostrar "Longitud: " + texto(unoSolo.longitud()) // Longitud: 1
+mostrar "Primero: " + unoSolo.primero() // Primero: único
+mostrar "Último: " + unoSolo.ultimo() // Último: único`} />
 
 - .longitud(): Cuántos elementos tiene la lista
 - .primero(): Retorna el primer elemento (índice 0)
@@ -139,33 +109,24 @@ Primero: único
 Como cuando vas agregando items a tu lista de compras conforme recuerdas lo que necesitas.
 
 <Code code={`variable compras = ["leche", "pan"]
-mostrar "Inicial: " + texto(compras)
+mostrar "Inicial: " + texto(compras) // Inicial: ["leche", "pan"]
 
 compras.agregar("huevos")
-mostrar "Después de agregar huevos: " + texto(compras)
+mostrar "Después de agregar huevos: " + texto(compras) // Después de agregar huevos: ["leche", "pan", "huevos"]
 
 compras.agregar("manzanas")
-mostrar "Después de agregar manzanas: " + texto(compras)
+mostrar "Después de agregar manzanas: " + texto(compras) // Después de agregar manzanas: ["leche", "pan", "huevos", "manzanas"]
 
-mostrar ""
-mostrar "=== CARRITO DE COMPRAS ==="
+mostrar "" // (línea vacía)
+mostrar "=== CARRITO DE COMPRAS ===" // === CARRITO DE COMPRAS ===
 variable carrito = []
-mostrar "Carrito vacío: " + texto(carrito)
+mostrar "Carrito vacío: " + texto(carrito) // Carrito vacío: []
 
 carrito.agregar("Teclado")
 carrito.agregar("Mouse")
 carrito.agregar("Monitor")
-mostrar "Carrito lleno: " + texto(carrito)
-mostrar "Total de items: " + texto(carrito.longitud())`} />
-
-<Output text={`Inicial: ["leche", "pan"]
-Después de agregar huevos: ["leche", "pan", "huevos"]
-Después de agregar manzanas: ["leche", "pan", "huevos", "manzanas"]
-
-=== CARRITO DE COMPRAS ===
-Carrito vacío: []
-Carrito lleno: ["Teclado", "Mouse", "Monitor"]
-Total de items: 3`} />
+mostrar "Carrito lleno: " + texto(carrito) // Carrito lleno: ["Teclado", "Mouse", "Monitor"]
+mostrar "Total de items: " + texto(carrito.longitud()) // Total de items: 3`} />
 
 - .agregar(elemento): Agrega un elemento al final
 - La lista crece dinámicamente
@@ -177,25 +138,17 @@ Total de items: 3`} />
 Como cuando tachas el último item de tu lista.
 
 <Code code={`variable compras = ["leche", "pan", "huevos", "manzanas", "queso"]
-mostrar "Lista completa: " + texto(compras)
-mostrar "Longitud: " + texto(compras.longitud())
+mostrar "Lista completa: " + texto(compras) // Lista completa: ["leche", "pan", "huevos", "manzanas", "queso"]
+mostrar "Longitud: " + texto(compras.longitud()) // Longitud: 5
 
 variable ultimo = compras.remover()
-mostrar "Removiste: " + ultimo
-mostrar "Ahora tienes: " + texto(compras)
-mostrar "Longitud: " + texto(compras.longitud())
+mostrar "Removiste: " + ultimo // Removiste: queso
+mostrar "Ahora tienes: " + texto(compras) // Ahora tienes: ["leche", "pan", "huevos", "manzanas"]
+mostrar "Longitud: " + texto(compras.longitud()) // Longitud: 4
 
 variable siguiente = compras.remover()
-mostrar "Removiste: " + siguiente
-mostrar "Ahora tienes: " + texto(compras)`} />
-
-<Output text={`Lista completa: ["leche", "pan", "huevos", "manzanas", "queso"]
-Longitud: 5
-Removiste: queso
-Ahora tienes: ["leche", "pan", "huevos", "manzanas"]
-Longitud: 4
-Removiste: manzanas
-Ahora tienes: ["leche", "pan", "huevos"]`} />
+mostrar "Removiste: " + siguiente // Removiste: manzanas
+mostrar "Ahora tienes: " + texto(compras) // Ahora tienes: ["leche", "pan", "huevos"]`} />
 
 - .remover(): Elimina el último elemento y lo retorna
 - La lista se acorta en 1
@@ -208,12 +161,12 @@ Ahora tienes: ["leche", "pan", "huevos"]`} />
 
 <Code code={`variable compras = ["leche", "pan", "huevos", "manzanas"]
 
-mostrar "¿Tengo leche?: " + texto(compras.contiene("leche"))
-mostrar "¿Tengo queso?: " + texto(compras.contiene("queso"))
-mostrar "¿Tengo pan?: " + texto(compras.contiene("pan"))
+mostrar "¿Tengo leche?: " + texto(compras.contiene("leche")) // ¿Tengo leche?: verdadero
+mostrar "¿Tengo queso?: " + texto(compras.contiene("queso")) // ¿Tengo queso?: falso
+mostrar "¿Tengo pan?: " + texto(compras.contiene("pan")) // ¿Tengo pan?: verdadero
 
 si compras.contiene("huevos") {
-    mostrar "Ya tienes huevos en la lista"
+    mostrar "Ya tienes huevos en la lista" // Ya tienes huevos en la lista
 } sino {
     mostrar "Necesitas agregar huevos"
 }
@@ -223,17 +176,11 @@ variable carrito = ["Mouse", "Teclado"]
 
 variable nuevoItem = "Mouse"
 si carrito.contiene(nuevoItem) {
-    mostrar nuevoItem + " ya está en el carrito"
+    mostrar nuevoItem + " ya está en el carrito" // Mouse ya está en el carrito
 } sino {
     carrito.agregar(nuevoItem)
     mostrar "Agregado: " + nuevoItem
 }`} />
-
-<Output text={`¿Tengo leche?: verdadero
-¿Tengo queso?: falso
-¿Tengo pan?: verdadero
-Ya tienes huevos en la lista
-Mouse ya está en el carrito`} />
 
 - .contiene(elemento): Verdadero si existe, falso si no
 - Busca el elemento exacto (case-sensitive)
@@ -246,47 +193,28 @@ Como cuando pasas por cada línea de tu lista de compras en el super.
 
 <Code code={`variable compras = ["leche", "pan", "huevos", "manzanas"]
 
-mostrar "=== LISTA DE COMPRAS ==="
+mostrar "=== LISTA DE COMPRAS ===" // === LISTA DE COMPRAS ===
 compras.recorrer(funcion(item) {
-    mostrar "- " + item
+    mostrar "- " + item // - leche, - pan, - huevos, - manzanas (uno por línea)
 })
 
-mostrar ""
-mostrar "=== CON ÍNDICE ==="
+mostrar "" // (línea vacía)
+mostrar "=== CON ÍNDICE ===" // === CON ÍNDICE ===
 compras.recorrer(funcion(item, indice) {
-    mostrar "Item " + texto(indice) + ": " + item
+    mostrar "Item " + texto(indice) + ": " + item // Item 0: leche, Item 1: pan, Item 2: huevos, Item 3: manzanas
 })
 
-mostrar ""
-mostrar "=== CALCULAR TOTAL ==="
+mostrar "" // (línea vacía)
+mostrar "=== CALCULAR TOTAL ===" // === CALCULAR TOTAL ===
 variable precios = [100, 250, 150, 300]
 variable total = 0
 
 precios.recorrer(funcion(precio) {
     total = total + precio
-    mostrar "Agregando $" + texto(precio) + " → Total: $" + texto(total)
+    mostrar "Agregando $" + texto(precio) + " → Total: $" + texto(total) // Agregando $100 → Total: $100, etc.
 })
 
-mostrar "Total final: $" + texto(total)`} />
-
-<Output text={`=== LISTA DE COMPRAS ===
-- leche
-- pan
-- huevos
-- manzanas
-
-=== CON ÍNDICE ===
-Item 0: leche
-Item 1: pan
-Item 2: huevos
-Item 3: manzanas
-
-=== CALCULAR TOTAL ===
-Agregando $100 → Total: $100
-Agregando $250 → Total: $350
-Agregando $150 → Total: $500
-Agregando $300 → Total: $800
-Total final: $800`} />
+mostrar "Total final: $" + texto(total) // Total final: $800`} />
 
 - .recorrer(funcion(elemento) con código)
 - Ejecuta la función una vez por cada elemento
@@ -303,14 +231,14 @@ Crear nuevas listas basadas en la original.
 variable baratos = precios.filtrar(funcion(precio) {
     retornar precio < 200
 })
-mostrar "Todos: " + texto(precios)
-mostrar "Baratos (< $200): " + texto(baratos)
+mostrar "Todos: " + texto(precios) // Todos: [100, 250, 150, 300, 80, 200]
+mostrar "Baratos (< $200): " + texto(baratos) // Baratos (< $200): [100, 150, 80]
 
 // Mapear: aplicar IVA
 variable conIVA = precios.mapear(funcion(precio) {
     retornar precio * 1.21
 })
-mostrar "Con IVA: " + texto(conIVA)
+mostrar "Con IVA: " + texto(conIVA) // Con IVA: [121, 302.5, 181.5, 363, 96.8, 242]
 
 // Números
 variable numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -318,18 +246,12 @@ variable numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 variable pares = numeros.filtrar(funcion(n) {
     retornar n.esPar()
 })
-mostrar "Pares: " + texto(pares)
+mostrar "Pares: " + texto(pares) // Pares: [2, 4, 6, 8, 10]
 
 variable dobles = numeros.mapear(funcion(n) {
     retornar n * 2
 })
-mostrar "Dobles: " + texto(dobles)`} />
-
-<Output text={`Todos: [100, 250, 150, 300, 80, 200]
-Baratos (< $200): [100, 150, 80]
-Con IVA: [121, 302.5, 181.5, 363, 96.8, 242]
-Pares: [2, 4, 6, 8, 10]
-Dobles: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]`} />
+mostrar "Dobles: " + texto(dobles) // Dobles: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]`} />
 
 - .filtrar(fn): Nueva lista solo con elementos que cumplen
 - .mapear(fn): Nueva lista transformando cada elemento
@@ -345,27 +267,21 @@ Dobles: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]`} />
 variable total = precios.reducir(funcion(acumulado, precio) {
     retornar acumulado + precio
 }, 0)
-mostrar "Precios: " + texto(precios)
-mostrar "Total: $" + texto(total)
+mostrar "Precios: " + texto(precios) // Precios: [100, 250, 150, 300]
+mostrar "Total: $" + texto(total) // Total: $800
 
-mostrar ""
+mostrar "" // (línea vacía)
 variable numeros = [1, 2, 3, 4, 5]
 
 variable suma = numeros.reducir(funcion(acc, n) {
     retornar acc + n
 }, 0)
-mostrar "Suma: " + texto(suma)
+mostrar "Suma: " + texto(suma) // Suma: 15
 
 variable producto = numeros.reducir(funcion(acc, n) {
     retornar acc * n
 }, 1)
-mostrar "Producto: " + texto(producto)`} />
-
-<Output text={`Precios: [100, 250, 150, 300]
-Total: $800
-
-Suma: 15
-Producto: 120`} />
+mostrar "Producto: " + texto(producto) // Producto: 120`} />
 
 - .reducir(fn, inicial): Reduce la lista a un solo valor
 - Combina todos los elementos usando la función

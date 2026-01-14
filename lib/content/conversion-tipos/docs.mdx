@@ -11,29 +11,22 @@ Cuando recibes datos de un formulario, vienen como texto. Para hacer cálculos m
 <Code code={`variable edadTexto = "25"
 variable edadNumero = entero(edadTexto)
 
-mostrar "Edad como texto: " + edadTexto
-mostrar "Edad como número: " + edadNumero
-mostrar "Edad + 5: " + (edadNumero + 5)
+mostrar "Edad como texto: " + edadTexto // Edad como texto: 25
+mostrar "Edad como número: " + edadNumero // Edad como número: 25
+mostrar "Edad + 5: " + (edadNumero + 5) // Edad + 5: 30
 
 // Del formulario
 variable cantidadFormulario = "10"
 variable cantidad = entero(cantidadFormulario)
 variable precioUnitario = 100
 variable total = cantidad * precioUnitario
-mostrar "Cantidad: " + cantidad
-mostrar "Total: $" + total
+mostrar "Cantidad: " + cantidad // Cantidad: 10
+mostrar "Total: $" + total // Total: $1000
 
 // Ignora decimales
 variable precioTexto = "99.99"
 variable precioEntero = entero(precioTexto)
-mostrar "Precio redondeado: $" + precioEntero`} />
-
-<Output text={`Edad como texto: 25
-Edad como número: 25
-Edad + 5: 30
-Cantidad: 10
-Total: $1000
-Precio redondeado: $99`} />
+mostrar "Precio redondeado: $" + precioEntero // Precio redondeado: $99`} />
 
 - entero(texto): Convierte texto a número entero
 - Si el texto tiene decimales, los ignora (trunca)
@@ -49,29 +42,23 @@ Cuando necesitas conservar los decimales, usa la conversión a decimal en lugar 
 <Code code={`variable precioTexto = "99.99"
 variable precioNumero = decimal(precioTexto)
 
-mostrar "Precio como texto: " + precioTexto
-mostrar "Precio como número: " + precioNumero
+mostrar "Precio como texto: " + precioTexto // Precio como texto: 99.99
+mostrar "Precio como número: " + precioNumero // Precio como número: 99.99
 
 variable cantidad = 3
 variable subtotal = precioNumero * cantidad
-mostrar "Subtotal (3 items): $" + subtotal
+mostrar "Subtotal (3 items): $" + subtotal // Subtotal (3 items): $299.97
 
 // Porcentaje
 variable porcentajeTexto = "15.5"
 variable porcentaje = decimal(porcentajeTexto)
 variable descuento = 100 * (porcentaje / 100)
-mostrar "Descuento " + porcentaje + "%: $" + descuento
+mostrar "Descuento " + porcentaje + "%: $" + descuento // Descuento 15.5%: $15.5
 
 // Temperatura
 variable tempTexto = "36.6"
 variable temperatura = decimal(tempTexto)
-mostrar "Temperatura: " + temperatura + "°C"`} />
-
-<Output text={`Precio como texto: 99.99
-Precio como número: 99.99
-Subtotal (3 items): $299.97
-Descuento 15.5%: $15.5
-Temperatura: 36.6°C`} />
+mostrar "Temperatura: " + temperatura + "°C" // Temperatura: 36.6°C`} />
 
 - decimal(texto): Convierte texto a número con decimales
 - Conserva la precisión decimal
@@ -86,29 +73,23 @@ A veces necesitas mostrar números formateados o concatenarlos con texto de form
 
 <Code code={`variable precio = 1500
 variable precioTexto = texto(precio)
-mostrar "Precio: $" + precioTexto
+mostrar "Precio: $" + precioTexto // Precio: $1500
 
 variable cantidad = 25
 variable mensaje = "Tienes " + texto(cantidad) + " items"
-mostrar mensaje
+mostrar mensaje // Tienes 25 items
 
 // Formatear números
 variable total = 1234.56
-mostrar "Total: $" + texto(total)
+mostrar "Total: $" + texto(total) // Total: $1234.56
 
 // Con decimales
 variable porcentaje = 15.5
-mostrar "Descuento: " + texto(porcentaje) + "%"
+mostrar "Descuento: " + texto(porcentaje) + "%" // Descuento: 15.5%
 
 // Booleano a texto
 variable activo = verdadero
-mostrar "Estado: " + texto(activo)`} />
-
-<Output text={`Precio: $1500
-Tienes 25 items
-Total: $1234.56
-Descuento: 15.5%
-Estado: verdadero`} />
+mostrar "Estado: " + texto(activo) // Estado: verdadero`} />
 
 - texto(valor): Convierte cualquier valor a texto
 - Funciona con números, booleanos, listas, objetos
@@ -124,25 +105,20 @@ variable respuesta2 = "falso"
 variable respuesta3 = "si"
 variable respuesta4 = "no"
 
-mostrar "verdadero → " + texto(booleano(respuesta1))
-mostrar "falso → " + texto(booleano(respuesta2))
+mostrar "verdadero → " + texto(booleano(respuesta1)) // verdadero → verdadero
+mostrar "falso → " + texto(booleano(respuesta2)) // falso → falso
 
 // Validación de checkbox
 variable aceptoTerminos = "verdadero"
 si booleano(aceptoTerminos) {
-    mostrar "Términos aceptados"
+    mostrar "Términos aceptados" // Términos aceptados
 }
 
 // Valor del formulario
 variable recibirOfertas = "falso"
 si !booleano(recibirOfertas) {
-    mostrar "No recibirás ofertas"
+    mostrar "No recibirás ofertas" // No recibirás ofertas
 }`} />
-
-<Output text={`verdadero → verdadero
-falso → falso
-Términos aceptados
-No recibirás ofertas`} />
 
 - booleano(texto): Convierte texto a verdadero/falso
 - "verdadero", "true", "1", "si" → verdadero
@@ -161,25 +137,18 @@ variable booleano = verdadero
 variable lista = [1, 2, 3]
 variable nulo = nulo
 
-mostrar "42 es: " + tipoDe(numero)
-mostrar "'hola' es: " + tipoDe(texto)
-mostrar "verdadero es: " + tipoDe(booleano)
-mostrar "[1,2,3] es: " + tipoDe(lista)
-mostrar "nulo es: " + tipoDe(nulo)
+mostrar "42 es: " + tipoDe(numero) // 42 es: numero
+mostrar "'hola' es: " + tipoDe(texto) // 'hola' es: texto
+mostrar "verdadero es: " + tipoDe(booleano) // verdadero es: booleano
+mostrar "[1,2,3] es: " + tipoDe(lista) // [1,2,3] es: lista
+mostrar "nulo es: " + tipoDe(nulo) // nulo es: nulo
 
 // Validar antes de convertir
 variable dato = "25"
 si tipoDe(dato) == "texto" {
     variable num = entero(dato)
-    mostrar "Convertido: " + num
+    mostrar "Convertido: " + num // Convertido: 25
 }`} />
-
-<Output text={`42 es: numero
-'hola' es: texto
-verdadero es: booleano
-[1,2,3] es: lista
-nulo es: nulo
-Convertido: 25`} />
 
 - tipoDe(valor): Retorna el tipo como texto
 - Tipos posibles: "numero", "texto", "booleano", "lista", "objeto", "nulo", "indefinido"
@@ -192,26 +161,20 @@ HispanoLang a veces convierte tipos automáticamente, especialmente al concatena
 
 <Code code={`// Concatenación automática
 variable edad = 25
-mostrar "Tengo " + edad + " años"  // número a texto automático
+mostrar "Tengo " + edad + " años"  // Tengo 25 años
 
 variable precio = 99.99
-mostrar "Precio: $" + precio  // decimal a texto automático
+mostrar "Precio: $" + precio  // Precio: $99.99
 
 // Operaciones
 variable textoNumero = "10"
-mostrar textoNumero + 5        // "105" (concatenación)
-mostrar entero(textoNumero) + 5  // 15 (suma)
+mostrar textoNumero + 5        // 105
+mostrar entero(textoNumero) + 5  // 15
 
 // Comparación
 variable cantidadTexto = "100"
 variable cantidadNumero = 100
-mostrar cantidadTexto == cantidadNumero  // falso (tipos diferentes)`} />
-
-<Output text={`Tengo 25 años
-Precio: $99.99
-105
-15
-falso`} />
+mostrar cantidadTexto == cantidadNumero  // falso`} />
 
 - Al concatenar con +, números se convierten a texto
 - Para operaciones matemáticas, convierte explícitamente
@@ -225,29 +188,24 @@ Qué pasa cuando la conversión no es posible.
 <Code code={`// Texto inválido a número
 variable textoInvalido = "abc"
 variable resultado = entero(textoInvalido)
-mostrar "entero('abc') = " + resultado  // 0 o error
+mostrar "entero('abc') = " + resultado  // entero('abc') = 0
 
 // Texto vacío
 variable vacio = ""
 variable resultadoVacio = entero(vacio)
-mostrar "entero('') = " + resultadoVacio
+mostrar "entero('') = " + resultadoVacio // entero('') = 0
 
 // Texto con espacios
 variable conEspacios = "  42  "
 variable limpio = entero(conEspacios.recortar())
-mostrar "entero('  42  '.recortar()) = " + limpio
+mostrar "entero('  42  '.recortar()) = " + limpio // entero('  42  '.recortar()) = 42
 
 // Validación segura
 variable input = "25"
 si input.longitud() > 0 {
     variable num = entero(input)
-    mostrar "Número válido: " + num
+    mostrar "Número válido: " + num // Número válido: 25
 }`} />
-
-<Output text={`entero('abc') = 0
-entero('') = 0
-entero('  42  '.recortar()) = 42
-Número válido: 25`} />
 
 - Texto inválido → retorna 0 o valor por defecto
 - Siempre valida la entrada antes de convertir
@@ -258,7 +216,7 @@ Número válido: 25`} />
 
 Ejemplo completo procesando datos de un formulario.
 
-<Code code={`mostrar "=== PROCESANDO FORMULARIO ==="
+<Code code={`mostrar "=== PROCESANDO FORMULARIO ===" // === PROCESANDO FORMULARIO ===
 
 // Datos del formulario (vienen como texto)
 variable nombreForm = "  María García  "
@@ -274,23 +232,16 @@ variable aceptaTerminos = booleano(aceptaTerminosForm)
 
 // Validar
 si edad >= 18 y aceptaTerminos {
-    mostrar "Registro válido"
-    mostrar "Nombre: " + nombre
-    mostrar "Edad: " + edad
-    mostrar "Precio: $" + precio
+    mostrar "Registro válido" // Registro válido
+    mostrar "Nombre: " + nombre // Nombre: María García
+    mostrar "Edad: " + edad // Edad: 25
+    mostrar "Precio: $" + precio // Precio: $99.99
 
     variable total = precio * 1.21
-    mostrar "Total con IVA: $" + texto(total)
+    mostrar "Total con IVA: $" + texto(total) // Total con IVA: $120.9879
 } sino {
     mostrar "Registro inválido"
 }`} />
-
-<Output text={`=== PROCESANDO FORMULARIO ===
-Registro válido
-Nombre: María García
-Edad: 25
-Precio: $99.99
-Total con IVA: $120.9879`} />
 
 Resumen de conversiones:
 - entero(texto): Texto → Número entero

@@ -52,7 +52,8 @@ export default async function DocPage({ params }: PageProps) {
 
   const currentIndex = sections.findIndex((s) => s.id === slug);
   const previousSection = currentIndex > 0 ? sections[currentIndex - 1] : null;
-  const nextSection = currentIndex < sections.length - 1 ? sections[currentIndex + 1] : null;
+  const nextSection =
+    currentIndex < sections.length - 1 ? sections[currentIndex + 1] : null;
 
   return (
     <div className="min-h-screen relative">
@@ -68,7 +69,6 @@ export default async function DocPage({ params }: PageProps) {
       <main className="relative z-10 pt-20">
         <Section
           background="light"
-          badge={{ emoji: "📚", text: "Referencia Completa" }}
           title="Documentación de"
           titleGradient=" HispanoLang"
           description="Referencia completa de sintaxis, comandos y características del lenguaje"
@@ -84,10 +84,11 @@ export default async function DocPage({ params }: PageProps) {
 
             {/* Main Content */}
             <article className="lg:w-3/4 w-full min-h-screen">
-              <Card variant="glass" className="bg-slate-800/80 backdrop-blur-sm">
-                <div className="md:p-6 doc-content">
-                  {content}
-                </div>
+              <Card
+                variant="glass"
+                className="bg-slate-800/80 backdrop-blur-sm"
+              >
+                <div className="md:p-6 doc-content">{content}</div>
 
                 {/* Navegación */}
                 {(previousSection || nextSection) && (
@@ -96,7 +97,11 @@ export default async function DocPage({ params }: PageProps) {
                       <div className="flex-1">
                         {previousSection && (
                           <Link href={`/documentacion/${previousSection.id}`}>
-                            <Button variant="outline" className="w-full justify-start" prev>
+                            <Button
+                              variant="outline"
+                              className="w-full justify-start"
+                              prev
+                            >
                               {previousSection.title}
                             </Button>
                           </Link>
@@ -105,7 +110,11 @@ export default async function DocPage({ params }: PageProps) {
                       <div className="flex-1">
                         {nextSection && (
                           <Link href={`/documentacion/${nextSection.id}`}>
-                            <Button variant="outline" className="w-full justify-end" next>
+                            <Button
+                              variant="outline"
+                              className="w-full justify-end"
+                              next
+                            >
                               {nextSection.title}
                             </Button>
                           </Link>
@@ -124,4 +133,3 @@ export default async function DocPage({ params }: PageProps) {
     </div>
   );
 }
-
