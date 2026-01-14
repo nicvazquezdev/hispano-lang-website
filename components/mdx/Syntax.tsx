@@ -1,18 +1,19 @@
+"use client";
+
 import { ReactNode } from "react";
+import { InlineSyntaxHighlighter } from "@/components/code";
 
 interface SyntaxProps {
   children: ReactNode;
 }
 
 export default function Syntax({ children }: SyntaxProps) {
+  // Convert ReactNode to string and trim whitespace
+  const code = (typeof children === "string" ? children : String(children)).trim();
+
   return (
-    <div className="bg-purple-900/30 border border-purple-700/50 rounded-lg p-4 mb-4">
-      <code
-        className="text-purple-300 font-mono"
-        style={{ fontVariantLigatures: "none" }}
-      >
-        {children}
-      </code>
+    <div className="syntax-block bg-slate-900 rounded-lg px-4 py-3 mb-4 overflow-x-auto">
+      <InlineSyntaxHighlighter code={code} className="text-sm" />
     </div>
   );
 }
