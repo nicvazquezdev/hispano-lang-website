@@ -1,5 +1,4 @@
 export * from "./types";
-export * from "./content";
 
 export interface LessonInfo {
   id: string;
